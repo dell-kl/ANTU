@@ -1,0 +1,19 @@
+﻿using ANTU.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace ANTU.ViewModel
+{
+    public partial class MateriaPrimaViewModel : ObservableObject
+    {
+        public IEnumerable<MateriaPrimaProducto> materiaPrimaProductos { set; get; } = new List<MateriaPrimaProducto>() { 
+            new MateriaPrimaProducto()
+            {
+
+            }
+        };
+
+        public MateriaPrimaViewModel() { 
+        
+        }
+    }
+}

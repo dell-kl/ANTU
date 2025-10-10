@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:inicioSesion="clr-namespace:ANTU.Views.Login"
+             xmlns:vistas="clr-namespace:ANTU.Views.dashboard"
+             xmlns:contabilidad="clr-namespace:ANTU.Views.Contabilidad"
+             xmlns:config="clr-namespace:ANTU.Views.Config"
+             xmlns:viewModels="clr-namespace:ANTU.ViewModel"
+             x:Class="ANTU.AppShell"
+             Title="Contenido Generla"
+             Shell.BackgroundColor="#BF7A24"
+             Shell.NavBarHasShadow="False"
+             Shell.ForegroundColor="#fff"
+    >
+
+    <Shell.FlyoutIsPresented>False</Shell.FlyoutIsPresented>
+    <Shell.FlyoutItemIsVisible>False</Shell.FlyoutItemIsVisible>
+    
+    <Shell.Resources>
+        <Style TargetType="TabBar">
+            <Setter Property="Shell.TabBarBackgroundColor"
+            Value="#FAF1E5" />
+            <Setter Property="Shell.TabBarTitleColor"
+            Value="#BF8924" />
+            <Setter Property="Shell.TabBarForegroundColor" Value="#BF8924" />
+        </Style>
+    </Shell.Resources>
+    
+    <ShellContent 
+        IsVisible="True"
+        ContentTemplate="{DataTemplate inicioSesion:InicioSesion}"
+        x:Name="ContentRepresentation"/>
+    
+    <TabBar
+        IsVisible="False" x:Name="BarraOpciones">
+        
+        <Tab Title="Home"
+            Icon="home.png">
+            <ShellContent 
+                ContentTemplate="{DataTemplate vistas:Dashboard}"/>
+        </Tab>
+        <Tab Title="Contabilidad"
+            Icon="infome.png">
+            <ShellContent 
+        ContentTemplate="{DataTemplate contabilidad:InformeContabilidad}"/>
+        </Tab>
+        <Tab Title="Configuracion"
+            Icon="config.png">
+            <ShellContent 
+        ContentTemplate="{DataTemplate config:Configuracion}"/>
+        </Tab>
+    </TabBar>
+    
+</Shell>

@@ -1,0 +1,499 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\viewmodel\\materiaprimadetalleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:viewmodel\\materiaprimadetalleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\resources\\components\\popupcomponents\\ventanaconfirmacionemergente.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:resources\\components\\popupcomponents\\ventanaconfirmacionemergente.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\resources\\components\\popupcomponents\\ventanaconfirmacionemergente.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:resources\\components\\popupcomponents\\ventanaconfirmacionemergente.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\resources\\components\\popupcomponents\\ventanaemergente.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:resources\\components\\popupcomponents\\ventanaemergente.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\resources\\components\\popupcomponents\\ventanaemergente.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:resources\\components\\popupcomponents\\ventanaemergente.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\resources\\components\\popupcomponents\\formularioemergente.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:resources\\components\\popupcomponents\\formularioemergente.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\resources\\components\\popupcomponents\\formularioemergente.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:resources\\components\\popupcomponents\\formularioemergente.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\models\\dto\\materiaprimadetalleformulario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:models\\dto\\materiaprimadetalleformulario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\views\\detalles\\materiaprimadetalle.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:views\\detalles\\materiaprimadetalle.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\views\\detalles\\materiaprimadetalle.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:views\\detalles\\materiaprimadetalle.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\viewmodel\\parentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:viewmodel\\parentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\viewmodel\\materiaprimaviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:viewmodel\\materiaprimaviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\viewmodel\\productoslistosviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:viewmodel\\productoslistosviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\viewmodel\\dashboardviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:viewmodel\\dashboardviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\models\\dto\\materiaprimaformulariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:models\\dto\\materiaprimaformulariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\views\\materiaprima.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:views\\materiaprima.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\views\\materiaprima.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:views\\materiaprima.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\models\\kgseguimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:models\\kgseguimiento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\models\\materiaprimadetalle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:models\\materiaprimadetalle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|d:\\s7st3m4s\\bodegabalanceado\\antu\\models\\materiaprimaproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A183E48-9A1C-4AEE-B5DB-EC5A278709D3}|ANTU.csproj|solutionrelative:models\\materiaprimaproducto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 585,
+          "SelectedChildIndex": 38,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:136:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:137:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:138:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:139:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:140:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:142:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:143:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:144:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:145:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:146:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:147:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:148:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:149:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:150:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:141:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:152:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:153:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:154:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:158:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:159:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:160:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:161:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:162:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:163:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:164:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:165:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:166:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:167:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:151:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:156:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:157:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "VentanaConfirmacionEmergente.xaml",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Resources\\Components\\PopupComponents\\VentanaConfirmacionEmergente.xaml",
+              "RelativeDocumentMoniker": "Resources\\Components\\PopupComponents\\VentanaConfirmacionEmergente.xaml",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Resources\\Components\\PopupComponents\\VentanaConfirmacionEmergente.xaml",
+              "RelativeToolTip": "Resources\\Components\\PopupComponents\\VentanaConfirmacionEmergente.xaml",
+              "ViewState": "AgIAACUAAAAAAAAAAAAAADMAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-09T03:53:36.656Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MateriaPrimaDetalleViewModel.cs",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\ViewModel\\MateriaPrimaDetalleViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\MateriaPrimaDetalleViewModel.cs",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\ViewModel\\MateriaPrimaDetalleViewModel.cs",
+              "RelativeToolTip": "ViewModel\\MateriaPrimaDetalleViewModel.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T14:48:05.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "VentanaConfirmacionEmergente.xaml.cs",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Resources\\Components\\PopupComponents\\VentanaConfirmacionEmergente.xaml.cs",
+              "RelativeDocumentMoniker": "Resources\\Components\\PopupComponents\\VentanaConfirmacionEmergente.xaml.cs",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Resources\\Components\\PopupComponents\\VentanaConfirmacionEmergente.xaml.cs",
+              "RelativeToolTip": "Resources\\Components\\PopupComponents\\VentanaConfirmacionEmergente.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-09T03:54:49.835Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "VentanaEmergente.xaml",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Resources\\Components\\PopupComponents\\VentanaEmergente.xaml",
+              "RelativeDocumentMoniker": "Resources\\Components\\PopupComponents\\VentanaEmergente.xaml",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Resources\\Components\\PopupComponents\\VentanaEmergente.xaml",
+              "RelativeToolTip": "Resources\\Components\\PopupComponents\\VentanaEmergente.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-08T23:19:44.568Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "VentanaEmergente.xaml.cs",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Resources\\Components\\PopupComponents\\VentanaEmergente.xaml.cs",
+              "RelativeDocumentMoniker": "Resources\\Components\\PopupComponents\\VentanaEmergente.xaml.cs",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Resources\\Components\\PopupComponents\\VentanaEmergente.xaml.cs",
+              "RelativeToolTip": "Resources\\Components\\PopupComponents\\VentanaEmergente.xaml.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T23:21:13.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FormularioEmergente.xaml.cs",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Resources\\Components\\PopupComponents\\FormularioEmergente.xaml.cs",
+              "RelativeDocumentMoniker": "Resources\\Components\\PopupComponents\\FormularioEmergente.xaml.cs",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Resources\\Components\\PopupComponents\\FormularioEmergente.xaml.cs",
+              "RelativeToolTip": "Resources\\Components\\PopupComponents\\FormularioEmergente.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T23:21:09.786Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MateriaPrimaDetalleFormulario.cs",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Models\\Dto\\MateriaPrimaDetalleFormulario.cs",
+              "RelativeDocumentMoniker": "Models\\Dto\\MateriaPrimaDetalleFormulario.cs",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Models\\Dto\\MateriaPrimaDetalleFormulario.cs",
+              "RelativeToolTip": "Models\\Dto\\MateriaPrimaDetalleFormulario.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T18:46:45.004Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FormularioEmergente.xaml",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Resources\\Components\\PopupComponents\\FormularioEmergente.xaml",
+              "RelativeDocumentMoniker": "Resources\\Components\\PopupComponents\\FormularioEmergente.xaml",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Resources\\Components\\PopupComponents\\FormularioEmergente.xaml",
+              "RelativeToolTip": "Resources\\Components\\PopupComponents\\FormularioEmergente.xaml",
+              "ViewState": "AgIAABwAAAAAAAAAAAAcwDYAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-08T23:20:39.19Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MateriaPrimaDetalle.xaml",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Views\\Detalles\\MateriaPrimaDetalle.xaml",
+              "RelativeDocumentMoniker": "Views\\Detalles\\MateriaPrimaDetalle.xaml",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Views\\Detalles\\MateriaPrimaDetalle.xaml",
+              "RelativeToolTip": "Views\\Detalles\\MateriaPrimaDetalle.xaml",
+              "ViewState": "AgIAADIBAAAAAAAAAAAAAEABAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-06T14:54:43.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MateriaPrimaDetalle.xaml.cs",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Views\\Detalles\\MateriaPrimaDetalle.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\Detalles\\MateriaPrimaDetalle.xaml.cs",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Views\\Detalles\\MateriaPrimaDetalle.xaml.cs",
+              "RelativeToolTip": "Views\\Detalles\\MateriaPrimaDetalle.xaml.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAgwCsAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T14:53:49.429Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ParentViewModel.cs",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\ViewModel\\ParentViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\ParentViewModel.cs",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\ViewModel\\ParentViewModel.cs",
+              "RelativeToolTip": "ViewModel\\ParentViewModel.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAwwFkAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T23:25:46.92Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MateriaPrimaViewModel.cs",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\ViewModel\\MateriaPrimaViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\MateriaPrimaViewModel.cs",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\ViewModel\\MateriaPrimaViewModel.cs",
+              "RelativeToolTip": "ViewModel\\MateriaPrimaViewModel.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAADwvxoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T13:57:58.341Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DashboardViewModel.cs",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\ViewModel\\DashboardViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\DashboardViewModel.cs",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\ViewModel\\DashboardViewModel.cs",
+              "RelativeToolTip": "ViewModel\\DashboardViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T23:25:16.509Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ProductosListosViewModel.cs",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\ViewModel\\ProductosListosViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\ProductosListosViewModel.cs",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\ViewModel\\ProductosListosViewModel.cs",
+              "RelativeToolTip": "ViewModel\\ProductosListosViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T23:25:46.264Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "MateriaPrimaFormularioDto.cs",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Models\\Dto\\MateriaPrimaFormularioDto.cs",
+              "RelativeDocumentMoniker": "Models\\Dto\\MateriaPrimaFormularioDto.cs",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Models\\Dto\\MateriaPrimaFormularioDto.cs",
+              "RelativeToolTip": "Models\\Dto\\MateriaPrimaFormularioDto.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T18:44:49.231Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "KgSeguimiento.cs",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Models\\KgSeguimiento.cs",
+              "RelativeDocumentMoniker": "Models\\KgSeguimiento.cs",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Models\\KgSeguimiento.cs",
+              "RelativeToolTip": "Models\\KgSeguimiento.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T16:30:59.406Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "MateriaPrima.xaml",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Views\\MateriaPrima.xaml",
+              "RelativeDocumentMoniker": "Views\\MateriaPrima.xaml",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Views\\MateriaPrima.xaml",
+              "RelativeToolTip": "Views\\MateriaPrima.xaml",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAowFoAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-10-06T14:58:43.051Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MateriaPrima.xaml.cs",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Views\\MateriaPrima.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\MateriaPrima.xaml.cs",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Views\\MateriaPrima.xaml.cs",
+              "RelativeToolTip": "Views\\MateriaPrima.xaml.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAgwA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T15:43:46.375Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "MateriaPrimaDetalle.cs",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Models\\MateriaPrimaDetalle.cs",
+              "RelativeDocumentMoniker": "Models\\MateriaPrimaDetalle.cs",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Models\\MateriaPrimaDetalle.cs",
+              "RelativeToolTip": "Models\\MateriaPrimaDetalle.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAB4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T16:30:33.918Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "MateriaPrimaProducto.cs",
+              "DocumentMoniker": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Models\\MateriaPrimaProducto.cs",
+              "RelativeDocumentMoniker": "Models\\MateriaPrimaProducto.cs",
+              "ToolTip": "D:\\S7st3M4s\\BodegaBalanceado\\ANTU\\Models\\MateriaPrimaProducto.cs",
+              "RelativeToolTip": "Models\\MateriaPrimaProducto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T16:30:30.848Z"
+            }
+          ]
+        },
+        {
+          "DockedHeight": 156,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:3:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

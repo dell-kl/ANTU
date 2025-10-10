@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:entryCustomizer="clr-namespace:ANTU.Resources.Customizer"
+             x:Class="ANTU.Views.dashboard.Dashboard"
+             Title="Dashboard"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#D9D6D2">
+
+    <Shell.NavBarIsVisible>False</Shell.NavBarIsVisible>
+
+    <VerticalStackLayout>
+        <VerticalStackLayout.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#F0E7DA" Offset=".6" />
+                <GradientStop Color="#FFF" Offset="1" />
+            </LinearGradientBrush>
+        </VerticalStackLayout.Background>
+        <Border
+            x:Name="Header"
+            MinimumHeightRequest="130"
+            StrokeThickness="0"
+            BackgroundColor="#BF7A24" 
+            >
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#BF7A24" Offset=".6"/>
+                    <GradientStop Color="#BF8924" Offset=".6"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="0, 0, 30, 30" />
+            </Border.StrokeShape>
+            <VerticalStackLayout VerticalOptions="Center">
+                <Border HorizontalOptions="Center" MinimumWidthRequest="60" BackgroundColor="#e7e6e2" Stroke="#e7e6e2">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="10, 10, 10, 10" />
+                    </Border.StrokeShape>
+                    <Image Source="images_antu.jpeg" MaximumHeightRequest="40" MaximumWidthRequest="40"/>
+                </Border>
+                <Label Text="Dashboard" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontSize="25" FontFamily="SegoeUIBold" />
+                <Label Text="Balanceado Premium para Cerdos" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold" FontSize="13" FontFamily="SegoeUILight" />
+            </VerticalStackLayout>
+        </Border>
+
+        <VerticalStackLayout Margin="15,15,0,0">
+            <Label Text="!Bienvenido!" FontSize="22" TextColor="#592418" FontFamily="SegoeUILight"></Label>
+            <Label Text="Lunes, 25 de agosto de 2025" FontSize="15" TextColor="#8C3623" FontFamily="SegoeUILight"></Label>
+        </VerticalStackLayout>
+
+        <Grid 
+            Margin="15,25,15,0"
+            ColumnSpacing="10"
+            HeightRequest="80"
+            ColumnDefinitions=".5*, .5*, .5*">
+
+            <Border Grid.Column="0" Stroke="#BF7A24">
+
+                <Border.Shadow> 
+                    <Shadow
+                        Brush="#BF7A24"
+                        Offset="1,0"
+                        Radius="9"
+                        Opacity=".7"
+                        />
+                </Border.Shadow>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="5, 5, 5, 5" />
+                </Border.StrokeShape>
+                <VerticalStackLayout 
+                    MaximumWidthRequest="100"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center">
+                    <Label Text="1,614" FontSize="25" HorizontalOptions="Center" TextColor="#BF7A24" FontAttributes="Bold" FontFamily="SegoeUIBold"/>
+                    <Label Text="KG Producidos" FontSize="12" HorizontalTextAlignment="Center" HorizontalOptions="Center" TextColor="#8C3623" FontAttributes="Bold" FontFamily="SegoeUILight"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border Grid.Column="1" Stroke="#BF7A24">
+                <Border.Shadow>
+                    <Shadow
+                        Brush="#BF7A24"
+                        Offset="1,0"
+                        Radius="9"
+                        Opacity=".7"
+                        />
+                </Border.Shadow>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="5, 5, 5, 5" />
+                </Border.StrokeShape>
+                <VerticalStackLayout
+                    MaximumWidthRequest="100"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center">
+                    <Label Text="20" FontSize="25" HorizontalOptions="Center" TextColor="#BF7A24" FontAttributes="Bold" FontFamily="SegoeUIBold"/>
+                    <Label Text="Productos Listos" FontSize="12" HorizontalOptions="Center" TextColor="#8C3623" FontAttributes="Bold" FontFamily="SegoeUILight"/>
+                </VerticalStackLayout>
+            </Border>
+            <Border Grid.Column="2" Stroke="#BF7A24">
+                <Border.Shadow>
+                    <Shadow
+                        Brush="#BF7A24"
+                        Offset="1,0"
+                        Radius="9"
+                        Opacity=".7"
+                        />
+                </Border.Shadow>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="5, 5, 5, 5" />
+                </Border.StrokeShape>
+                <VerticalStackLayout 
+                    MaximumWidthRequest="100"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center">
+                    <Label Text="10" FontSize="25" HorizontalOptions="Center" TextColor="#BF7A24" FontAttributes="Bold" FontFamily="SegoeUIBold"/>
+                    <Label Text="En Fabricacion" FontSize="12" HorizontalOptions="Center" TextColor="#8C3623" FontAttributes="Bold" FontFamily="SegoeUILight"/>
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+
+        <Grid 
+            
+            Margin="15,39,15,0"
+            RowSpacing="25"
+            ColumnSpacing="20"
+            ColumnDefinitions=".5*, .5*" RowDefinitions="*, *">
+            <Border 
+                Stroke="#D89335"
+                BackgroundColor="#FCE8CC"
+                Padding="15"
+                Grid.Column="0" Grid.Row="0">
+                <Border.Behaviors>
+                    <toolkit:TouchBehavior
+                        PressedBackgroundColor="#F6DEBC"
+                        CommandParameter="MateriaPrima"
+                        IsEnabled="{Binding ButtonOption}"
+                        Command="{Binding NavegarFormularioCommand}"/>
+                </Border.Behaviors>
+                <Border.Shadow>
+                    <Shadow
+                        Brush="#BF7A24"
+                        Offset="-1,0"
+                        Radius="9"
+                        Opacity=".7"
+                        />
+                </Border.Shadow>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="5, 5, 5, 5" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout 
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center">
+                    <Border
+                        Stroke="#BF7A24"
+                        BackgroundColor="#BF7A24"
+                        HorizontalOptions="Center"
+                        Padding="10">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5, 5, 5, 5" />
+                        </Border.StrokeShape>
+                        <Label 
+                            FontSize="25"
+                            Text="📦"></Label>
+                    </Border>
+                    <Label 
+                        HorizontalTextAlignment="Center"
+                        FontFamily="SegoeUIBold"
+                        TextColor="#592418"
+                        FontSize="15"
+                        Text="Materia Prima"/>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="SegoeUILight"
+                        HorizontalTextAlignment="Center"
+                        TextColor="#8C3623"
+                        Text="Gestionar Productos Comprados"/>
+                </VerticalStackLayout>
+            </Border>
+            <Border 
+                Stroke="#D89335"
+                BackgroundColor="#FCE8CC"
+                Padding="15"
+                Grid.Column="1" Grid.Row="0">
+                <Border.Behaviors>
+                    <toolkit:TouchBehavior
+                        PressedBackgroundColor="#F6DEBC"
+                        CommandParameter="Catalogo"
+                        IsEnabled="{Binding ButtonOption}"
+                        Command="{Binding NavegarFormularioCommand}"/>
+                </Border.Behaviors>
+                <Border.Shadow>
+                    <Shadow
+                        Brush="#BF7A24"
+                        Offset="-1,0"
+                        Radius="9"
+                        Opacity=".7"
+                        />
+                </Border.Shadow>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="5, 5, 5, 5" />
+                </Border.StrokeShape>
+                <VerticalStackLayout 
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center">
+                    <Border
+                        Stroke="#BF7A24"
+                        BackgroundColor="#BF7A24"
+                        HorizontalOptions="Center"
+                        Padding="10">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5, 5, 5, 5" />
+                        </Border.StrokeShape>
+                        <Label 
+                            FontSize="25"
+                            Text="📋"></Label>
+                    </Border>
+                    <Label 
+                        HorizontalTextAlignment="Center"
+                        FontFamily="SegoeUIBold"
+                        TextColor="#592418"
+                        FontSize="15"
+                        Text="Catálogo"/>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="SegoeUILight"
+                        HorizontalTextAlignment="Center"
+                        TextColor="#8C3623"
+                        Text="Productos de la empresa"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border 
+                Stroke="#D89335"
+                BackgroundColor="#FCE8CC"
+                Padding="15"
+                Grid.Column="0" Grid.Row="1">
+                <Border.Behaviors>
+                    <toolkit:TouchBehavior
+                        PressedBackgroundColor="#F6DEBC"
+                        CommandParameter="Fabricacion"
+                        IsEnabled="{Binding ButtonOption}"
+                        Command="{Binding NavegarFormularioCommand}"/>
+                </Border.Behaviors>
+                <Border.Shadow>
+                    <Shadow
+                        Brush="#BF7A24"
+                        Offset="-1,0"
+                        Radius="9"
+                        Opacity=".7"
+                        />
+                </Border.Shadow>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="5, 5, 5, 5" />
+                </Border.StrokeShape>
+                <VerticalStackLayout 
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center">
+                                    <Border
+                        Stroke="#BF7A24"
+                        BackgroundColor="#BF7A24"
+                        HorizontalOptions="Center"
+                        Padding="10">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="5, 5, 5, 5" />
+                                        </Border.StrokeShape>
+                                        <Label 
+                            FontSize="25"
+                            Text="⚙️"></Label>
+                                    </Border>
+                                    <Label 
+                        HorizontalTextAlignment="Center"
+                        FontFamily="SegoeUIBold"
+                        TextColor="#592418"
+                        FontSize="15"
+                        Text="Fabricación"/>
+                                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="SegoeUILight"
+                        HorizontalTextAlignment="Center"
+                        TextColor="#8C3623"
+                        Text="Gestionar Productos Fabricacion"/>
+                </VerticalStackLayout>
+            </Border>
+            <Border 
+                Stroke="#D89335"
+                BackgroundColor="#FCE8CC"
+                Padding="15"
+                Grid.Column="1" Grid.Row="1">
+                <Border.Behaviors>
+                    <toolkit:TouchBehavior
+                        PressedBackgroundColor="#F6DEBC"
+                        CommandParameter="ProductosListos"
+                        IsEnabled="{Binding ButtonOption}"
+                        Command="{Binding NavegarFormularioCommand}"/>
+                </Border.Behaviors>
+                <Border.Shadow>
+                    <Shadow
+                        Brush="#BF7A24"
+                        Offset="-1,0"
+                        Radius="9"
+                        Opacity=".7"
+                        />
+                </Border.Shadow>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="5, 5, 5, 5" />
+                </Border.StrokeShape>
+                <VerticalStackLayout 
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center">
+                    <Border
+                        Stroke="#BF7A24"
+                        BackgroundColor="#BF7A24"
+                        HorizontalOptions="Center"
+                        Padding="10">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="5, 5, 5, 5" />
+                        </Border.StrokeShape>
+                        <Label 
+                            FontSize="25"
+                            Text="✅"></Label>
+                    </Border>
+                    <Label 
+                        HorizontalTextAlignment="Center"
+                        FontFamily="SegoeUIBold"
+                        TextColor="#592418"
+                        FontSize="15"
+                        Text="Productos Listos"/>
+                    <Label
+                        FontAttributes="Bold"
+                        FontFamily="SegoeUILight"
+                        HorizontalTextAlignment="Center"
+                        TextColor="#8C3623"
+                        Text="Listos para la venta"/>
+                </VerticalStackLayout>
+            </Border>
+        </Grid>
+    </VerticalStackLayout>
+</ContentPage>

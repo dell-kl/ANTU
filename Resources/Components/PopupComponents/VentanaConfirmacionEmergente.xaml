@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mopup:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ANTU.Resources.Components.PopupComponents.VentanaConfirmacionEmergente"
+             xmlns:mopup="clr-namespace:Mopups.Pages;assembly=Mopups"
+             CloseWhenBackgroundIsClicked="False" BackgroundColor="#7FFFFFFF">
+    <StackLayout
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <Border
+            BackgroundColor="#FFF"
+            StrokeThickness="1"
+            StrokeShape="RoundRectangle 5,5,5,5"
+            Padding="20">
+            <StackLayout>
+                <Label
+                    TextColor="#000"
+                    FontFamily="SegoeUIBold"
+                    TextTransform="Uppercase"
+                    FontSize="17"
+                    Text="⚠️ Confirmar Formulario"/>
+                <Label
+                    WidthRequest="200"
+                    Text="⚡Si estas seguro de tus datos, da click en ENVIAR caso contrario presiona REGRESAR para volver al formulario."
+                    TextColor="#F02"/>
+
+                <HorizontalStackLayout 
+                    HorizontalOptions="Center"
+                    Spacing="5"
+                    Margin="0,10,0,0">
+                    <Button
+                        BorderColor="#000"
+                        BorderWidth="1"
+                        IsVisible="True"
+                        IsEnabled="True"
+                        x:Name="BotonRegresar"
+                        Clicked="BotonRegresar_Clicked"
+                        BackgroundColor="Transparent"
+                        TextTransform="Uppercase"
+                        Text="⬅️ Regresar"/>
+                    <Button
+                        IsVisible="True"
+                        IsEnabled="True"
+                        x:Name="BotonConfirmacion"
+                        BackgroundColor="Orange"
+                        TextTransform="Uppercase"   
+                        Text="📑 Enviar">
+                    </Button>
+                    <Border
+                        IsVisible="False"
+                        StrokeThickness="0"
+                        x:Name="MensajeCargando"
+                        StrokeShape="RoundRectangle 5,5,5,5">
+                        <HorizontalStackLayout
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center">
+                            <Image 
+                                IsAnimationPlaying="True"
+                                WidthRequest="50"
+                                HeightRequest="30"
+                                Source="snipper.gif"/>
+                            <Label
+                                TextColor="#000"
+                                Text="Registrando datos, espere..."/>
+                        </HorizontalStackLayout>
+                    </Border>
+                </HorizontalStackLayout>
+            </StackLayout>
+        </Border>
+    </StackLayout>
+</mopup:PopupPage>

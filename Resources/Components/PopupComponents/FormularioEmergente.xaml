@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mopup:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ANTU.Resources.Components.PopupComponents.FormularioEmergente"
+             xmlns:mopup="clr-namespace:Mopups.Pages;assembly=Mopups"
+             xmlns:dataForm="clr-namespace:Syncfusion.Maui.DataForm;assembly=Syncfusion.Maui.DataForm"
+             Title="FormularioEmergente"
+             BackgroundColor="#80000000"
+             CloseWhenBackgroundIsClicked="False">
+    <StackLayout
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        <Border
+            BackgroundColor="#FFF"
+            StrokeThickness="0"
+            Padding="0,15,0,10">
+            <VerticalStackLayout>
+                <Label
+                    TextColor="#000"
+                    FontFamily="SegoeUIBold"
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"
+                    TextTransform="Uppercase"
+                    Text="Agregar Mas Stock"/>
+                <Label
+                    TextColor="#000"
+                    FontFamily="SegoeUILight"
+                    FontSize="15"
+                    WidthRequest="250"
+                    HorizontalTextAlignment="Center"
+                    Text="Rellena el formulario para agregar mas material a tu bodega"/>
+
+                <dataForm:SfDataForm
+                    VerticalOptions="Fill"
+                    x:Name="Formulario">
+                    <dataForm:SfDataForm.DefaultLayoutSettings>
+                        <dataForm:DataFormDefaultLayoutSettings
+                            LabelPosition="Top"/>
+                    </dataForm:SfDataForm.DefaultLayoutSettings>
+                </dataForm:SfDataForm>
+
+                <HorizontalStackLayout
+                    HorizontalOptions="Center"
+                    Spacing="10">
+                    <Button
+                        FontFamily="SegoeUILight"
+                        FontAttributes="Bold"
+                        FontSize="15"
+                        WidthRequest="130"
+                        x:Name="BontonCancelarFormulario"
+                        Clicked="BontonCancelarFormulario_Clicked"
+                        TextColor="#FFF"
+                        BackgroundColor="#F04"
+                        Text="Cancelar"/>
+                    <Button
+                        WidthRequest="130"
+                        FontFamily="SegoeUILight"
+                        FontAttributes="Bold"
+                        TextColor="#FFF"
+                        x:Name="BotonConfirmarFormulario"
+                        BackgroundColor="Orange"
+                        FontSize="15"
+                        Text="Confirmar"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Border>
+    </StackLayout>
+</mopup:PopupPage>

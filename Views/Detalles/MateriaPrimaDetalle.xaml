@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ANTU.Views.Detalles.MateriaPrimaDetalle"
+             Title="MateriaPrimaDetalle"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:shimmer="clr-namespace:Syncfusion.Maui.Shimmer;assembly=Syncfusion.Maui.Core"
+             xmlns:dataForm="clr-namespace:Syncfusion.Maui.DataForm;assembly=Syncfusion.Maui.DataForm"
+             xmlns:viewModel="clr-namespace:ANTU.ViewModel"
+             BackgroundColor="#D9D6D2"
+             x:DataType="viewModel:MateriaPrimaDetalleViewModel">
+
+    <Shell.TabBarIsVisible>False</Shell.TabBarIsVisible>
+    <Shell.TitleView>
+        <StackLayout>
+            <Label
+                x:Name="TituloMateriaPrima"
+                FontSize="20"
+                FontFamily="SegoeUIBold"
+                Text="Sin Titulo"/>
+            <Label
+                Margin="0,-10,0,0"
+                FontFamily="SegoeUILight"
+                Text="Conoce y gestiona tu materia prima"/>
+        </StackLayout>
+    </Shell.TitleView>
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <VerticalStackLayout.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#F0E7DA" Offset=".6" />
+                    <GradientStop Color="#FFF" Offset="1" />
+                </LinearGradientBrush>
+            </VerticalStackLayout.Background>
+
+            <Border 
+                Margin="10,15,10,10"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                StrokeThickness="0"
+                Padding="10"
+                BackgroundColor="#FFF">
+                <VerticalStackLayout>
+                    <HorizontalStackLayout>
+                        <StackLayout>
+                            <Border
+                                Stroke="#BF7A24"
+                                StrokeThickness="2"
+                                StrokeShape="RoundRectangle 15,15,15,15">
+                                <Border.Shadow>
+                                    <Shadow
+                                        Brush="#BF8924"
+                                        Offset="2,0"
+                                        Radius="10"
+                                        Opacity="1"/>
+                                </Border.Shadow>
+                                <Image
+                                    WidthRequest="150"
+                                    Source="balanceado_cerdo.jpg"/>
+                            </Border>
+                        </StackLayout>
+                        <StackLayout Margin="10,0,0,0">
+                            <Label 
+                                TextColor="#592418"
+                                FontSize="20"
+                                FontFamily="SegoeUIBold"
+                                Text="{Binding MateriaPrimaProducto.nombreProducto}"/>
+
+                            <Border 
+                                MinimumWidthRequest="80"
+                                Padding="4,1,4,1"
+                                StrokeShape="RoundRectangle 5,5,5,5"
+                                HorizontalOptions="Start"
+                                Stroke="Transparent"
+                                BackgroundColor="{Binding MateriaPrimaProducto.backgroundColor}"
+                                >
+                                <Label
+                                    HorizontalTextAlignment="Center"
+                                    FontFamily="SegoeUIBold"
+                                    FontAttributes="Bold"
+                                    TextColor="{Binding MateriaPrimaProducto.color}"
+                                    FontSize="13"
+                                    Text="{Binding MateriaPrimaProducto.text}"/>
+                            </Border>
+
+                            <Button
+                                Margin="0,5,0,0"
+                                BackgroundColor="#BF7A24"
+                                FontFamily="SegoeUILight"
+                                FontAttributes="Bold"
+                                MinimumHeightRequest="3"
+                                TextColor="#FFF"
+                                Text="👆 Gestionar IMG"/>
+                            
+                        </StackLayout>
+                    </HorizontalStackLayout>
+
+                    <Grid Margin="0,20,0,0" RowSpacing="15" ColumnSpacing="20" ColumnDefinitions="*,*" RowDefinitions="*,*">
+                        <Border 
+                            StrokeThickness="0"
+                            BackgroundColor="#26F0A313"
+                            Grid.Row="0" 
+                            StrokeShape="RoundRectangle 5,5,5,5"
+                            Grid.Column="0">
+
+                            <shimmer:SfShimmer 
+                                IsActive="True"
+                                x:Name="ShimmerKgTotal"
+                                AnimationDuration="2000"
+                                BackgroundColor="Transparent"
+                                Fill="#BF7A24">
+                                <shimmer:SfShimmer.CustomView>
+
+                                    <FlexLayout 
+                                        JustifyContent="Center"
+                                        AlignItems="Center"
+                                        Direction="Column">
+                                        <shimmer:ShimmerView
+                                            WidthRequest="30"
+                                            HeightRequest="30"
+                                            ShapeType="Circle"/>
+                                        <shimmer:ShimmerView
+                                            Margin="0,8,0,0"
+                                            WidthRequest="100"
+                                            HeightRequest="10"
+                                            ShapeType="RoundedRectangle"/>
+                                    </FlexLayout>
+                                </shimmer:SfShimmer.CustomView>
+                                <StackLayout
+                                    Margin="0,10,0,10"
+                                    MaximumWidthRequest="110"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center">
+                                    <Label 
+                                        FontFamily="SegoeUIBold"
+                                        FontAttributes="Bold"
+                                        FontSize="25"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#BF7A24"
+                                        Text="{Binding MateriaPrimaDetalle.KgTotal, StringFormat='{0} KG'}"/>
+                                    <Label
+                                        FontFamily="SegoeUILight"
+                                        FontAttributes="Bold"
+                                        FontSize="15"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#BF8924"
+                                        Text="Stock Actual"/>
+                                </StackLayout>
+                            </shimmer:SfShimmer>
+                        </Border>
+                        <Border 
+                            StrokeThickness="0"
+                            BackgroundColor="#26F0A313"
+                            Grid.Row="0" 
+                            StrokeShape="RoundRectangle 5,5,5,5"
+                            Grid.Column="1">
+                            <shimmer:SfShimmer 
+                                IsActive="True"
+                                x:Name="ShimmerTotalCompra"
+                                AnimationDuration="2000"
+                                BackgroundColor="Transparent"
+                                Fill="#BF7A24">
+                                <shimmer:SfShimmer.CustomView>
+
+                                    <FlexLayout 
+                                        JustifyContent="Center"
+                                        AlignItems="Center"
+                                        Direction="Column">
+                                        <shimmer:ShimmerView
+                                            WidthRequest="30"
+                                            HeightRequest="30"
+                                            ShapeType="Circle"/>
+                                        <shimmer:ShimmerView
+                                            Margin="0,8,0,0"
+                                            WidthRequest="100"
+                                            HeightRequest="10"
+                                            ShapeType="RoundedRectangle"/>
+                                    </FlexLayout>
+                                </shimmer:SfShimmer.CustomView>
+                                <StackLayout
+                                    Margin="0,10,0,10"
+                                    MaximumWidthRequest="110"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center">
+                                    <Label 
+                                        FontFamily="SegoeUIBold"
+                                        FontAttributes="Bold"
+                                        FontSize="25"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#BF7A24"
+                                        Text="{Binding MateriaPrimaDetalle.TotalCompras}"/>
+                                    <Label
+                                        FontFamily="SegoeUILight"
+                                        FontAttributes="Bold"
+                                        FontSize="15"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#BF8924"
+                                        Text="Total Compras"/>
+                                </StackLayout>
+                            </shimmer:SfShimmer>
+                        </Border>
+
+
+                        <Border 
+                            StrokeThickness="0"
+                            BackgroundColor="#26F0A313"
+                            Grid.Row="1" 
+                            StrokeShape="RoundRectangle 5,5,5,5"
+                            Grid.Column="0">
+
+                            <shimmer:SfShimmer 
+                                IsActive="True"
+                                x:Name="ShimmerPrecioPromedio"
+                                AnimationDuration="2000"
+                                BackgroundColor="Transparent"
+                                Fill="#BF7A24">
+                                <shimmer:SfShimmer.CustomView>
+
+                                    <FlexLayout 
+                                        JustifyContent="Center"
+                                        AlignItems="Center"
+                                        Direction="Column">
+                                        <shimmer:ShimmerView
+                                            WidthRequest="30"
+                                            HeightRequest="30"
+                                            ShapeType="Circle"/>
+                                        <shimmer:ShimmerView
+                                            Margin="0,8,0,0"
+                                            WidthRequest="100"
+                                            HeightRequest="10"
+                                            ShapeType="RoundedRectangle"/>
+                                    </FlexLayout>
+                                </shimmer:SfShimmer.CustomView>
+
+                                <StackLayout
+                                    Margin="0,10,0,10"
+                                    MaximumWidthRequest="110"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center">
+                                    <Label 
+                                        FontFamily="SegoeUIBold"
+                                        FontAttributes="Bold"
+                                        FontSize="25"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#BF7A24"
+                                        Text="$0,70"/>
+                                    <Label
+                                        FontFamily="SegoeUILight"
+                                        FontAttributes="Bold"
+                                        FontSize="15"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#BF8924"
+                                        Text="Precio Promedio"/>
+                                </StackLayout>
+                            </shimmer:SfShimmer>
+                        </Border>
+
+                        <Border 
+                            StrokeThickness="0"
+                            BackgroundColor="#26F0A313"
+                            Grid.Row="1" 
+                            StrokeShape="RoundRectangle 5,5,5,5"
+                            Grid.Column="1">
+
+                            <shimmer:SfShimmer 
+                                IsActive="True"
+                                x:Name="ShimmerUltimaCompra"
+                                AnimationDuration="2000"
+                                BackgroundColor="Transparent"
+                                Fill="#BF7A24">
+                                <shimmer:SfShimmer.CustomView>
+
+                                    <FlexLayout 
+                                        JustifyContent="Center"
+                                        AlignItems="Center"
+                                        Direction="Column">
+                                        <shimmer:ShimmerView
+                                            WidthRequest="30"
+                                            HeightRequest="30"
+                                            ShapeType="Circle"/>
+                                        <shimmer:ShimmerView
+                                            Margin="0,8,0,0"
+                                            WidthRequest="100"
+                                            HeightRequest="10"
+                                            ShapeType="RoundedRectangle"/>
+                                    </FlexLayout>
+                                </shimmer:SfShimmer.CustomView>
+                                <StackLayout
+                                    Margin="0,10,0,10"
+                                    MaximumWidthRequest="110"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center">
+                                    <Label 
+                                        FontFamily="SegoeUIBold"
+                                        FontAttributes="Bold"
+                                        FontSize="25"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#BF7A24"
+                                        Text="{Binding MateriaPrimaDetalle.UltimaCompra, StringFormat='${0}'}"/>
+                                    <Label
+                                        FontFamily="SegoeUILight"
+                                        FontAttributes="Bold"
+                                        FontSize="15"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#BF8924"
+                                        Text="Ultima Compra"/>
+                                </StackLayout>
+                            </shimmer:SfShimmer>
+                        </Border>
+
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Button
+                FontSize="20"
+                TextColor="#FFF"
+                BackgroundColor="#BF8924"
+                WidthRequest="340"
+                FontFamily="SegoeUIBold"
+                Command="{Binding VentanaFormularioMateriaPrimaDetalleStockCommand}"
+                Text="+ Agregar Stock a Bodega"/>
+
+            <Border
+                Margin="0,10,0,0"
+                BackgroundColor="#FFF"
+                StrokeThickness="0">
+                <StackLayout>
+                    <Label
+                        Margin="0,10,0,0"
+                        FontFamily="SegoeUIBold"
+                        FontAttributes="Bold"
+                        TextColor="#000"
+                        FontSize="25"
+                        HorizontalTextAlignment="Center"
+                        Text="📑Historial de Compras"/>
+
+                    <Border
+                        StrokeThickness="0"
+                        WidthRequest="200"
+                        HorizontalOptions="End"
+                        Margin="0,0,10,0"
+                        StrokeShape="RoundRectangle 5,5,5,5">
+                        <StackLayout
+                            BackgroundColor="#7F977018">
+                            <SearchBar
+                                CancelButtonColor="#FFF"
+                                IsSpellCheckEnabled="True"
+                                IsTextPredictionEnabled="True"
+                                TextColor="#FFF"
+                                FontAttributes="Bold"
+                                FontSize="15"
+                                TextChanged="SearchMateriaPrimaSeguimiento_TextChanged"
+                                x:Name="SearchMateriaPrimaSeguimiento"
+                                PlaceholderColor="#FFF"
+                                Placeholder="Buscar en la tabla"
+                                FontFamily="SegoeUILight"/>
+                        </StackLayout>
+                    </Border>
+
+                    <syncfusion:SfDataGrid
+                        Margin="0,0,0,10"
+                        SortingMode="Single"
+                        HeaderRowHeight="80"
+                        EnableDataVirtualization="True"
+                        MaximumHeightRequest="500"
+                        AllowAsyncScrolling="True"
+                        ItemsSource="{Binding MateriaPrimaDetalle.KgSeguimiento}"
+                        x:Name="MateriaPrimaSeguimiento">
+                        <syncfusion:SfDataGrid.DefaultStyle>
+                            <syncfusion:DataGridStyle SearchTextColor="Black" 
+                                            SearchTextBackground="LightBlue" 
+                                            SearchHighlightTextColor="Black" 
+                                            SearchHighlightTextBackground="LightGreen" />
+                        </syncfusion:SfDataGrid.DefaultStyle>
+                        <syncfusion:SfDataGrid.Columns>
+                            <syncfusion:DataGridDateColumn
+                                HeaderText="Fecha Compra"
+                                MappingName="fechaCompra"
+                                ColumnWidthMode="Fill"
+                                Width="120"
+                                LoadUIView="False"/>
+                            <syncfusion:DataGridNumericColumn
+                                HeaderText="Precio Final"
+                                Format="$0.00"
+                                MappingName="precioTotal"
+                                Width="90"
+                                LoadUIView="False"/>
+                            <syncfusion:DataGridNumericColumn
+                                HeaderText="KG Total"
+                                Format="KG 0.00"
+                                MappingName="KgTotal"
+                                Width="110"
+                                LoadUIView="False"/>
+                            <syncfusion:DataGridNumericColumn
+                            HeaderText="Precio Unit"
+                            Format="$ 0.00"
+                            MappingName="precioUnitario"
+                            Width="100"
+                            LoadUIView="False"
+                            />
+                            <syncfusion:DataGridNumericColumn
+                            HeaderText="KG Estandard"
+                            Format="KG 0.00"
+                            MappingName="KgEstandar"
+                            Width="125"
+                            LoadUIView="False"/>
+
+                        </syncfusion:SfDataGrid.Columns>
+                    </syncfusion:SfDataGrid>
+                </StackLayout>                
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
