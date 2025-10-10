@@ -43,8 +43,7 @@ namespace ANTU
             
             var n = builder.Services.AddHttpClient("HttpClientRest", client =>
             {
-                client.BaseAddress = new Uri("http://192.168.205.52:5055/");
-            
+                client.BaseAddress = new Uri("http://192.168.100.19:5055/");            
             });
 
             n.AddStandardResilienceHandler().Configure(configure =>
