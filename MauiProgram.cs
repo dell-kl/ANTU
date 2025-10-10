@@ -45,6 +45,7 @@ namespace ANTU
             {
                 client.BaseAddress = new Uri("http://192.168.205.52:5055/");
             
+
             });
 
             n.AddStandardResilienceHandler().Configure(configure =>
