@@ -39,10 +39,7 @@ namespace ANTU.ViewModel
         public async Task RegistrarMateriaPrima()
         {
             //cubrir con ventana emergente.
-            await MopupService.Instance.PushAsync(new VentanaEmergente(
-                "Registrando Materia Prima",
-                "Esto puede tomar algunos minutos ⏰, espere por favor. Hasta mientras puede hacerse un café🍵.",
-                true));
+            await base.MostrarSpinner();
 
             MateriaPrimaRequestDto materiaPrimaRequestDto = new MateriaPrimaRequestDto() { 
                 id_dto = Guid.NewGuid().ToString(),
@@ -59,39 +56,15 @@ namespace ANTU.ViewModel
                 }
             };
 
-            bool solicitud = await _restManagement.MateriaPrima.Add(materiaPrimaRequestDto);
+            bool solicitud = await _restManagement.MateriaPrima.Add(materiaPrimaRequestDto, async () => { await base.DesmontarSpinner(); });
 
-            if (!solicitud)
-            {
-                await MopupService.Instance.PopAsync();
-                await MopupService.Instance.PushAsync(new VentanaEmergente(
-                "Error Guardado",
-                "No pudo ser posible registrar tu materia prima",
-                false,
-                true,
-                "alert.png",
-                true));
-
-                return;
-            }
-
-            if (FileManyResults.Any())
+            
+            if (solicitud && FileManyResults.Any())
                 await _restManagement.MateriaPrima.SaveImages(FileManyResults, materiaPrimaRequestDto.id_dto);
-
-            await MopupService.Instance.PopAsync();
-
-            await MopupService.Instance.PushAsync(new VentanaEmergente(
-            "Guardado Exitosamente",
-            "Tu materia prima se ha registrado exitosamente",
-            false,
-            true,
-            "successful.png",
-            true));
 
             _materiaPrimaDTO.limpiarFormulario();
             FileManyResults.Clear();
     
-
         }
     }
 }

@@ -5,13 +5,15 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using ANTU.Resources.Components.PopupComponents;
+using Syncfusion.Maui.DataForm;
 
 namespace ANTU.ViewModel
 {
     public partial class ParentViewModel : ObservableObject, IQueryAttributable
     {
-        private object dataQuery;
+        private object dataQuery = new object();
         public object DataQuery { set => SetProperty(ref dataQuery, value); get => dataQuery; }
+
 
         private ObservableCollection<FileResultExtensible> fileManyResults = new ObservableCollection<FileResultExtensible>();
         public ObservableCollection<FileResultExtensible> FileManyResults { set => SetProperty(ref fileManyResults, value); get => fileManyResults; }
@@ -25,26 +27,29 @@ namespace ANTU.ViewModel
 
         public virtual async Task NavegarFormulario(string objeto)
         {
-            await MopupService.Instance.PushAsync(new VentanaEmergente(
-                "⚠️ Cargando Pagina",
-                "Estamos preparando todo el contenido, espera por favor 💻",
-            true));
-
+            await MostrarSpinner();
             await Shell.Current.GoToAsync(objeto);
         }
 
         public virtual async Task NavegarFormulario(string objeto, ShellNavigationQueryParameters queryParameters = null)
         {
-            await MopupService.Instance.PushAsync(new VentanaEmergente(
-                "⚠️ Cargando Pagina",
-                "Estamos preparando todo el contenido, espera por favor 💻",
-            true));
-
+            await MostrarSpinner();
             await Shell.Current.GoToAsync(objeto, queryParameters);
         }
 
+        public async Task MostrarSpinner()
+        {
+            bool resultado = MopupService.Instance.PopupStack.Where(item => item is VentaSpinnerLoading).Any();
 
-        public virtual async Task DesmontarSpinner() => await MopupService.Instance.PopAsync();
+            if ( !resultado )
+                await MopupService.Instance.PushAsync(new VentaSpinnerLoading());
+        }
+
+        public virtual async Task DesmontarSpinner() {
+            bool resultado = MopupService.Instance.PopupStack.Where(item => item is VentaSpinnerLoading).Any();
+            if(resultado)
+                await MopupService.Instance.PopAsync(); 
+        }
 
         // File Picker
 
@@ -72,7 +77,7 @@ namespace ANTU.ViewModel
             this.FileManyResults = this.FileManyResults.Concat(fileResultList).ToObservableCollection();
         }
 
-        public void EliminarArchivo(string codigo)
+        public virtual void EliminarArchivo(string codigo)
         {
             FileResultExtensible? archivo = this.FileManyResults.Where(item => item.codigo.Equals(codigo)).FirstOrDefault();
 
@@ -87,9 +92,82 @@ namespace ANTU.ViewModel
                 this.DataQuery = query["DataQuery"];
         }
 
-        public virtual async Task EjecutarFormularioEmergente()
+        public virtual async Task MostrarVentanaConfirmacion(
+            string titulo,
+            string descripcion,
+            string mensaje,
+            string textButtonCancelar,
+            string textButtonConfirmar,
+            Func<Task> FuncProcess
+        )
         {
-            Console.WriteLine("conjunto de datos");
+            if (!MopupService.Instance.PopupStack.Where(item => item is VentanaConfirmacionEmergente).Any() )
+            {
+                VentanaConfirmacionEmergente ventanaConfirmacion = new VentanaConfirmacionEmergente();
+                ventanaConfirmacion.FindByName<Label>("Titulo").Text = titulo;
+                ventanaConfirmacion.FindByName<Label>("Descripcion").Text = descripcion;
+                ventanaConfirmacion.FindByName<Label>("Mensaje").Text = mensaje;
+                
+                Button buttonRegresaar = ventanaConfirmacion.FindByName<Button>("BotonRegresar");
+                buttonRegresaar.Text = textButtonCancelar;
+                
+                Button buttonConfirmacion = ventanaConfirmacion.FindByName<Button>("BotonConfirmacion");
+                buttonConfirmacion.Text = textButtonConfirmar;
+                buttonConfirmacion.Clicked += async (sender, e) => {
+                    buttonConfirmacion.IsEnabled = false;
+                    buttonConfirmacion.IsVisible = false;
+                    buttonRegresaar.IsEnabled = false;
+                    buttonRegresaar.IsVisible = false;
+                    //ventanaConfirmacion.FindByName<Border>("MensajeCargando").IsVisible = true;
+                    //await MopupService.Instance.PopAsync();
+                    await MostrarSpinner();
+                    await MopupService.Instance.RemovePageAsync(ventanaConfirmacion);
+                    await FuncProcess();
+                };
+                await MopupService.Instance.PushAsync(ventanaConfirmacion);
+            }
+        }
+
+        public virtual async Task EjecutarFormularioEmergente(string titulo, string parrafo, object formulario, Action<ReadOnlyDictionary<string,object>> FuncValidateForm, Func<Task<bool>> FuncProcessData)
+        {
+            FormularioEmergente Formulario = new FormularioEmergente();
+            Formulario.FindByName<Label>("TituloFormularioEmergente").Text = titulo;
+            Formulario.FindByName<Label>("DescripcionFormularioEmergente").Text = parrafo;
+            SfDataForm pagina = Formulario.FindByName<SfDataForm>("Formulario");
+            pagina.DataObject = formulario;
+            //metodos para implementar dentro de nuestro formulario.
+
+            pagina.ValidateForm += (sender, e) => {
+                var DatosActualizados = e.NewValues;
+                FuncValidateForm(DatosActualizados);
+            };
+
+            Formulario.FindByName<Button>("BontonCancelarFormulario").Clicked += async (sender, e) => {
+                if (MopupService.Instance.PopupStack.Where(item => item is FormularioEmergente).Any())
+                    await MopupService.Instance.PopAsync();
+
+            };
+
+            Formulario.FindByName<Button>("BotonConfirmarFormulario").Clicked += async (sender, e) => { 
+                if ( pagina.Validate() )
+                {
+
+                    await MostrarVentanaConfirmacion(
+                        "Confirmar Formulario",
+                        "Si estas seguro de tus datos puede dar en REGISTRAR, caso contrario presiona REGRESAR para volver al formulario",
+                        "Registrando, espere...",
+                        "Regresar",
+                        "Registrar",
+                        async () =>
+                        {
+                            await FuncProcessData();
+                        }
+                    );
+                    
+                }
+            };
+
+            await MopupService.Instance.PushAsync(Formulario);
         }
     }
 }

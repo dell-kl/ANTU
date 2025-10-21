@@ -12,6 +12,7 @@ using ANTU.Resources.Rest;
 using Mopups.Hosting;
 using Microsoft.Extensions.Http.Resilience;
 using ANTU.Views.Detalles;
+using ANTU.Resources.ValueConverter;
 
 
 namespace ANTU
@@ -34,6 +35,7 @@ namespace ANTU
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                     fonts.AddFont("Segoe_UI_Bold.ttf", "SegoeUIBold");
                     fonts.AddFont("Segoe_UI_Light.ttf", "SegoeUILight");
+                    fonts.AddFont("Segoe_Fluent_Icons.ttf", "SegoeFluentIcons");
                 });
 
 #if DEBUG
@@ -43,9 +45,7 @@ namespace ANTU
             
             var n = builder.Services.AddHttpClient("HttpClientRest", client =>
             {
-                client.BaseAddress = new Uri("http://192.168.205.52:5055/");
-            
-
+                client.BaseAddress = new Uri("http://192.168.100.253:5055");
             });
 
             n.AddStandardResilienceHandler().Configure(configure =>
@@ -65,7 +65,7 @@ namespace ANTU
             Routing.RegisterRoute(nameof(ProductosListos), typeof(ProductosListos));
             Routing.RegisterRoute("FormularioMateriaPrima", typeof(MateriaPrimaFormulario));
             Routing.RegisterRoute("MateriaPrimaDetalle", typeof(MateriaPrimaDetalle));
-
+            Routing.RegisterRoute("MostrarImagenesDetalle", typeof(MostrarImagenesDetalle));
 
             builder.Services.AddTransient<InicioSesion>();
             builder.Services.AddTransient<Dashboard>();
@@ -75,6 +75,7 @@ namespace ANTU
             builder.Services.AddTransient<ProductosListos>();
             builder.Services.AddTransient<MateriaPrimaFormulario>();
             builder.Services.AddTransient<MateriaPrimaDetalle>();
+            builder.Services.AddTransient<MostrarImagenesDetalle>();
 
             builder.Services.AddTransient<InicioSesionViewModel>();
             builder.Services.AddTransient<WindowAlertComponent>();
@@ -85,6 +86,9 @@ namespace ANTU
             builder.Services.AddTransient<ProductosListosViewModel>();
             builder.Services.AddTransient<FormularioMateriaPrimaViewModel>();
             builder.Services.AddTransient<MateriaPrimaDetalleViewModel>();
+            builder.Services.AddTransient<MostrarImagenesDetalleViewModel>();
+
+            builder.Services.AddTransient<ImageValueConverter>();
 
             builder.Services.AddTransient<IRestManagement, RestManagement>();
  

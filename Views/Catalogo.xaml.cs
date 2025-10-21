@@ -10,4 +10,11 @@ public partial class Catalogo : ContentPage
 
 		BindingContext = catalogoViewModel;
 	}
+
+    protected override async void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        base.OnNavigatedTo(args);
+
+        await(BindingContext as CatalogoViewModel)!.DesmontarSpinner();
+    }
 }

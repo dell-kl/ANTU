@@ -13,12 +13,19 @@
              xmlns:rest="clr-namespace:ANTU.Resources.Rest"
              xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              xmlns:data="clr-namespace:Syncfusion.Maui.DataSource;assembly=Syncfusion.Maui.DataSource"
+             xmlns:valueConverter="clr-namespace:ANTU.Resources.ValueConverter"
              Title="Materia Prima"
              xmlns:vm="clr-namespace:ANTU.ViewModel"
              BackgroundColor="#D9D6D2"
              droid:NavigationBar.Style="LightContent"
              x:DataType="local:MateriaPrimaViewModel"
              x:Name="PageMateriaPrima">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <valueConverter:ImageValueConverter x:Key="KeyImageValueConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <Shell.TitleView>
         <FlexLayout 
@@ -29,14 +36,14 @@
                     TextColor="#FFF"
                     FontFamily="SegoeUIBold" 
                     FontAttributes="Bold"
-                    FontSize="20"
-                    Text="Materia Prima"></Label>
+                    x:Name="Titulo"
+                    FontSize="20"/>
                 <Label 
                     TextColor="#ECE2E2"
                     FontFamily="SegoeUILight"
                     FontSize="12"
-                    Margin="0,-10,0,0"
-                    Text="Inventario de productos comprados"/>
+                    x:Name="Descripcion"
+                    Margin="0,-10,0,0"/>
             </VerticalStackLayout>
 
             <Border 
@@ -82,7 +89,6 @@
         </VerticalStackLayout.Background>
 
         <VerticalStackLayout BackgroundColor="#FFF">
-
 
             <Border 
                 Margin="0,10,0,0"
@@ -159,234 +165,9 @@
             </FlexLayout>
         </VerticalStackLayout>
 
-        <shimmer:SfShimmer
-            x:Name="shimmerListView"
-            VerticalOptions="Fill"
-            Type="CirclePersona"
-            IsActive="True"
-            WaveColor="#BF7A24"
-            BackgroundColor="#F0E7DA">
-
-            <shimmer:SfShimmer.CustomView>
-                <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*">
-                    <BoxView 
-                            CornerRadius="5"
-                            BackgroundColor="Gray"
-                                Grid.Row="0"
-                                Grid.Column="0"
-                             Margin="20"/>
-
-                    <BoxView 
-                            CornerRadius="5"
-                            BackgroundColor="Gray"
-                                Grid.Row="1"
-                                Grid.Column="0"
-                             Margin="20"/>
-
-                    <BoxView 
-                        CornerRadius="5"
-                        BackgroundColor="Gray"
-                            Grid.Row="2"
-                            Grid.Column="0"
-                         Margin="20"/>
-
-                    <BoxView 
-                        CornerRadius="5"
-                        BackgroundColor="Gray"
-                            Grid.Row="3"
-                            Grid.Column="0"
-                         Margin="20"/>
-                </Grid>
-            </shimmer:SfShimmer.CustomView>
+        <VerticalStackLayout>
             
-            <syncfusion:SfListView
-                ItemSize="150"
-                Margin="0,10,0,0"
-                Padding="0,0,0,10"
-                AllowSwiping="True"
-                EnableFadeOnScroll="True"
-                x:Name="ListadoMateriaPrima"
-                MaximumHeightRequest="550"
-                VerticalOptions="End"
-                ItemsSourceChangeCachingStrategy="RecycleItems"
-                LoadMoreOption="AutoOnScroll"
-                LoadMorePosition="End"
-                CanMaintainScrollPosition="True"
-                IsLazyLoading="{Binding IsLazyLoading}"
-                LoadMoreCommand="{Binding LoadMoreElementsCommand}"
-                ItemsSource="{Binding materiaPrimaProductos}">
-                <syncfusion:SfListView.EndSwipeTemplate>
-                    <DataTemplate x:DataType="models:MateriaPrimaProducto" x:Name="StartSwipeTemplate">
-                        <Grid 
-                            RowSpacing="5"
-                            Margin="0,0,10,15"
-                            RowDefinitions="*,*">
-                        
-                            <Border
-                                StrokeShape="RoundRectangle 5,5,5,5"
-                                BackgroundColor="LightGreen"
-                                StrokeThickness="0"
-                                Grid.Row="0"
-                                ClassId="{Binding guid}"
-                                >
-
-                                <Border.Behaviors>
-                                    <!--<toolkit:TouchBehavior
-                                    x:Name="BotonEditar"
-                                    IsEnabled="True"
-                                    CommandParameter="{Binding .}"
-                                    Command="{Binding Path=BindingContext.NavegarPaginaProductoGestionarCommand, Source={x:Reference ListadoMateriaPrima}}"
-                                    PressedBackgroundColor="#59F059"/>-->
-
-                                    <toolkit:TouchBehavior
-                                    x:Name="BotonEditar"
-                                    IsEnabled="True"
-                                    TouchGestureCompleted="BotonEditar_TouchGestureCompleted"
-                                    PressedBackgroundColor="#59F059"/>
-                                </Border.Behaviors>
-                            
-                                <StackLayout 
-                                    MaximumWidthRequest="50"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center">
-                                    <Image 
-                                    HeightRequest="35"
-                                    WidthRequest="35"
-                                    Source="edit.png" />
-                                </StackLayout>
-                            </Border>
-                        
-                            <Border
-                                StrokeShape="RoundRectangle 5,5,5,5"
-                                BackgroundColor="LightPink"
-                                StrokeThickness="0"
-                                Grid.Row="1">
-
-                                <Border.Behaviors>
-                                    <toolkit:TouchBehavior
-                                    PressedBackgroundColor="#EB7486"/>
-                                </Border.Behaviors>
-
-                                <StackLayout
-                                    MaximumWidthRequest="50"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center">
-                                    <Image Grid.Column="0"
-                                    Grid.Row="0"
-                                    BackgroundColor="Transparent"
-                                    HeightRequest="35"
-                                    WidthRequest="35"
-                                    Source="trash.png" />
-                                </StackLayout>
-                            </Border>
-                        </Grid>
-                    </DataTemplate>
-                </syncfusion:SfListView.EndSwipeTemplate>
-                <syncfusion:SfListView.ItemTemplate>
-                    <DataTemplate x:DataType="models:MateriaPrimaProducto">
-                        <Border 
-                            Margin="10,0,10,15"
-                            Grid.Column="0"
-                            Padding="10,10,5,10"
-                            Stroke="Transparent"
-                            BackgroundColor="#FFF"
-                            StrokeShape="RoundRectangle 5,5,5,5">
-
-                            <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
-                                <Border
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    Grid.RowSpan="2"
-                                    Stroke="Transparent"
-                                    BackgroundColor="LightGray"
-                                    StrokeShape="RoundRectangle 10,10,10,10">
-                                
-                                    <Image
-                                    Aspect="Fill"
-                                    BackgroundColor="Transparent"
-                                    Source="{Binding rutaImagen}">
-                                    
-                                    </Image>
-                                </Border>
-
-                                <HorizontalStackLayout 
-                                    Grid.Column="1"
-                                    Grid.Row="0"
-                                    Margin="5,0,0,0">
-                                    <StackLayout>
-
-                                        <Label 
-                                            FontFamily="SegoeUIBold"
-                                            FontAttributes="Bold"
-                                            TextColor="Black"
-                                            FontSize="17"
-                                            Text="{Binding nombreProducto}"/>
-
-                                        <Border 
-                                            Margin="0,5,0,0"
-                                            MinimumWidthRequest="80"
-                                            Padding="4,1,4,1"
-                                            StrokeShape="RoundRectangle 5,5,5,5"
-                                            HorizontalOptions="Start"
-                                            Stroke="Transparent"
-                                            BackgroundColor="{Binding backgroundColor}"
-                                            >
-                                            <Label
-                                                HorizontalTextAlignment="Center"
-                                                FontFamily="SegoeUIBold"
-                                                FontAttributes="Bold"
-                                                TextColor="{Binding color}"
-                                                FontSize="13"
-                                                Text="{Binding text}"/>
-                                        </Border>
-
-                                    </StackLayout>
-                                </HorizontalStackLayout>
-
-
-                                <StackLayout 
-                                    Grid.Column="1" 
-                                    Grid.Row="1"  
-                                    Margin="10,0,0,0">
-
-                                    <StackLayout>
-                                        <Label 
-                                            Margin="0,5,0,0"
-                                            TextColor="#8C3623"
-                                            FontFamily="SegoeUILight"
-                                            FontSize="12"
-                                            Text="{Binding fechaUltimaCompra, StringFormat='Ult.Comp {0:yyyy/mm/dd}'}"/>
-                                    </StackLayout>
-                                    <StackLayout>
-                                        <Label
-                                            Padding="2,0,0,0"
-                                            FontAttributes="Bold"
-                                            FontFamily="SegoeUILight"
-                                            >
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span 
-                                                        TextColor="#D49724"
-                                                        FontAttributes="Bold"
-                                                        FontFamily="SegoeUILight" Text="Cant.Total: "/>
-                                                    <Span 
-                                                        TextColor="#D49724"
-                                                        FontFamily="SegoeUIBold" Text="{Binding kgTotal, StringFormat='{0} KG'}"/>
-                                                </FormattedString>
-                                            </Label.FormattedText>
-                                        </Label>
-                                    </StackLayout>
-
-                                </StackLayout>
-
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </syncfusion:SfListView.ItemTemplate>
-            </syncfusion:SfListView>
-        </shimmer:SfShimmer>
-        
-
+        </VerticalStackLayout>
        
     </VerticalStackLayout>
 </ContentPage>

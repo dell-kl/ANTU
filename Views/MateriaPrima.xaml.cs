@@ -10,8 +10,9 @@ public partial class MateriaPrima : ContentPage
 	{
 		InitializeComponent();
         BindingContext = materiaPrimaViewModel;
-    
 
+        Titulo.Text = "Materia Prima";
+        Descripcion.Text = "Inventario de productos comprados";
     }
 
 
@@ -24,7 +25,7 @@ public partial class MateriaPrima : ContentPage
             await(BindingContext as MateriaPrimaViewModel)!.cargaProductos();
             await(BindingContext as MateriaPrimaViewModel)!.DesmontarSpinner();
             await Task.Delay(4000);
-            shimmerListView.IsActive = false;
+            //shimmerListView.IsActive = false;
         }
     }
 
@@ -36,23 +37,23 @@ public partial class MateriaPrima : ContentPage
 
     private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
     {
-        var searchBar = (sender as SearchBar);
+  //      var searchBar = (sender as SearchBar);
 
-        if ( ListadoMateriaPrima.DataSource is not null)
-		{
-			ListadoMateriaPrima.DataSource!.Filter = (object obj) =>
-			{
-                if (searchBar == null || searchBar.Text == null)
-                    return true;
+  //      if ( ListadoMateriaPrima.DataSource is not null)
+		//{
+		//	ListadoMateriaPrima.DataSource!.Filter = (object obj) =>
+		//	{
+  //              if (searchBar == null || searchBar.Text == null)
+  //                  return true;
 
-                var taskInfo = obj as MateriaPrimaProducto;
-                if (taskInfo!.nombreProducto.ToLower().Contains(searchBar.Text.ToLower()))
-                    return true;
-                else
-                    return false;
-            };
-			ListadoMateriaPrima.DataSource!.RefreshFilter();
-		}
+  //              var taskInfo = obj as MateriaPrimaProducto;
+  //              if (taskInfo!.nombreProducto.ToLower().Contains(searchBar.Text.ToLower()))
+  //                  return true;
+  //              else
+  //                  return false;
+  //          };
+		//	ListadoMateriaPrima.DataSource!.RefreshFilter();
+		//}
 
 	}
 

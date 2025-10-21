@@ -8,11 +8,16 @@ namespace ANTU.Resources.Rest
 
         private readonly IHttpClientFactory _httpClientFactory;
 
+        public HttpClient httpClient { set; get; }
+
         public RestManagement(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
 
-            this.MateriaPrima = new MateriaPrimaRest(_httpClientFactory);
+            httpClient = _httpClientFactory.CreateClient("HttpClientRest");
+
+            this.MateriaPrima = new MateriaPrimaRest(httpClient);
         }
+
     }
 }

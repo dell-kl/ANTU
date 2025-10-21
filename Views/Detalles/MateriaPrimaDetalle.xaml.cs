@@ -1,7 +1,4 @@
-using ANTU.Resources.Components.PopupComponents;
 using ANTU.ViewModel;
-using Mopups.Services;
-using Syncfusion.Maui.DataForm;
 
 namespace ANTU.Views.Detalles;
 
@@ -20,14 +17,16 @@ public partial class MateriaPrimaDetalle : ContentPage
     {
         base.OnNavigatedTo(args);
 
-        TituloMateriaPrima.Text = (BindingContext as MateriaPrimaDetalleViewModel)!.MateriaPrimaProducto.nombreProducto;
-        await (BindingContext as MateriaPrimaDetalleViewModel)!.cargarDatosMateriaPrimaDetalle();
-        await (BindingContext as MateriaPrimaDetalleViewModel)!.DesmontarSpinner();
-        await Task.Delay(4000);
-        ShimmerKgTotal.IsActive = false;
-        ShimmerPrecioPromedio.IsActive = false;
-        ShimmerTotalCompra.IsActive = false;
-        ShimmerUltimaCompra.IsActive = false;
+        if ( (BindingContext as MateriaPrimaDetalleViewModel)!.MateriaPrimaDetalle == null )
+        {
+            await (BindingContext as MateriaPrimaDetalleViewModel)!.cargarDatosMateriaPrimaDetalle();
+            await (BindingContext as MateriaPrimaDetalleViewModel)!.DesmontarSpinner();
+            await Task.Delay(4000);
+            ShimmerKgTotal.IsActive = false;
+            ShimmerPrecioPromedio.IsActive = false;
+            ShimmerTotalCompra.IsActive = false;
+            ShimmerUltimaCompra.IsActive = false;
+        }
     }
 
     private void SearchMateriaPrimaSeguimiento_TextChanged(object sender, TextChangedEventArgs e)

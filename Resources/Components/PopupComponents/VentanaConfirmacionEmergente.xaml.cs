@@ -9,12 +9,13 @@ public partial class VentanaConfirmacionEmergente
 		InitializeComponent();
 	}
 
-    private void BotonRegresar_Clicked(object sender, EventArgs e)
+    private async void BotonRegresar_Clicked(object sender, EventArgs e)
     {
 		bool respuesta = MopupService.Instance.PopupStack.Where(item => item is VentanaConfirmacionEmergente).Any();
 
-		if (respuesta) { 
-			MopupService.Instance.PopAsync();
-		}
+		if (respuesta) {
+            //MopupService.Instance.PopAsync();
+            await MopupService.Instance.PopAsync();
+        }
     }
 }

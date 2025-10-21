@@ -1,11 +1,15 @@
-﻿namespace ANTU.Models
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace ANTU.Models
 {
     public class MateriaPrimaProducto : TYPE
     {
+        private string NombreProducto;
+
         public MateriaPrimaProducto(int valor) : base(valor) { }
 
         public string guid { set; get; } = Guid.NewGuid().ToString();
-        public string nombreProducto { set; get; } = null!;
+        public string nombreProducto { set => SetProperty(ref NombreProducto, value); get => NombreProducto; }
         public string rutaImagen { set; get; } = null!;
         public DateTime fechaUltimaCompra { set; get; } = DateTime.Now;
         public double kgTotal { set; get; } = 0.0d;
@@ -13,7 +17,7 @@
     }
 
 
-    public class TYPE
+    public class TYPE : ObservableObject
     {
         public STATUS status { get; set; } 
         public string? color { set; get; }

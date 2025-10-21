@@ -52,9 +52,13 @@
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
-	
+
 	<ItemGroup>
-	  <MauiSplashScreen Include="Resources\Splash\antu.svg" Color="#E6DFDC" />
+	  <None Remove="Resources\Splash\antu.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiSplashScreen Include="Resources\Splash\antu.png" Color="#fff7ea" Resize="false" BaseSize="550,500" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -71,11 +75,16 @@
 		<PackageReference Include="Syncfusion.Maui.Core" Version="31.1.20" />
 		<PackageReference Include="Syncfusion.Maui.DataForm" Version="31.1.20" />
 		<PackageReference Include="Syncfusion.Maui.DataGrid" Version="31.1.20" />
+		<PackageReference Include="Syncfusion.Maui.Expander" Version="31.1.20" />
 		<PackageReference Include="Syncfusion.Maui.ListView" Version="31.1.20" />
+		<PackageReference Include="Syncfusion.Maui.Toolbar" Version="31.1.20" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="AppShell.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Components\CollectionViewComponents\MateriaPrimaCollectionViewComponents.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Components\PopupComponents\FormularioEmergente.xaml">
@@ -85,6 +94,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Components\PopupComponents\VentanaEmergente.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Components\PopupComponents\VentaSpinnerLoading.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Components\SnipperComponent.xaml">
@@ -106,6 +118,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Detalles\MateriaPrimaDetalle.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Detalles\MostrarImagenesDetalle.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Fabricacion.xaml">
