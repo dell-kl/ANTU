@@ -8,12 +8,11 @@ namespace ANTU.ViewModel
 {
     public partial class MateriaPrimaViewModel : ParentViewModel
     {
-
         private ObservableCollection<MateriaPrimaProducto> modeloMateriaPrima = new ObservableCollection<MateriaPrimaProducto>();
         public ObservableCollection<MateriaPrimaProducto> materiaPrimaProductos { set { SetProperty(ref modeloMateriaPrima, value); } get => modeloMateriaPrima; }
 
-        private bool buttonAddMateriaPrima = true;
-        public bool ButtonAddMateriaPrima { set => SetProperty(ref buttonAddMateriaPrima, value); get => buttonAddMateriaPrima; }
+        private ObservableCollection<object> datosPresentacion = new ObservableCollection<object>();
+        public ObservableCollection<object> DatosPresentacion { set => SetProperty(ref datosPresentacion, value); get => datosPresentacion; }
 
         
         private bool buttonUpdateMateriaPrima = true;
@@ -22,20 +21,25 @@ namespace ANTU.ViewModel
         private bool isLazyLoading = false;
         public bool IsLazyLoading { set => SetProperty(ref isLazyLoading, value); get => isLazyLoading; }
 
-        public MateriaPrimaViewModel(IRestManagement restManagement)
-            : base(restManagement)
-        {
-        }
+        public MateriaPrimaViewModel(IRestManagement restManagement) : base(restManagement) { }
 
         public async Task cargaProductos()
         {
-            if ( this.materiaPrimaProductos.Count() == 0 || this.materiaPrimaProductos.Count() >= 10)
+            if ( this.DatosPresentacion.Count() == 0 || this.DatosPresentacion.Count() >= 10)
             {
-                 IEnumerable<MateriaPrimaProducto> listadoMateriaPrima = await _restManagement.MateriaPrima.Get(this.materiaPrimaProductos.Count().ToString());
+                 if (this.DataQuery.Equals("MateriaPrima"))
+                 {
+                     IEnumerable<MateriaPrimaProducto> listadoMateriaPrima = await _restManagement.MateriaPrima.Get(this.DatosPresentacion.Count().ToString());
 
-                if (listadoMateriaPrima.Any())
+                     if (listadoMateriaPrima.Any())
+                     {
+                        //materiaPrimaProductos = materiaPrimaProductos.Union(listadoMateriaPrima).ToObservableCollection();
+                        DatosPresentacion = DatosPresentacion.Union(listadoMateriaPrima).ToObservableCollection();
+                     }
+                 }
+                else if (this.DataQuery.Equals("Catalogo"))
                 {
-                    materiaPrimaProductos = materiaPrimaProductos.Union(listadoMateriaPrima).ToObservableCollection();
+
                 }
             }
         }   
@@ -43,14 +47,17 @@ namespace ANTU.ViewModel
         [RelayCommand(AllowConcurrentExecutions = false)]
         public override async Task NavegarFormulario(string objeto)
         {
-            await base.NavegarFormulario(objeto);
+            if (this.DataQuery.Equals("MateriaPrima"))
+                await base.NavegarFormulario("FormularioMateriaPrima");
+            else if (this.DataQuery.Equals("Catalogo"))
+                await base.NavegarFormulario("CatalogoProductoFormulario");
         }
 
 
         [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task NavegarPaginaProductoGestionar(string guid)
         {
-            MateriaPrimaProducto materiaPrimaProducto = materiaPrimaProductos.Where(item => item.guid.Equals(guid)).First();
+            object materiaPrimaProducto = this.DatosPresentacion.Where(item => (item as MateriaPrimaProducto)!.guid.Equals(guid)).First();
 
             var datosNavegacion = new ShellNavigationQueryParameters {
                 {
@@ -61,15 +68,6 @@ namespace ANTU.ViewModel
             await base.NavegarFormulario($"MateriaPrimaDetalle", datosNavegacion);
         }
 
-        [RelayCommand]
-        public void EliminarProducto(string guid)
-        {
-           MateriaPrimaProducto? materiaProducto =  this.materiaPrimaProductos.Where(item => item.guid.Equals(guid)).FirstOrDefault();
-        
-            if ( materiaPrimaProductos is not null )
-                this.materiaPrimaProductos.Remove(materiaProducto!);
-            
-        }
 
         [RelayCommand]
         public async Task LoadMoreElements()

@@ -1,4 +1,6 @@
-﻿using ANTU.Resources.Rest.RestInterfaces;
+﻿using ANTU.Models;
+using ANTU.Resources.Rest.RestInterfaces;
+using ANTU.Views;
 using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
 
@@ -11,16 +13,17 @@ namespace ANTU.ViewModel
         
         }
 
-        private bool buttonOption = true;
-        public bool ButtonOption { set => SetProperty(ref buttonOption, value); get => buttonOption; }
-
 
         [RelayCommand(AllowConcurrentExecutions = false)]
-        public override Task NavegarFormulario(string objeto)
+        public override async Task NavegarFormulario(string objeto)
         {
-            this.buttonOption = false;
+            var datosNavegacion = new ShellNavigationQueryParameters {
+                {
+                    "DataQuery", objeto
+                }
+            };
 
-            return base.NavegarFormulario(objeto);
+            await base.NavegarFormulario(nameof(MateriaPrima), datosNavegacion);
         }
 
     }

@@ -10,6 +10,8 @@ namespace ANTU.Resources.Rest
 
         public HttpClient httpClient { set; get; }
 
+        public ICatalogoProducto CatalogoProduct { set; get; }
+
         public RestManagement(IHttpClientFactory httpClientFactory)
         {
             _httpClientFactory = httpClientFactory;
@@ -17,6 +19,7 @@ namespace ANTU.Resources.Rest
             httpClient = _httpClientFactory.CreateClient("HttpClientRest");
 
             this.MateriaPrima = new MateriaPrimaRest(httpClient);
+            this.CatalogoProduct = new CatalogoProductoRest(httpClient);
         }
 
     }

@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<TargetFrameworks>net10.0-android;net10.0-ios;net10.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net10.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
 
@@ -62,29 +62,41 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="9.1.1" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="12.2.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.1" />
-		<PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="8.10.0" />
-		<PackageReference Include="Microsoft.Extensions.Resilience" Version="8.10.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="9.0.10" />
+		<PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="9.10.0" />
+		<PackageReference Include="Microsoft.Extensions.Resilience" Version="9.10.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.10" />
 		<PackageReference Include="Mopups" Version="1.3.4" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-		<PackageReference Include="Syncfusion.Maui.Core" Version="31.1.20" />
-		<PackageReference Include="Syncfusion.Maui.DataForm" Version="31.1.20" />
-		<PackageReference Include="Syncfusion.Maui.DataGrid" Version="31.1.20" />
-		<PackageReference Include="Syncfusion.Maui.Expander" Version="31.1.20" />
-		<PackageReference Include="Syncfusion.Maui.ListView" Version="31.1.20" />
-		<PackageReference Include="Syncfusion.Maui.Toolbar" Version="31.1.20" />
+		<PackageReference Include="Syncfusion.Maui.Core" Version="31.2.3" />
+		<PackageReference Include="Syncfusion.Maui.DataForm" Version="31.2.3" />
+		<PackageReference Include="Syncfusion.Maui.DataGrid" Version="31.2.3" />
+		<PackageReference Include="Syncfusion.Maui.Expander" Version="31.2.3" />
+		<PackageReference Include="Syncfusion.Maui.ListView" Version="31.2.3" />
+		<PackageReference Include="Syncfusion.Maui.Toolbar" Version="31.2.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\Formularios\CatalogoProductoFormulario.xaml.cs">
+	    <DependentUpon>CatalogoProductoFormulario.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="AppShell.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Resources\Components\CollectionViewComponents\CatalogoProductoCollectionViewComponents.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Resources\Components\CollectionViewComponents\MateriaPrimaCollectionViewComponents.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Components\EstilosComponents\TitleShellComponent.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Components\PopupComponents\FormularioEmergente.xaml">
@@ -105,9 +117,6 @@
 	  <MauiXaml Update="Resources\Components\WindowAlertComponent.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Catalogo.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\Config\Configuracion.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -124,6 +133,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Fabricacion.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Formularios\CatalogoProductoFormulario.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Formularios\MateriaPrimaFormulario.xaml">

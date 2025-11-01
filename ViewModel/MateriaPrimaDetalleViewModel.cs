@@ -123,7 +123,7 @@ namespace ANTU.ViewModel
                     {
                         this.MateriaPrimaDetalle!.TotalCompras += 1;
                         this.MateriaPrimaDetalle!.UltimaCompra = (decimal)( this.MateriaPrimaDetalleFormulario.Cantidad * this.MateriaPrimaDetalleFormulario.PrecioUnitario );
-                        this.MateriaPrimaDetalle!.KgTotal = (this.MateriaPrimaDetalleFormulario.Cantidad * this.MateriaPrimaDetalleFormulario.KGStandard);
+                        this.MateriaPrimaDetalle!.KgTotal += (this.MateriaPrimaDetalleFormulario.Cantidad * this.MateriaPrimaDetalleFormulario.KGStandard);
                     }
 
                     return resultado;

@@ -5,8 +5,10 @@
              x:Class="ANTU.Views.Login.InicioSesion"
              xmlns:entryCustomizer="clr-namespace:ANTU.Resources.Customizer"
              Title="Login Empresa ANTU"
+             xmlns:viewModel="clr-namespace:ANTU.ViewModel"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="#D9D6D2">
+             BackgroundColor="#D9D6D2"
+             x:DataType="viewModel:InicioSesionViewModel">
 
     <Shell.NavBarIsVisible>False</Shell.NavBarIsVisible>
     
@@ -139,8 +141,8 @@
                 FontFamily="SegoeUILight"
                 Text="{Binding inicioSesion.MensajePassword}" TextColor="Red"/>
 
-            <entryCustomizer:ButtonCustomizer
-                AbsoluteLayout.LayoutBounds="0,130"
+            <!--<entryCustomizer:ButtonCustomizer
+                
                 Margin="0,40,0,0"
                 FontSize="20"
                 TextColor="{ Binding inicioSesion.ColorText }"
@@ -149,6 +151,20 @@
                 HorizontalOptions="Center"
                 MinimumWidthRequest="310"
                 FontFamily="SegoeUIBold"
+                CornerRadius="10"
+                
+                Text="Iniciar Sesion"/>-->
+            <Button
+                TextColor="#FFF"
+                AbsoluteLayout.LayoutBounds="0,130"
+                BackgroundColor="#BF8924"
+                Margin="0,40,0,0"
+                FontSize="20"
+                Command="{Binding EnviarFormCommand}"
+                FontFamily="SegoeUILight"
+                FontAttributes="Bold"
+                MinimumWidthRequest="310"
+                HorizontalOptions="Center"
                 CornerRadius="10"
                 IsEnabled="{ Binding inicioSesion.HabilitarBoton }"
                 Text="Iniciar Sesion"/>

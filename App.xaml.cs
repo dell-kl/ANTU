@@ -8,9 +8,8 @@ namespace ANTU
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            //MainPage = new AppShell();
         
-
             Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(EntryCustomizer), (handler, view) => {
 
 #if __ANDROID__
@@ -18,6 +17,11 @@ namespace ANTU
 #endif
             });
 
+        }
+
+        protected override Window CreateWindow(IActivationState? activationState)
+        {
+            return new Window(new AppShell());
         }
     }
 }

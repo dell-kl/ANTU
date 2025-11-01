@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dataForm="clr-namespace:Syncfusion.Maui.DataForm;assembly=Syncfusion.Maui.DataForm"
+             x:Class="ANTU.Views.Formularios.CatalogoProductoFormulario"
+             xmlns:viewModel="clr-namespace:ANTU.ViewModel"
+             Title="CatalogoFormulario"
+             BackgroundColor="#D9D6D2"
+             x:Name="PageCatalogoProductoFormulario"
+             x:DataType="viewModel:CatalogoProductoFormularioViewModel">
+
+    <Shell.TabBarIsVisible>False</Shell.TabBarIsVisible>
+
+    <Shell.TitleView>
+        <FlexLayout 
+            JustifyContent="SpaceBetween"
+            AlignItems="Center">
+            <StackLayout>
+                <Label 
+                    FontFamily="SegoeUIBold"
+                    FontSize="14"
+                    TextTransform="Uppercase"
+                    Text="Formulario Producto"/>
+                <Label 
+                    Margin="0,-5,0,0"
+                    FontSize="13"
+                    FontFamily="SegoeUILight"
+                    Text="Registra producto de fabricacion"/>
+            </StackLayout>
+
+            <Border
+                Margin="0,0,5,0"
+                Stroke="#4CFFFFFF"
+                StrokeShape="RoundRectangle 5,5,5,5"
+                BackgroundColor="#4CFFFFFF">
+                <Label 
+                    FontSize="26"
+                    Text="📋"/>
+            </Border>
+        </FlexLayout>
+    </Shell.TitleView>
+
+    <ScrollView>
+        <Border 
+            Margin="10"
+            Stroke="LightGray"
+            StrokeShape="RoundRectangle 5,5,5,5"
+            BackgroundColor="#FFF"
+            Grid.Column="0">
+            <VerticalStackLayout 
+                Margin="10,10,10,0">
+                <Label
+                        HorizontalTextAlignment="Start"
+                        TextColor="#000"
+                        FontFamily="SegoeUIBold"
+                        FontSize="20"
+                        Text="📝 Nuevo Producto"/>
+                <Label 
+                        HorizontalTextAlignment="Start"
+                        TextColor="#8C3623"
+                        FontFamily="SegoeUILight"
+                        FontSize="15"
+                        Text="Completa todos los datos referente al producto que fabricas"/>
+
+                <Border
+                        Margin="0,10,0,0"
+                        Padding="5"
+                        StrokeShape="RoundRectangle 5,5,5,5"
+                        BackgroundColor="#B2F8A400"
+                        Stroke="#B2F8A400">
+                    <Label
+                            TextTransform="Uppercase"
+                            TextColor="#592418"
+                            HorizontalTextAlignment="Center"
+                            FontFamily="SegoeUIBold"
+                            Text="5 imagenes es el maximo"/>
+                </Border>
+                <Border 
+                        Padding="5"
+                        Margin="0,5,0,0"
+                        Stroke="#BF7A24"
+                        StrokeShape="RoundRectangle 10,10,10,10">
+                    <FlexLayout
+                            JustifyContent="SpaceBetween">
+                        <HorizontalStackLayout>
+                            <Border
+                                    WidthRequest="50"
+                                    HeightRequest="50"
+                                    BackgroundColor="#BF8924"
+                                    Stroke="#BF8924"
+                                    StrokeShape="RoundRectangle 100,1000,100,100">
+                                <Label 
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"
+                                        FontSize="20"
+                                        Text="📷"/>
+                            </Border>
+                            <Label 
+                                    Padding="1,0,0,0"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    TextColor="#000"
+                                    Text=".jpg,.png,jpeg"/>
+                        </HorizontalStackLayout>
+                        <Button 
+                                FontSize="15"
+                                FontFamily="SegoeUIBold"
+                                Command="{Binding SeleccionarArchivoMostrarCommand}"
+                                TextColor="#FFF"
+                                BackgroundColor="#BF7A24"
+                                Text="Seleccionar imagen"/>
+                    </FlexLayout>
+                </Border>
+
+                <CollectionView
+                        Margin="0,10,0,0"
+                        SelectionMode="None"
+                        ItemsLayout="HorizontalList"
+                        ItemsUpdatingScrollMode="KeepItemsInView"
+                        ItemsSource="{Binding FileManyResults}">
+
+                    <CollectionView.ItemTemplate>
+
+                        <DataTemplate x:Name="Plantilla" x:DataType="{x:Null}">
+
+
+                            <AbsoluteLayout>
+
+                                <Border
+                                        WidthRequest="100"
+                                        HeightRequest="100"
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Stroke="LightGray"
+                                        StrokeShape="RoundRectangle 5,5,5,5">
+                                    <Image
+                                            Aspect="Fill"
+                                            Source="{Binding FullPath}"/>
+                                </Border>
+                                <Button 
+                                        FontSize="15"
+                                        AbsoluteLayout.LayoutBounds="1,1"
+                                        BackgroundColor="#7FF67400"
+                                        x:Name="ButtonEliminarPicture"
+                                        CommandParameter="{Binding Path=ClassId, Source={x:Reference ButtonEliminarPicture}}"
+                                        Command="{Binding Path=BindingContext.EliminarArchivoPruebaCommand, Source={x:Reference PageCatalogoProductoFormulario}}"
+                                        ClassId="{Binding codigo}"
+                                        Text="🗑️"/>
+                            </AbsoluteLayout>
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Label
+                    FontFamily="MaterialAssets"
+                    HorizontalTextAlignment="Center"
+                    FontAttributes="None"
+                    TextColor="#000"
+                    Text="Inicializa tu producto con tus primeros datos de venta"/>
+
+                <dataForm:SfDataForm
+                    Margin="0,5,0,0"
+                    x:Name="dataForm"
+                    HorizontalOptions="Center"
+                    AutoGenerateItems="True"
+                    ValidationMode="PropertyChanged"
+                    HeightRequest="430"
+                    GenerateDataFormItem="OnGenerateDataFormItem"/>
+
+                <Button
+                    FontSize="17"
+                    VerticalOptions="End"   
+                    BackgroundColor="#B2F8A400"
+                    FontAttributes="Bold"
+                    Margin="0,0,0,10"
+                    
+                    FontFamily="MaterialAssets"
+                    TextColor="#000"
+                    Text="&#xe784; Registrar Producto"/>
+            
+            </VerticalStackLayout>
+        </Border>
+    </ScrollView>
+    
+</ContentPage>

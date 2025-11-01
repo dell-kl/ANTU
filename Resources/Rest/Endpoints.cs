@@ -12,5 +12,10 @@
             "api/RawMaterial/ViewImage", // este ruta debe estar asi sin diagonal en el principio
             "/api/RawMaterial/DeleteRawMaterial"
         };
+
+        public static string[] ENDPOINTS_CATALOGPRODUCT = {
+            "/api/CatalogProduct/RegistrarDataCatalogProduct",
+            "/api/CatalogProduct/AgregarDataProductDataCatalogProduct"
+        };
     }
 }

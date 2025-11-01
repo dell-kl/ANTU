@@ -5,50 +5,20 @@
              xmlns:shimmer="clr-namespace:Syncfusion.Maui.Shimmer;assembly=Syncfusion.Maui.Core"
              xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              xmlns:local="clr-namespace:ANTU.ViewModel"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             x:DataType="local:MateriaPrimaViewModel">
+             xmlns:valueConverter="clr-namespace:ANTU.Resources.ValueConverter"
+             xmlns:models="clr-namespace:ANTU.Models"
+             x:Name="ContentViewMateriaPrima"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <valueConverter:ImageValueConverter x:Key="KeyImageValueConverter"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
     
-    <shimmer:SfShimmer
-            x:Name="shimmerListView"
-            VerticalOptions="Fill"
-            Type="CirclePersona"
-            IsActive="True"
-            WaveColor="#BF7A24"
-            BackgroundColor="#F0E7DA">
 
-        <shimmer:SfShimmer.CustomView>
-            <Grid RowDefinitions="*,*,*,*" ColumnDefinitions="*">
-                <BoxView 
-                            CornerRadius="5"
-                            BackgroundColor="Gray"
-                                Grid.Row="0"
-                                Grid.Column="0"
-                             Margin="20"/>
 
-                <BoxView 
-                            CornerRadius="5"
-                            BackgroundColor="Gray"
-                                Grid.Row="1"
-                                Grid.Column="0"
-                             Margin="20"/>
-
-                <BoxView 
-                        CornerRadius="5"
-                        BackgroundColor="Gray"
-                            Grid.Row="2"
-                            Grid.Column="0"
-                         Margin="20"/>
-
-                <BoxView 
-                        CornerRadius="5"
-                        BackgroundColor="Gray"
-                            Grid.Row="3"
-                            Grid.Column="0"
-                         Margin="20"/>
-            </Grid>
-        </shimmer:SfShimmer.CustomView>
-
-        <syncfusion:SfListView
+    <syncfusion:SfListView
                 ItemSize="150"
                 Margin="0,10,0,0"
                 Padding="0,0,0,10"
@@ -56,14 +26,15 @@
                 EnableFadeOnScroll="True"
                 x:Name="ListadoMateriaPrima"
                 MaximumHeightRequest="550"
+                MinimumHeightRequest="550"
                 VerticalOptions="End"
                 ItemsSourceChangeCachingStrategy="RecycleItems"
                 LoadMoreOption="AutoOnScroll"
                 LoadMorePosition="End"
                 CanMaintainScrollPosition="True"
-                IsLazyLoading="{Binding IsLazyLoading}"
-                LoadMoreCommand="{Binding LoadMoreElementsCommand}"
-                ItemsSource="{Binding materiaPrimaProductos}">
+                IsLazyLoading="{Binding Path=BindingContext.IsLazyLoading, Source={x:Reference ContentViewMateriaPrima}}"
+                LoadMoreCommand="{Binding Path=BindingContext.LoadMoreElementsCommand, Source={x:Reference ContentViewMateriaPrima}}"
+                ItemsSource="{Binding Path=BindingContext.DatosPresentacion, Source={x:Reference ContentViewMateriaPrima} }">
             <syncfusion:SfListView.EndSwipeTemplate>
                 <DataTemplate x:DataType="models:MateriaPrimaProducto" x:Name="StartSwipeTemplate">
                     <Grid 
@@ -76,21 +47,16 @@
                                 BackgroundColor="LightGreen"
                                 StrokeThickness="0"
                                 Grid.Row="0"
+                                x:Name="ContenedorBotonEditar"
                                 ClassId="{Binding guid}"
                                 >
 
                             <Border.Behaviors>
-                                <!--<toolkit:TouchBehavior
-                                    x:Name="BotonEditar"
-                                    IsEnabled="True"
-                                    CommandParameter="{Binding .}"
-                                    Command="{Binding Path=BindingContext.NavegarPaginaProductoGestionarCommand, Source={x:Reference ListadoMateriaPrima}}"
-                                    PressedBackgroundColor="#59F059"/>-->
-
                                 <toolkit:TouchBehavior
                                     x:Name="BotonEditar"
                                     IsEnabled="True"
-                                    TouchGestureCompleted="BotonEditar_TouchGestureCompleted"
+                                    CommandParameter="{Binding Path=ClassId,Source={x:Reference ContenedorBotonEditar}}"
+                                    Command="{Binding Path=BindingContext.NavegarPaginaProductoGestionarCommand, Source={x:Reference ContentViewMateriaPrima}}"
                                     PressedBackgroundColor="#59F059"/>
                             </Border.Behaviors>
 
@@ -154,7 +120,6 @@
                                     Aspect="Fill"
                                     BackgroundColor="Transparent"
                                     Source="{Binding rutaImagen, Converter={StaticResource KeyImageValueConverter} }">
-
                                 </Image>
                             </Border>
 
@@ -233,5 +198,5 @@
                 </DataTemplate>
             </syncfusion:SfListView.ItemTemplate>
         </syncfusion:SfListView>
-    </shimmer:SfShimmer>
+
 </ContentView>

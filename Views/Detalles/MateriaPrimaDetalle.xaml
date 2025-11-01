@@ -97,7 +97,7 @@
                                 Text="📷">
                                 <Button.Behaviors>
                                     <toolkit:TouchBehavior
-                                        Command="{Binding MostrarDetallesImagenesCommand}"
+                                        Command="{Binding Path=BindingContext.MostrarDetallesImagenesCommand, Source={x:Reference ContentPageMain}}"
                                         PressedBackgroundColor="#BF7A24"/>
                                 </Button.Behaviors>
                             </Button>
@@ -111,7 +111,7 @@
                                 Text="📝">
                                 <Button.Behaviors>
                                     <toolkit:TouchBehavior
-                                        Command="{Binding VentanaFormularioEditarDatosMateriaPrimaCommand}"
+                                        Command="{Binding Path=BindingContext.VentanaFormularioEditarDatosMateriaPrimaCommand, Source={x:Reference ContentPageMain}}"
                                         PressedBackgroundColor="#8C3623"/>
                                 </Button.Behaviors>
                             </Button>

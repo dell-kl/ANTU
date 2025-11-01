@@ -18,7 +18,7 @@ namespace ANTU.ViewModel
         public InicioSesionDto inicioSesion { set; get; } = new InicioSesionDto();
 
 
-        [RelayCommand]
+        [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task EnviarForm()
         {
             await Shell.Current.GoToAsync("SnipperComponent");

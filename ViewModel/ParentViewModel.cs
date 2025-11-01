@@ -86,6 +86,15 @@ namespace ANTU.ViewModel
 
         }
 
+        public virtual async Task EliminarArchivoPrueba(string codigo)
+        {
+            FileResultExtensible? archivo = this.FileManyResults.Where(item => item.codigo.Equals(codigo)).FirstOrDefault();
+
+            if (archivo != null)
+                this.FileManyResults.Remove(archivo);
+
+        }
+
         public virtual void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             if (query.ContainsKey("DataQuery"))
