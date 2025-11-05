@@ -1,3 +1,4 @@
+
 namespace ANTU.Resources.Components.PopupComponents;
 
 public partial class VentaSpinnerLoading
@@ -6,4 +7,5 @@ public partial class VentaSpinnerLoading
 	{
 		InitializeComponent();
 	}
+
 }

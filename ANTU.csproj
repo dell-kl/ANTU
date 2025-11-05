@@ -108,6 +108,9 @@
 	  <MauiXaml Update="Resources\Components\PopupComponents\VentanaEmergente.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Resources\Components\PopupComponents\VentanaPopupService.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Resources\Components\PopupComponents\VentaSpinnerLoading.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

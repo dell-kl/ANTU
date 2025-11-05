@@ -5,7 +5,8 @@
              xmlns:mopup="clr-namespace:Mopups.Pages;assembly=Mopups"
              Title="VentaSpinnerLoading"
              BackgroundColor="#F5FFFFFF"
-             CloseWhenBackgroundIsClicked="False">
+             CloseWhenBackgroundIsClicked="False"
+                 >
     <VerticalStackLayout
         VerticalOptions="Center">
         <Image

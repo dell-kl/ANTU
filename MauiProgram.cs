@@ -13,6 +13,8 @@ using Mopups.Hosting;
 using Microsoft.Extensions.Http.Resilience;
 using ANTU.Views.Detalles;
 using ANTU.Resources.ValueConverter;
+using ANTU.Resources.Components.PopupComponents;
+using ANTU.ViewModel.PopupServicesViewModel;
 
 namespace ANTU
 {
@@ -82,6 +84,7 @@ namespace ANTU
             builder.Services.AddTransient<MateriaPrimaDetalle>();
             builder.Services.AddTransient<MostrarImagenesDetalle>();
             builder.Services.AddTransient<CatalogoProductoFormulario>();
+            builder.Services.AddTransient<VentanaPopupService>();
 
             builder.Services.AddTransient<InicioSesionViewModel>();
             builder.Services.AddTransient<WindowAlertComponent>();
@@ -93,11 +96,14 @@ namespace ANTU
             builder.Services.AddTransient<MateriaPrimaDetalleViewModel>();
             builder.Services.AddTransient<MostrarImagenesDetalleViewModel>();
             builder.Services.AddTransient<CatalogoProductoFormularioViewModel>();
+            builder.Services.AddTransient<VentanaPopupServiceViewModel>();
 
             builder.Services.AddTransient<ImageValueConverter>();
 
             builder.Services.AddTransient<IRestManagement, RestManagement>();
- 
+
+            //builder.Services.AddTransientPopup<VentanaPopupService, VentanaPopupServiceViewModel>();
+
             return builder.Build();
         }
     }

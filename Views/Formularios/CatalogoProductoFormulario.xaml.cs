@@ -146,4 +146,21 @@ public partial class CatalogoProductoFormulario : ContentPage
 
         await this.catalogoProductoViewModel.DesmontarSpinner();
     }
+
+    private void dataForm_ValidateForm(object sender, DataFormValidateFormEventArgs e)
+    {
+        this.catalogoProductoViewModel.catalogoProductoFormulario.NombreProducto = (e.NewValues["NombreProducto"] is null ) ? "" : e.NewValues["NombreProducto"].ToString();
+        this.catalogoProductoViewModel.catalogoProductoFormulario.datosVentas.Precio = (e.NewValues["datosVentas.Precio"] is null) ? 0 : (double)e.NewValues["datosVentas.Precio"];
+        this.catalogoProductoViewModel.catalogoProductoFormulario.datosVentas.Kg = (e.NewValues["datosVentas.Kg"] is null) ? 0 : (double) e.NewValues["datosVentas.Kg"];
+        this.catalogoProductoViewModel.catalogoProductoFormulario.datosVentas.Cantidad = (e.NewValues["datosVentas.Cantidad"] is null) ? 0 : int.Parse(e.NewValues["datosVentas.Cantidad"].ToString()!);
+    }
+
+    private void ButtonRegistrarCatalogoProducto_Clicked(object sender, EventArgs e)
+    {
+        if ( dataForm.Validate() )
+        {
+            if ( this.catalogoProductoViewModel.RegistarCatalogoProductoCommand.CanExecute(this) )
+                this.catalogoProductoViewModel.RegistarCatalogoProductoCommand.Execute(this);
+        }
+    }
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:ANTU.ViewModel.PopupServicesViewModel"
+    x:Class="ANTU.Resources.Components.PopupComponents.VentanaPopupService"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Padding="10"
+    HorizontalOptions="Fill"
+    VerticalOptions="Fill"
+    
+    x:DataType="viewModels:VentanaPopupServiceViewModel"
+    CanBeDismissedByTappingOutsideOfPopup="False">
+
+    
+    <VerticalStackLayout>
+        <Image
+            WidthRequest="200"
+            HeightRequest="200"
+            IsAnimationPlaying="True"
+            Source="spinner_antu.gif"/>
+        <Label 
+            FontFamily="SegoeUILight"
+            FontAttributes="Bold"
+            FontSize="15"
+            TextColor="#000"
+            Text="Cargando, espere ..."
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
+
+</toolkit:Popup>

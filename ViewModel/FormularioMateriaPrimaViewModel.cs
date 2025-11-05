@@ -15,7 +15,7 @@ namespace ANTU.ViewModel
     {
         private readonly IPopupService _popupService;
         public FormularioMateriaPrimaViewModel(IRestManagement restManagement, IPopupService popupService)
-        : base(restManagement)
+        : base(restManagement, popupService)
         {
             _popupService = popupService;
         }

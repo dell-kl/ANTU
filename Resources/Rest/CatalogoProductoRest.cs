@@ -55,7 +55,7 @@ namespace ANTU.Resources.Rest
                 multipartFormData.Add(streamContent, "formFiles", fileResult.FileName);
             }
 
-            using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS_CATALOGPRODUCT[1], multipartFormData);
+            using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS_CATALOGPRODUCT[2], multipartFormData);
 
             if (ejecutarTask != null)
                 await ejecutarTask();

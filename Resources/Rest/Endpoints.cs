@@ -15,7 +15,8 @@
 
         public static string[] ENDPOINTS_CATALOGPRODUCT = {
             "/api/CatalogProduct/RegistrarDataCatalogProduct",
-            "/api/CatalogProduct/AgregarDataProductDataCatalogProduct"
+            "/api/CatalogProduct/AgregarDataProductDataCatalogProduct",
+            "/api/CatalogProduct/RegistrarImagenes"
         };
     }
 }

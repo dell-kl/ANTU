@@ -1,16 +1,22 @@
 ﻿using ANTU.Models.Dto;
+using ANTU.Resources.Components.PopupComponents;
 using ANTU.Resources.Rest.RestInterfaces;
+using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
-using System.Collections.ObjectModel;
-using ANTU.Resources.Components.PopupComponents;
 using Syncfusion.Maui.DataForm;
+using System.Collections.ObjectModel;
 
 namespace ANTU.ViewModel
 {
     public partial class ParentViewModel : ObservableObject, IQueryAttributable
     {
+        protected readonly IPopupService _popupService;
+        protected readonly IRestManagement _restManagement;
+
         private object dataQuery = new object();
         public object DataQuery { set => SetProperty(ref dataQuery, value); get => dataQuery; }
 
@@ -18,9 +24,10 @@ namespace ANTU.ViewModel
         private ObservableCollection<FileResultExtensible> fileManyResults = new ObservableCollection<FileResultExtensible>();
         public ObservableCollection<FileResultExtensible> FileManyResults { set => SetProperty(ref fileManyResults, value); get => fileManyResults; }
 
-        protected readonly IRestManagement _restManagement;
-        public ParentViewModel(IRestManagement restManagement) {
+
+        public ParentViewModel(IRestManagement restManagement, IPopupService popupService) {
             _restManagement = restManagement;
+            _popupService = popupService;
         }
 
         //Navigate
@@ -41,14 +48,14 @@ namespace ANTU.ViewModel
         {
             bool resultado = MopupService.Instance.PopupStack.Where(item => item is VentaSpinnerLoading).Any();
 
-            if ( !resultado )
+            if (!resultado)
                 await MopupService.Instance.PushAsync(new VentaSpinnerLoading());
         }
 
         public virtual async Task DesmontarSpinner() {
             bool resultado = MopupService.Instance.PopupStack.Where(item => item is VentaSpinnerLoading).Any();
-            if(resultado)
-                await MopupService.Instance.PopAsync(); 
+            if (resultado)
+                await MopupService.Instance.PopAsync();
         }
 
         // File Picker

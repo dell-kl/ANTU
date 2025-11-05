@@ -1,6 +1,7 @@
 ﻿using ANTU.Models.Dto;
 using ANTU.Models.RequestDto;
 using ANTU.Resources.Rest.RestInterfaces;
+using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,10 @@ namespace ANTU.ViewModel
     {
         public CatalogoProductoFormulario catalogoProductoFormulario { set; get; } = new CatalogoProductoFormulario();
 
-        public CatalogoProductoFormularioViewModel(IRestManagement restManagement)
-            : base(restManagement)
+        
+
+        public CatalogoProductoFormularioViewModel(IRestManagement restManagement, IPopupService popupService)
+            : base(restManagement, popupService)
         {
             
         }
@@ -36,8 +39,14 @@ namespace ANTU.ViewModel
         [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task RegistarCatalogoProducto()
         {
-            await _restManagement.CatalogoProduct.Add(
-                new Models.RequestDto.CatalogoProductoRequestDto() { 
+            
+            await MostrarSpinner();
+            string identificador = Guid.NewGuid().ToString();
+
+            bool resultado = await _restManagement.CatalogoProduct.Add(
+                new Models.RequestDto.CatalogoProductoRequestDto()
+                {
+                    identificador = identificador,
                     nombreProducto = catalogoProductoFormulario.NombreProducto!,
                     dataCatalogProducts = new List<DataProduct>()
                     {
@@ -45,12 +54,23 @@ namespace ANTU.ViewModel
                         {
                             precio = (decimal) catalogoProductoFormulario.datosVentas.Precio,
                             pesoKg = catalogoProductoFormulario.datosVentas.Kg,
-                            cantidadTotal = 0
+                            cantidadTotal = catalogoProductoFormulario.datosVentas.Cantidad
                         }
                     }
-                }, 
-                async () => { }
+                },
+                () => DesmontarSpinner()
             );
+
+            if (resultado && FileManyResults.Any())
+            {
+                var tareaImagenes = _restManagement.CatalogoProduct.SaveImages(
+                    FileManyResults,
+                    identificador,
+                    activarVentanasAlerta: false
+                );
+            }
+
+            FileManyResults.Clear();
         }
     }
 }

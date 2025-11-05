@@ -21,7 +21,7 @@ namespace ANTU.Models.Dto
     {
         private double precio;
         private double kg;
-        private double cantidad;
+        private int cantidad = 0;
 
         [DataFormDisplayOptions(ValidMessage = "Precio ingresado correctamente")]
         [Display(Name = "Precio", Prompt = "$15.50", GroupName = "Datos Venta")]
@@ -37,6 +37,6 @@ namespace ANTU.Models.Dto
 
         [DataFormDisplayOptions()]
         [Display(Name = "Cantidad Total Actualmente", GroupName = "Datos Venta", Prompt = "Este campo no es obligatorio, si conoces cuanto tienes actualmente en stock rellenalo o sino dejalo en blanco")]
-        public double Cantidad { set => SetProperty(ref cantidad, value); get => cantidad; }
+        public int Cantidad { set => SetProperty(ref cantidad, value); get => cantidad; }
     }
 }

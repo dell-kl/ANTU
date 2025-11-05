@@ -2,9 +2,10 @@
 using ANTU.Models.Dto;
 using ANTU.Resources.Components.PopupComponents;
 using ANTU.Resources.Rest.RestInterfaces;
+using ANTU.Resources.ValueConverter;
+using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
-using ANTU.Resources.ValueConverter;
 using Syncfusion.Maui.DataForm;
 
 
@@ -29,12 +30,15 @@ namespace ANTU.ViewModel
 
         //formulario para editar el nombre de la materia prima
         private MateriaPrimaEditarDataFormulario materiaPrimaEditarDataFormulario = new MateriaPrimaEditarDataFormulario();
+
+
         public MateriaPrimaEditarDataFormulario MateriaPrimaEditarDataFormulario { set => SetProperty(ref materiaPrimaEditarDataFormulario, value); get => materiaPrimaEditarDataFormulario; }
 
-    
-        public MateriaPrimaDetalleViewModel(IRestManagement IRestManagement) : base(IRestManagement) {
-            
+
+        public MateriaPrimaDetalleViewModel(IRestManagement restManagement, IPopupService popupService) : base(restManagement, popupService)
+        {
         }
+
 
         public override void ApplyQueryAttributes(IDictionary<string, object> query)
         {

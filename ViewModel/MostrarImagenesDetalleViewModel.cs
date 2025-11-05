@@ -2,6 +2,7 @@
 using ANTU.Resources.Components.PopupComponents;
 using ANTU.Resources.Rest.RestInterfaces;
 using ANTU.Resources.ValueConverter;
+using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
@@ -32,7 +33,7 @@ namespace ANTU.ViewModel
         public ObservableCollection<DataImage> Data { set => SetProperty(ref data, value); get => data; }
 
 
-        public MostrarImagenesDetalleViewModel(IRestManagement restManagement) : base(restManagement) {
+        public MostrarImagenesDetalleViewModel(IRestManagement restManagement, IPopupService popupService) : base(restManagement, popupService) {
            
         }
 

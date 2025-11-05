@@ -1,5 +1,6 @@
 ﻿using ANTU.Models;
 using ANTU.Resources.Rest.RestInterfaces;
+using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
@@ -21,7 +22,8 @@ namespace ANTU.ViewModel
         private bool isLazyLoading = false;
         public bool IsLazyLoading { set => SetProperty(ref isLazyLoading, value); get => isLazyLoading; }
 
-        public MateriaPrimaViewModel(IRestManagement restManagement) : base(restManagement) { }
+        public MateriaPrimaViewModel(IRestManagement restManagement, IPopupService popupService) : base(restManagement, popupService) {
+        }
 
         public async Task cargaProductos()
         {
@@ -39,7 +41,6 @@ namespace ANTU.ViewModel
                  }
                 else if (this.DataQuery.Equals("Catalogo"))
                 {
-
                 }
             }
         }   

@@ -27,6 +27,7 @@
             <valueConverter:ImageValueConverter x:Key="KeyImageValueConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
+   
 
     <Shell.TitleView>
         <FlexLayout 
