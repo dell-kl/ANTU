@@ -14,14 +14,30 @@ namespace ANTU.Models.Dto
         [DataType(DataType.Text)]
         public string? NombreProducto { set => SetProperty(ref nombreProducto, value); get => nombreProducto; }
 
-        public DatosVentas datosVentas { set; get; } = new DatosVentas();
+        private DatosVentas datosVentas = new DatosVentas(0.0,0.0,0);
+
+        public DatosVentas DatosVentas { set => SetProperty(ref datosVentas, value); get => datosVentas; } 
+
+
+        public void limpiarDatos()
+        {
+            NombreProducto = string.Empty;
+            DatosVentas = new DatosVentas(0.0, 0.0, 0);
+        }
     }
 
     public class DatosVentas : ObservableObject
     {
         private double precio;
         private double kg;
-        private int cantidad = 0;
+        private int cantidad;
+
+        public DatosVentas(double precio, double kg, int cantidad)
+        {
+            this.Precio = precio;
+            this.Kg = kg;
+            this.Cantidad = cantidad;
+        }
 
         [DataFormDisplayOptions(ValidMessage = "Precio ingresado correctamente")]
         [Display(Name = "Precio", Prompt = "$15.50", GroupName = "Datos Venta")]
@@ -36,7 +52,9 @@ namespace ANTU.Models.Dto
         public double Kg { set => SetProperty(ref kg, value); get => kg; }
 
         [DataFormDisplayOptions()]
-        [Display(Name = "Cantidad Total Actualmente", GroupName = "Datos Venta", Prompt = "Este campo no es obligatorio, si conoces cuanto tienes actualmente en stock rellenalo o sino dejalo en blanco")]
+        [Range(0, int.MaxValue, ErrorMessage = "Este campo no puede quedar vacio, si no sabes cuanto tienes en stock no hay problema solo deja en 0 esta campo, caso contrario si lo sabes ingresa tu cantida aqui.")]
+        [Required(ErrorMessage = "Este campo no puede quedar vacio, si no sabes cuanto tienes en stock no hay problema solo deja en 0 esta campo, caso contrario si lo sabes ingresa tu cantida aqui.\"")]
+        [Display(Name = "Cantidad Total Actualmente", GroupName = "Datos Venta", Prompt = "Si tienes costales en base a la categoria de KG que estas creando de este producto, puedes ingresar el numero aqui, sino dejalo en 0.")]
         public int Cantidad { set => SetProperty(ref cantidad, value); get => cantidad; }
     }
 }

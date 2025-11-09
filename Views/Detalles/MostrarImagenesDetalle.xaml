@@ -171,7 +171,7 @@
                                 Grid.RowSpan="2"
                                 Grid.Column="0"
                                 Grid.ColumnSpan="2"
-                                Source="{Binding Path=Url, Converter={StaticResource ImageValueConverter}}"/>
+                                Source="{Binding Path=Url, Converter={StaticResource ImageValueConverter}, ConverterParameter='rawMaterial'}"/>
 
                                 <StackLayout 
                             VerticalOptions="Start"

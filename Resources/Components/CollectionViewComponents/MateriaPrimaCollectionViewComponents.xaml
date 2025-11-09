@@ -17,7 +17,6 @@
     </ContentView.Resources>
     
 
-
     <syncfusion:SfListView
                 ItemSize="150"
                 Margin="0,10,0,0"
@@ -119,7 +118,7 @@
                                 <Image
                                     Aspect="Fill"
                                     BackgroundColor="Transparent"
-                                    Source="{Binding rutaImagen, Converter={StaticResource KeyImageValueConverter} }">
+                                    Source="{Binding rutaImagen, Converter={StaticResource KeyImageValueConverter}, ConverterParameter='rawMaterial' }">
                                 </Image>
                             </Border>
 

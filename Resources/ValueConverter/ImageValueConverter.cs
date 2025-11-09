@@ -21,7 +21,7 @@ namespace ANTU.Resources.ValueConverter
 
             if (value is not null && !value!.Equals("default_icon.png"))
             {
-                var ruta = $"{host}{Endpoints.ENDPOINTS[6]}/{value}";
+                var ruta = $"{host}{Endpoints.VISOR_IMG[0]}?imagen={value}&tipo={parameter}";
                 return ruta;
             }
 

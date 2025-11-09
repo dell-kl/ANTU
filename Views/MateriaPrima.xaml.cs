@@ -41,7 +41,7 @@ public partial class MateriaPrima : ContentPage
                 Descripcion.Text = "Listado de todos tus productos que fabricas";
                 this.catalogoProductoView = new CatalogoProductoCollectionViewComponents();
                 this.catalogoProductoView.BindingContext = this.materiaPrimaViewModel;
-                //ListadoDatosPresentacion.Add(catalogoProductoView);
+                ListadoDatosPresentacion.Add(catalogoProductoView);
             }
         }
     }

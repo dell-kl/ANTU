@@ -42,26 +42,24 @@ namespace ANTU.ViewModel
             //cubrir con ventana emergente.
             await base.MostrarSpinner();
 
-            MateriaPrimaRequestDto materiaPrimaRequestDto = new MateriaPrimaRequestDto() { 
-                id_dto = Guid.NewGuid().ToString(),
-                nombre_dto = _materiaPrimaDTO.MateriaPrima,
-                KgMonitoringDtos = new List<KgSeguimientoRequestDto>()
+            bool solicitud = await _restManagement.MateriaPrima.Add(
+                new MateriaPrimaRequestDto()
                 {
-                    new KgSeguimientoRequestDto()
+                    id_dto = Guid.NewGuid().ToString(),
+                    nombre_dto = _materiaPrimaDTO.MateriaPrima,
+                    KgMonitoringDtos = new List<KgSeguimientoRequestDto>()
                     {
-                        id_dto = null, 
-                        cantidad_dto = int.Parse(_materiaPrimaDTO.Cantidad),
-                        kg_standard = double.Parse(_materiaPrimaDTO.KGStandard),
-                        price_dto = decimal.Parse( _materiaPrimaDTO.Precio )
+                        new KgSeguimientoRequestDto()
+                        {
+                            id_dto = null,
+                            cantidad_dto = int.Parse(_materiaPrimaDTO.Cantidad),
+                            kg_standard = double.Parse(_materiaPrimaDTO.KGStandard),
+                            price_dto = decimal.Parse( _materiaPrimaDTO.Precio )
+                        }
                     }
-                }
-            };
-
-            bool solicitud = await _restManagement.MateriaPrima.Add(materiaPrimaRequestDto, async () => { await base.DesmontarSpinner(); });
-
-            
-            if (solicitud && FileManyResults.Any())
-                await _restManagement.MateriaPrima.SaveImages(FileManyResults, materiaPrimaRequestDto.id_dto);
+                }, 
+                () => DesmontarSpinner(),
+                FileManyResults);
 
             _materiaPrimaDTO.limpiarFormulario();
             FileManyResults.Clear();

@@ -33,14 +33,14 @@ namespace ANTU.ViewModel
                  {
                      IEnumerable<MateriaPrimaProducto> listadoMateriaPrima = await _restManagement.MateriaPrima.Get(this.DatosPresentacion.Count().ToString());
 
-                     if (listadoMateriaPrima.Any())
-                     {
-                        //materiaPrimaProductos = materiaPrimaProductos.Union(listadoMateriaPrima).ToObservableCollection();
+                     if (listadoMateriaPrima.Any()) 
                         DatosPresentacion = DatosPresentacion.Union(listadoMateriaPrima).ToObservableCollection();
-                     }
                  }
                 else if (this.DataQuery.Equals("Catalogo"))
                 {
+                    IEnumerable<CatalogoProducto> listadoCatalogo = await _restManagement.CatalogoProduct.Get(this.DatosPresentacion.Count().ToString());
+                    if (listadoCatalogo.Any())
+                        DatosPresentacion = DatosPresentacion.Union(listadoCatalogo).ToObservableCollection();
                 }
             }
         }   
@@ -58,15 +58,27 @@ namespace ANTU.ViewModel
         [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task NavegarPaginaProductoGestionar(string guid)
         {
-            object materiaPrimaProducto = this.DatosPresentacion.Where(item => (item as MateriaPrimaProducto)!.guid.Equals(guid)).First();
+            string paginaShell;
+            object registro;
+
+            if ( DataQuery.Equals("Catalogo"))
+            {
+                paginaShell = "CatalogoProductoDetalle";
+                registro = this.DatosPresentacion.Where(item => (item as CatalogoProducto)!.guid.Equals(guid)).First();
+            }
+            else
+            {
+                paginaShell = "MateriaPrimaDetalle";
+                registro = this.DatosPresentacion.Where(item => (item as MateriaPrimaProducto)!.guid.Equals(guid)).First();
+            }
 
             var datosNavegacion = new ShellNavigationQueryParameters {
                 {
-                    "DataQuery", materiaPrimaProducto
+                    "DataQuery", registro
                 }
             };
 
-            await base.NavegarFormulario($"MateriaPrimaDetalle", datosNavegacion);
+            await base.NavegarFormulario(paginaShell, datosNavegacion);
         }
 
 

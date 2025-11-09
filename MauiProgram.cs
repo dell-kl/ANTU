@@ -71,9 +71,10 @@ namespace ANTU
             Routing.RegisterRoute(nameof(Fabricacion), typeof(Fabricacion));
             Routing.RegisterRoute(nameof(ProductosListos), typeof(ProductosListos));
             Routing.RegisterRoute("FormularioMateriaPrima", typeof(MateriaPrimaFormulario));
-            Routing.RegisterRoute("MateriaPrimaDetalle", typeof(MateriaPrimaDetalle));
             Routing.RegisterRoute("CatalogoProductoFormulario", typeof(CatalogoProductoFormulario));
+            Routing.RegisterRoute("MateriaPrimaDetalle", typeof(MateriaPrimaDetalle));
             Routing.RegisterRoute("MostrarImagenesDetalle", typeof(MostrarImagenesDetalle));
+            Routing.RegisterRoute("CatalogoProductoDetalle", typeof(CatalogoProductoDetalle));
 
             builder.Services.AddTransient<InicioSesion>();
             builder.Services.AddTransient<Dashboard>();
@@ -85,6 +86,7 @@ namespace ANTU
             builder.Services.AddTransient<MostrarImagenesDetalle>();
             builder.Services.AddTransient<CatalogoProductoFormulario>();
             builder.Services.AddTransient<VentanaPopupService>();
+            builder.Services.AddTransient<CatalogoProductoDetalle>();
 
             builder.Services.AddTransient<InicioSesionViewModel>();
             builder.Services.AddTransient<WindowAlertComponent>();
@@ -97,6 +99,7 @@ namespace ANTU
             builder.Services.AddTransient<MostrarImagenesDetalleViewModel>();
             builder.Services.AddTransient<CatalogoProductoFormularioViewModel>();
             builder.Services.AddTransient<VentanaPopupServiceViewModel>();
+            builder.Services.AddTransient<CatalogoProductoDetalleViewModel>();
 
             builder.Services.AddTransient<ImageValueConverter>();
 

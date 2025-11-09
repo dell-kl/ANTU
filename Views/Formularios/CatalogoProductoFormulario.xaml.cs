@@ -1,4 +1,5 @@
 using ANTU.ViewModel;
+using Syncfusion.Maui.Data;
 using Syncfusion.Maui.DataForm;
 
 namespace ANTU.Views.Formularios;
@@ -12,11 +13,15 @@ public partial class CatalogoProductoFormulario : ContentPage
         this.catalogoProductoViewModel = catalogoProductoViewModel;
         BindingContext = this.catalogoProductoViewModel;
 
+        definirDatosFormulario();
+    }
+
+    public void definirDatosFormulario()
+    {
         dataForm.DataObject = this.catalogoProductoViewModel.catalogoProductoFormulario;
         dataForm.Items.Add(new DataFormTextItem() { FieldName = "NombreProducto", GroupName = "Datos Productos" });
         dataForm.Items.Add(new DataFormNumericItem() { FieldName = "Precio", GroupName = "Datos Venta" });
         dataForm.Items.Add(new DataFormNumericItem() { FieldName = "Kg", GroupName = "Datos Venta" });
-        
     }
 
     private void OnGenerateDataFormItem(object? sender, GenerateDataFormItemEventArgs e)
@@ -39,18 +44,13 @@ public partial class CatalogoProductoFormulario : ContentPage
 
             }
             
-            //if (e.DataFormGroupItem.Name == "Datos Venta")
-            //{
-            //    e.DataFormGroupItem.ColumnCount = 2;
-            //}
-
         }
 
         if (e.DataFormItem != null)
         {
 
 
-            if (e.DataFormItem.FieldName == "NombreProducto" || e.DataFormItem.FieldName == "datosVentas.Kg" || e.DataFormItem.FieldName == "datosVentas.Precio" || e.DataFormItem.FieldName == "datosVentas.Cantidad")
+            if (e.DataFormItem.FieldName == "NombreProducto" || e.DataFormItem.FieldName == "DatosVentas.Kg" || e.DataFormItem.FieldName == "DatosVentas.Precio" || e.DataFormItem.FieldName == "DatosVentas.Cantidad")
             {
                 e.DataFormItem.LayoutType = DataFormLayoutType.TextInputLayout;
                 e.DataFormItem.LeadingViewPosition = TextInputLayoutViewPosition.Outside;
@@ -73,7 +73,7 @@ public partial class CatalogoProductoFormulario : ContentPage
 
                 e.DataFormItem.TextInputLayoutSettings = new TextInputLayoutSettings()
                 {
-                    ShowHelperText = (e.DataFormItem.FieldName == "datosVentas.Cantidad") ? true : false,
+                    ShowHelperText = (e.DataFormItem.FieldName == "DatosVentas.Cantidad") ? true : false,
                     FocusedStroke = Color.FromRgb(191, 122, 36),
                     Stroke = Color.FromRgb(191, 122, 36)
                 };
@@ -82,7 +82,7 @@ public partial class CatalogoProductoFormulario : ContentPage
                 
             }
 
-            if (e.DataFormItem.FieldName == "datosVentas.Precio")
+            if (e.DataFormItem.FieldName == "DatosVentas.Precio")
             {
                 e.DataFormItem.LeadingView = new Label
                 {
@@ -109,7 +109,7 @@ public partial class CatalogoProductoFormulario : ContentPage
                 };
             }
 
-            if (e.DataFormItem.FieldName == "datosVentas.Cantidad")
+            if (e.DataFormItem.FieldName == "DatosVentas.Cantidad")
             {
                 e.DataFormItem.LeadingView = new Label
                 {
@@ -124,7 +124,7 @@ public partial class CatalogoProductoFormulario : ContentPage
                 e.DataFormItem.EditorHeight = 100;
             }
 
-            if (e.DataFormItem.FieldName == "datosVentas.Kg")
+            if (e.DataFormItem.FieldName == "DatosVentas.Kg")
             {
                 e.DataFormItem.LeadingView = new Label
                 {
@@ -150,17 +150,20 @@ public partial class CatalogoProductoFormulario : ContentPage
     private void dataForm_ValidateForm(object sender, DataFormValidateFormEventArgs e)
     {
         this.catalogoProductoViewModel.catalogoProductoFormulario.NombreProducto = (e.NewValues["NombreProducto"] is null ) ? "" : e.NewValues["NombreProducto"].ToString();
-        this.catalogoProductoViewModel.catalogoProductoFormulario.datosVentas.Precio = (e.NewValues["datosVentas.Precio"] is null) ? 0 : (double)e.NewValues["datosVentas.Precio"];
-        this.catalogoProductoViewModel.catalogoProductoFormulario.datosVentas.Kg = (e.NewValues["datosVentas.Kg"] is null) ? 0 : (double) e.NewValues["datosVentas.Kg"];
-        this.catalogoProductoViewModel.catalogoProductoFormulario.datosVentas.Cantidad = (e.NewValues["datosVentas.Cantidad"] is null) ? 0 : int.Parse(e.NewValues["datosVentas.Cantidad"].ToString()!);
+        this.catalogoProductoViewModel.catalogoProductoFormulario.DatosVentas.Precio = (e.NewValues["DatosVentas.Precio"] is null) ? 0 : (double)e.NewValues["DatosVentas.Precio"];
+        this.catalogoProductoViewModel.catalogoProductoFormulario.DatosVentas.Kg = (e.NewValues["DatosVentas.Kg"] is null) ? 0 : (double)e.NewValues["DatosVentas.Kg"];
+        this.catalogoProductoViewModel.catalogoProductoFormulario.DatosVentas.Cantidad = (e.NewValues["DatosVentas.Cantidad"] is null) ? 0 : int.Parse(e.NewValues["DatosVentas.Cantidad"].ToString()!);
     }
 
-    private void ButtonRegistrarCatalogoProducto_Clicked(object sender, EventArgs e)
+    private async void ButtonRegistrarCatalogoProducto_Clicked(object sender, EventArgs e)
     {
         if ( dataForm.Validate() )
         {
             if ( this.catalogoProductoViewModel.RegistarCatalogoProductoCommand.CanExecute(this) )
-                this.catalogoProductoViewModel.RegistarCatalogoProductoCommand.Execute(this);
+            {
+                await this.catalogoProductoViewModel.RegistarCatalogoProductoCommand.ExecuteAsync(this);
+                
+            }
         }
     }
 }

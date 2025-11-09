@@ -39,37 +39,27 @@ namespace ANTU.ViewModel
         [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task RegistarCatalogoProducto()
         {
-            
             await MostrarSpinner();
-            string identificador = Guid.NewGuid().ToString();
-
-            bool resultado = await _restManagement.CatalogoProduct.Add(
+            await _restManagement.CatalogoProduct.Add(
                 new Models.RequestDto.CatalogoProductoRequestDto()
                 {
-                    identificador = identificador,
+                    identificador = Guid.NewGuid().ToString(),
                     nombreProducto = catalogoProductoFormulario.NombreProducto!,
                     dataCatalogProducts = new List<DataProduct>()
                     {
                         new DataProduct()
                         {
-                            precio = (decimal) catalogoProductoFormulario.datosVentas.Precio,
-                            pesoKg = catalogoProductoFormulario.datosVentas.Kg,
-                            cantidadTotal = catalogoProductoFormulario.datosVentas.Cantidad
+                            precio = (decimal) catalogoProductoFormulario.DatosVentas.Precio,
+                            pesoKg = catalogoProductoFormulario.DatosVentas.Kg,
+                            cantidadTotal = catalogoProductoFormulario.DatosVentas.Cantidad
                         }
                     }
                 },
-                () => DesmontarSpinner()
+                () => DesmontarSpinner(),
+                FileManyResults
             );
 
-            if (resultado && FileManyResults.Any())
-            {
-                var tareaImagenes = _restManagement.CatalogoProduct.SaveImages(
-                    FileManyResults,
-                    identificador,
-                    activarVentanasAlerta: false
-                );
-            }
-
+            catalogoProductoFormulario.limpiarDatos();
             FileManyResults.Clear();
         }
     }

@@ -13,10 +13,16 @@
             "/api/RawMaterial/DeleteRawMaterial"
         };
 
+        public static string[] VISOR_IMG = { 
+            "visor_imagenes"
+        };
+
         public static string[] ENDPOINTS_CATALOGPRODUCT = {
             "/api/CatalogProduct/RegistrarDataCatalogProduct",
             "/api/CatalogProduct/AgregarDataProductDataCatalogProduct",
-            "/api/CatalogProduct/RegistrarImagenes"
+            "/api/CatalogProduct/RegistrarImagenes",
+            "/api/CatalogProduct/SolicitarCatalogProduct",
+            "/api/CatalogProduct/SolicitarDataCatalogProduct"
         };
     }
 }

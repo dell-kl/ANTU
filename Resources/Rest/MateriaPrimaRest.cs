@@ -7,6 +7,7 @@ using ANTU.Resources.Utilidades;
 using Mopups.Services;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Text;
@@ -22,7 +23,7 @@ namespace ANTU.Resources.Rest
             this.httpClient = httpClient; 
         }
 
-        public async Task<bool> Add(MateriaPrimaRequestDto materiaPrimaRequestDto, Func<Task> ejecutarTarea)
+        public async Task<bool> Add(MateriaPrimaRequestDto materiaPrimaRequestDto, Func<Task> ejecutarTarea, bool mostrarMensajes = false)
         {
             using StringContent json = new(
                 JsonConvert.SerializeObject(materiaPrimaRequestDto),
@@ -33,12 +34,31 @@ namespace ANTU.Resources.Rest
 
             await ejecutarTarea();
 
-            if (httpResponse.IsSuccessStatusCode) 
+            if (httpResponse.IsSuccessStatusCode && mostrarMensajes) 
                 await Mensaje.MensajeCorrecto("Guardado Exitosamente", await httpResponse.Content.ReadAsStringAsync());
-            else
+            else if (httpResponse.StatusCode == HttpStatusCode.InternalServerError && mostrarMensajes)
                 await Mensaje.MensajeError("Error Guardado", await httpResponse.Content.ReadAsStringAsync());
 
             return (httpResponse.IsSuccessStatusCode) ? true : false;
+        }
+
+        public async Task<bool> Add(MateriaPrimaRequestDto data, Func<Task> ejecutarTarea, ObservableCollection<FileResultExtensible> fileResultExtensibles)
+        {
+            if (!fileResultExtensibles.Any())
+                return await this.Add(data, ejecutarTarea, true);
+
+            bool resultado = await this.Add(data, async () => { }, false);
+            Dictionary<string, object> resultadoImagenes = await SaveImages(fileResultExtensibles, data.id_dto!, activarVentanasAlerta: false);
+            await ejecutarTarea();
+
+            if (resultado && resultadoImagenes["estado"] is true)
+                await Mensaje.MensajeCorrecto("Guardado Exitosamente", "Materia prima guardada correctamente.");
+            if (resultado && resultadoImagenes["estado"] is false)
+                await Mensaje.MensajeError("Guardado Incompleto", "Materia prima guardado correctamente, pero no se pudieron guardar las imagenes.");
+            else
+                await Mensaje.MensajeError("Error Guardado", "No se pudieron guardar los datos de la materia prima.");
+
+            return resultado;
         }
 
         public void Delete()
@@ -170,5 +190,6 @@ namespace ANTU.Resources.Rest
 
             return (httpResponse.IsSuccessStatusCode) ? true : false;
         }
+
     }
 }

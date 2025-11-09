@@ -9,6 +9,9 @@ using System.Text;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
 using System.IO;
+using System.Net;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ANTU.Resources.Rest
 {
@@ -21,7 +24,7 @@ namespace ANTU.Resources.Rest
             this.httpClient = httpClient;
         }
 
-        public async Task<bool> Add(CatalogoProductoRequestDto data, Func<Task> ejecutarTarea)
+        public async Task<bool> Add(CatalogoProductoRequestDto data, Func<Task> ejecutarTarea, bool mostrarMensajes = false)
         {
             using StringContent json = new(
                 JsonConvert.SerializeObject(data),
@@ -33,12 +36,57 @@ namespace ANTU.Resources.Rest
             if (ejecutarTarea != null)
                 await ejecutarTarea();
 
-            if (httpResponse.IsSuccessStatusCode)
+            if (httpResponse.IsSuccessStatusCode && mostrarMensajes)
                 await Mensaje.MensajeCorrecto("Guardado Exitosamente", await httpResponse.Content.ReadAsStringAsync());
-            else
+            else if(!httpResponse.IsSuccessStatusCode && mostrarMensajes)
                 await Mensaje.MensajeError("Error Guardado", await httpResponse.Content.ReadAsStringAsync());
 
             return (httpResponse.IsSuccessStatusCode) ? true : false;
+        }
+
+        public async Task<bool> Add(CatalogoProductoRequestDto data, Func<Task> ejecutarTarea, ObservableCollection<FileResultExtensible> fileResultExtensibles)
+        {
+            if(!fileResultExtensibles.Any())
+                return await this.Add(data, ejecutarTarea, true);
+
+            bool resultado = await this.Add(data, async () => { }, false);
+            Dictionary<string, object> resultadoImagenes = await SaveImages(fileResultExtensibles, data.identificador, activarVentanasAlerta: false);
+            await ejecutarTarea();
+
+            if ( resultado && resultadoImagenes.ContainsKey("estado") && resultadoImagenes["estado"] is true )
+                await Mensaje.MensajeCorrecto("Guardado Exitosamente", "Producto e imagenes guardadas correctamente.");
+            else if (resultado && resultadoImagenes.ContainsKey("estado") && resultadoImagenes["estado"] is false)
+                await Mensaje.MensajeError("Guardado Incompleto", "Producto guardado correctamente, pero no se pudieron guardar las imagenes.");
+            else
+                await Mensaje.MensajeError("Error Guardado", "No se pudieron guardar los datos del producto nuevo.");
+            
+            return resultado;
+        }
+
+        public async Task<IEnumerable<CatalogoProducto>> Get(object data)
+        {
+            IEnumerable<CatalogoProducto> listado = new List<CatalogoProducto>();
+
+            //Endpoints.ENDPOINTS_CATALOGPRODUCT[3] es el endpoint para obtener productos por categoria
+            using HttpResponseMessage httpResponse = await httpClient.GetAsync($"{Endpoints.ENDPOINTS_CATALOGPRODUCT[3]}/{data}");
+
+            if (httpResponse.IsSuccessStatusCode)
+                listado = JsonConvert.DeserializeObject<IEnumerable<CatalogoProducto>>(await httpResponse.Content.ReadAsStringAsync())!;
+
+            return listado;
+        }
+
+        //aqui crearemos otro metodo parecido al metodo GET implementado.
+        public async Task<IEnumerable<DataCatalogProducto>> GetDataCatalogProducto(object data, string GuidCatalogProduct)
+        {
+            IEnumerable<DataCatalogProducto> listado = new List<DataCatalogProducto>();
+
+            using HttpResponseMessage httpResponse = await httpClient.GetAsync($"{Endpoints.ENDPOINTS_CATALOGPRODUCT[4]}/{data}?guid={GuidCatalogProduct}");
+
+            if (httpResponse.IsSuccessStatusCode)
+                listado = JsonConvert.DeserializeObject<IEnumerable<DataCatalogProducto>>(await httpResponse.Content.ReadAsStringAsync())!;
+
+            return listado;
         }
 
         public async Task<Dictionary<string, object>> SaveImages(ObservableCollection<FileResultExtensible> fileResultExtensible, string guid, bool activarVentanasAlerta = false, Func<Task>? ejecutarTask = null)
@@ -55,6 +103,7 @@ namespace ANTU.Resources.Rest
                 multipartFormData.Add(streamContent, "formFiles", fileResult.FileName);
             }
 
+            //El Endpoints.ENDPOINTS_CATALOGPRODUCT[2] es el endpoint para subir imagenes
             using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS_CATALOGPRODUCT[2], multipartFormData);
 
             if (ejecutarTask != null)
@@ -67,8 +116,11 @@ namespace ANTU.Resources.Rest
 
                 datos.Add("imagenes", resultadoContenido.imagenes);
             }
-            else
-                await Mensaje.MensajeError("Error Subida Imagenes", await httpResponse.Content.ReadAsStringAsync());
+            else if (!httpResponse.IsSuccessStatusCode && activarVentanasAlerta)
+            {
+                string mensajeError = await httpResponse.Content.ReadAsStringAsync();
+                await Mensaje.MensajeError("Error Subida Imagenes", mensajeError);
+            }
 
             datos.Add("estado", (httpResponse.IsSuccessStatusCode) ? true : false);
 
@@ -80,14 +132,11 @@ namespace ANTU.Resources.Rest
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<CatalogoProducto>> Get(object data)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Update()
         {
             throw new NotImplementedException();
         }
+
+
     }
 }
