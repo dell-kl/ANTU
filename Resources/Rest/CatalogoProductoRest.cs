@@ -1,17 +1,14 @@
 ﻿using ANTU.Models;
-using ANTU.Models.RequestDto;
 using ANTU.Models.Dto;
+using ANTU.Models.RequestDto;
 using ANTU.Resources.Rest.RestInterfaces;
 using ANTU.Resources.Utilidades;
 using Newtonsoft.Json;
+using System.Collections.ObjectModel;
+using System.Net;
+using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Text;
-using System.Collections.ObjectModel;
-using System.Net.Http.Headers;
-using System.IO;
-using System.Net;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace ANTU.Resources.Rest
 {
@@ -132,11 +129,80 @@ namespace ANTU.Resources.Rest
             throw new NotImplementedException();
         }
 
-        public void Update()
+        public async Task<bool> Update(CatalogoProductoRequestDto data, Func<Task> ejecutarTarea)
         {
-            throw new NotImplementedException();
+            //utilizaremos este metodo para poder hacer la actualizacion de los respectivos datos.
+            using StringContent json = new(
+            JsonConvert.SerializeObject(data),
+            Encoding.UTF8,
+            MediaTypeNames.Application.Json);
+
+            using HttpResponseMessage httpResponse = await httpClient.PutAsync(Endpoints.ENDPOINTS_CATALOGPRODUCT[5], json);
+
+            await ejecutarTarea();
+
+            if(httpResponse.IsSuccessStatusCode)
+                await Mensaje.MensajeCorrecto("Actualizacion Exitosa", await httpResponse.Content.ReadAsStringAsync());
+            else
+                await Mensaje.MensajeError("Error Actualizacion", await httpResponse.Content.ReadAsStringAsync());
+
+            return httpResponse.IsSuccessStatusCode ? true : false;
         }
 
+        public async Task<bool> AddDatosVentaDataCatalogProduct(CatalogoProductoRequestDto catalogProductRequestDto, Func<Task> ejecutarTarea)
+        {
+            using StringContent json = new(
+            JsonConvert.SerializeObject(catalogProductRequestDto),
+            Encoding.UTF8,
+            MediaTypeNames.Application.Json);
 
+            using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS_CATALOGPRODUCT[1], json);
+
+            await ejecutarTarea();
+
+            if (httpResponse.IsSuccessStatusCode)
+                await Mensaje.MensajeCorrecto("Datos Agregados", await httpResponse.Content.ReadAsStringAsync());
+            else if (httpResponse.StatusCode is HttpStatusCode.InternalServerError)
+                await Mensaje.MensajeError("Error Servidor", await httpResponse.Content.ReadAsStringAsync());
+            else if (httpResponse.StatusCode is HttpStatusCode.NotFound)
+                await Mensaje.MensajeError("Producto Inexistente", await httpResponse.Content.ReadAsStringAsync());
+            else
+                await Mensaje.MensajeError("Error Inesperado", "Ocurrio un error al guardar tus datos, intentalo en otro momento");
+
+            return (httpResponse.IsSuccessStatusCode) ? true : false;
+        }
+
+        public async Task<CatalogoProductoDetalle> GetDataCatalogProductoDetalle(string GuidCatalogProduct)
+        {
+            CatalogoProductoDetalle detalle = new CatalogoProductoDetalle();
+
+            //Endpoints.ENDPOINTS_CATALOGPRODUCT[3] es el endpoint para obtener productos por categoria
+            using HttpResponseMessage httpResponse = await httpClient.GetAsync($"{Endpoints.ENDPOINTS_CATALOGPRODUCT[6]}/{GuidCatalogProduct}");
+
+            if (httpResponse.IsSuccessStatusCode)
+                detalle = JsonConvert.DeserializeObject<CatalogoProductoDetalle>(await httpResponse.Content.ReadAsStringAsync())!;
+
+            return detalle;
+        }
+
+        public async Task<bool> DeleteImages(ICollection<DataImage> dataImages, Func<Task>? ejecutarTask = null)
+        {
+            using StringContent json = new(
+                JsonConvert.SerializeObject(dataImages),
+                Encoding.UTF8,
+                MediaTypeNames.Application.Json);
+
+            using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS_CATALOGPRODUCT[7], json);
+
+            if (httpResponse != null)
+                await ejecutarTask();
+
+            if (httpResponse.IsSuccessStatusCode)
+                await Mensaje.MensajeCorrecto("Eliminar Imagenes", await httpResponse.Content.ReadAsStringAsync());
+            else
+                await Mensaje.MensajeError("Error Eliminar Imagenes", await httpResponse.Content.ReadAsStringAsync());
+
+            return (httpResponse.IsSuccessStatusCode) ? true : false;
+        }
     }
 }

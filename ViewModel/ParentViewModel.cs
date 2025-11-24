@@ -17,14 +17,12 @@ namespace ANTU.ViewModel
         protected readonly IPopupService _popupService;
         protected readonly IRestManagement _restManagement;
 
+        [ObservableProperty]
         private object dataQuery = new object();
-        public object DataQuery { set => SetProperty(ref dataQuery, value); get => dataQuery; }
 
-
-        private ObservableCollection<FileResultExtensible> fileManyResults = new ObservableCollection<FileResultExtensible>();
-        public ObservableCollection<FileResultExtensible> FileManyResults { set => SetProperty(ref fileManyResults, value); get => fileManyResults; }
-
-
+        [ObservableProperty]
+        private ObservableCollection<FileResultExtensible> _fileManyResults = new ObservableCollection<FileResultExtensible>();
+        
         public ParentViewModel(IRestManagement restManagement, IPopupService popupService) {
             _restManagement = restManagement;
             _popupService = popupService;

@@ -16,5 +16,7 @@ namespace ANTU.Resources.Rest.RestInterfaces
         Task<bool> EditarDatosMateriaPrima(MateriaPrimaRequestDto materiaPrimaRequestDTO, Func<Task>? ejecutarTask = null);
 
         Task<bool> DeleteImages(ICollection<DataImage> dataImages, Func<Task>? ejecutarTask = null);
+
+        Task<IEnumerable<KgSeguimiento>> GetKgSeguimientos(object data, string guidMateriaPrima);
     }
 }

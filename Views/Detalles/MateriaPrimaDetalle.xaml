@@ -5,6 +5,7 @@
              Title="MateriaPrimaDetalle"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:pager="clr-namespace:Syncfusion.Maui.DataGrid.DataPager;assembly=Syncfusion.Maui.DataGrid"
              xmlns:shimmer="clr-namespace:Syncfusion.Maui.Shimmer;assembly=Syncfusion.Maui.Core"
              xmlns:dataForm="clr-namespace:Syncfusion.Maui.DataForm;assembly=Syncfusion.Maui.DataForm"
              xmlns:valueConverter="clr-namespace:ANTU.Resources.ValueConverter"
@@ -18,6 +19,13 @@
         <ResourceDictionary>
             <valueConverter:ImageValueConverter x:Key="KeyImageValueConverter"/>
         </ResourceDictionary>
+        <Style TargetType="syncfusion:DataGridHeaderCell">
+            <Setter Property="Background" Value="#24E19D0A"/>
+            <Setter Property="FontFamily" Value="SegoeUIBold"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="#BF7A24"/>
+        </Style>
     </ContentPage.Resources>
     
     <Shell.TabBarIsVisible>False</Shell.TabBarIsVisible>
@@ -55,7 +63,7 @@
                         Padding="10"
                         ColumnSpacing="10"
                         RowDefinitions="*"
-                        ColumnDefinitions=".9*,.3*">
+                        ColumnDefinitions=".9*,.2*">
                         <StackLayout
                             Grid.Row="0"
                             Grid.Column="0">
@@ -90,11 +98,12 @@
                             <Button
                                 FontSize="25"
                                 BorderColor="#BF7A24"
+                                TextColor="#BF7A24"
                                 BorderWidth="2"
                                 BackgroundColor="Transparent"
                                 FontAttributes="Bold"
-                                FontFamily="SegoeUILight"
-                                Text="📷">
+                                FontFamily="Ionicons"
+                                Text="&#xf2e4;">
                                 <Button.Behaviors>
                                     <toolkit:TouchBehavior
                                         Command="{Binding Path=BindingContext.MostrarDetallesImagenesCommand, Source={x:Reference ContentPageMain}}"
@@ -105,10 +114,11 @@
                                 FontSize="25"
                                 BackgroundColor="Transparent"
                                 BorderColor="#8C3623"
+                                TextColor="#8C3623"
                                 BorderWidth="2"
                                 FontAttributes="Bold"
-                                FontFamily="SegoeUILight"
-                                Text="📝">
+                                FontFamily="Ionicons"
+                                Text="&#xf12c;">
                                 <Button.Behaviors>
                                     <toolkit:TouchBehavior
                                         Command="{Binding Path=BindingContext.VentanaFormularioEditarDatosMateriaPrimaCommand, Source={x:Reference ContentPageMain}}"
@@ -164,12 +174,24 @@
                                         TextColor="#BF7A24"
                                         Text="{Binding MateriaPrimaDetalle.KgTotal, StringFormat='{0} KG'}"/>
                                     <Label
-                                        FontFamily="SegoeUILight"
-                                        FontAttributes="Bold"
-                                        FontSize="15"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#BF8924"
-                                        Text="Stock Actual"/>
+                                        HorizontalTextAlignment="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontSize="22"
+                                                    TextColor="#BF8924"
+                                                    FontFamily="MaterialSymbolSharp"
+                                                    Text="&#xe1a1;"/>
+                                                <Span
+                                                    FontFamily="SegoeUILight"
+                                                    FontAttributes="Bold"
+                                                    FontSize="15"
+                                                    TextColor="#BF8924"
+                                                    Text=" Stock Actual"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
                                 </StackLayout>
                             </shimmer:SfShimmer>
                         </Border>
@@ -215,12 +237,24 @@
                                         TextColor="#BF7A24"
                                         Text="{Binding MateriaPrimaDetalle.TotalCompras}"/>
                                     <Label
-                                        FontFamily="SegoeUILight"
-                                        FontAttributes="Bold"
-                                        FontSize="15"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#BF8924"
-                                        Text="Total Compras"/>
+                                        HorizontalTextAlignment="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontSize="22"
+                                                    TextColor="#BF8924"
+                                                    FontFamily="MaterialSymbolSharp"
+                                                    Text="&#xef63;"/>
+                                                <Span
+                                                    FontFamily="SegoeUILight"
+                                                    FontAttributes="Bold"
+                                                    FontSize="15"
+                                                    TextColor="#BF8924"
+                                                    Text=" Total Compras"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
                                 </StackLayout>
                             </shimmer:SfShimmer>
                         </Border>
@@ -270,12 +304,24 @@
                                         TextColor="#BF7A24"
                                         Text="{Binding MateriaPrimaProducto.status}"/>
                                     <Label
-                                        FontFamily="SegoeUILight"
-                                        FontAttributes="Bold"
-                                        FontSize="15"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#BF8924"
-                                        Text="Stock"/>
+                                        HorizontalTextAlignment="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontSize="22"
+                                                    TextColor="#BF8924"
+                                                    FontFamily="MaterialSymbolSharp"
+                                                    Text="&#xef92;"/>
+                                                <Span
+                                                    FontFamily="SegoeUILight"
+                                                    FontAttributes="Bold"
+                                                    FontSize="15"
+                                                    TextColor="#BF8924"
+                                                    Text=" Stock"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
                                 </StackLayout>
                             </shimmer:SfShimmer>
                         </Border>
@@ -323,42 +369,154 @@
                                         TextColor="#BF7A24"
                                         Text="{Binding MateriaPrimaDetalle.UltimaCompra, StringFormat='${0}'}"/>
                                     <Label
-                                        FontFamily="SegoeUILight"
-                                        FontAttributes="Bold"
-                                        FontSize="15"
-                                        HorizontalTextAlignment="Center"
-                                        TextColor="#BF8924"
-                                        Text="Ultima Compra"/>
+                                        HorizontalTextAlignment="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontSize="22"
+                                                    TextColor="#BF8924"
+                                                    FontFamily="MaterialSymbolSharp"
+                                                    Text="&#xe8d1;"/>
+                                                <Span
+                                                    FontFamily="SegoeUILight"
+                                                    FontAttributes="Bold"
+                                                    FontSize="15"
+                                                    TextColor="#BF8924"
+                                                    Text=" Ultima Compra"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
                                 </StackLayout>
                             </shimmer:SfShimmer>
                         </Border>
                     </Grid>
+
+
+                    <FlexLayout
+                        JustifyContent="SpaceBetween"
+                        Margin="10,10,10,10"
+                        AlignItems="Center">
+                        <StackLayout>
+                            <Label
+                                FontFamily="SegoeUIBold"
+                                TextColor="#000"
+                                FontSize="20"
+                                Text="Historial de Compra"/>
+                            <Label
+                                FontFamily="SegoeUILight"
+                                FontSize="12"
+                                TextColor="Gray"
+                                Text="Edita y Agrega Mas Stock a tu bodega"/>
+                        </StackLayout>
+                        <Button
+                            Text="&#xf359;"
+                            FontSize="20"
+                            TextColor="#FFF"
+                            BackgroundColor="#BF7A24"
+                            FontAttributes="Bold"
+                            Command="{Binding VentanaFormularioMateriaPrimaDetalleStockCommand}"
+                            FontFamily="Ionicons"/>
+                    </FlexLayout>
+
+
+                    <Grid
+                        HeightRequest="560">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <syncfusion:SfDataGrid
+                            Margin="0,10,0,0"
+                            Grid.Row="0"
+                            SortingMode="Single"
+                            ColumnWidthMode="Fill"
+                            EnableDataVirtualization="True"
+                            CanMaintainScrollPosition="True"
+                            AllowAsyncScrolling="True"
+                            x:Name="MateriaPrimaSeguimiento"
+                            ItemsSource="{Binding Source={x:Reference PaginationKgSeguimiento}, Path=PagedSource}">
+                            <syncfusion:SfDataGrid.DefaultStyle>
+                                <syncfusion:DataGridStyle SearchTextColor="Black" 
+                                                SearchTextBackground="LightBlue" 
+                                                SearchHighlightTextColor="Black" 
+                                                SearchHighlightTextBackground="LightGreen" />
+                            </syncfusion:SfDataGrid.DefaultStyle>
+                            <syncfusion:SfDataGrid.Columns>
+                                <syncfusion:DataGridTextColumn
+                                    HeaderText="Identificador"
+                                    MappingName="Guid"
+                                    Visible="False"
+                                    LoadUIView="False"/>
+                                <syncfusion:DataGridNumericColumn
+                                    HeaderText="Cantidad"
+                                    Format="0"
+                                    MappingName="Cantidad"
+                                    LoadUIView="False"/>
+                                <syncfusion:DataGridNumericColumn
+                                    HeaderText="KG"
+                                    Format="KG 0.00"
+                                    MappingName="Kg"
+                                    LoadUIView="False"/>
+                                <syncfusion:DataGridNumericColumn
+                                    HeaderText="Precio"
+                                    Format="$ 0.00"
+                                    MappingName="Precio"
+                                    LoadUIView="False"/>
+                                <syncfusion:DataGridNumericColumn
+                                    HeaderText="KG Total"
+                                    Format="KG 0.00"
+                                    MappingName="KgTotal"
+                                    Visible="False"
+                                    LoadUIView="False"/>
+                                <syncfusion:DataGridNumericColumn
+                                    HeaderText="Precio Total"
+                                    Format="$ 0.00"
+                                    MappingName="PrecioTotal"
+                                    Visible="False"
+                                    LoadUIView="False"/>
+                                <syncfusion:DataGridDateColumn
+                                    HeaderText="Fecha Compra"
+                                    MappingName="FechaCreacion"
+                                    Visible="False"/>
+                                <syncfusion:DataGridDateColumn
+                                    HeaderText="Fecha Actualizacion"
+                                    MappingName="FechaActualizacion"
+                                    Visible="False"/>
+                            </syncfusion:SfDataGrid.Columns>
+                        </syncfusion:SfDataGrid>
+
+                        <pager:SfDataPager
+                            Margin="0,20,0,0"
+                            PageSize="9"
+                            DisplayMode="FirstLastPreviousNext"
+                            Grid.Row="1"
+                            ButtonShape="Rectangle"
+                            ButtonSize="50"
+                            ButtonFontSize="60"
+                            PageChanging="PaginationKgSeguimiento_PageChanging"
+                            x:Name="PaginationKgSeguimiento"
+                            Source="{Binding KgSeguimientoList}">
+                            <pager:SfDataPager.DefaultStyle>
+                                <pager:DataPagerStyle 
+                                              NumericButtonSelectionBackgroundColor="Pink"
+                                              NumericButtonBackgroundColor="Purple"
+                                              NavigationButtonBackgroundColor="#24E19D0A"
+                                              NavigationButtonIconColor="#BF7A24"/>
+                            </pager:SfDataPager.DefaultStyle>
+                        </pager:SfDataPager>
+                    </Grid>
+                    
                     
                 </VerticalStackLayout>
             </Border>
 
-            <Button
-                FontSize="20"
-                TextColor="#FFF"
-                BackgroundColor="#BF8924"
-                WidthRequest="340"
-                FontFamily="SegoeUIBold"
-                Command="{Binding VentanaFormularioMateriaPrimaDetalleStockCommand}"
-                Text="+ Agregar Stock a Bodega"/>
-
-            <Border
+            <!--<Border
                 Margin="0,10,0,0"
                 BackgroundColor="#FFF"
                 StrokeThickness="0">
                 <StackLayout>
-                    <Label
-                        Margin="0,10,0,0"
-                        FontFamily="SegoeUIBold"
-                        FontAttributes="Bold"
-                        TextColor="#000"
-                        FontSize="25"
-                        HorizontalTextAlignment="Center"
-                        Text="📑Historial de Compras"/>
 
                     <Border
                         StrokeThickness="0"
@@ -383,58 +541,10 @@
                         </StackLayout>
                     </Border>
 
-                    <syncfusion:SfDataGrid
-                        Margin="0,0,0,10"
-                        SortingMode="Single"
-                        HeaderRowHeight="80"
-                        EnableDataVirtualization="True"
-                        MaximumHeightRequest="500"
-                        AllowAsyncScrolling="True"
-                        ItemsSource="{Binding MateriaPrimaDetalle.KgSeguimiento}"
-                        x:Name="MateriaPrimaSeguimiento">
-                        <syncfusion:SfDataGrid.DefaultStyle>
-                            <syncfusion:DataGridStyle SearchTextColor="Black" 
-                                            SearchTextBackground="LightBlue" 
-                                            SearchHighlightTextColor="Black" 
-                                            SearchHighlightTextBackground="LightGreen" />
-                        </syncfusion:SfDataGrid.DefaultStyle>
-                        <syncfusion:SfDataGrid.Columns>
-                            <syncfusion:DataGridDateColumn
-                                HeaderText="Fecha Compra"
-                                MappingName="fechaCompra"
-                                ColumnWidthMode="Fill"
-                                Width="120"
-                                LoadUIView="False"/>
-                            <syncfusion:DataGridNumericColumn
-                                HeaderText="Precio Final"
-                                Format="$0.00"
-                                MappingName="precioTotal"
-                                Width="90"
-                                LoadUIView="False"/>
-                            <syncfusion:DataGridNumericColumn
-                                HeaderText="KG Total"
-                                Format="KG 0.00"
-                                MappingName="KgTotal"
-                                Width="110"
-                                LoadUIView="False"/>
-                            <syncfusion:DataGridNumericColumn
-                            HeaderText="Precio Unit"
-                            Format="$ 0.00"
-                            MappingName="precioUnitario"
-                            Width="100"
-                            LoadUIView="False"
-                            />
-                            <syncfusion:DataGridNumericColumn
-                            HeaderText="KG Estandard"
-                            Format="KG 0.00"
-                            MappingName="KgEstandar"
-                            Width="125"
-                            LoadUIView="False"/>
 
-                        </syncfusion:SfDataGrid.Columns>
-                    </syncfusion:SfDataGrid>
                 </StackLayout>                
-            </Border>
+            </Border>-->
+            
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

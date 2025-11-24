@@ -4,6 +4,7 @@ using ANTU.Resources.Rest.RestInterfaces;
 using ANTU.Resources.ValueConverter;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Core.Extensions;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
 using System.Collections.ObjectModel;
@@ -13,28 +14,28 @@ namespace ANTU.ViewModel
     public partial class MostrarImagenesDetalleViewModel : ParentViewModel
     {
 
-        private string identificadorMateriaPrima = "";
+        private string identificador = "";
 
         private int alturaDinamicaListaImagenes = 700;
         public int AlturaDinamicaListaImagenes { set => SetProperty(ref alturaDinamicaListaImagenes, value); get => alturaDinamicaListaImagenes; }
 
+        [ObservableProperty]
+        private bool _activarPanelNuevasImagenes = false;
 
-        private bool activarPanelNuevasImagenes = false;
-        public bool ActivarPanelNuevasImagenes { set => SetProperty(ref activarPanelNuevasImagenes, value); get => activarPanelNuevasImagenes; }
+        [ObservableProperty]
+        private bool _activarCheckBoxEliminar = false;
 
-        private bool activarCheckBoxEliminar = false;
-        public bool ActivarCheckBoxEliminar { set => SetProperty(ref activarCheckBoxEliminar, value); get => activarCheckBoxEliminar; }
+        [ObservableProperty]
+        private bool _activarPanelAcciones = false;
 
-        private bool activarPanelAcciones = false;
-        public bool ActivarPanelAcciones { set => SetProperty(ref activarPanelAcciones, value); get => activarPanelAcciones; }
-
-
+        [ObservableProperty]
         private ObservableCollection<DataImage> data = new ObservableCollection<DataImage>();
-        public ObservableCollection<DataImage> Data { set => SetProperty(ref data, value); get => data; }
-
+        
+        [ObservableProperty]
+        private object _dataModel;
 
         public MostrarImagenesDetalleViewModel(IRestManagement restManagement, IPopupService popupService) : base(restManagement, popupService) {
-           
+            
         }
 
         public override void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -43,12 +44,21 @@ namespace ANTU.ViewModel
                 
             if ( base.DataQuery is not null )
             {
-                object[] listobject = (base.DataQuery as object[])!;
-                var listadoDatos = (ObservableCollection<DataImage>)listobject[0];
-                Data = listadoDatos.Where(item => item.Url.Equals("default_icon.png")).Any() ? [] : listadoDatos;
-                this.identificadorMateriaPrima = listobject[1].ToString()!;
+                List<object> listobject = (base.DataQuery! as List<object>)!;
+                this.identificador = listobject[1].ToString()!;
+                this.DataModel = listobject[0]!;
+
+                if (DataModel is MateriaPrimaDetalle materiaPrimaDetalle)
+                {
+                    this.Data = materiaPrimaDetalle.imagenes.Where(item => item.Url.Equals("default_icon.png")).Any() ? [] : materiaPrimaDetalle.imagenes;
+                }
+                else if (DataModel is CatalogoProductoDetalle catalogoProductoDetalle)
+                {
+                    this.Data = catalogoProductoDetalle.Imagenes.Where(item => item.Url.Equals("default_icon.png")).Any() ? [] : catalogoProductoDetalle.Imagenes;
+                }
             }
         }
+
 
         [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task SeleccionarOpcionBarraHerramientas()
@@ -59,18 +69,27 @@ namespace ANTU.ViewModel
                 "Eliminando, espere...",
                 "Cancelar",
                 "Continuar",
-                async () => {
+                (Func<Task>)(async () => {
 
-                    ICollection<DataImage> ListDataImages = this.Data.Where(item => item.Estado).ToList();
+                    ICollection<DataImage> ListDataImages = this.Data.Where((Func<DataImage, bool>)(item => (bool)item.Estado)).ToList();
+                    bool resultado = false;
 
-                    bool resultado = await _restManagement.MateriaPrima.DeleteImages(ListDataImages, async() => { await base.DesmontarSpinner(); });
+                    if(DataModel is MateriaPrimaDetalle materiaPrimaDetalle)
+                        resultado = await _restManagement.MateriaPrima.DeleteImages(ListDataImages, async() => { await base.DesmontarSpinner(); });
+                    else if(DataModel is CatalogoProductoDetalle catalogoProductoDetalle)
+                        resultado = await _restManagement.CatalogoProduct.DeleteImages(ListDataImages, async() => { await base.DesmontarSpinner(); });
 
-
-                    if (resultado) {
+                    if (resultado)
+                    {
                         //tenemos que quitar manualmente de la coleccion en caso de que si se hayan eliminado exitosamente en el servidor.
-                        this.Data = this.Data.Where(item => !item.Estado).ToObservableCollection();
+                        this.Data = this.Data.Where((Func<DataImage, bool>)(item => (bool)!item.Estado)).ToObservableCollection();
+
+                        if (DataModel is MateriaPrimaDetalle modelo1)
+                            modelo1.imagenes = this.Data;
+                        else if (DataModel is CatalogoProductoDetalle modelo2)
+                            modelo2.Imagenes = this.Data;
                     }
-                }
+                })
             );
 
         }
@@ -111,7 +130,12 @@ namespace ANTU.ViewModel
                    "Continuar",
                    async () => {
 
-                       Dictionary<string, object> resultado = await _restManagement.MateriaPrima.SaveImages(FileManyResults, this.identificadorMateriaPrima, true, async() => { await base.DesmontarSpinner(); });
+                       Dictionary<string, object> resultado = new Dictionary<string, object>();
+
+                       if(DataModel is MateriaPrimaDetalle materiaPrimaDetalle)
+                            resultado = await _restManagement.MateriaPrima.SaveImages(FileManyResults, this.identificador, true, async() => { await base.DesmontarSpinner(); });
+                       else if(DataModel is CatalogoProductoDetalle catalogoProductoDetalle)
+                            resultado = await _restManagement.CatalogoProduct.SaveImages(FileManyResults, this.identificador, true, async() => { await base.DesmontarSpinner(); });
 
                        if ((bool)resultado["estado"])
                        {
@@ -121,6 +145,11 @@ namespace ANTU.ViewModel
 
                            ICollection<DataImage> data = (resultado["imagenes"] as ICollection<DataImage>)!;
                            this.Data = this.Data.Union(data).ToObservableCollection();
+
+                           if (DataModel is MateriaPrimaDetalle modelo1)
+                               modelo1.imagenes = this.Data;
+                           else if (DataModel is CatalogoProductoDetalle modelo2)
+                               modelo2.Imagenes = this.Data;
                        }
 
                    }
@@ -128,5 +157,6 @@ namespace ANTU.ViewModel
 
             }
         }
+
     }
 }

@@ -21,6 +21,12 @@ namespace ANTU.Resources.ValueConverter
 
             if (value is not null && !value!.Equals("default_icon.png"))
             {
+                if (parameter is Binding binding)
+                {
+                    if (binding.Source is Image image)
+                        parameter = image.ClassId;
+                }
+
                 var ruta = $"{host}{Endpoints.VISOR_IMG[0]}?imagen={value}&tipo={parameter}";
                 return ruta;
             }

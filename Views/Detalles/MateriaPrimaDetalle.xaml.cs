@@ -4,12 +4,16 @@ namespace ANTU.Views.Detalles;
 
 public partial class MateriaPrimaDetalle : ContentPage
 {
+    private MateriaPrimaDetalleViewModel materiaPrimaDetalleViewModel;
+
 	public MateriaPrimaDetalle(MateriaPrimaDetalleViewModel materiaPrimaDetalleViewModel)
 	{
 		InitializeComponent();
-
-		BindingContext = materiaPrimaDetalleViewModel;
+        this.materiaPrimaDetalleViewModel = materiaPrimaDetalleViewModel;
+		BindingContext = this.materiaPrimaDetalleViewModel;
         MateriaPrimaSeguimiento.SearchController.AllowFiltering = true;
+
+
     }
 
 
@@ -17,11 +21,11 @@ public partial class MateriaPrimaDetalle : ContentPage
     {
         base.OnNavigatedTo(args);
 
-        if ( (BindingContext as MateriaPrimaDetalleViewModel)!.MateriaPrimaDetalle == null )
+        if (this.materiaPrimaDetalleViewModel.MateriaPrimaDetalle == null )
         {
-            await (BindingContext as MateriaPrimaDetalleViewModel)!.cargarDatosMateriaPrimaDetalle();
-            await (BindingContext as MateriaPrimaDetalleViewModel)!.DesmontarSpinner();
-            await Task.Delay(4000);
+            await this.materiaPrimaDetalleViewModel.cargarDatosMateriaPrimaDetalle();
+            await this.materiaPrimaDetalleViewModel.cargarDatosKgSeguimiento();
+            await this.materiaPrimaDetalleViewModel.DesmontarSpinner();
             ShimmerKgTotal.IsActive = false;
             ShimmerPrecioPromedio.IsActive = false;
             ShimmerTotalCompra.IsActive = false;
@@ -40,6 +44,16 @@ public partial class MateriaPrimaDetalle : ContentPage
 
     }
 
-   
+
+    private async void PaginationKgSeguimiento_PageChanging(object sender, Syncfusion.Maui.DataGrid.DataPager.PageChangingEventArgs e)
+    {
+        if ( e.NewPageIndex is 1 )
+        {
+            await this.materiaPrimaDetalleViewModel.cargarDatosKgSeguimiento();
+
+            PaginationKgSeguimiento.MoveToNextPage();
+
+        }
+    }
 
 }

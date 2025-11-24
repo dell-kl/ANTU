@@ -1,20 +1,35 @@
-﻿namespace ANTU.Models
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace ANTU.Models
 {
     /*
      Dentro de este fichero definiremos algunas clases mas que estan relacionadas con lo que es 
     nuestro Catalog Producto.
      */
-    public class CatalogoProducto
+    public partial class CatalogoProducto : ObservableObject
     {
-        public string guid { set; get; } = Guid.NewGuid().ToString();
-        public string nombreProducto { set; get; } = null!;
-        public string rutaImagen { set; get; } = null!;
-        public DateTime fechaCreacion { set; get; } = DateTime.Now;
-        public int numeroCategorias { set; get; } = 0;
-        public int totalSacosCatalogo { set; get; } = 0;
+        [ObservableProperty]
+        private string identificador = Guid.NewGuid().ToString();
+
+        [ObservableProperty]
+        private string nombreProducto = "sin_nombre";
+
+        [ObservableProperty]
+        private string rutaImagen = null!;
+
+        [ObservableProperty]
+        private DateTime fechaCreacion = DateTime.Now;
+
+        [ObservableProperty]
+        private int numeroCategorias = 0;
+
+        [ObservableProperty]
+        private int totalSacosCatalogo = 0;
+
     }
 
     public class DataCatalogProducto {
+
         public string guid { set; get; } = "";
         public DateTime fechaCreacion { set; get; } = DateTime.Now;
         public DateTime fechaActualizacion { set; get; } = DateTime.Now;

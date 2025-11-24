@@ -47,7 +47,7 @@
                                 StrokeThickness="0"
                                 Grid.Row="0"
                                 x:Name="ContenedorBotonEditar"
-                                ClassId="{Binding guid}"
+                                ClassId="{Binding Identificador}"
                                 >
 
                         <Border.Behaviors>
@@ -118,7 +118,7 @@
                             <Image
                                 Aspect="Fill"
                                 BackgroundColor="Transparent"
-                                Source="{Binding rutaImagen, Converter={StaticResource KeyImageValueConverter}, ConverterParameter='catalogProduct'}">
+                                Source="{Binding RutaImagen, Converter={StaticResource KeyImageValueConverter}, ConverterParameter='catalogProduct'}">
                             </Image>
                         </Border>
 
@@ -135,14 +135,14 @@
                                     WidthRequest="150"
                                     FontSize="17"
                                     LineBreakMode="TailTruncation"
-                                    Text="{Binding nombreProducto}"/>
+                                    Text="{Binding NombreProducto}"/>
 
                                 <Label
                                     TextColor="#000"
                                     FontFamily="SegoeUILight"
                                     Grid.Row="1"
                                     Grid.Column="1"
-                                    Text="{Binding totalSacosCatalogo, StringFormat='Total Stock: {0} Costales'}"/>
+                                    Text="{Binding TotalSacosCatalogo, StringFormat='Total Stock: {0} Costales'}"/>
                             </StackLayout>
                         </HorizontalStackLayout>
 
@@ -157,7 +157,7 @@
                                             TextColor="#8C3623"
                                             FontFamily="SegoeUILight"
                                             FontSize="12"
-                                            Text="{Binding fechaCreacion, StringFormat='Fecha Creacion {0:dd/MM/yyyy}'}"/>
+                                            Text="{Binding FechaCreacion, StringFormat='Fecha Creacion {0:dd/MM/yyyy}'}"/>
                             </StackLayout>
                             <StackLayout>
                                 <Label
@@ -172,7 +172,7 @@
                                                 FontFamily="SegoeUILight" Text="Nr. Categorias: "/>
                                             <Span 
                                                 TextColor="#D49724"
-                                                FontFamily="SegoeUIBold" Text="{Binding numeroCategorias}"/>
+                                                FontFamily="SegoeUIBold" Text="{Binding NumeroCategorias}"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>

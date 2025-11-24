@@ -11,7 +11,7 @@ namespace ANTU.ViewModel
 {
     public partial class CatalogoProductoFormularioViewModel : ParentViewModel
     {
-        public CatalogoProductoFormulario catalogoProductoFormulario { set; get; } = new CatalogoProductoFormulario();
+        //public CatalogoProductoFormulario catalogoProductoFormulario { set; get; } = new CatalogoProductoFormulario();
 
         
 
@@ -37,7 +37,7 @@ namespace ANTU.ViewModel
         }
 
         [RelayCommand(AllowConcurrentExecutions = false)]
-        public async Task RegistarCatalogoProducto()
+        public async Task RegistarCatalogoProducto(CatalogoProductoFormulario catalogoProductoFormulario)
         {
             await MostrarSpinner();
             await _restManagement.CatalogoProduct.Add(

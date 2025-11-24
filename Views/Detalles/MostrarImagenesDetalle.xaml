@@ -148,54 +148,59 @@
                 Grid.RowSpan="2"
                 Grid.ColumnSpan="2">
                 <syncfusionListView:SfListView x:Name="ListadoImagenesView" 
-                ItemsSource="{Binding Data}" 
-                SelectionMode="Multiple"
-                SelectionGesture="LongPress"
-                IsScrollingEnabled="True"
-                MaximumHeightRequest="{Binding AlturaDinamicaListaImagenes}"
-                SelectionChanging="listView_SelectionChanging"
-                SelectionBackground="Transparent"
-                ItemSize="200"
-                Margin="4,4,4,0"
-                ItemSpacing="1">
+                    ItemsSource="{Binding Data}" 
+                    SelectionMode="Multiple"
+                    SelectionGesture="LongPress"
+                    IsScrollingEnabled="True"
+                    MaximumHeightRequest="{Binding AlturaDinamicaListaImagenes}"
+                    SelectionChanging="listView_SelectionChanging"
+                    SelectionBackground="Transparent"
+                    ItemSize="200"
+                    Margin="4,4,4,0"
+                    ItemSpacing="1">
                     <syncfusionListView:SfListView.ItemsLayout>
                         <syncfusionListView:GridLayout SpanCount="2" />
                     </syncfusionListView:SfListView.ItemsLayout>
                     <syncfusionListView:SfListView.ItemTemplate>
                         <DataTemplate x:DataType="models:DataImage">
-                            <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
-
+                            <Grid 
+                                x:Name="gridImagenDetalle"
+                                ColumnDefinitions="*,*" RowDefinitions="*,*">
                                 <Image
                                 Aspect="Fill"
                                 Grid.Row="0"
                                 Grid.RowSpan="2"
                                 Grid.Column="0"
+                                x:Name="imagendetallePagina"
+                                ClassId="{Binding Path=Tipo}"
                                 Grid.ColumnSpan="2"
-                                Source="{Binding Path=Url, Converter={StaticResource ImageValueConverter}, ConverterParameter='rawMaterial'}"/>
+                                Source="{Binding Path=Url, 
+                                    Converter={StaticResource ImageValueConverter}, 
+                                    ConverterParameter={Binding Source={x:Reference imagendetallePagina}}}"/>
 
                                 <StackLayout 
-                            VerticalOptions="Start"
-                            Grid.Column="0" 
-                            Grid.ColumnSpan="2"
-                            Grid.Row="0">
+                                    VerticalOptions="Start"
+                                    Grid.Column="0" 
+                                    Grid.ColumnSpan="2"
+                                    Grid.Row="0">
 
                                     <buttons:SfCheckBox
-                                TextColor="#fff"
-                                FontFamily="SegoeUILight"
-                                FontAttributes="Bold"
-                                FontSize="15"
-                                IsChecked="{Binding Path=Estado}"
-                                IsVisible="{Binding Path=BindingContext.ActivarCheckBoxEliminar, Source={x:Reference PaginaContenidoImagenesDetalles}}"
-                                UncheckedColor="#E39400"
-                                CheckedColor="#E39400"
-                                Text="Seleccionar"
-                                x:Name="checkBox"/>
+                                        TextColor="#fff"
+                                        FontFamily="SegoeUILight"
+                                        FontAttributes="Bold"
+                                        FontSize="15"
+                                        IsChecked="{Binding Path=Estado}"
+                                        IsVisible="{Binding Path=BindingContext.ActivarCheckBoxEliminar, Source={x:Reference PaginaContenidoImagenesDetalles}}"
+                                        UncheckedColor="#E39400"
+                                        CheckedColor="#E39400"
+                                        Text="Seleccionar"
+                                        x:Name="checkBox"/>
                                 </StackLayout>
 
                                 <StackLayout 
-                                VerticalOptions="End"
-                                Grid.ColumnSpan="2"
-                                Grid.Row="1">
+                                    VerticalOptions="End"
+                                    Grid.ColumnSpan="2"
+                                    Grid.Row="1">
 
                                     <Label
                                     HeightRequest="50"

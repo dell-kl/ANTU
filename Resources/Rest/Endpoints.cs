@@ -10,7 +10,8 @@
             "/api/RawMaterial/AgregarEnStock",
             "/api/RawMaterial/EditNameRawMaterial",
             "api/RawMaterial/ViewImage", // este ruta debe estar asi sin diagonal en el principio
-            "/api/RawMaterial/DeleteRawMaterial"
+            "/api/RawMaterial/DeleteRawMaterial",
+            "/api/RawMaterial/SolicitarKgMonitoring"
         };
 
         public static string[] VISOR_IMG = { 
@@ -22,7 +23,10 @@
             "/api/CatalogProduct/AgregarDataProductDataCatalogProduct",
             "/api/CatalogProduct/RegistrarImagenes",
             "/api/CatalogProduct/SolicitarCatalogProduct",
-            "/api/CatalogProduct/SolicitarDataCatalogProduct"
+            "/api/CatalogProduct/SolicitarDataCatalogProduct",
+            "/api/CatalogProduct/EditarDataCatalogProduct",
+            "/api/CatalogProduct/DetalleDataCatalogProduct", // este ruta debe estar asi sin diagonal en el principio
+            "/api/CatalogProduct/EliminarImagenes"
         };
     }
 }

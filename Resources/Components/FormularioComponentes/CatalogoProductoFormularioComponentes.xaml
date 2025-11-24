@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ANTU.Resources.Components.FormularioComponentes.CatalogoProductoFormularioComponentes"
+             xmlns:dataForm="clr-namespace:Syncfusion.Maui.DataForm;assembly=Syncfusion.Maui.DataForm">
+    <VerticalStackLayout
+        HorizontalOptions="Fill">
+        <Label
+            HorizontalTextAlignment="Center"
+            FontSize="20"
+            TextColor="#000"
+            FontAttributes="Bold"
+            FontFamily="SegoeUILight"
+            Text="Ingresa Nuevo Datos de Venta"
+            Padding="0,0,0,20"/>
+        <dataForm:SfDataForm
+            HeightRequest="490"
+            ValidationMode="PropertyChanged"
+            ValidateForm="dataForm_ValidateForm"
+            AutoGenerateItems="True"
+            x:Name="FormularioCatalogoProducto"
+            GenerateDataFormItem="OnGenerateDataFormItem"/>
+
+
+        <Button
+            x:Name="RegistrarDatosCatalogoProducto"
+            Clicked="RegistrarDatosCatalogoProducto_Clicked"
+            Text="&#xe784; Enviar"
+            FontFamily="MaterialAssets"
+            FontSize="17"
+            IsEnabled="True"
+            IsVisible="True"
+            TextColor="#000"
+            BackgroundColor="#B2F8A400"/>
+        
+        <!-- Esta seccion nos mostrar un mensaje de que se estan enviando los respectivos datos. 
+        Mucho mas limpio que mostrar otra pantalla. -->
+        <Border
+            Padding="5"
+            StrokeShape="RoundRectangle 5,5,5,5"
+            Stroke="#B2F8A400"
+            x:Name="MensajeCatalogoProductoFormulario"
+            IsVisible="False"
+            StrokeThickness="2">
+            <Border.Shadow>
+                <Shadow
+                    Brush="#B2F8A400"
+                    Offset="1,0"
+                    Radius="9"
+                    Opacity=".7"/>
+            </Border.Shadow>
+            <HorizontalStackLayout>
+                <Image
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    Source="snipper.gif"
+                    IsAnimationPlaying="True"/>
+                <Label
+                    Padding="10,0,0,0"
+                    VerticalTextAlignment="Center"
+                    FontFamily="SegoeUIBold"
+                    TextColor="#000"
+                    Text="Enviando Datos..."/>
+            </HorizontalStackLayout>
+        </Border>
+    </VerticalStackLayout>
+</ContentView>

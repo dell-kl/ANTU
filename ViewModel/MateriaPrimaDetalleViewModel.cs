@@ -4,9 +4,13 @@ using ANTU.Resources.Components.PopupComponents;
 using ANTU.Resources.Rest.RestInterfaces;
 using ANTU.Resources.ValueConverter;
 using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Core.Extensions;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
 using Syncfusion.Maui.DataForm;
+using System.Collections.ObjectModel;
+
 
 
 namespace ANTU.ViewModel
@@ -32,6 +36,9 @@ namespace ANTU.ViewModel
         private MateriaPrimaEditarDataFormulario materiaPrimaEditarDataFormulario = new MateriaPrimaEditarDataFormulario();
 
 
+        [ObservableProperty]
+        private ObservableCollection<KgSeguimiento> _kgSeguimientoList = new ObservableCollection<KgSeguimiento>();
+
         public MateriaPrimaEditarDataFormulario MateriaPrimaEditarDataFormulario { set => SetProperty(ref materiaPrimaEditarDataFormulario, value); get => materiaPrimaEditarDataFormulario; }
 
 
@@ -52,19 +59,32 @@ namespace ANTU.ViewModel
         {
             this.MateriaPrimaDetalle = await _restManagement.MateriaPrima.MateriaPrimaDetalles(this.MateriaPrimaProducto.guid);
         }
-        
+
+        public async Task cargarDatosKgSeguimiento()
+        {
+            if ( !this.KgSeguimientoList.Any() || this.KgSeguimientoList.Count() >= 10 )
+            {
+                IEnumerable<KgSeguimiento> listadokgSeguimientos = await _restManagement.MateriaPrima.GetKgSeguimientos(this.KgSeguimientoList.Count(), this.MateriaPrimaProducto.guid);
+
+                if (listadokgSeguimientos.Any()) {
+                    this.KgSeguimientoList = this.KgSeguimientoList.Union(listadokgSeguimientos).ToObservableCollection();
+                }
+            }
+
+        }
+
 
         [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task MostrarDetallesImagenes()
         {
-            object[] data = { 
-                this.materiaPrimaDetalle!.imagenes,
-                this.materiaPrimaProducto.guid
-            };
-
+            
             var datosNavegacion = new ShellNavigationQueryParameters {
                 {
-                    "DataQuery", data
+                    "DataQuery", new List<object>()
+                    {
+                        this.materiaPrimaDetalle!,
+                        this.materiaPrimaProducto.guid
+                    }
                 }
             };
 

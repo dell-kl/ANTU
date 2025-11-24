@@ -11,14 +11,14 @@ public partial class MostrarImagenesDetalle : ContentPage
 	{
 		InitializeComponent();
 
-        BindingContext = mostrarImagenesDetalleViewModel;
         this.mostrarImagenesDetalleViewModel = mostrarImagenesDetalleViewModel;
+        BindingContext = this.mostrarImagenesDetalleViewModel;
 	}
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
-        await (BindingContext as MostrarImagenesDetalleViewModel)!.DesmontarSpinner();
+        await this.mostrarImagenesDetalleViewModel.DesmontarSpinner();
     }
 
     private void listView_SelectionChanging(object sender, Syncfusion.Maui.ListView.ItemSelectionChangingEventArgs e)

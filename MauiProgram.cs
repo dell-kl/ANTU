@@ -38,6 +38,7 @@ namespace ANTU
                     fonts.AddFont("Segoe_Fluent_Icons.ttf", "SegoeFluentIcons");
                     fonts.AddFont("MauiMaterialAssets.ttf", "MaterialAssets");
                     fonts.AddFont("ionicons.ttf", "Ionicons");
+                    fonts.AddFont("Material_Symbol_Sharp.ttf", "MaterialSymbolSharp");
                 });
 
             builder.UseMauiApp<App>();
@@ -48,12 +49,13 @@ namespace ANTU
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-
-            
+   
             var n = builder.Services.AddHttpClient("HttpClientRest", client =>
             {
                 //es necesario no poner una diagonal final.
-                client.BaseAddress = new Uri("http://192.168.100.70:30625");
+#if DEBUG
+                client.BaseAddress = new Uri("http://192.168.100.103:30625");
+#endif
             });
 
             n.AddStandardResilienceHandler().Configure(configure =>
@@ -105,7 +107,7 @@ namespace ANTU
 
             builder.Services.AddTransient<IRestManagement, RestManagement>();
 
-            //builder.Services.AddTransientPopup<VentanaPopupService, VentanaPopupServiceViewModel>();
+            builder.Services.AddTransientPopup<VentanaPopupService, VentanaPopupServiceViewModel>();
 
             return builder.Build();
         }

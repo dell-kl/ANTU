@@ -132,9 +132,9 @@ namespace ANTU.Resources.Rest
             return (httpResponse.IsSuccessStatusCode) ? true : false;
         }
 
-        public async void Update()
+        public async Task<bool> Update(MateriaPrimaRequestDto data, Func<Task> ejecutarTarea)
         {
-            
+            return false;
         }
 
         public async Task<MateriaPrimaDetalle> MateriaPrimaDetalles(string guid)
@@ -191,5 +191,16 @@ namespace ANTU.Resources.Rest
             return (httpResponse.IsSuccessStatusCode) ? true : false;
         }
 
+        public async Task<IEnumerable<KgSeguimiento>> GetKgSeguimientos(object data, string guidMateriaPrima)
+        {
+            IEnumerable<KgSeguimiento> listadoKgSeguimientos = new List<KgSeguimiento>();
+
+            using HttpResponseMessage httpResponse = await httpClient.GetAsync($"{Endpoints.ENDPOINTS[8]}/{data}?guid={guidMateriaPrima}");
+
+            if (httpResponse.IsSuccessStatusCode)
+                listadoKgSeguimientos = JsonConvert.DeserializeObject<IEnumerable<KgSeguimiento>>(await httpResponse.Content.ReadAsStringAsync())!;
+
+            return listadoKgSeguimientos;
+        }
     }
 }

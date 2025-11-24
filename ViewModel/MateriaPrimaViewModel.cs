@@ -64,7 +64,7 @@ namespace ANTU.ViewModel
             if ( DataQuery.Equals("Catalogo"))
             {
                 paginaShell = "CatalogoProductoDetalle";
-                registro = this.DatosPresentacion.Where(item => (item as CatalogoProducto)!.guid.Equals(guid)).First();
+                registro = this.DatosPresentacion.Where(item => (item as CatalogoProducto)!.Identificador.Equals(guid)).First();
             }
             else
             {

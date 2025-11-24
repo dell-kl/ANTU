@@ -3,30 +3,33 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewModels="clr-namespace:ANTU.ViewModel.PopupServicesViewModel"
+    xmlns:dataForm="clr-namespace:Syncfusion.Maui.DataForm;assembly=Syncfusion.Maui.DataForm"
     x:Class="ANTU.Resources.Components.PopupComponents.VentanaPopupService"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    x:TypeArguments="system:Object"
     Padding="10"
-    HorizontalOptions="Fill"
-    VerticalOptions="Fill"
-    
+    WidthRequest="280"
+    HeightRequest="670"
+    HorizontalOptions="Center"
     x:DataType="viewModels:VentanaPopupServiceViewModel"
     CanBeDismissedByTappingOutsideOfPopup="False">
 
-    
-    <VerticalStackLayout>
-        <Image
-            WidthRequest="200"
-            HeightRequest="200"
-            IsAnimationPlaying="True"
-            Source="spinner_antu.gif"/>
-        <Label 
-            FontFamily="SegoeUILight"
-            FontAttributes="Bold"
-            FontSize="15"
-            TextColor="#000"
-            Text="Cargando, espere ..."
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <VerticalStackLayout
+        x:Name="ContenedorPrincipal">
+        <StackLayout
+            x:Name="TipoFormulario">
+        </StackLayout>
+        <Button
+            BackgroundColor="Red"
+            TextColor="#FFF"
+            FontFamily="SegoeUIBold"
+            x:Name="BotonCancelar"
+            IsVisible="{Binding BotonCancelar}"
+            Command="{Binding CerrarPopupCommand}"
+            CommandParameter="Salida"
+            Margin="0,10,0,0"
+            Text="Cancelar"/>
     </VerticalStackLayout>
 
 </toolkit:Popup>

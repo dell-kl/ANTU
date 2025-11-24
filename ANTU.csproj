@@ -62,22 +62,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="12.2.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="13.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="9.0.10" />
-		<PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="9.10.0" />
-		<PackageReference Include="Microsoft.Extensions.Resilience" Version="9.10.0" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.10" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="10.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="10.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Resilience" Version="10.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.10" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.10" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
 		<PackageReference Include="Mopups" Version="1.3.4" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-		<PackageReference Include="Syncfusion.Maui.Core" Version="31.2.3" />
-		<PackageReference Include="Syncfusion.Maui.DataForm" Version="31.2.3" />
-		<PackageReference Include="Syncfusion.Maui.DataGrid" Version="31.2.3" />
-		<PackageReference Include="Syncfusion.Maui.Expander" Version="31.2.3" />
-		<PackageReference Include="Syncfusion.Maui.ListView" Version="31.2.3" />
-		<PackageReference Include="Syncfusion.Maui.Toolbar" Version="31.2.3" />
+		<PackageReference Include="Syncfusion.Maui.Core" Version="31.2.10" />
+		<PackageReference Include="Syncfusion.Maui.DataForm" Version="31.2.10" />
+		<PackageReference Include="Syncfusion.Maui.DataGrid" Version="31.2.10" />
+		<PackageReference Include="Syncfusion.Maui.Expander" Version="31.2.10" />
+		<PackageReference Include="Syncfusion.Maui.ListView" Version="31.2.10" />
+		<PackageReference Include="Syncfusion.Maui.Toolbar" Version="31.2.10" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -97,6 +97,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Components\EstilosComponents\TitleShellComponent.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Components\FormularioComponentes\CatalogoProductoFormularioComponentes.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Resources\Components\PopupComponents\FormularioEmergente.xaml">
