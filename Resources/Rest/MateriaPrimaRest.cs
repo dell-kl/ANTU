@@ -53,13 +53,14 @@ namespace ANTU.Resources.Rest
 
             if (resultado && resultadoImagenes["estado"] is true)
                 await Mensaje.MensajeCorrecto("Guardado Exitosamente", "Materia prima guardada correctamente.");
-            if (resultado && resultadoImagenes["estado"] is false)
+            else if (resultado && resultadoImagenes["estado"] is false)
                 await Mensaje.MensajeError("Guardado Incompleto", "Materia prima guardado correctamente, pero no se pudieron guardar las imagenes.");
             else
                 await Mensaje.MensajeError("Error Guardado", "No se pudieron guardar los datos de la materia prima.");
 
             return resultado;
         }
+
 
         public void Delete()
         {
@@ -104,7 +105,7 @@ namespace ANTU.Resources.Rest
 
                 datos.Add("imagenes", resultadoContenido.imagenes);
             }
-            else
+            else if (httpResponse.StatusCode == HttpStatusCode.InternalServerError && activarVentanasAlerta)
                 await Mensaje.MensajeError("Error Subida Imagenes", await httpResponse.Content.ReadAsStringAsync());
 
             datos.Add("estado", (httpResponse.IsSuccessStatusCode) ? true : false);

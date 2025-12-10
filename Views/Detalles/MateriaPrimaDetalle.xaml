@@ -86,7 +86,7 @@
                                     BackgroundColor="LightGray"
                                     x:Name="ImagenPresentacionMateriaPrimaDetalle"
                                     IsAnimationPlaying="True"
-                                    Source="{Binding MateriaPrimaDetalle.imagenes[0].Url, Converter={StaticResource Key='KeyImageValueConverter'},ConverterParameter='rawMaterial'}">
+                                    Source="{Binding MateriaPrimaProducto.rutaImagen, Converter={StaticResource Key='KeyImageValueConverter'},ConverterParameter='rawMaterial'}">
                                 </Image>
                             </Border>
                         </StackLayout>

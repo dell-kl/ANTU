@@ -72,4 +72,9 @@ public partial class MostrarImagenesDetalle : ContentPage
         Button button = (Button)sender;
         this.mostrarImagenesDetalleViewModel.EliminarArchivo(button.ClassId);
     }
+
+    protected override bool OnBackButtonPressed()
+    {
+        return this.mostrarImagenesDetalleViewModel.ControlarNavegacion();
+    }
 }

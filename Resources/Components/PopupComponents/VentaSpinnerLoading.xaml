@@ -4,7 +4,7 @@
              x:Class="ANTU.Resources.Components.PopupComponents.VentaSpinnerLoading"
              xmlns:mopup="clr-namespace:Mopups.Pages;assembly=Mopups"
              Title="VentaSpinnerLoading"
-             BackgroundColor="#F5FFFFFF"
+             BackgroundColor="#FFF"
              CloseWhenBackgroundIsClicked="False"
                  >
     <VerticalStackLayout

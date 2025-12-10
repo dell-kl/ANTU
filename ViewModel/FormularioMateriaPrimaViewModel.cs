@@ -1,69 +1,59 @@
 ﻿using ANTU.Models.Dto;
 using ANTU.Models.RequestDto;
-using ANTU.Resources.Components.PopupComponents;
+using ANTU.Resources.Components.FormularioComponentes;
 using ANTU.Resources.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
-using CommunityToolkit.Maui.Core;
-using CommunityToolkit.Maui.Views;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Microsoft.Maui.Controls.Shapes;
-using Mopups.Services;
 
 namespace ANTU.ViewModel
 {
     public partial class FormularioMateriaPrimaViewModel : ParentViewModel
     {
-        private readonly IPopupService _popupService;
+        [ObservableProperty]
+        private bool statusButtonTrash = true;
+
+        [ObservableProperty]
+        private bool statusButtonPickerFile = true;
+
+        // Componente de formulario.
+        [ObservableProperty]
+        private MateriaPrimaFormularioComponentes materiaPrimaFormularioComponentes = new MateriaPrimaFormularioComponentes();
+        
         public FormularioMateriaPrimaViewModel(IRestManagement restManagement, IPopupService popupService)
         : base(restManagement, popupService)
         {
-            _popupService = popupService;
+            this.materiaPrimaFormularioComponentes.BindingContext = this;
         }
 
-        public MateriaPrimaFormularioDto _materiaPrimaDTO { get; set; } = new MateriaPrimaFormularioDto();
-
-
-        private bool statusButtonTrash = true;
-        public bool StatusButtonTrash { set => SetProperty(ref statusButtonTrash, value); get => statusButtonTrash; }
-
-
-        private bool statusButtonPickerFile = true;
-        public bool StatusButtonPickerFile { set => SetProperty(ref statusButtonPickerFile, value); get => statusButtonPickerFile; }
-
-        [RelayCommand]
-        public override Task SeleccionarArchivoMostrar()
-        {
-            return base.SeleccionarArchivoMostrar();
-        }
-
-        [RelayCommand]
-        public async Task RegistrarMateriaPrima()
+        [RelayCommand(AllowConcurrentExecutions = false)]
+        public async Task RegistrarMateriaPrima(MateriaPrimaFormulario materiaPrimaFormulario)
         {
             //cubrir con ventana emergente.
             await base.MostrarSpinner();
 
-            bool solicitud = await _restManagement.MateriaPrima.Add(
+            await _restManagement.MateriaPrima.Add(
                 new MateriaPrimaRequestDto()
                 {
                     id_dto = Guid.NewGuid().ToString(),
-                    nombre_dto = _materiaPrimaDTO.MateriaPrima,
+                    nombre_dto = materiaPrimaFormulario.MateriaPrima,
                     KgMonitoringDtos = new List<KgSeguimientoRequestDto>()
                     {
                         new KgSeguimientoRequestDto()
                         {
                             id_dto = null,
-                            cantidad_dto = int.Parse(_materiaPrimaDTO.Cantidad),
-                            kg_standard = double.Parse(_materiaPrimaDTO.KGStandard),
-                            price_dto = decimal.Parse( _materiaPrimaDTO.Precio )
-                        }
+                            cantidad_dto = materiaPrimaFormulario.Cantidad,
+                            kg_standard = materiaPrimaFormulario.KgStandard,
+                            price_dto = (decimal) materiaPrimaFormulario.Precio
+                        }   
                     }
                 }, 
                 () => DesmontarSpinner(),
                 FileManyResults);
 
-            _materiaPrimaDTO.limpiarFormulario();
+
             FileManyResults.Clear();
-    
+
         }
     }
 }

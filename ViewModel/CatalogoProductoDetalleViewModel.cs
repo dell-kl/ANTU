@@ -56,6 +56,7 @@ namespace ANTU.ViewModel
             }
         }
 
+
         public async Task cargarDatosDetalle()
         {
             this.CatalogoProductoDetalle = await _restManagement.CatalogoProduct.GetDataCatalogProductoDetalle(CatalogoProducto.Identificador);
@@ -103,7 +104,6 @@ namespace ANTU.ViewModel
 
                 if ( respuesta )
                     this.CatalogoProducto.NombreProducto = formulario.NombreProducto!;
-                
             }
         }
 

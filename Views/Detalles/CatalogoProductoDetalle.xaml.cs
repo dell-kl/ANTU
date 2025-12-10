@@ -51,4 +51,10 @@ public partial class CatalogoProductoDetalle : ContentPage
             PaginationCatalogProduct.MoveToNextPage();
         }
     }
+
+
+    protected override bool OnBackButtonPressed()
+    {
+        return this.ViewModel.ControlarNavegacion();
+    }
 }

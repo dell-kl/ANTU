@@ -8,4 +8,8 @@ public partial class VentaSpinnerLoading
 		InitializeComponent();
 	}
 
+    protected override bool OnBackButtonPressed()
+    {
+        return true;
+    }
 }

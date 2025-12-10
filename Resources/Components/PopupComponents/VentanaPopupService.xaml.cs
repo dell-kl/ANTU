@@ -11,7 +11,7 @@ public partial class VentanaPopupService : Popup<Object>
 	private VentanaPopupServiceViewModel ventanaPopupServiceViewModel;
 
 	// Componentes Vista
-	private CatalogoProductoFormularioComponentes formularioCatalogoProducto;
+
 
     public VentanaPopupService(VentanaPopupServiceViewModel viewModel)
 	{
@@ -35,12 +35,10 @@ public partial class VentanaPopupService : Popup<Object>
 	}
 
     public void cargarTipoFormulario() {
-		if (this.ventanaPopupServiceViewModel.TipoFormulario == "CatalogoProductoFormulario") {
-
-			formularioCatalogoProducto = new CatalogoProductoFormularioComponentes();
-			formularioCatalogoProducto.BindingContext = this.ventanaPopupServiceViewModel;
-			TipoFormulario.Add(formularioCatalogoProducto);
-		}
-	}
+		if (this.ventanaPopupServiceViewModel.TipoFormulario == "CatalogoProductoFormulario") 
+			TipoFormulario.Add(this.ventanaPopupServiceViewModel.FormularioCatalogoProducto);
+		else if (this.ventanaPopupServiceViewModel.TipoFormulario == "MateriaPrimaFormulario")
+			TipoFormulario.Add(this.ventanaPopupServiceViewModel.MateriaPrimaFormulario);
+    }
 
 }

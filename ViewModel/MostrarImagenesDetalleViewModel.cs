@@ -95,7 +95,7 @@ namespace ANTU.ViewModel
         }
 
         [RelayCommand(AllowConcurrentExecutions = false)]
-        public override async Task SeleccionarArchivoMostrar()
+        public async Task SeleccionarArchivos()
         {
             await base.SeleccionarArchivoMostrar();
 

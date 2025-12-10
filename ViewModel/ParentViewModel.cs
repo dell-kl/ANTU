@@ -1,4 +1,5 @@
 ﻿using ANTU.Models.Dto;
+using ANTU.Resources.Components.FormularioComponentes;
 using ANTU.Resources.Components.PopupComponents;
 using ANTU.Resources.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
@@ -22,10 +23,16 @@ namespace ANTU.ViewModel
 
         [ObservableProperty]
         private ObservableCollection<FileResultExtensible> _fileManyResults = new ObservableCollection<FileResultExtensible>();
-        
+
+        [ObservableProperty]
+        private ImagenesGuardarFormularioComponentes imagenesGuardarFormularioComponentes = new ImagenesGuardarFormularioComponentes();
+
         public ParentViewModel(IRestManagement restManagement, IPopupService popupService) {
             _restManagement = restManagement;
             _popupService = popupService;
+
+            //Este formulario de imagenes se utilizara en varios formularios;
+            this.imagenesGuardarFormularioComponentes.BindingContext = this;
         }
 
         //Navigate
@@ -56,31 +63,46 @@ namespace ANTU.ViewModel
                 await MopupService.Instance.PopAsync();
         }
 
-        // File Picker
+        public bool ControlarNavegacion()
+        {
+            bool resultado = MopupService.Instance.PopupStack.Where(item => item is VentaSpinnerLoading).Any();
 
+            return resultado;
+        }
+
+        // File Picker
+        [RelayCommand(AllowConcurrentExecutions = false)]
         public virtual async Task SeleccionarArchivoMostrar()
         {
+            try
+            {
+                PickOptions options = new PickOptions();
+                //options.FileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
+                //{
+                //    { DevicePlatform.Android, new[] { "image/jpeg", "image/png" } }, // MIME type
+                //});
+                options.FileTypes = FilePickerFileType.Images;
+                options.PickerTitle = "Selecciona hasta 5 imagenes";
 
-            PickOptions options = new PickOptions();
-            options.FileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
+                IEnumerable<FileResult?> resultado = await FilePicker.PickMultipleAsync(options);
+
+                if (resultado is null || (this.FileManyResults.Count()) + (resultado.Count()) > 5)
+                    return;
+
+                var fileResultList = resultado.Select(item =>
                 {
-                    { DevicePlatform.Android, new[] { "image/jpeg" } }, // MIME type
+                    return new FileResultExtensible(item) { };
                 });
 
-            IEnumerable<FileResult> resultado = await FilePicker.PickMultipleAsync(options);
-
-
-            if (resultado is null || (this.FileManyResults.Count()) + (resultado.Count()) > 5 )
-                return;
-
-
-            var fileResultList = resultado.Select(item =>
-            {
-                return new FileResultExtensible(item) { };
-            });
-
-            this.FileManyResults = this.FileManyResults.Concat(fileResultList).ToObservableCollection();
+                this.FileManyResults = this.FileManyResults.Concat(fileResultList).ToObservableCollection();
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
         }
+
+
+
 
         public virtual void EliminarArchivo(string codigo)
         {
@@ -142,46 +164,5 @@ namespace ANTU.ViewModel
             }
         }
 
-        public virtual async Task EjecutarFormularioEmergente(string titulo, string parrafo, object formulario, Action<ReadOnlyDictionary<string,object>> FuncValidateForm, Func<Task<bool>> FuncProcessData)
-        {
-            FormularioEmergente Formulario = new FormularioEmergente();
-            Formulario.FindByName<Label>("TituloFormularioEmergente").Text = titulo;
-            Formulario.FindByName<Label>("DescripcionFormularioEmergente").Text = parrafo;
-            SfDataForm pagina = Formulario.FindByName<SfDataForm>("Formulario");
-            pagina.DataObject = formulario;
-            //metodos para implementar dentro de nuestro formulario.
-
-            pagina.ValidateForm += (sender, e) => {
-                var DatosActualizados = e.NewValues;
-                FuncValidateForm(DatosActualizados);
-            };
-
-            Formulario.FindByName<Button>("BontonCancelarFormulario").Clicked += async (sender, e) => {
-                if (MopupService.Instance.PopupStack.Where(item => item is FormularioEmergente).Any())
-                    await MopupService.Instance.PopAsync();
-
-            };
-
-            Formulario.FindByName<Button>("BotonConfirmarFormulario").Clicked += async (sender, e) => { 
-                if ( pagina.Validate() )
-                {
-
-                    await MostrarVentanaConfirmacion(
-                        "Confirmar Formulario",
-                        "Si estas seguro de tus datos puede dar en REGISTRAR, caso contrario presiona REGRESAR para volver al formulario",
-                        "Registrando, espere...",
-                        "Regresar",
-                        "Registrar",
-                        async () =>
-                        {
-                            await FuncProcessData();
-                        }
-                    );
-                    
-                }
-            };
-
-            await MopupService.Instance.PushAsync(Formulario);
-        }
     }
 }

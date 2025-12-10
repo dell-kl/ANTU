@@ -1,11 +1,10 @@
 ﻿using ANTU.Models.Dto;
 using ANTU.Models.RequestDto;
+using ANTU.Resources.Components.FormularioComponentes;
 using ANTU.Resources.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ANTU.ViewModel
 {
@@ -13,19 +12,20 @@ namespace ANTU.ViewModel
     {
         //public CatalogoProductoFormulario catalogoProductoFormulario { set; get; } = new CatalogoProductoFormulario();
 
-        
+        [ObservableProperty]
+        private CatalogoProductoFormularioComponentes catalogoProductoFormularioComponenets = new CatalogoProductoFormularioComponentes();
 
         public CatalogoProductoFormularioViewModel(IRestManagement restManagement, IPopupService popupService)
             : base(restManagement, popupService)
         {
-            
+            catalogoProductoFormularioComponenets.BindingContext = this;
         }
 
-        [RelayCommand(AllowConcurrentExecutions = false)]
-        public override async Task SeleccionarArchivoMostrar()
-        {
-            await base.SeleccionarArchivoMostrar();
-        }
+        //[RelayCommand(AllowConcurrentExecutions = false)]
+        //public override async Task SeleccionarArchivoMostrar()
+        //{
+        //    await base.SeleccionarArchivoMostrar();
+        //}
 
         //este codigo de aqui tiene que ver con la parte de nuestras imagenes, el 
         //boton con la funcionalidad de eliminar la imagen de la lista 

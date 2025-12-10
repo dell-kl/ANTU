@@ -5,12 +5,13 @@ namespace ANTU.Models
     public class MateriaPrimaProducto : TYPE
     {
         private string NombreProducto;
+        private string _rutaImagen;
 
         public MateriaPrimaProducto(int valor) : base(valor) { }
 
         public string guid { set; get; } = Guid.NewGuid().ToString();
         public string nombreProducto { set => SetProperty(ref NombreProducto, value); get => NombreProducto; }
-        public string rutaImagen { set; get; } = null!;
+        public string rutaImagen { set => SetProperty(ref _rutaImagen, value); get => _rutaImagen; }
         public DateTime fechaUltimaCompra { set; get; } = DateTime.Now;
         public double kgTotal { set; get; } = 0.0d;
 

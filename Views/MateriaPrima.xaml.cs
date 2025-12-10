@@ -1,15 +1,12 @@
-using ANTU.Models;
 using ANTU.Resources.Components.CollectionViewComponents;
+using ANTU.Resources.Components.ControlersComponents;
 using ANTU.ViewModel;
-using Syncfusion.Maui.ListView;
-using System.Threading.Tasks;
 
 namespace ANTU.Views;
 
 public partial class MateriaPrima : ContentPage
 {
-    private MateriaPrimaCollectionViewComponents? materiaPrimaView;
-    private CatalogoProductoCollectionViewComponents? catalogoProductoView;
+
     private MateriaPrimaViewModel materiaPrimaViewModel;
 
 
@@ -27,21 +24,28 @@ public partial class MateriaPrima : ContentPage
 
         if (!this.materiaPrimaViewModel.DatosPresentacion.Any())
         {
+            if(!ComponenteEntradaDinamico.Children.Any())
+                ComponenteEntradaDinamico.Add(this.materiaPrimaViewModel.PanelComponents);
+
             if (this.materiaPrimaViewModel.DataQuery.Equals("MateriaPrima"))
             {
                 Titulo.Text = "Materia Prima";
                 Descripcion.Text = "Inventario de productos comprados";
-                this.materiaPrimaView = new MateriaPrimaCollectionViewComponents();
-                this.materiaPrimaView!.BindingContext = this.materiaPrimaViewModel;
-                ListadoDatosPresentacion.Add(materiaPrimaView);
+                this.materiaPrimaViewModel.MateriaPrimaView!.BindingContext = this.materiaPrimaViewModel;
+                ListadoDatosPresentacion.Add(this.materiaPrimaViewModel.MateriaPrimaView);
             }
             else if (this.materiaPrimaViewModel.DataQuery.Equals("Catalogo"))
             {
                 Titulo.Text = "Catalogo Productos";
                 Descripcion.Text = "Listado de todos tus productos que fabricas";
-                this.catalogoProductoView = new CatalogoProductoCollectionViewComponents();
-                this.catalogoProductoView.BindingContext = this.materiaPrimaViewModel;
-                ListadoDatosPresentacion.Add(catalogoProductoView);
+                this.materiaPrimaViewModel.CatalogoProductoView!.BindingContext = this.materiaPrimaViewModel;
+                ListadoDatosPresentacion.Add(this.materiaPrimaViewModel.CatalogoProductoView);
+            }
+            else if (this.materiaPrimaViewModel.DataQuery.Equals("Fabricacion"))
+            {
+                Titulo.Text = "Fabricacion";
+                Descripcion.Text = "Gestiona la fabricacion de tus productos";
+                await this.materiaPrimaViewModel.DesmontarSpinner();
             }
         }
     }
@@ -49,36 +53,6 @@ public partial class MateriaPrima : ContentPage
     protected override void OnNavigatedFrom(NavigatedFromEventArgs args)
     {
         base.OnNavigatedFrom(args);
-
-    }
-
-    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
-    {
-        var searchBar = (sender as SearchBar);
-        SfListView? ListadoDatos = null;
-        
-        if ( this.materiaPrimaViewModel.DataQuery.Equals("MateriaPrima") )
-            ListadoDatos = this.materiaPrimaView.FindByName<SfListView>("ListadoMateriaPrima");
-
-        if (ListadoDatos?.DataSource is not null)
-        {
-            ListadoDatos.DataSource!.Filter = (object obj) =>
-            {
-                if (searchBar == null || searchBar.Text == null)
-                    return true;
-
-                if (this.materiaPrimaViewModel.DataQuery.Equals("MateriaPrima"))
-                {
-                    var taskInfo = obj as MateriaPrimaProducto;
-                    if (taskInfo!.nombreProducto.ToLower().Contains(searchBar.Text.ToLower()))
-                        return true;
-                }
-            
-                
-                return false;
-            };
-            ListadoDatos.DataSource!.RefreshFilter();
-        }
 
     }
 
@@ -96,4 +70,8 @@ public partial class MateriaPrima : ContentPage
 
     }
 
+    protected override bool OnBackButtonPressed()
+    {
+        return this.materiaPrimaViewModel.ControlarNavegacion();
+    }
 }

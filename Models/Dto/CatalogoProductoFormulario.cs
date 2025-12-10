@@ -19,7 +19,7 @@ namespace ANTU.Models.Dto
         public DatosVentas DatosVentas { set => SetProperty(ref datosVentas, value); get => datosVentas; } 
 
 
-        public void limpiarDatos()
+        public void limpiarDatos()  
         {
             NombreProducto = string.Empty;
             DatosVentas = new DatosVentas(0.0, 0.0, 0);

@@ -12,10 +12,9 @@ public partial class CatalogoProductoFormulario : ContentPage
         this.catalogoProductoViewModel = catalogoProductoViewModel;
         BindingContext = this.catalogoProductoViewModel;
 
-        //vamos a inyectar nuestro componente de formulario.
-        CatalogoProductoFormularioComponentes formularioComponente = new CatalogoProductoFormularioComponentes();
-        formularioComponente.BindingContext = this.catalogoProductoViewModel;
-        StackLayoutCatalogoProductoFormulario.Add(formularioComponente);
+        //vamos a inyectar nuestro componente de formulario.    
+        StackLayoutCatalogoProductoFormulario.Add(this.catalogoProductoViewModel.CatalogoProductoFormularioComponenets);
+        EntradaFormularioImagenes.Add(this.catalogoProductoViewModel.ImagenesGuardarFormularioComponentes);
     }
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)
@@ -23,5 +22,10 @@ public partial class CatalogoProductoFormulario : ContentPage
         base.OnNavigatedTo(args);
 
         await this.catalogoProductoViewModel.DesmontarSpinner();
+    }
+
+    protected override bool OnBackButtonPressed()
+    {
+        return this.catalogoProductoViewModel.ControlarNavegacion();
     }
 }

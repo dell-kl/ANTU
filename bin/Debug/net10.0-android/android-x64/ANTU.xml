@@ -1,0 +1,687 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ANTU</name>
+    </assembly>
+    <members>
+        <member name="T:ANTU.Models.CatalogoProducto">
+            <inheritdoc/>
+        </member>
+        <member name="P:ANTU.Models.CatalogoProducto.Identificador">
+            <inheritdoc cref="F:ANTU.Models.CatalogoProducto.identificador"/>
+        </member>
+        <member name="P:ANTU.Models.CatalogoProducto.NombreProducto">
+            <inheritdoc cref="F:ANTU.Models.CatalogoProducto.nombreProducto"/>
+        </member>
+        <member name="P:ANTU.Models.CatalogoProducto.RutaImagen">
+            <inheritdoc cref="F:ANTU.Models.CatalogoProducto.rutaImagen"/>
+        </member>
+        <member name="P:ANTU.Models.CatalogoProducto.FechaCreacion">
+            <inheritdoc cref="F:ANTU.Models.CatalogoProducto.fechaCreacion"/>
+        </member>
+        <member name="P:ANTU.Models.CatalogoProducto.NumeroCategorias">
+            <inheritdoc cref="F:ANTU.Models.CatalogoProducto.numeroCategorias"/>
+        </member>
+        <member name="P:ANTU.Models.CatalogoProducto.TotalSacosCatalogo">
+            <inheritdoc cref="F:ANTU.Models.CatalogoProducto.totalSacosCatalogo"/>
+        </member>
+        <member name="T:ANTU.Models.CatalogoProductoDetalle">
+            <inheritdoc/>
+        </member>
+        <member name="P:ANTU.Models.CatalogoProductoDetalle.UltimaProduccion">
+            <inheritdoc cref="F:ANTU.Models.CatalogoProductoDetalle.ultimaProduccion"/>
+        </member>
+        <member name="P:ANTU.Models.CatalogoProductoDetalle.UltimaVenta">
+            <inheritdoc cref="F:ANTU.Models.CatalogoProductoDetalle.ultimaVenta"/>
+        </member>
+        <member name="P:ANTU.Models.CatalogoProductoDetalle.Categorias">
+            <inheritdoc cref="F:ANTU.Models.CatalogoProductoDetalle.categorias"/>
+        </member>
+        <member name="P:ANTU.Models.CatalogoProductoDetalle.CostalesTotal">
+            <inheritdoc cref="F:ANTU.Models.CatalogoProductoDetalle.costalesTotal"/>
+        </member>
+        <member name="P:ANTU.Models.CatalogoProductoDetalle.Imagenes">
+            <inheritdoc cref="F:ANTU.Models.CatalogoProductoDetalle.imagenes"/>
+        </member>
+        <member name="T:ANTU.Models.DataImage">
+            <inheritdoc/>
+        </member>
+        <member name="P:ANTU.Models.DataImage.Identificador">
+            <inheritdoc cref="F:ANTU.Models.DataImage._identificador"/>
+        </member>
+        <member name="P:ANTU.Models.DataImage.Url">
+            <inheritdoc cref="F:ANTU.Models.DataImage._url"/>
+        </member>
+        <member name="P:ANTU.Models.DataImage.Estado">
+            <inheritdoc cref="F:ANTU.Models.DataImage._estado"/>
+        </member>
+        <member name="P:ANTU.Models.DataImage.Tipo">
+            <inheritdoc cref="F:ANTU.Models.DataImage._tipo"/>
+        </member>
+        <member name="T:ANTU.Models.Dto.MateriaPrimaFormularioDto">
+            <inheritdoc/>
+        </member>
+        <member name="F:ANTU.Models.Dto.MateriaPrimaFormularioDto._limpiarFormularioCommand">
+            <summary>The backing field for <see cref="P:ANTU.Models.Dto.MateriaPrimaFormularioDto.limpiarFormularioCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.Models.Dto.MateriaPrimaFormularioDto.limpiarFormularioCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:ANTU.Models.Dto.MateriaPrimaFormularioDto.limpiarFormulario"/>.</summary>
+        </member>
+        <member name="T:ANTU.Models.KgSeguimiento">
+            <inheritdoc/>
+        </member>
+        <member name="P:ANTU.Models.KgSeguimiento.Guid">
+            <inheritdoc cref="F:ANTU.Models.KgSeguimiento.guid"/>
+        </member>
+        <member name="P:ANTU.Models.KgSeguimiento.Cantidad">
+            <inheritdoc cref="F:ANTU.Models.KgSeguimiento.cantidad"/>
+        </member>
+        <member name="P:ANTU.Models.KgSeguimiento.Kg">
+            <inheritdoc cref="F:ANTU.Models.KgSeguimiento.kg"/>
+        </member>
+        <member name="P:ANTU.Models.KgSeguimiento.Precio">
+            <inheritdoc cref="F:ANTU.Models.KgSeguimiento.precio"/>
+        </member>
+        <member name="P:ANTU.Models.KgSeguimiento.KgTotal">
+            <inheritdoc cref="F:ANTU.Models.KgSeguimiento.kgTotal"/>
+        </member>
+        <member name="P:ANTU.Models.KgSeguimiento.PrecioTotal">
+            <inheritdoc cref="F:ANTU.Models.KgSeguimiento.precioTotal"/>
+        </member>
+        <member name="P:ANTU.Models.KgSeguimiento.FechaCreacion">
+            <inheritdoc cref="F:ANTU.Models.KgSeguimiento.fechaCreacion"/>
+        </member>
+        <member name="P:ANTU.Models.KgSeguimiento.FechaActualizacion">
+            <inheritdoc cref="F:ANTU.Models.KgSeguimiento.fechaActualizacion"/>
+        </member>
+        <member name="T:ANTU.ViewModel.CatalogoProductoDetalleViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:ANTU.ViewModel.CatalogoProductoDetalleViewModel.PermitirCargaDatos">
+            <inheritdoc cref="F:ANTU.ViewModel.CatalogoProductoDetalleViewModel.permitirCargaDatos"/>
+        </member>
+        <member name="P:ANTU.ViewModel.CatalogoProductoDetalleViewModel.CatalogoProducto">
+            <inheritdoc cref="F:ANTU.ViewModel.CatalogoProductoDetalleViewModel.catalogoProducto"/>
+        </member>
+        <member name="P:ANTU.ViewModel.CatalogoProductoDetalleViewModel.ListadoDataCatalogoProductos">
+            <inheritdoc cref="F:ANTU.ViewModel.CatalogoProductoDetalleViewModel._listadoDataCatalogoProductos"/>
+        </member>
+        <member name="P:ANTU.ViewModel.CatalogoProductoDetalleViewModel.CatalogoProductoFormulario">
+            <inheritdoc cref="F:ANTU.ViewModel.CatalogoProductoDetalleViewModel._catalogoProductoFormulario"/>
+        </member>
+        <member name="P:ANTU.ViewModel.CatalogoProductoDetalleViewModel.CatalogoProductoDetalle">
+            <inheritdoc cref="F:ANTU.ViewModel.CatalogoProductoDetalleViewModel._catalogoProductoDetalle"/>
+        </member>
+        <member name="F:ANTU.ViewModel.CatalogoProductoDetalleViewModel.navegarDetallesImagenesCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.CatalogoProductoDetalleViewModel.NavegarDetallesImagenesCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.CatalogoProductoDetalleViewModel.NavegarDetallesImagenesCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.CatalogoProductoDetalleViewModel.NavegarDetallesImagenes"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.CatalogoProductoDetalleViewModel.formularioEditarDatosCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.CatalogoProductoDetalleViewModel.FormularioEditarDatosCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.CatalogoProductoDetalleViewModel.FormularioEditarDatosCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.CatalogoProductoDetalleViewModel.FormularioEditarDatos"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.CatalogoProductoDetalleViewModel.formularioAgregarDatosVentaCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.CatalogoProductoDetalleViewModel.FormularioAgregarDatosVentaCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.CatalogoProductoDetalleViewModel.FormularioAgregarDatosVentaCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.CatalogoProductoDetalleViewModel.FormularioAgregarDatosVenta"/>.</summary>
+        </member>
+        <member name="T:ANTU.ViewModel.CatalogoProductoFormularioViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:ANTU.ViewModel.CatalogoProductoFormularioViewModel.seleccionarArchivoMostrarCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.CatalogoProductoFormularioViewModel.SeleccionarArchivoMostrarCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.CatalogoProductoFormularioViewModel.SeleccionarArchivoMostrarCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.CatalogoProductoFormularioViewModel.SeleccionarArchivoMostrar"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.CatalogoProductoFormularioViewModel.eliminarArchivoPruebaCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.CatalogoProductoFormularioViewModel.EliminarArchivoPruebaCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.CatalogoProductoFormularioViewModel.EliminarArchivoPruebaCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.CatalogoProductoFormularioViewModel.EliminarArchivoPrueba(System.String)"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.CatalogoProductoFormularioViewModel.registarCatalogoProductoCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.CatalogoProductoFormularioViewModel.RegistarCatalogoProductoCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.CatalogoProductoFormularioViewModel.RegistarCatalogoProductoCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.CatalogoProductoFormularioViewModel.RegistarCatalogoProducto(ANTU.Models.Dto.CatalogoProductoFormulario)"/>.</summary>
+        </member>
+        <member name="T:ANTU.ViewModel.DashboardViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:ANTU.ViewModel.DashboardViewModel.navegarFormularioCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.DashboardViewModel.NavegarFormularioCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.DashboardViewModel.NavegarFormularioCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.DashboardViewModel.NavegarFormulario(System.String)"/>.</summary>
+        </member>
+        <member name="T:ANTU.ViewModel.FormularioMateriaPrimaViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:ANTU.ViewModel.FormularioMateriaPrimaViewModel.seleccionarArchivoMostrarCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.FormularioMateriaPrimaViewModel.SeleccionarArchivoMostrarCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.FormularioMateriaPrimaViewModel.SeleccionarArchivoMostrarCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.FormularioMateriaPrimaViewModel.SeleccionarArchivoMostrar"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.FormularioMateriaPrimaViewModel.registrarMateriaPrimaCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.FormularioMateriaPrimaViewModel.RegistrarMateriaPrimaCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.FormularioMateriaPrimaViewModel.RegistrarMateriaPrimaCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.FormularioMateriaPrimaViewModel.RegistrarMateriaPrima"/>.</summary>
+        </member>
+        <member name="T:ANTU.ViewModel.InicioSesionViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:ANTU.ViewModel.InicioSesionViewModel.enviarFormCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.InicioSesionViewModel.EnviarFormCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.InicioSesionViewModel.EnviarFormCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.InicioSesionViewModel.EnviarForm"/>.</summary>
+        </member>
+        <member name="T:ANTU.ViewModel.MateriaPrimaDetalleViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.KgSeguimientoList">
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel._kgSeguimientoList"/>
+        </member>
+        <member name="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel.mostrarDetallesImagenesCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.MostrarDetallesImagenesCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.MostrarDetallesImagenesCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.MateriaPrimaDetalleViewModel.MostrarDetallesImagenes"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel.ventanaFormularioEditarDatosMateriaPrimaCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.VentanaFormularioEditarDatosMateriaPrimaCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.VentanaFormularioEditarDatosMateriaPrimaCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.MateriaPrimaDetalleViewModel.VentanaFormularioEditarDatosMateriaPrima"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel.ventanaFormularioMateriaPrimaDetalleStockCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.VentanaFormularioMateriaPrimaDetalleStockCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.VentanaFormularioMateriaPrimaDetalleStockCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.MateriaPrimaDetalleViewModel.VentanaFormularioMateriaPrimaDetalleStock(System.Object)"/>.</summary>
+        </member>
+        <member name="T:ANTU.ViewModel.MateriaPrimaViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="F:ANTU.ViewModel.MateriaPrimaViewModel.navegarFormularioCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.MateriaPrimaViewModel.NavegarFormularioCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.NavegarFormularioCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.MateriaPrimaViewModel.NavegarFormulario(System.String)"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.MateriaPrimaViewModel.navegarPaginaProductoGestionarCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.MateriaPrimaViewModel.NavegarPaginaProductoGestionarCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.NavegarPaginaProductoGestionarCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.MateriaPrimaViewModel.NavegarPaginaProductoGestionar(System.String)"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.MateriaPrimaViewModel.loadMoreElementsCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.MateriaPrimaViewModel.LoadMoreElementsCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.LoadMoreElementsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.MateriaPrimaViewModel.LoadMoreElements"/>.</summary>
+        </member>
+        <member name="T:ANTU.ViewModel.MostrarImagenesDetalleViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:ANTU.ViewModel.MostrarImagenesDetalleViewModel.ActivarPanelNuevasImagenes">
+            <inheritdoc cref="F:ANTU.ViewModel.MostrarImagenesDetalleViewModel._activarPanelNuevasImagenes"/>
+        </member>
+        <member name="P:ANTU.ViewModel.MostrarImagenesDetalleViewModel.ActivarCheckBoxEliminar">
+            <inheritdoc cref="F:ANTU.ViewModel.MostrarImagenesDetalleViewModel._activarCheckBoxEliminar"/>
+        </member>
+        <member name="P:ANTU.ViewModel.MostrarImagenesDetalleViewModel.ActivarPanelAcciones">
+            <inheritdoc cref="F:ANTU.ViewModel.MostrarImagenesDetalleViewModel._activarPanelAcciones"/>
+        </member>
+        <member name="P:ANTU.ViewModel.MostrarImagenesDetalleViewModel.Data">
+            <inheritdoc cref="F:ANTU.ViewModel.MostrarImagenesDetalleViewModel.data"/>
+        </member>
+        <member name="P:ANTU.ViewModel.MostrarImagenesDetalleViewModel.DataModel">
+            <inheritdoc cref="F:ANTU.ViewModel.MostrarImagenesDetalleViewModel._dataModel"/>
+        </member>
+        <member name="F:ANTU.ViewModel.MostrarImagenesDetalleViewModel.seleccionarOpcionBarraHerramientasCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.MostrarImagenesDetalleViewModel.SeleccionarOpcionBarraHerramientasCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.MostrarImagenesDetalleViewModel.SeleccionarOpcionBarraHerramientasCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.MostrarImagenesDetalleViewModel.SeleccionarOpcionBarraHerramientas"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.MostrarImagenesDetalleViewModel.seleccionarArchivoMostrarCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.MostrarImagenesDetalleViewModel.SeleccionarArchivoMostrarCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.MostrarImagenesDetalleViewModel.SeleccionarArchivoMostrarCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.MostrarImagenesDetalleViewModel.SeleccionarArchivoMostrar"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.MostrarImagenesDetalleViewModel.guardarNuevasImagenesCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.MostrarImagenesDetalleViewModel.GuardarNuevasImagenesCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.MostrarImagenesDetalleViewModel.GuardarNuevasImagenesCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.MostrarImagenesDetalleViewModel.GuardarNuevasImagenes"/>.</summary>
+        </member>
+        <member name="T:ANTU.ViewModel.ParentViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:ANTU.ViewModel.ParentViewModel.DataQuery">
+            <inheritdoc cref="F:ANTU.ViewModel.ParentViewModel.dataQuery"/>
+        </member>
+        <member name="P:ANTU.ViewModel.ParentViewModel.FileManyResults">
+            <inheritdoc cref="F:ANTU.ViewModel.ParentViewModel._fileManyResults"/>
+        </member>
+        <member name="T:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.TipoFormulario">
+            <inheritdoc cref="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel._tipoFormulario"/>
+        </member>
+        <member name="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.Accion">
+            <inheritdoc cref="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel._accion"/>
+        </member>
+        <member name="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.DatosAdicionales">
+            <inheritdoc cref="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.datosAdicionales"/>
+        </member>
+        <member name="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.BotonCancelar">
+            <inheritdoc cref="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel._botonCancelar"/>
+        </member>
+        <member name="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.cerrarPopupCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.CerrarPopupCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.CerrarPopupCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.CerrarPopup(System.Object)"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.ejecutarComandoCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.EjecutarComandoCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.EjecutarComandoCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.EjecutarComando(System.Func{ANTU.Resources.Rest.RestInterfaces.IRestManagement,System.Threading.Tasks.Task})"/>.</summary>
+        </member>
+        <member name="T:ANTU.Resource">
+            <summary>
+            Android Resource Designer class.
+            Exposes the Android Resource designer assembly into the project Namespace.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Button.TextColorTo(Microsoft.Maui.Controls.Button,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_DatePicker.TextColorTo(Microsoft.Maui.Controls.DatePicker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Editor.TextColorTo(Microsoft.Maui.Controls.Editor,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Entry.TextColorTo(Microsoft.Maui.Controls.Entry,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_InputView.TextColorTo(Microsoft.Maui.Controls.InputView,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Label.TextColorTo(Microsoft.Maui.Controls.Label,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Picker.TextColorTo(Microsoft.Maui.Controls.Picker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_RadioButton.TextColorTo(Microsoft.Maui.Controls.RadioButton,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_SearchBar.TextColorTo(Microsoft.Maui.Controls.SearchBar,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_TimePicker.TextColorTo(Microsoft.Maui.Controls.TimePicker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Identificador">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Identificador" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NombreProducto">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NombreProducto" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.RutaImagen">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "RutaImagen" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FechaCreacion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FechaCreacion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NumeroCategorias">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NumeroCategorias" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TotalSacosCatalogo">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TotalSacosCatalogo" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.UltimaProduccion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "UltimaProduccion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.UltimaVenta">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "UltimaVenta" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Categorias">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Categorias" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CostalesTotal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CostalesTotal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Imagenes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Imagenes" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Url">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Url" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Estado">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Estado" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Tipo">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Tipo" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Guid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Guid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Cantidad">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Cantidad" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Kg">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Kg" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Precio">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Precio" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.KgTotal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "KgTotal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PrecioTotal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PrecioTotal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FechaActualizacion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FechaActualizacion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PermitirCargaDatos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PermitirCargaDatos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CatalogoProducto">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CatalogoProducto" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ListadoDataCatalogoProductos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ListadoDataCatalogoProductos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CatalogoProductoFormulario">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CatalogoProductoFormulario" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CatalogoProductoDetalle">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CatalogoProductoDetalle" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.KgSeguimientoList">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "KgSeguimientoList" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ActivarPanelNuevasImagenes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ActivarPanelNuevasImagenes" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ActivarCheckBoxEliminar">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ActivarCheckBoxEliminar" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ActivarPanelAcciones">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ActivarPanelAcciones" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Data">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Data" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DataModel">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DataModel" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DataQuery">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DataQuery" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FileManyResults">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FileManyResults" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TipoFormulario">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TipoFormulario" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Accion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Accion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DatosAdicionales">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DatosAdicionales" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BotonCancelar">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BotonCancelar" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Identificador">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Identificador" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NombreProducto">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NombreProducto" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.RutaImagen">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "RutaImagen" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FechaCreacion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FechaCreacion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NumeroCategorias">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NumeroCategorias" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TotalSacosCatalogo">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TotalSacosCatalogo" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.UltimaProduccion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "UltimaProduccion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.UltimaVenta">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "UltimaVenta" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Categorias">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Categorias" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CostalesTotal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CostalesTotal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Imagenes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Imagenes" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Url">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Url" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Estado">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Estado" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Tipo">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Tipo" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Guid">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Guid" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Cantidad">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Cantidad" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Kg">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Kg" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Precio">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Precio" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.KgTotal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "KgTotal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PrecioTotal">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PrecioTotal" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FechaActualizacion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FechaActualizacion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PermitirCargaDatos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PermitirCargaDatos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CatalogoProducto">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CatalogoProducto" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ListadoDataCatalogoProductos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ListadoDataCatalogoProductos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CatalogoProductoFormulario">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CatalogoProductoFormulario" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CatalogoProductoDetalle">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CatalogoProductoDetalle" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.KgSeguimientoList">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "KgSeguimientoList" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ActivarPanelNuevasImagenes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ActivarPanelNuevasImagenes" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ActivarCheckBoxEliminar">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ActivarCheckBoxEliminar" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ActivarPanelAcciones">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ActivarPanelAcciones" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Data">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Data" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DataModel">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DataModel" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DataQuery">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DataQuery" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FileManyResults">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FileManyResults" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TipoFormulario">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TipoFormulario" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Accion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Accion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DatosAdicionales">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DatosAdicionales" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BotonCancelar">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BotonCancelar" generated properties.</summary>
+        </member>
+    </members>
+</doc>

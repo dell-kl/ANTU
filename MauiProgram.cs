@@ -54,7 +54,7 @@ namespace ANTU
             {
                 //es necesario no poner una diagonal final.
 #if DEBUG
-                client.BaseAddress = new Uri("http://192.168.100.103:30625");
+                client.BaseAddress = new Uri("http://192.168.100.253:30625");
 #endif
             });
 
@@ -70,38 +70,34 @@ namespace ANTU
             Routing.RegisterRoute("Inicio", typeof(Dashboard));
             Routing.RegisterRoute("SnipperComponent", typeof(SnipperComponent));
             Routing.RegisterRoute(nameof(MateriaPrima), typeof(MateriaPrima));
-            Routing.RegisterRoute(nameof(Fabricacion), typeof(Fabricacion));
-            Routing.RegisterRoute(nameof(ProductosListos), typeof(ProductosListos));
             Routing.RegisterRoute("FormularioMateriaPrima", typeof(MateriaPrimaFormulario));
             Routing.RegisterRoute("CatalogoProductoFormulario", typeof(CatalogoProductoFormulario));
             Routing.RegisterRoute("MateriaPrimaDetalle", typeof(MateriaPrimaDetalle));
             Routing.RegisterRoute("MostrarImagenesDetalle", typeof(MostrarImagenesDetalle));
             Routing.RegisterRoute("CatalogoProductoDetalle", typeof(CatalogoProductoDetalle));
+            Routing.RegisterRoute("FabricacionFormulario", typeof(FabricacionFormulario));
 
             builder.Services.AddTransient<InicioSesion>();
             builder.Services.AddTransient<Dashboard>();
-            builder.Services.AddTransient<Fabricacion>();
             builder.Services.AddTransient<MateriaPrima>();
-            builder.Services.AddTransient<ProductosListos>();
             builder.Services.AddTransient<MateriaPrimaFormulario>();
             builder.Services.AddTransient<MateriaPrimaDetalle>();
             builder.Services.AddTransient<MostrarImagenesDetalle>();
             builder.Services.AddTransient<CatalogoProductoFormulario>();
             builder.Services.AddTransient<VentanaPopupService>();
             builder.Services.AddTransient<CatalogoProductoDetalle>();
+            builder.Services.AddTransient<FabricacionFormulario>();
 
             builder.Services.AddTransient<InicioSesionViewModel>();
-            builder.Services.AddTransient<WindowAlertComponent>();
             builder.Services.AddTransient<DashboardViewModel>();
-            builder.Services.AddTransient<FabricacionViewModel>();
             builder.Services.AddTransient<MateriaPrimaViewModel>();
-            builder.Services.AddTransient<ProductosListosViewModel>();
             builder.Services.AddTransient<FormularioMateriaPrimaViewModel>();
             builder.Services.AddTransient<MateriaPrimaDetalleViewModel>();
             builder.Services.AddTransient<MostrarImagenesDetalleViewModel>();
             builder.Services.AddTransient<CatalogoProductoFormularioViewModel>();
             builder.Services.AddTransient<VentanaPopupServiceViewModel>();
             builder.Services.AddTransient<CatalogoProductoDetalleViewModel>();
+            builder.Services.AddTransient<FabricacionFormularioViewModel>();
 
             builder.Services.AddTransient<ImageValueConverter>();
 

@@ -12,8 +12,6 @@ public partial class MateriaPrimaDetalle : ContentPage
         this.materiaPrimaDetalleViewModel = materiaPrimaDetalleViewModel;
 		BindingContext = this.materiaPrimaDetalleViewModel;
         MateriaPrimaSeguimiento.SearchController.AllowFiltering = true;
-
-
     }
 
 
@@ -31,6 +29,19 @@ public partial class MateriaPrimaDetalle : ContentPage
             ShimmerTotalCompra.IsActive = false;
             ShimmerUltimaCompra.IsActive = false;
         }
+
+        if(!this.materiaPrimaDetalleViewModel.MateriaPrimaDetalle.imagenes.Any())
+            this.materiaPrimaDetalleViewModel.MateriaPrimaProducto.rutaImagen = "default_icon.png";
+        else if (
+            (
+            this.materiaPrimaDetalleViewModel.MateriaPrimaProducto!.rutaImagen is "default_icon.png" ||
+            !this.materiaPrimaDetalleViewModel.MateriaPrimaDetalle!.imagenes
+                .Where(item => item.Url == this.materiaPrimaDetalleViewModel.MateriaPrimaProducto!.rutaImagen).Any()
+            )
+            &&
+            this.materiaPrimaDetalleViewModel.MateriaPrimaDetalle!.imagenes.Any()
+            )
+            this.materiaPrimaDetalleViewModel.MateriaPrimaProducto!.rutaImagen = this.materiaPrimaDetalleViewModel.MateriaPrimaDetalle!.imagenes.First().Url;
     }
 
     private void SearchMateriaPrimaSeguimiento_TextChanged(object sender, TextChangedEventArgs e)
@@ -56,4 +67,9 @@ public partial class MateriaPrimaDetalle : ContentPage
         }
     }
 
+
+    protected override bool OnBackButtonPressed()
+    {
+        return this.materiaPrimaDetalleViewModel.ControlarNavegacion();
+    }
 }

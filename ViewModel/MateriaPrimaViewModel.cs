@@ -1,7 +1,10 @@
 ﻿using ANTU.Models;
+using ANTU.Resources.Components.CollectionViewComponents;
+using ANTU.Resources.Components.ControlersComponents;
 using ANTU.Resources.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Core.Extensions;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 
@@ -9,18 +12,26 @@ namespace ANTU.ViewModel
 {
     public partial class MateriaPrimaViewModel : ParentViewModel
     {
-        private ObservableCollection<MateriaPrimaProducto> modeloMateriaPrima = new ObservableCollection<MateriaPrimaProducto>();
-        public ObservableCollection<MateriaPrimaProducto> materiaPrimaProductos { set { SetProperty(ref modeloMateriaPrima, value); } get => modeloMateriaPrima; }
-
+        [ObservableProperty]
         private ObservableCollection<object> datosPresentacion = new ObservableCollection<object>();
-        public ObservableCollection<object> DatosPresentacion { set => SetProperty(ref datosPresentacion, value); get => datosPresentacion; }
 
-        
+        [ObservableProperty]
         private bool buttonUpdateMateriaPrima = true;
-        public bool ButtonUpdateMateriaPrima { set => SetProperty(ref buttonUpdateMateriaPrima, value); get => buttonUpdateMateriaPrima; }
 
+        [ObservableProperty]
         private bool isLazyLoading = false;
-        public bool IsLazyLoading { set => SetProperty(ref isLazyLoading, value); get => isLazyLoading; }
+
+        // Componente CollectionView de Materia Prima
+        [ObservableProperty]
+        private MateriaPrimaCollectionViewComponents? materiaPrimaView = new MateriaPrimaCollectionViewComponents();
+
+        // Componente CollectionView de Catalogo Producto
+        [ObservableProperty]
+        private CatalogoProductoCollectionViewComponents? catalogoProductoView = new CatalogoProductoCollectionViewComponents();
+
+        // Componente Panel de controles e informacion.
+        [ObservableProperty]
+        private PanelComponents panelComponents = new PanelComponents();
 
         public MateriaPrimaViewModel(IRestManagement restManagement, IPopupService popupService) : base(restManagement, popupService) {
         }
@@ -52,6 +63,8 @@ namespace ANTU.ViewModel
                 await base.NavegarFormulario("FormularioMateriaPrima");
             else if (this.DataQuery.Equals("Catalogo"))
                 await base.NavegarFormulario("CatalogoProductoFormulario");
+            else if (this.DataQuery.Equals("Fabricacion"))
+                await base.NavegarFormulario("FabricacionFormulario");
         }
 
 

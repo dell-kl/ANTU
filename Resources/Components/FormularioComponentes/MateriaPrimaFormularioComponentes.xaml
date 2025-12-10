@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ANTU.Resources.Components.FormularioComponentes.MateriaPrimaFormularioComponentes"
+             xmlns:dataForm="clr-namespace:Syncfusion.Maui.DataForm;assembly=Syncfusion.Maui.DataForm">
+    
+    <VerticalStackLayout
+        HorizontalOptions="Fill">
+        <Label
+            HorizontalTextAlignment="Center"
+            FontSize="20"
+            TextColor="#000"
+            FontAttributes="Bold"
+            FontFamily="SegoeUILight"
+            Text="Formulario Materia Prima"
+            Padding="0,0,0,20"/>
+
+        <dataForm:SfDataForm
+            HeightRequest="400"
+            AutoGenerateItems="True"
+            ValidationMode="PropertyChanged"
+            ValidateForm="dataForm_ValidateForm"
+            x:Name="FormularioMateriaPrima"
+            GenerateDataFormItem="FormularioMateriaPrima_GenerateDataFormItem"/>
+
+        <Button
+            x:Name="RegistrarMateriaPrima"
+            Clicked="RegistrarMateriaPrima_Clicked"
+            Text="&#xe784; Enviar"
+            FontFamily="MaterialAssets"
+            FontSize="17"
+            IsEnabled="True"
+            IsVisible="True"
+            TextColor="#000"
+            BackgroundColor="#B2F8A400"/>
+    </VerticalStackLayout>
+</ContentView>

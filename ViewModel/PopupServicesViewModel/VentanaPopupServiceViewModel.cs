@@ -1,5 +1,6 @@
 ﻿
 using ANTU.Models.Dto;
+using ANTU.Resources.Components.FormularioComponentes;
 using ANTU.Resources.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -24,7 +25,12 @@ namespace ANTU.ViewModel.PopupServicesViewModel
         [ObservableProperty]
         private bool _botonCancelar = true;
 
-        
+        [ObservableProperty]
+        private CatalogoProductoFormularioComponentes formularioCatalogoProducto = new CatalogoProductoFormularioComponentes();
+
+        [ObservableProperty]
+        private MateriaPrimaFormularioComponentes materiaPrimaFormulario = new MateriaPrimaFormularioComponentes();
+
         public VentanaPopupServiceViewModel(IPopupService popupService, IRestManagement restManagement) : base(restManagement, popupService)
         {
         }
@@ -37,6 +43,22 @@ namespace ANTU.ViewModel.PopupServicesViewModel
             this.TipoFormulario = (datos[0] as string)!;
             this.Accion = (datos[1] as string)!;
             this.datosAdicionales = datos[2];
+
+            setearBindingContext();
+        }
+
+        public void setearBindingContext()
+        {
+            switch (this.TipoFormulario)
+            {
+                case "CatalogoProductoFormulario":
+                    this.FormularioCatalogoProducto.BindingContext = this;
+                    break;
+
+                case "MateriaPrimaFormulario":
+                    this.MateriaPrimaFormulario.BindingContext = this;
+                    break;
+            }
         }
 
 
@@ -46,9 +68,5 @@ namespace ANTU.ViewModel.PopupServicesViewModel
             await _popupService.ClosePopupAsync<object>(Shell.Current, datos);
         }
 
-        [RelayCommand(AllowConcurrentExecutions = false)]
-        public async Task EjecutarComando(Func<IRestManagement,Task> ejecutarComando) {
-            await ejecutarComando(base._restManagement);
-        }
     }
 }

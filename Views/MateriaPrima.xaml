@@ -3,32 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ANTU.Views.MateriaPrima"
              xmlns:local="clr-namespace:ANTU.ViewModel"
-             xmlns:models="clr-namespace:ANTU.Models"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-             xmlns:shimmer="clr-namespace:Syncfusion.Maui.Shimmer;assembly=Syncfusion.Maui.Core"
              xmlns:droid="clr-namespace:CommunityToolkit.Maui.PlatformConfiguration.AndroidSpecific;assembly=CommunityToolkit.Maui"
-             xmlns:makeup="clr-namespace:ANTU.Resources.MarkeupExtension"
-             xmlns:formulario="clr-namespace:ANTU.Views.Formularios"
-             xmlns:viewModel="clr-namespace:ANTU.ViewModel"
-             xmlns:rest="clr-namespace:ANTU.Resources.Rest"
-             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
-             xmlns:data="clr-namespace:Syncfusion.Maui.DataSource;assembly=Syncfusion.Maui.DataSource"
-             xmlns:valueConverter="clr-namespace:ANTU.Resources.ValueConverter"
-             xmlns:componentView="clr-namespace:ANTU.Resources.Components.CollectionViewComponents"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              Title="Materia Prima"
              xmlns:vm="clr-namespace:ANTU.ViewModel"
              BackgroundColor="#D9D6D2"
              droid:NavigationBar.Style="LightContent"
              x:DataType="local:MateriaPrimaViewModel"
              x:Name="PageMateriaPrima">
-
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <valueConverter:ImageValueConverter x:Key="KeyImageValueConverter"/>
-        </ResourceDictionary>
-    </ContentPage.Resources>
-   
-
+    
     <Shell.TitleView>
         <FlexLayout 
             JustifyContent="SpaceBetween"
@@ -88,87 +71,9 @@
             </LinearGradientBrush>
         </VerticalStackLayout.Background>
 
-        <VerticalStackLayout BackgroundColor="#FFF">
+        <VerticalStackLayout x:Name="ComponenteEntradaDinamico"/>
 
-            <Border 
-                Margin="0,10,0,0"
-                StrokeThickness="0"
-                HorizontalOptions="Center"
-                StrokeShape="RoundRectangle 5,5,5,5"
-                WidthRequest="300">
-                <SearchBar
-                   HeightRequest="40"
-                   TextColor="#fff"
-                   PlaceholderColor="#FFF"
-                   BackgroundColor="#E38919"
-                   FontSize="15"
-                   CancelButtonColor="#FFF"
-                   Placeholder="Busca mas rapido"
-                   TextChanged="SearchBar_TextChanged"
-                   />
-            </Border>
-
-            <FlexLayout JustifyContent="SpaceBetween"
-                        Margin="13,10,13,10">
-                <StackLayout>
-                    <Label 
-                        HorizontalTextAlignment="Center"
-                        FontFamily="SegoeUIBold"
-                        TextColor="#BF7A24"
-                        FontSize="20"
-                        Text="26"/>
-                    <Label
-                        FontSize="14"
-                        FontFamily="SegoeUILight"
-                        TextColor="#8C3623"
-                        Text="Total Items"/>
-                </StackLayout>
-                <StackLayout>
-                    <Label 
-                        FontFamily="SegoeUIBold"
-                        TextColor="#BF7A24"
-                        FontSize="20"
-                        HorizontalTextAlignment="Center"
-                        Text="20"/>
-                    <Label
-                        FontSize="14"
-                        FontFamily="SegoeUILight"
-                        TextColor="#8C3623"
-                        Text="Disponible"/>
-                </StackLayout>
-                <StackLayout>
-                    <Label 
-                        FontFamily="SegoeUIBold"
-                        TextColor="#BF7A24"
-                        FontSize="20"
-                        HorizontalTextAlignment="Center"
-                        Text="4"/>
-                    <Label
-                        FontSize="14"
-                        FontFamily="SegoeUILight"
-                        TextColor="#8C3623"
-                        Text="Stock Bajo"/>
-                </StackLayout>
-                <StackLayout>
-                    <Label 
-                        FontFamily="SegoeUIBold"
-                        TextColor="#BF7A24"
-                        FontSize="20"
-                        HorizontalTextAlignment="Center"
-                        Text="2"/>
-                    <Label
-                        FontSize="14"
-                        FontFamily="SegoeUILight"
-                        TextColor="#8C3623"
-                        Text="Agotado"/>
-                </StackLayout>
-            </FlexLayout>
-        </VerticalStackLayout>
-
-        <VerticalStackLayout 
-            IsVisible="True"
-            x:Name="ListadoDatosPresentacion">
-        </VerticalStackLayout>
-
+        <VerticalStackLayout x:Name="ListadoDatosPresentacion"/>
+        
     </VerticalStackLayout>
 </ContentPage>

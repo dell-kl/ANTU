@@ -1,0 +1,1 @@
+D:\Sistemas\BodegaBalanceado\ANTU\ANTU.csproj;x64

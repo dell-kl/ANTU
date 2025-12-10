@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ANTU.Views.Formularios.FabricacionFormulario"
+             Title="FabricacionFormulario"
+             BackgroundColor="#D9D6D2">
+
+    <Shell.TabBarIsVisible>False</Shell.TabBarIsVisible>
+
+    <Shell.TitleView>
+        <FlexLayout 
+            JustifyContent="SpaceBetween"
+            AlignItems="Center">
+            <StackLayout>
+                <Label 
+                    FontFamily="SegoeUIBold"
+                    FontSize="14"
+                    TextTransform="Uppercase"
+                    Text="Formulario Produccion"/>
+                <Label 
+                    Margin="0,-5,0,0"
+                    FontSize="13"
+                    FontFamily="SegoeUILight"
+                    Text="Inicializa la fabricacion de tu producto"/>
+            </StackLayout>
+
+            <Border
+                Margin="0,0,5,0"
+                Stroke="#4CFFFFFF"
+                StrokeShape="RoundRectangle 5,5,5,5"
+                BackgroundColor="#4CFFFFFF">
+                <Label 
+                    FontSize="26"
+                    Text="⚙️"/>
+            </Border>
+        </FlexLayout>
+    </Shell.TitleView>
+    
+    <VerticalStackLayout>
+        <Border 
+            Margin="10"
+            Stroke="LightGray"
+            StrokeShape="RoundRectangle 5,5,5,5"
+            BackgroundColor="#FFF"
+            Grid.Column="0">
+            <VerticalStackLayout 
+                Margin="10,10,10,0">
+                <Label HorizontalTextAlignment="Start">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                TextColor="#000"
+                                FontSize="25"
+                                FontFamily="MaterialSymbolSharp"
+                                Text="&#xebbc;"/>
+                            <Span
+                                TextColor="#000"
+                                FontSize="20"
+                                FontFamily="SegoeUIBold"
+                                Text=" Nueva Fabricación"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label 
+                        HorizontalTextAlignment="Start"
+                        TextColor="#8C3623"
+                        FontFamily="SegoeUILight"
+                        FontSize="15"
+                        Text="Completa el proceso para crear un nuevo proceso de fabricación"/>
+
+
+                <StackLayout x:Name="EntradaFormularioProduccion"/>
+                
+            </VerticalStackLayout>
+        </Border>
+    </VerticalStackLayout>
+</ContentPage>

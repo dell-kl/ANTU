@@ -10,8 +10,7 @@
              Title="Contenido Generla"
              Shell.BackgroundColor="#BF7A24"
              Shell.NavBarHasShadow="False"
-             Shell.ForegroundColor="#fff"
-    >
+             Shell.ForegroundColor="#fff">
 
     <Shell.FlyoutIsPresented>False</Shell.FlyoutIsPresented>
     <Shell.FlyoutItemIsVisible>False</Shell.FlyoutItemIsVisible>

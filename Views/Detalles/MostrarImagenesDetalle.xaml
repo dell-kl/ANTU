@@ -53,7 +53,7 @@
                 FontFamily="SegoeFluentIcons">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        Command="{Binding Path=BindingContext.SeleccionarArchivoMostrarCommand, Source={x:Reference PaginaContenidoImagenesDetalles}}"
+                        Command="{Binding Path=BindingContext.SeleccionarArchivosCommand, Source={x:Reference PaginaContenidoImagenesDetalles}}"
                         PressedBackgroundColor="#EAA525"/>
                 </Button.Behaviors>
             </Button>
