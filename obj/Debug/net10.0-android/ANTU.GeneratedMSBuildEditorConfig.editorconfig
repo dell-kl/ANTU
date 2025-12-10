@@ -25,13 +25,13 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ANTU
-build_property.ProjectDir = /media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/
+build_property.ProjectDir = /home/dell-kl/Escritorio/SistemaBalanceado/ANTU/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/App.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
@@ -41,7 +41,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/AppShell.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
@@ -51,7 +51,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Resources/Components/CollectionViewComponents/CatalogoProductoCollectionViewComponents.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Resources/Components/CollectionViewComponents/CatalogoProductoCollectionViewComponents.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.CollectionViewComponents.CatalogoProductoCollectionViewComponents.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Components/CollectionViewComponents/CatalogoProductoCollectionViewComponents.xaml
@@ -61,7 +61,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Resources/Components/CollectionViewComponents/MateriaPrimaCollectionViewComponents.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Resources/Components/CollectionViewComponents/MateriaPrimaCollectionViewComponents.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.CollectionViewComponents.MateriaPrimaCollectionViewComponents.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Components/CollectionViewComponents/MateriaPrimaCollectionViewComponents.xaml
@@ -71,7 +71,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Resources/Components/ControlersComponents/PanelComponents.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Resources/Components/ControlersComponents/PanelComponents.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.ControlersComponents.PanelComponents.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Components/ControlersComponents/PanelComponents.xaml
@@ -81,7 +81,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Resources/Components/FormularioComponentes/CatalogoProductoFormularioComponentes.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Resources/Components/FormularioComponentes/CatalogoProductoFormularioComponentes.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.FormularioComponentes.CatalogoProductoFormularioComponentes.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Components/FormularioComponentes/CatalogoProductoFormularioComponentes.xaml
@@ -91,7 +91,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Resources/Components/FormularioComponentes/FabricacionFormularioComponentes.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Resources/Components/FormularioComponentes/FabricacionFormularioComponentes.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.FormularioComponentes.FabricacionFormularioComponentes.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Components/FormularioComponentes/FabricacionFormularioComponentes.xaml
@@ -101,7 +101,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Resources/Components/FormularioComponentes/ImagenesGuardarFormularioComponentes.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Resources/Components/FormularioComponentes/ImagenesGuardarFormularioComponentes.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.FormularioComponentes.ImagenesGuardarFormularioComponentes.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Components/FormularioComponentes/ImagenesGuardarFormularioComponentes.xaml
@@ -111,7 +111,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Resources/Components/FormularioComponentes/MateriaPrimaFormularioComponentes.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Resources/Components/FormularioComponentes/MateriaPrimaFormularioComponentes.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.FormularioComponentes.MateriaPrimaFormularioComponentes.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Components/FormularioComponentes/MateriaPrimaFormularioComponentes.xaml
@@ -121,7 +121,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Resources/Components/PopupComponents/FormularioEmergente.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Resources/Components/PopupComponents/FormularioEmergente.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.PopupComponents.FormularioEmergente.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Components/PopupComponents/FormularioEmergente.xaml
@@ -131,7 +131,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Resources/Components/PopupComponents/VentanaConfirmacionEmergente.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Resources/Components/PopupComponents/VentanaConfirmacionEmergente.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.PopupComponents.VentanaConfirmacionEmergente.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Components/PopupComponents/VentanaConfirmacionEmergente.xaml
@@ -141,7 +141,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Resources/Components/PopupComponents/VentanaEmergente.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Resources/Components/PopupComponents/VentanaEmergente.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.PopupComponents.VentanaEmergente.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Components/PopupComponents/VentanaEmergente.xaml
@@ -151,7 +151,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Resources/Components/PopupComponents/VentanaPopupService.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Resources/Components/PopupComponents/VentanaPopupService.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.PopupComponents.VentanaPopupService.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Components/PopupComponents/VentanaPopupService.xaml
@@ -161,7 +161,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Resources/Components/PopupComponents/VentaSpinnerLoading.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Resources/Components/PopupComponents/VentaSpinnerLoading.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.PopupComponents.VentaSpinnerLoading.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Components/PopupComponents/VentaSpinnerLoading.xaml
@@ -171,7 +171,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Resources/Components/SnipperComponent.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Resources/Components/SnipperComponent.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.SnipperComponent.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Components/SnipperComponent.xaml
@@ -181,7 +181,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Resources/Styles/Colors.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Styles.Colors.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Colors.xaml
@@ -191,7 +191,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Resources/Styles/Styles.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources/Styles/Styles.xaml
@@ -201,7 +201,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Views/Config/Configuracion.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Views/Config/Configuracion.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Config.Configuracion.xaml
 build_metadata.AdditionalFiles.TargetPath = Views/Config/Configuracion.xaml
@@ -211,7 +211,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Views/Contabilidad/InformeContabilidad.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Views/Contabilidad/InformeContabilidad.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Contabilidad.InformeContabilidad.xaml
 build_metadata.AdditionalFiles.TargetPath = Views/Contabilidad/InformeContabilidad.xaml
@@ -221,7 +221,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Views/dashboard/Dashboard.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Views/dashboard/Dashboard.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.dashboard.Dashboard.xaml
 build_metadata.AdditionalFiles.TargetPath = Views/dashboard/Dashboard.xaml
@@ -231,7 +231,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Views/Detalles/CatalogoProductoDetalle.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Views/Detalles/CatalogoProductoDetalle.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Detalles.CatalogoProductoDetalle.xaml
 build_metadata.AdditionalFiles.TargetPath = Views/Detalles/CatalogoProductoDetalle.xaml
@@ -241,7 +241,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Views/Detalles/MateriaPrimaDetalle.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Views/Detalles/MateriaPrimaDetalle.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Detalles.MateriaPrimaDetalle.xaml
 build_metadata.AdditionalFiles.TargetPath = Views/Detalles/MateriaPrimaDetalle.xaml
@@ -251,7 +251,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Views/Detalles/MostrarImagenesDetalle.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Views/Detalles/MostrarImagenesDetalle.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Detalles.MostrarImagenesDetalle.xaml
 build_metadata.AdditionalFiles.TargetPath = Views/Detalles/MostrarImagenesDetalle.xaml
@@ -261,7 +261,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Views/Formularios/CatalogoProductoFormulario.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Views/Formularios/CatalogoProductoFormulario.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Formularios.CatalogoProductoFormulario.xaml
 build_metadata.AdditionalFiles.TargetPath = Views/Formularios/CatalogoProductoFormulario.xaml
@@ -271,7 +271,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Views/Formularios/FabricacionFormulario.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Views/Formularios/FabricacionFormulario.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Formularios.FabricacionFormulario.xaml
 build_metadata.AdditionalFiles.TargetPath = Views/Formularios/FabricacionFormulario.xaml
@@ -281,7 +281,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Views/Formularios/MateriaPrimaFormulario.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Views/Formularios/MateriaPrimaFormulario.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Formularios.MateriaPrimaFormulario.xaml
 build_metadata.AdditionalFiles.TargetPath = Views/Formularios/MateriaPrimaFormulario.xaml
@@ -291,7 +291,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Views/Login/InicioSesion.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Views/Login/InicioSesion.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Login.InicioSesion.xaml
 build_metadata.AdditionalFiles.TargetPath = Views/Login/InicioSesion.xaml
@@ -301,7 +301,7 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[/media/dell-kl/Dell-kl/Sistemas/BodegaBalanceado/ANTU/Views/MateriaPrima.xaml]
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Views/MateriaPrima.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.MateriaPrima.xaml
 build_metadata.AdditionalFiles.TargetPath = Views/MateriaPrima.xaml

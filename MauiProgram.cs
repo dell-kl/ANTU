@@ -54,7 +54,7 @@ namespace ANTU
             {
                 //es necesario no poner una diagonal final.
 #if DEBUG
-                client.BaseAddress = new Uri("http://192.168.100.253:30625");
+                client.BaseAddress = new Uri("http://192.168.100.253:5055");
 #endif
             });
 
