@@ -250,6 +250,9 @@
         <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.CatalogoProductoView">
             <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.catalogoProductoView"/>
         </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.FabricacionView">
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.fabricacionView"/>
+        </member>
         <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.PanelComponents">
             <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.panelComponents"/>
         </member>
@@ -615,6 +618,9 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CatalogoProductoView">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CatalogoProductoView" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FabricacionView">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FabricacionView" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PanelComponents">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PanelComponents" generated properties.</summary>
         </member>
@@ -791,6 +797,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CatalogoProductoView">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CatalogoProductoView" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FabricacionView">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FabricacionView" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PanelComponents">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PanelComponents" generated properties.</summary>

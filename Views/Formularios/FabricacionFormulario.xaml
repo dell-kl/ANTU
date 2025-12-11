@@ -36,13 +36,13 @@
         </FlexLayout>
     </Shell.TitleView>
     
-    <VerticalStackLayout>
-        <Border 
-            Margin="10"
-            Stroke="LightGray"
-            StrokeShape="RoundRectangle 5,5,5,5"
-            BackgroundColor="#FFF"
-            Grid.Column="0">
+    <Border 
+        Margin="10"
+        Stroke="LightGray"
+        StrokeShape="RoundRectangle 5,5,5,5"
+        BackgroundColor="#FFF"
+        Grid.Column="0">
+        <ScrollView>
             <VerticalStackLayout 
                 Margin="10,10,10,0">
                 <Label HorizontalTextAlignment="Start">
@@ -67,11 +67,11 @@
                         FontFamily="SegoeUILight"
                         FontSize="15"
                         Text="Completa el proceso para crear un nuevo proceso de fabricación"/>
-
-
+                
                 <StackLayout x:Name="EntradaFormularioProduccion"/>
                 
             </VerticalStackLayout>
-        </Border>
-    </VerticalStackLayout>
+        </ScrollView>
+    </Border>
+    
 </ContentPage>

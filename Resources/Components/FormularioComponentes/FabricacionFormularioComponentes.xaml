@@ -15,60 +15,65 @@
             TextColor="#000"
             HorizontalOptions="Center" />
 
+        <FlexLayout
+            AlignContent="Center"
+            JustifyContent="SpaceBetween"
+            Margin="0,0,0,10">
+            <Button
+                Text="&#xe72a;"
+                BackgroundColor="Orange"
+                TextColor="#FFF"
+                FontSize="26"
+                x:Name="AgregarEntradasCatalogoProductoUsar"
+                Clicked="AgregarEntradasCatalogoProductoUsar_OnClicked"
+                HorizontalOptions="Start"
+                MaximumWidthRequest="50"
+                FontFamily="MaterialSymbolSharp"/>
+            <Label
+                HorizontalTextAlignment="Center"
+                MaximumWidthRequest="250">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                            TextColor="#000"
+                            Text="Agrega o elimina ENTRADAS en "
+                            FontFamily="SegoeUILight"/>
+                        <Span
+                            FontFamily="SegoeUIBold"
+                            TextColor="#000"
+                            Text="Materia Prima a Usar"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Button
+                Margin="0,0,0,0"
+                Text="&#xf51c;"
+                BackgroundColor="Red"
+                TextColor="#FFF"
+                FontSize="26"
+                x:Name="EliminarEntradasCatalogoProductoUsar"
+                Clicked="EliminarEntradasCatalogoProductoUsar_OnClicked"
+                HorizontalOptions="End"
+                MaximumWidthRequest="50"
+                FontFamily="MaterialSymbolSharp"/>
+
+        </FlexLayout>
+        
         <dataForm:SfDataForm
             HeightRequest="490"
             ValidationMode="PropertyChanged"
-            AutoGenerateItems="False"
+            AutoGenerateItems="True"
             x:Name="FormularioFabricacion"/>
+        
+        <Button
+            x:Name="RegistrarFabricacion"
+            Text="&#xe784; Enviar"
+            FontFamily="MaterialAssets"
+            FontSize="17"
+            IsEnabled="True"
+            IsVisible="True"    
+            TextColor="#000"
+            BackgroundColor="#B2F8A400"/>
 
-        <!--<Label> 
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span
-                        Text="&#xf86e;"
-                        TextColor="#BF7A24"
-                        FontSize="23"
-                        FontFamily="MaterialSymbolSharp"/>
-                    <Span 
-                        TextColor="#BF7A24"
-                        FontAttributes="Bold"
-                        FontFamily="SegoeUILight"
-                        Text=" Seleccionar Catálogo de Producto"/>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <editors:SfComboBox 
-            Stroke="#BF8924"
-            ShowBorder="True"
-            ClearButtonIconColor="#BF7A24"
-            PlaceholderColor="LightGray"
-            DropDownIconColor="#8C3623"
-            Placeholder="Tu producto que vendes"
-            x:Name="seleccionarCatalogoProducto" />
-
-        <Label>
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span
-                        FontSize="23"
-                        TextColor="#BF7A24"
-                        Text="&#xf05b;"
-                        FontFamily="MaterialSymbolSharp"/>
-                    <Span 
-                        TextColor="#BF7A24"
-                        FontAttributes="Bold"
-                        FontFamily="SegoeUILight"
-                        Text=" Seleccionar Datos de Venta"/>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <editors:SfComboBox 
-            Stroke="#BF8924"
-            DropDownIconColor="#8C3623"
-  
-            ClearButtonIconColor="#BF7A24"
-            PlaceholderColor="LightGray"
-            Placeholder="Precio y KG que usas para vender"
-            x:Name="seleccionarDatosVenta" />-->
     </VerticalStackLayout>
 </ContentView>

@@ -21,33 +21,35 @@ public partial class MateriaPrima : ContentPage
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
+        
+        if(!ComponenteEntradaDinamico.Children.Any())
+            ComponenteEntradaDinamico.Add(this.materiaPrimaViewModel.PanelComponents);
 
-        if (!this.materiaPrimaViewModel.DatosPresentacion.Any())
+        if (!ListadoDatosPresentacion.Children.Any())
         {
-            if(!ComponenteEntradaDinamico.Children.Any())
-                ComponenteEntradaDinamico.Add(this.materiaPrimaViewModel.PanelComponents);
-
-            if (this.materiaPrimaViewModel.DataQuery.Equals("MateriaPrima"))
+            switch (this.materiaPrimaViewModel.DataQuery)
             {
-                Titulo.Text = "Materia Prima";
-                Descripcion.Text = "Inventario de productos comprados";
-                this.materiaPrimaViewModel.MateriaPrimaView!.BindingContext = this.materiaPrimaViewModel;
-                ListadoDatosPresentacion.Add(this.materiaPrimaViewModel.MateriaPrimaView);
-            }
-            else if (this.materiaPrimaViewModel.DataQuery.Equals("Catalogo"))
-            {
-                Titulo.Text = "Catalogo Productos";
-                Descripcion.Text = "Listado de todos tus productos que fabricas";
-                this.materiaPrimaViewModel.CatalogoProductoView!.BindingContext = this.materiaPrimaViewModel;
-                ListadoDatosPresentacion.Add(this.materiaPrimaViewModel.CatalogoProductoView);
-            }
-            else if (this.materiaPrimaViewModel.DataQuery.Equals("Fabricacion"))
-            {
-                Titulo.Text = "Fabricacion";
-                Descripcion.Text = "Gestiona la fabricacion de tus productos";
-                await this.materiaPrimaViewModel.DesmontarSpinner();
+                case "MateriaPrima":
+                    Titulo.Text = "Materia Prima";
+                    Descripcion.Text = "Inventario de productos comprados";
+                    this.materiaPrimaViewModel.MateriaPrimaView!.BindingContext = this.materiaPrimaViewModel;
+                    ListadoDatosPresentacion.Add(this.materiaPrimaViewModel.MateriaPrimaView);
+                    break;
+                case "Catalogo":
+                    Titulo.Text = "Catalogo Productos";
+                    Descripcion.Text = "Listado de todos tus productos que fabricas";
+                    this.materiaPrimaViewModel.CatalogoProductoView!.BindingContext = this.materiaPrimaViewModel;
+                    ListadoDatosPresentacion.Add(this.materiaPrimaViewModel.CatalogoProductoView);
+                    break;
+                case "Fabricacion":
+                    Titulo.Text = "Fabricacion";
+                    Descripcion.Text = "Gestiona la fabricacion de tus productos";
+                    this.materiaPrimaViewModel.FabricacionView.BindingContext = this.materiaPrimaViewModel;
+                    ListadoDatosPresentacion.Add(this.materiaPrimaViewModel.FabricacionView);
+                    break;
             }
         }
+    
     }
 
     protected override void OnNavigatedFrom(NavigatedFromEventArgs args)

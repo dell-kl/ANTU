@@ -29,6 +29,10 @@ namespace ANTU.ViewModel
         [ObservableProperty]
         private CatalogoProductoCollectionViewComponents? catalogoProductoView = new CatalogoProductoCollectionViewComponents();
 
+        // Compoenete CollectionView de Fabricacion
+        [ObservableProperty]
+        private FabricacionCollectionViewComponents? fabricacionView = new FabricacionCollectionViewComponents();
+        
         // Componente Panel de controles e informacion.
         [ObservableProperty]
         private PanelComponents panelComponents = new PanelComponents();
