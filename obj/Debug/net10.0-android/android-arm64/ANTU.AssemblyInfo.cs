@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ANTU")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+8e2782626d9091adde8d5ffda09e1579132b94da")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+b7bda9eb8023441e1e1e7df77e3cfdb45afc66e7")]
 [assembly: System.Reflection.AssemblyProductAttribute("ANTU")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ANTU")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -10,6 +10,7 @@ using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
 using Syncfusion.Maui.DataForm;
 using System.Collections.ObjectModel;
+using ANTU.Resources.Utilidades;
 
 namespace ANTU.ViewModel
 {
@@ -77,32 +78,25 @@ namespace ANTU.ViewModel
             try
             {
                 PickOptions options = new PickOptions();
-                //options.FileTypes = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
-                //{
-                //    { DevicePlatform.Android, new[] { "image/jpeg", "image/png" } }, // MIME type
-                //});
                 options.FileTypes = FilePickerFileType.Images;
                 options.PickerTitle = "Selecciona hasta 5 imagenes";
 
                 IEnumerable<FileResult?> resultado = await FilePicker.PickMultipleAsync(options);
-
+                
                 if (resultado is null || (this.FileManyResults.Count()) + (resultado.Count()) > 5)
                     return;
-
+                
                 var fileResultList = resultado.Select(item =>
                 {
                     return new FileResultExtensible(item) { };
                 });
-
+                
                 this.FileManyResults = this.FileManyResults.Concat(fileResultList).ToObservableCollection();
             }
-            catch (Exception ex) {
+            catch (TaskCanceledException ex) {
                 Console.WriteLine(ex.Message);
             }
         }
-
-
-
 
         public virtual void EliminarArchivo(string codigo)
         {
@@ -119,7 +113,6 @@ namespace ANTU.ViewModel
 
             if (archivo != null)
                 this.FileManyResults.Remove(archivo);
-
         }
 
         public virtual void ApplyQueryAttributes(IDictionary<string, object> query)

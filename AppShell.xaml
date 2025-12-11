@@ -26,12 +26,12 @@
     </Shell.Resources>
     
     <ShellContent 
-        IsVisible="True"
+        IsVisible="False"
         ContentTemplate="{DataTemplate inicioSesion:InicioSesion}"
         x:Name="ContentRepresentation"/>
     
     <TabBar
-        IsVisible="False" x:Name="BarraOpciones">
+        IsVisible="True" x:Name="BarraOpciones">
         
         <Tab Title="Home"
             Icon="home.png">
