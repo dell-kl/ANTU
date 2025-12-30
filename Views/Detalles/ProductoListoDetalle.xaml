@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ANTU.Views.Detalles.ProductoListoDetalle"
+             xmlns:ViewModel="clr-namespace:ANTU.ViewModel"
+             xmlns:dataGrid="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             BackgroundColor="#D9D6D2"
+             x:DataType="ViewModel:ProductoListoDetalleViewModel">
+    
+    <Shell.TabBarIsVisible>False</Shell.TabBarIsVisible>
+    
+    <Shell.TitleView>
+        <FlexLayout 
+            AlignItems="Center"
+            JustifyContent="SpaceBetween"
+            Direction="Row">
+            <StackLayout
+                Spacing="0">
+                <Label
+                    Padding="0"
+                    Margin="0"
+                    FontFamily="SegoeUIBold"
+                    FontSize="20"
+                    Text="Fabricacion Realizada"/>
+                <Label
+                    Padding="0,0,0,0"
+                    Margin="0,-6,0,0"
+                    FontFamily="SegoeUILight"
+                    FontSize="15"
+                    Text="Gestiona tu fabricacion "/>
+            </StackLayout>
+            <Button
+                TextColor="#FFF"
+                FontAttributes="Bold"
+                BackgroundColor="#D49724"
+                Margin="0,0,5,0"
+                FontSize="20"
+                HeightRequest="40"
+                Text="&#xee71;"
+                FontFamily="SegoeFluentIcons">
+                <!-- <Button.Behaviors> -->
+                <!--     <toolkit:TouchBehavior -->
+                <!--         Command="{Binding Path=BindingContext.SeleccionarArchivosCommand, Source={x:Reference PaginaContenidoImagenesDetalles}}" -->
+                <!--         PressedBackgroundColor="#EAA525"/> -->
+                <!-- </Button.Behaviors> -->
+            </Button>
+        </FlexLayout>
+    </Shell.TitleView>
+    
+    <VerticalStackLayout>
+        <VerticalStackLayout.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#F0E7DA" Offset=".6" />
+                <GradientStop Color="#FFF" Offset="1" />
+            </LinearGradientBrush>
+        </VerticalStackLayout.Background>
+        
+        <!-- Insertar aqui -->
+        <Border 
+            Margin="10,15,10,10"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            StrokeThickness="0"
+            BackgroundColor="#FFF">
+            <VerticalStackLayout>
+                <FlexLayout Padding="5">
+                    <Image
+                        MaximumHeightRequest="100"
+                        IsAnimationPlaying="True"
+                        Source="producto_listo2.gif"/>
+                    <VerticalStackLayout>
+                        <Label 
+                            FontFamily="SegoeUIBold"
+                            TextColor="#000"
+                            FontSize="20"
+                            Text="{Binding Produccion.NombreProducto}"/>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        TextColor="#BF8924"
+                                        FontFamily="SegoeUILight"
+                                        Text="KG Usado en Produccion: "/>
+                                    <Span
+                                        TextColor="#8C3623"
+                                        FontFamily="SegoeUIBold"
+                                        Text="{Binding Produccion.KgTotal, StringFormat='KG {0:F2}'}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        TextColor="#BF8924"
+                                        FontFamily="SegoeUILight"
+                                        Text="Fecha Final Fabricacion: "/>
+                                    <Span
+                                        TextColor="#8C3623"
+                                        FontFamily="SegoeUIBold"
+                                        Text="{Binding Produccion.Actualizado, StringFormat='{0:dd/MM/yyyy}'}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span
+                                        TextColor="#BF8924"
+                                        FontFamily="SegoeUILight"
+                                        Text="Tipo Producto: "/>
+                                    <Span
+                                        TextColor="#8C3623"
+                                        FontFamily="SegoeUIBold"
+                                        Text="{Binding Produccion.TipoProduccion}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </VerticalStackLayout>
+                </FlexLayout>
+            </VerticalStackLayout>
+        </Border>
+        <Border 
+            Margin="10,15,10,10"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            StrokeThickness="0"
+            BackgroundColor="#FFF">
+            <VerticalStackLayout>
+                
+            </VerticalStackLayout>
+        </Border>
+        <Border 
+            Margin="10,15,10,10"
+            StrokeShape="RoundRectangle 10,10,10,10"
+            StrokeThickness="0"
+            BackgroundColor="#FFF">
+            <VerticalStackLayout>
+                
+            </VerticalStackLayout>
+        </Border>
+    </VerticalStackLayout>
+</ContentPage>

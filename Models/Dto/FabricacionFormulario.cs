@@ -1,51 +1,96 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Syncfusion.Maui.DataForm;
 using System.ComponentModel.DataAnnotations;
 
 namespace ANTU.Models.Dto
 {
-    public partial class FabricacionFormulario : ObservableObject
+    public partial class FabricacionFormulario : INotifyPropertyChanged, ICustomTypeDescriptor
     {
-        private string catalogoProducto;
-        private string dataVenta;
-        private DatosVentaCatalogoProducto datosVentaCatalogoProducto;
+        public event PropertyChangedEventHandler? PropertyChanged;
         
-        [DataFormDisplayOptions(ValidMessage = "Opcion escogida exitosamente")]
-        [Required(ErrorMessage = "Es necesario escoger una opcion")]
-        [Display(Name = "Catalogo Producto", Prompt = "Escoge el producto que vendes", GroupName = "Catalogo Producto")]
-        public string CatalogoProducto  {  set => SetProperty(ref catalogoProducto, value); get => catalogoProducto; } 
+        private readonly Dictionary<string, object?> _values = new Dictionary<string, object?>();
         
-        [DataFormDisplayOptions(ValidMessage = "Opcion escogida exitosamente")]
-        [Required(ErrorMessage = "Es necesario escoger una categoria de venta que tiene el producto")]
-        [Display(Name = "Categoria Venta", Prompt = "Escoge precio/kg para vender", GroupName = "Catalogo Producto")]
-        public string DataVenta { set => SetProperty(ref dataVenta, value); get => dataVenta; }
-
-
-        public DatosVentaCatalogoProducto DatosVentaCatalogoProducto
+        private void NotifyPropertyChanged(string propName)
         {
-            set => SetProperty(ref datosVentaCatalogoProducto, value);
-            get => datosVentaCatalogoProducto;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
-    }
-
-    public partial class DatosVentaCatalogoProducto : ObservableObject
-    {
-        private string materiaPrima;
-        private double cantidad;
         
-        [Display(Name = "Materia Prima", Prompt = "Tu materia prima a usar", GroupName = "Materia Prima a Usar")]
-        public string MateriaPrima
+        public void SetValue(string name, object value)
         {
-            set => SetProperty(ref materiaPrima, value);
-            get => materiaPrima;
+            _values[name] = value;
+            NotifyPropertyChanged(name);
         }
-        [Display(Name = "Cantidad (KG)", Prompt = "cantidad a usar en KG", GroupName = "Materia Prima a Usar")]
-        public double Cantidad
+
+        public object? GetValue(string name)
         {
-            set => SetProperty(ref cantidad, value);
-            get => cantidad;
+            _values.TryGetValue(name, out object? valor);
+            return valor;
+        }
+        
+        public AttributeCollection GetAttributes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string? GetClassName() => null;
+        public string? GetComponentName() => null;
+        public TypeConverter? GetConverter() => null;
+        public EventDescriptor? GetDefaultEvent() => null;
+        public PropertyDescriptor? GetDefaultProperty() => null;
+        public object? GetEditor(Type editorBaseType) => null;
+        
+        public EventDescriptorCollection GetEvents()
+        {
+            throw new NotImplementedException();
+        }
+
+        public EventDescriptorCollection GetEvents(Attribute[]? attributes)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PropertyDescriptorCollection GetProperties()
+        {
+            throw new NotImplementedException();
+        }
+
+        public PropertyDescriptorCollection GetProperties(Attribute[]? attributes)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object? GetPropertyOwner(PropertyDescriptor? pd) => null;
+        
+        private class DynamicPropertyDescriptor : PropertyDescriptor
+        {
+            private readonly Type _propertyType;
+
+            public DynamicPropertyDescriptor(string name, Type propertyType)
+                : base(name, null)
+            {
+                _propertyType = propertyType;
+            }
+
+            public override Type ComponentType => typeof(FabricacionFormulario);
+            public override bool IsReadOnly => false;
+            public override Type PropertyType => _propertyType;
+
+            public override bool CanResetValue(object component) => false;
+            public override object? GetValue(object component)
+            {
+                var de = component as FabricacionFormulario;
+                return de?.GetValue(Name);
+            }
+
+            public override void ResetValue(object component) { }
+            public override void SetValue(object component, object? value)
+            {
+                var de = component as FabricacionFormulario;
+                de?.SetValue(Name, value);
+            }
+
+            public override bool ShouldSerializeValue(object component) => false;
         }
     }
 }

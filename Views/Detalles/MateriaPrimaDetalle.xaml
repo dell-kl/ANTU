@@ -172,7 +172,7 @@
                                         FontSize="25"
                                         HorizontalTextAlignment="Center"
                                         TextColor="#BF7A24"
-                                        Text="{Binding MateriaPrimaDetalle.KgTotal, StringFormat='{0} KG'}"/>
+                                        Text="{Binding MateriaPrimaDetalle.KgTotal, StringFormat='{0:F2} KG'}"/>
                                     <Label
                                         HorizontalTextAlignment="Center">
                                         <Label.FormattedText>
@@ -367,7 +367,7 @@
                                         FontSize="25"
                                         HorizontalTextAlignment="Center"
                                         TextColor="#BF7A24"
-                                        Text="{Binding MateriaPrimaDetalle.UltimaCompra, StringFormat='${0}'}"/>
+                                        Text="{Binding MateriaPrimaDetalle.UltimaCompra, StringFormat='${0:F2}'}"/>
                                     <Label
                                         HorizontalTextAlignment="Center">
                                         <Label.FormattedText>

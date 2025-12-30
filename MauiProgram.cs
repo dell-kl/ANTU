@@ -14,6 +14,7 @@ using Microsoft.Extensions.Http.Resilience;
 using ANTU.Views.Detalles;
 using ANTU.Resources.ValueConverter;
 using ANTU.Resources.Components.PopupComponents;
+using ANTU.ViewModel.ComponentsViewModel;
 using ANTU.ViewModel.PopupServicesViewModel;
 
 namespace ANTU
@@ -76,6 +77,7 @@ namespace ANTU
             Routing.RegisterRoute("MostrarImagenesDetalle", typeof(MostrarImagenesDetalle));
             Routing.RegisterRoute("CatalogoProductoDetalle", typeof(CatalogoProductoDetalle));
             Routing.RegisterRoute("FabricacionFormulario", typeof(FabricacionFormulario));
+            Routing.RegisterRoute("ProductoListoDetalle", typeof(ProductoListoDetalle));
 
             builder.Services.AddTransient<InicioSesion>();
             builder.Services.AddTransient<Dashboard>();
@@ -98,7 +100,11 @@ namespace ANTU
             builder.Services.AddTransient<VentanaPopupServiceViewModel>();
             builder.Services.AddTransient<CatalogoProductoDetalleViewModel>();
             builder.Services.AddTransient<FabricacionFormularioViewModel>();
-
+            builder.Services.AddTransient<ProductoListoDetalleViewModel>();
+            
+            builder.Services.AddTransient<FabricacionCollectionViewComponentsViewModel>();
+            builder.Services.AddTransient<ProductosListosCollectionViewComponentsViewModel>();
+            
             builder.Services.AddTransient<ImageValueConverter>();
 
             builder.Services.AddTransient<IRestManagement, RestManagement>();

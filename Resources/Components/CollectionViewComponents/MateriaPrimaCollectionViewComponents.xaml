@@ -168,7 +168,7 @@
                                             TextColor="#8C3623"
                                             FontFamily="SegoeUILight"
                                             FontSize="12"
-                                            Text="{Binding fechaUltimaCompra, StringFormat='Ult.Comp {0:yyyy/mm/dd}'}"/>
+                                            Text="{Binding fechaUltimaCompra, StringFormat='Ult.Comp {0:dd/MM/yyyy}'}"/>
                                 </StackLayout>
                                 <StackLayout>
                                     <Label
@@ -184,7 +184,7 @@
                                                         FontFamily="SegoeUILight" Text="Cant.Total: "/>
                                                 <Span 
                                                         TextColor="#D49724"
-                                                        FontFamily="SegoeUIBold" Text="{Binding kgTotal, StringFormat='{0} KG'}"/>
+                                                        FontFamily="SegoeUIBold" Text="{Binding kgTotal, StringFormat='{0:F2} KG'}"/>
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>

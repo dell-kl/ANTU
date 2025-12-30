@@ -60,9 +60,8 @@
         </FlexLayout>
         
         <dataForm:SfDataForm
-            HeightRequest="490"
-            ValidationMode="PropertyChanged"
-            AutoGenerateItems="True"
+            HeightRequest="525"
+            CommitMode="PropertyChanged"
             x:Name="FormularioFabricacion"/>
         
         <Button
@@ -71,6 +70,7 @@
             FontFamily="MaterialAssets"
             FontSize="17"
             IsEnabled="True"
+            Clicked="RegistrarFabricacion_OnClicked"
             IsVisible="True"    
             TextColor="#000"
             BackgroundColor="#B2F8A400"/>

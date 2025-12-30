@@ -2,6 +2,243 @@
 
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:valueConverter="clr-namespace:ANTU.Resources.ValueConverter"
+             xmlns:toolbar="clr-namespace:Syncfusion.Maui.Toolbar;assembly=Syncfusion.Maui.Toolbar"
+             xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+             xmlns:shimmer="clr-namespace:Syncfusion.Maui.Shimmer;assembly=Syncfusion.Maui.Core"
+             xmlns:models="clr-namespace:ANTU.Models"
+             x:Name="ContentViewProduccion"
              x:Class="ANTU.Resources.Components.CollectionViewComponents.FabricacionCollectionViewComponents">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <valueConverter:ImageValueConverter x:Key="KeyImageValueConverter"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
     
+    <VerticalStackLayout>
+        <toolbar:SfToolbar 
+            x:Name="ToolbarProduccion"
+            Tapped="ToolbarProduccion_OnTapped"
+            SelectionMode="Single"
+            BackgroundColor="#33F08500"
+            IsVisible="{Binding Path=BindingContext.PanelVisible, Source={x:Reference ContentViewProduccion}}"
+            HeightRequest="56">
+            <toolbar:SfToolbar.Items>
+                <toolbar:SfToolbarItem 
+                    Text="Cancelar"
+                    Size="80,40"
+                    Name="Cancelar">
+                    <toolbar:SfToolbarItem.Icon>
+                        <FontImageSource Glyph="&#xe70b;"
+                        FontFamily="MaterialAssets" />
+                    </toolbar:SfToolbarItem.Icon>
+                </toolbar:SfToolbarItem>
+                <toolbar:SfToolbarItem 
+                    Text="Fabricados"
+                    Size="80,40"
+                    Name="Fabricados">
+                    <toolbar:SfToolbarItem.Icon>
+                        <FontImageSource Glyph="&#xe75b;"
+                        FontFamily="MaterialAssets" />
+                    </toolbar:SfToolbarItem.Icon>
+                </toolbar:SfToolbarItem>
+                <toolbar:SfToolbarItem 
+                    Text="Todos"
+                    Size="80,40"
+                    Name="Todos">
+                    <toolbar:SfToolbarItem.Icon>
+                        <FontImageSource Glyph="&#xe739;"
+                                         FontFamily="MaterialAssets" />
+                    </toolbar:SfToolbarItem.Icon>
+                </toolbar:SfToolbarItem>
+            </toolbar:SfToolbar.Items>
+        </toolbar:SfToolbar>
+        <syncfusion:SfListView
+                ItemSize="150"
+                Margin="0,10,0,0"
+                Padding="0,0,0,10"
+                AllowSwiping="True"
+                EnableFadeOnScroll="True"
+                SelectionMode="Multiple"
+                SelectionGesture="LongPress"
+                x:Name="ListadoProduccion"
+                MaximumHeightRequest="550"
+                SelectionBackground="Transparent"
+                MinimumHeightRequest="550"
+                VerticalOptions="End"
+                SelectionChanging="ListadoProduccion_OnSelectionChanging"
+                ItemsSourceChangeCachingStrategy="RecycleItems"
+                LoadMoreOption="AutoOnScroll"
+                LoadMorePosition="End"
+                CanMaintainScrollPosition="True"
+                IsLazyLoading="{Binding Path=BindingContext.IsLazyLoading, Source={x:Reference ContentViewProduccion}}"
+                LoadMoreCommand="{Binding Path=BindingContext.LoadMoreElementsCommand, Source={x:Reference ContentViewProduccion}}"
+                ItemsSource="{Binding Path=BindingContext.DatosPresentacion, Source={x:Reference ContentViewProduccion} }">
+                <syncfusion:SfListView.EndSwipeTemplate>
+                    <DataTemplate x:DataType="models:Produccion" x:Name="StartSwipeTemplate">
+                        <Grid 
+                                RowSpacing="5"
+                                Margin="0,0,10,15"
+                                RowDefinitions="*,*">
+
+                            <Border
+                                    StrokeShape="RoundRectangle 5,5,5,5"
+                                    BackgroundColor="LightGreen"
+                                    StrokeThickness="0"
+                                    Grid.Row="0"
+                                    x:Name="ContenedorBotonEditar"
+                                    ClassId="{Binding Identificador}"
+                                    >
+
+                                <Border.Behaviors>
+                                    <toolkit:TouchBehavior
+                                        x:Name="BotonEditar"
+                                        IsEnabled="True"
+                                        CommandParameter="{Binding Path=ClassId,Source={x:Reference ContenedorBotonEditar}}"
+                                        Command="{Binding Path=BindingContext.NavegarPaginaProductoGestionarCommand, Source={x:Reference ContentViewProduccion}}"
+                                        PressedBackgroundColor="#59F059"/>
+                                </Border.Behaviors>
+
+                                <StackLayout 
+                                        MaximumWidthRequest="50"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center">
+                                    <Image 
+                                        HeightRequest="35"
+                                        WidthRequest="35"
+                                        Source="edit.png" />
+                                </StackLayout>
+                            </Border>
+
+                            <Border
+                                    StrokeShape="RoundRectangle 5,5,5,5"
+                                    BackgroundColor="LightPink"
+                                    StrokeThickness="0"
+                                    Grid.Row="1">
+
+                                <Border.Behaviors>
+                                    <toolkit:TouchBehavior
+                                        PressedBackgroundColor="#EB7486"/>
+                                </Border.Behaviors>
+
+                                <StackLayout
+                                        MaximumWidthRequest="50"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center">
+                                    <Image Grid.Column="0"
+                                        Grid.Row="0"
+                                        BackgroundColor="Transparent"
+                                        HeightRequest="35"
+                                        WidthRequest="35"
+                                        Source="trash.png" />
+                                </StackLayout>
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </syncfusion:SfListView.EndSwipeTemplate>
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Produccion">
+                        <Border 
+                                Margin="10,0,10,15"
+                                Padding="10,10,5,10"
+                                Stroke="Transparent"
+                                BackgroundColor="#FFF"
+                                StrokeShape="RoundRectangle 5,5,5,5">
+
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="*">
+                                <Border
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Stroke="LightGray"
+                                        StrokeThickness="1"
+                                        BackgroundColor="#FFF"
+                                        StrokeShape="RoundRectangle 10,10,10,10">
+                                    <AbsoluteLayout>
+                                        
+                                        <Image
+                                            AbsoluteLayout.LayoutBounds="10,0,120,120"
+                                            Aspect="Fill"
+                                            IsAnimationPlaying="True"
+                                            BackgroundColor="#FFF"
+                                            Source="produccion.gif"/>
+                                        <buttons:SfCheckBox
+                                            TextColor="red"
+                                            FontFamily="SegoeUILight"
+                                            FontAttributes="Bold"
+                                            FontSize="15"
+                                            AbsoluteLayout.LayoutBounds="0,-80,200,200"
+                                            IsChecked="{Binding EstadoFabricado}"
+                                            IsVisible="{Binding Path=BindingContext.CheckBoxEstado, Source={x:Reference ContentViewProduccion} }"
+                                            UncheckedColor="#E39400"
+                                            CheckedColor="#E39400"
+                                            Text="Seleccionar..."
+                                            x:Name="checkBoxProduccion"/>
+                                    </AbsoluteLayout>
+                                </Border>
+
+                                <VerticalStackLayout
+                                    Grid.Column="1"
+                                    Grid.Row="0"
+                                    Padding="5,0,0,0">
+                                    <Label 
+                                        FontFamily="SegoeUIBold"
+                                        FontAttributes="Bold"
+                                        TextColor="Black"
+                                        FontSize="17"
+                                        WidthRequest="150"
+                                        LineBreakMode="TailTruncation"
+                                        TextTransform="Lowercase"
+                                        Text="{Binding NombreProducto}"/>
+                                    
+                                    <Border 
+                                        Margin="0,5,0,0"
+                                        MinimumWidthRequest="80"
+                                        Padding="4,1,4,1"
+                                        StrokeShape="RoundRectangle 5,5,5,5"
+                                        HorizontalOptions="Start"
+                                        Stroke="Transparent"
+                                        BackgroundColor="Orange"
+                                    >
+                                        <Label
+                                            HorizontalTextAlignment="Center"
+                                            FontFamily="SegoeUIBold"
+                                            FontAttributes="Bold"
+                                            TextColor="White"
+                                            FontSize="13"
+                                            Text="{Binding TipoProduccion}"/>
+                                    </Border>
+                                        
+                                    <Label 
+                                        Margin="0,5,0,0"
+                                        TextColor="#8C3623"
+                                        FontFamily="SegoeUILight"
+                                        FontSize="12"
+                                        Text="{Binding Creado, StringFormat='Fech.Creacion {0:dd/MM/yyyy}'}"/>
+                                    <Label
+                                        Padding="2,0,0,0"
+                                        FontAttributes="Bold"
+                                        FontFamily="SegoeUILight"
+                                    >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span 
+                                                    TextColor="#D49724"
+                                                    FontAttributes="Bold"
+                                                    FontFamily="SegoeUILight" Text="KG.Produccion: "/>
+                                                <Span 
+                                                    TextColor="#D49724"
+                                                    FontFamily="SegoeUIBold" Text="{Binding KgTotal, StringFormat='{0:F2} KG'}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+            </syncfusion:SfListView>
+    </VerticalStackLayout>
+
 </ContentView>

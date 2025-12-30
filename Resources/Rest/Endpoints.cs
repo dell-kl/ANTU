@@ -28,5 +28,17 @@
             "/api/CatalogProduct/DetalleDataCatalogProduct", // este ruta debe estar asi sin diagonal en el principio
             "/api/CatalogProduct/EliminarImagenes"
         };
+
+        public static string[] ENDPOINTS_FABRICACION =
+        {
+            "/api/Manufacture/ObtenerDatosProduccion",
+            "/api/Manufacture/GenerarProduccion",
+            "/api/Manufacture/EditarEstadoProduccion"
+        };
+
+        public static string[] ENDPOINTS_FABRICADO =
+        {
+            "/api/ReadyProductsManufactured/GetProductionReady"
+        };
     }
 }

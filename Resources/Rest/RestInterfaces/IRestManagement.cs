@@ -6,6 +6,10 @@
 
         public ICatalogoProducto CatalogoProduct { get;  }
 
+        public IProduccion Produccion { get;  }
+        
+        public IFabricado Fabricado { get;  }
+        
         public HttpClient httpClient { set; get; }
     }
 }

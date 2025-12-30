@@ -32,6 +32,9 @@ namespace ANTU.ViewModel
         // Compoenete CollectionView de Fabricacion
         [ObservableProperty]
         private FabricacionCollectionViewComponents? fabricacionView = new FabricacionCollectionViewComponents();
+
+        [ObservableProperty]
+        private ProductosListosCollectionViewComponents productosListosView = new ProductosListosCollectionViewComponents();
         
         // Componente Panel de controles e informacion.
         [ObservableProperty]
@@ -51,12 +54,26 @@ namespace ANTU.ViewModel
                      if (listadoMateriaPrima.Any()) 
                         DatosPresentacion = DatosPresentacion.Union(listadoMateriaPrima).ToObservableCollection();
                  }
-                else if (this.DataQuery.Equals("Catalogo"))
-                {
+                 else if (this.DataQuery.Equals("Catalogo"))
+                 {
                     IEnumerable<CatalogoProducto> listadoCatalogo = await _restManagement.CatalogoProduct.Get(this.DatosPresentacion.Count().ToString());
                     if (listadoCatalogo.Any())
                         DatosPresentacion = DatosPresentacion.Union(listadoCatalogo).ToObservableCollection();
-                }
+                 }
+                 else if (this.DataQuery.Equals("Fabricacion"))
+                 {
+                     IEnumerable<Produccion> listadoProduccion = await _restManagement.Produccion.Get(this.DatosPresentacion.Count().ToString());
+                     
+                    if (listadoProduccion.Any())
+                        DatosPresentacion = DatosPresentacion.Union(listadoProduccion).ToObservableCollection();
+                 }
+                 else if (this.DataQuery.Equals("ProductosListos"))
+                 {
+                     IEnumerable<Produccion> listadoProduccion = await _restManagement.Fabricado.Get(this.DatosPresentacion.Count().ToString());
+                     
+                     if (listadoProduccion.Any())
+                         DatosPresentacion = DatosPresentacion.Union(listadoProduccion).ToObservableCollection();
+                 }
             }
         }   
 
@@ -82,6 +99,12 @@ namespace ANTU.ViewModel
             {
                 paginaShell = "CatalogoProductoDetalle";
                 registro = this.DatosPresentacion.Where(item => (item as CatalogoProducto)!.Identificador.Equals(guid)).First();
+            }
+            else if (DataQuery.Equals("ProductosListos"))
+            {
+                paginaShell = "ProductoListoDetalle";
+                registro = this.DatosPresentacion
+                    .Where(item => item is Produccion produccion && produccion.Identificador.Equals(guid)).First();
             }
             else
             {

@@ -119,7 +119,7 @@ namespace ANTU.ViewModel
         {
             if (query.ContainsKey("DataQuery"))
                 this.DataQuery = query["DataQuery"];
-        }
+        }   
 
         public virtual async Task MostrarVentanaConfirmacion(
             string titulo,

@@ -68,7 +68,7 @@
                         FontSize="15"
                         Text="Completa el proceso para crear un nuevo proceso de fabricación"/>
                 
-                <StackLayout x:Name="EntradaFormularioProduccion"/>
+                <StackLayout x:Name="FormularioProduccionVista"/>
                 
             </VerticalStackLayout>
         </ScrollView>

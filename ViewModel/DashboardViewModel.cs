@@ -11,10 +11,8 @@ namespace ANTU.ViewModel
     {
 
         public DashboardViewModel(IRestManagement IRestManagement, IPopupService popupService) : base(IRestManagement, popupService) { 
-        
         }
-
-
+        
         [RelayCommand(AllowConcurrentExecutions = false)]
         public override async Task NavegarFormulario(string objeto)
         {

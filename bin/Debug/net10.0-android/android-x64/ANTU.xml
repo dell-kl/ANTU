@@ -58,15 +58,6 @@
         <member name="P:ANTU.Models.DataImage.Tipo">
             <inheritdoc cref="F:ANTU.Models.DataImage._tipo"/>
         </member>
-        <member name="T:ANTU.Models.Dto.MateriaPrimaFormularioDto">
-            <inheritdoc/>
-        </member>
-        <member name="F:ANTU.Models.Dto.MateriaPrimaFormularioDto._limpiarFormularioCommand">
-            <summary>The backing field for <see cref="P:ANTU.Models.Dto.MateriaPrimaFormularioDto.limpiarFormularioCommand"/>.</summary>
-        </member>
-        <member name="P:ANTU.Models.Dto.MateriaPrimaFormularioDto.limpiarFormularioCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand"/> instance wrapping <see cref="M:ANTU.Models.Dto.MateriaPrimaFormularioDto.limpiarFormulario"/>.</summary>
-        </member>
         <member name="T:ANTU.Models.KgSeguimiento">
             <inheritdoc/>
         </member>
@@ -93,6 +84,33 @@
         </member>
         <member name="P:ANTU.Models.KgSeguimiento.FechaActualizacion">
             <inheritdoc cref="F:ANTU.Models.KgSeguimiento.fechaActualizacion"/>
+        </member>
+        <member name="T:ANTU.Models.Produccion">
+            <inheritdoc/>
+        </member>
+        <member name="P:ANTU.Models.Produccion.Identificador">
+            <inheritdoc cref="F:ANTU.Models.Produccion.identificador"/>
+        </member>
+        <member name="P:ANTU.Models.Produccion.EstadoFabricado">
+            <inheritdoc cref="F:ANTU.Models.Produccion.estadoFabricado"/>
+        </member>
+        <member name="P:ANTU.Models.Produccion.KgTotal">
+            <inheritdoc cref="F:ANTU.Models.Produccion.kgTotal"/>
+        </member>
+        <member name="P:ANTU.Models.Produccion.Estado">
+            <inheritdoc cref="F:ANTU.Models.Produccion.estado"/>
+        </member>
+        <member name="P:ANTU.Models.Produccion.NombreProducto">
+            <inheritdoc cref="F:ANTU.Models.Produccion.nombreProducto"/>
+        </member>
+        <member name="P:ANTU.Models.Produccion.TipoProduccion">
+            <inheritdoc cref="F:ANTU.Models.Produccion.tipoProduccion"/>
+        </member>
+        <member name="P:ANTU.Models.Produccion.Creado">
+            <inheritdoc cref="F:ANTU.Models.Produccion.creado"/>
+        </member>
+        <member name="P:ANTU.Models.Produccion.Actualizado">
+            <inheritdoc cref="F:ANTU.Models.Produccion.actualizado"/>
         </member>
         <member name="T:ANTU.ViewModel.CatalogoProductoDetalleViewModel">
             <inheritdoc/>
@@ -138,11 +156,8 @@
             <inheritdoc/>
             <inheritdoc/>
         </member>
-        <member name="F:ANTU.ViewModel.CatalogoProductoFormularioViewModel.seleccionarArchivoMostrarCommand">
-            <summary>The backing field for <see cref="P:ANTU.ViewModel.CatalogoProductoFormularioViewModel.SeleccionarArchivoMostrarCommand"/>.</summary>
-        </member>
-        <member name="P:ANTU.ViewModel.CatalogoProductoFormularioViewModel.SeleccionarArchivoMostrarCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.CatalogoProductoFormularioViewModel.SeleccionarArchivoMostrar"/>.</summary>
+        <member name="P:ANTU.ViewModel.CatalogoProductoFormularioViewModel.CatalogoProductoFormularioComponenets">
+            <inheritdoc cref="F:ANTU.ViewModel.CatalogoProductoFormularioViewModel.catalogoProductoFormularioComponenets"/>
         </member>
         <member name="F:ANTU.ViewModel.CatalogoProductoFormularioViewModel.eliminarArchivoPruebaCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.CatalogoProductoFormularioViewModel.EliminarArchivoPruebaCommand"/>.</summary>
@@ -156,6 +171,22 @@
         <member name="P:ANTU.ViewModel.CatalogoProductoFormularioViewModel.RegistarCatalogoProductoCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.CatalogoProductoFormularioViewModel.RegistarCatalogoProducto(ANTU.Models.Dto.CatalogoProductoFormulario)"/>.</summary>
         </member>
+        <member name="T:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.CheckBoxEstado">
+            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.checkBoxEstado"/>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.PanelVisible">
+            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.panelVisible"/>
+        </member>
+        <member name="F:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.generarCambioEstadoProductosFabricacionCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.GenerarCambioEstadoProductosFabricacionCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.GenerarCambioEstadoProductosFabricacionCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.GenerarCambioEstadoProductosFabricacion"/>.</summary>
+        </member>
         <member name="T:ANTU.ViewModel.DashboardViewModel">
             <inheritdoc/>
         </member>
@@ -165,21 +196,36 @@
         <member name="P:ANTU.ViewModel.DashboardViewModel.NavegarFormularioCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.DashboardViewModel.NavegarFormulario(System.String)"/>.</summary>
         </member>
+        <member name="T:ANTU.ViewModel.FabricacionFormularioViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="P:ANTU.ViewModel.FabricacionFormularioViewModel.CatalogoProductos">
+            <inheritdoc cref="F:ANTU.ViewModel.FabricacionFormularioViewModel.catalogoProductos"/>
+        </member>
+        <member name="P:ANTU.ViewModel.FabricacionFormularioViewModel.MateriaPrimaProductos">
+            <inheritdoc cref="F:ANTU.ViewModel.FabricacionFormularioViewModel.materiaPrimaProductos"/>
+        </member>
+        <member name="P:ANTU.ViewModel.FabricacionFormularioViewModel.FabricacionFormularioComponentes">
+            <inheritdoc cref="F:ANTU.ViewModel.FabricacionFormularioViewModel.fabricacionFormularioComponentes"/>
+        </member>
         <member name="T:ANTU.ViewModel.FormularioMateriaPrimaViewModel">
             <inheritdoc/>
             <inheritdoc/>
         </member>
-        <member name="F:ANTU.ViewModel.FormularioMateriaPrimaViewModel.seleccionarArchivoMostrarCommand">
-            <summary>The backing field for <see cref="P:ANTU.ViewModel.FormularioMateriaPrimaViewModel.SeleccionarArchivoMostrarCommand"/>.</summary>
+        <member name="P:ANTU.ViewModel.FormularioMateriaPrimaViewModel.StatusButtonTrash">
+            <inheritdoc cref="F:ANTU.ViewModel.FormularioMateriaPrimaViewModel.statusButtonTrash"/>
         </member>
-        <member name="P:ANTU.ViewModel.FormularioMateriaPrimaViewModel.SeleccionarArchivoMostrarCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.FormularioMateriaPrimaViewModel.SeleccionarArchivoMostrar"/>.</summary>
+        <member name="P:ANTU.ViewModel.FormularioMateriaPrimaViewModel.StatusButtonPickerFile">
+            <inheritdoc cref="F:ANTU.ViewModel.FormularioMateriaPrimaViewModel.statusButtonPickerFile"/>
+        </member>
+        <member name="P:ANTU.ViewModel.FormularioMateriaPrimaViewModel.MateriaPrimaFormularioComponentes">
+            <inheritdoc cref="F:ANTU.ViewModel.FormularioMateriaPrimaViewModel.materiaPrimaFormularioComponentes"/>
         </member>
         <member name="F:ANTU.ViewModel.FormularioMateriaPrimaViewModel.registrarMateriaPrimaCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.FormularioMateriaPrimaViewModel.RegistrarMateriaPrimaCommand"/>.</summary>
         </member>
         <member name="P:ANTU.ViewModel.FormularioMateriaPrimaViewModel.RegistrarMateriaPrimaCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.FormularioMateriaPrimaViewModel.RegistrarMateriaPrima"/>.</summary>
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.FormularioMateriaPrimaViewModel.RegistrarMateriaPrima(ANTU.Models.Dto.MateriaPrimaFormulario)"/>.</summary>
         </member>
         <member name="T:ANTU.ViewModel.InicioSesionViewModel">
             <inheritdoc/>
@@ -195,6 +241,21 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.MateriaPrimaProducto">
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel.materiaPrimaProducto"/>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.MateriaPrimaDetalle">
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel.materiaPrimaDetalle"/>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.MateriaPrimaDetalleFormulario">
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel.materiaPrimaDetalleFormulario"/>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.Formulario">
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel.formulario"/>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.MateriaPrimaEditarDataFormulario">
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel.materiaPrimaEditarDataFormulario"/>
         </member>
         <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.KgSeguimientoList">
             <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel._kgSeguimientoList"/>
@@ -221,6 +282,28 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.DatosPresentacion">
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.datosPresentacion"/>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.ButtonUpdateMateriaPrima">
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.buttonUpdateMateriaPrima"/>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.IsLazyLoading">
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.isLazyLoading"/>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.MateriaPrimaView">
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.materiaPrimaView"/>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.CatalogoProductoView">
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.catalogoProductoView"/>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.FabricacionView">
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.fabricacionView"/>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.PanelComponents">
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.panelComponents"/>
         </member>
         <member name="F:ANTU.ViewModel.MateriaPrimaViewModel.navegarFormularioCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.MateriaPrimaViewModel.NavegarFormularioCommand"/>.</summary>
@@ -267,11 +350,11 @@
         <member name="P:ANTU.ViewModel.MostrarImagenesDetalleViewModel.SeleccionarOpcionBarraHerramientasCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.MostrarImagenesDetalleViewModel.SeleccionarOpcionBarraHerramientas"/>.</summary>
         </member>
-        <member name="F:ANTU.ViewModel.MostrarImagenesDetalleViewModel.seleccionarArchivoMostrarCommand">
-            <summary>The backing field for <see cref="P:ANTU.ViewModel.MostrarImagenesDetalleViewModel.SeleccionarArchivoMostrarCommand"/>.</summary>
+        <member name="F:ANTU.ViewModel.MostrarImagenesDetalleViewModel.seleccionarArchivosCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.MostrarImagenesDetalleViewModel.SeleccionarArchivosCommand"/>.</summary>
         </member>
-        <member name="P:ANTU.ViewModel.MostrarImagenesDetalleViewModel.SeleccionarArchivoMostrarCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.MostrarImagenesDetalleViewModel.SeleccionarArchivoMostrar"/>.</summary>
+        <member name="P:ANTU.ViewModel.MostrarImagenesDetalleViewModel.SeleccionarArchivosCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.MostrarImagenesDetalleViewModel.SeleccionarArchivos"/>.</summary>
         </member>
         <member name="F:ANTU.ViewModel.MostrarImagenesDetalleViewModel.guardarNuevasImagenesCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.MostrarImagenesDetalleViewModel.GuardarNuevasImagenesCommand"/>.</summary>
@@ -281,6 +364,7 @@
         </member>
         <member name="T:ANTU.ViewModel.ParentViewModel">
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:ANTU.ViewModel.ParentViewModel.DataQuery">
             <inheritdoc cref="F:ANTU.ViewModel.ParentViewModel.dataQuery"/>
@@ -288,8 +372,16 @@
         <member name="P:ANTU.ViewModel.ParentViewModel.FileManyResults">
             <inheritdoc cref="F:ANTU.ViewModel.ParentViewModel._fileManyResults"/>
         </member>
+        <member name="P:ANTU.ViewModel.ParentViewModel.ImagenesGuardarFormularioComponentes">
+            <inheritdoc cref="F:ANTU.ViewModel.ParentViewModel.imagenesGuardarFormularioComponentes"/>
+        </member>
+        <member name="F:ANTU.ViewModel.ParentViewModel.seleccionarArchivoMostrarCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ParentViewModel.SeleccionarArchivoMostrarCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.ParentViewModel.SeleccionarArchivoMostrarCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ParentViewModel.SeleccionarArchivoMostrar"/>.</summary>
+        </member>
         <member name="T:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel">
-            <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
         </member>
@@ -305,17 +397,17 @@
         <member name="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.BotonCancelar">
             <inheritdoc cref="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel._botonCancelar"/>
         </member>
+        <member name="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.FormularioCatalogoProducto">
+            <inheritdoc cref="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.formularioCatalogoProducto"/>
+        </member>
+        <member name="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.MateriaPrimaFormulario">
+            <inheritdoc cref="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.materiaPrimaFormulario"/>
+        </member>
         <member name="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.cerrarPopupCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.CerrarPopupCommand"/>.</summary>
         </member>
         <member name="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.CerrarPopupCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.CerrarPopup(System.Object)"/>.</summary>
-        </member>
-        <member name="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.ejecutarComandoCommand">
-            <summary>The backing field for <see cref="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.EjecutarComandoCommand"/>.</summary>
-        </member>
-        <member name="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.EjecutarComandoCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.EjecutarComando(System.Func{ANTU.Resources.Rest.RestInterfaces.IRestManagement,System.Threading.Tasks.Task})"/>.</summary>
         </member>
         <member name="T:ANTU.Resource">
             <summary>
@@ -512,6 +604,18 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FechaActualizacion">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FechaActualizacion" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.EstadoFabricado">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "EstadoFabricado" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TipoProduccion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TipoProduccion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Creado">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Creado" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Actualizado">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Actualizado" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PermitirCargaDatos">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PermitirCargaDatos" generated properties.</summary>
         </member>
@@ -527,8 +631,71 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CatalogoProductoDetalle">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CatalogoProductoDetalle" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CatalogoProductoFormularioComponenets">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CatalogoProductoFormularioComponenets" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CheckBoxEstado">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CheckBoxEstado" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PanelVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PanelVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CatalogoProductos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CatalogoProductos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MateriaPrimaProductos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MateriaPrimaProductos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FabricacionFormularioComponentes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FabricacionFormularioComponentes" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.StatusButtonTrash">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "StatusButtonTrash" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.StatusButtonPickerFile">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "StatusButtonPickerFile" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MateriaPrimaFormularioComponentes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MateriaPrimaFormularioComponentes" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MateriaPrimaProducto">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MateriaPrimaProducto" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MateriaPrimaDetalle">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MateriaPrimaDetalle" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MateriaPrimaDetalleFormulario">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MateriaPrimaDetalleFormulario" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Formulario">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Formulario" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MateriaPrimaEditarDataFormulario">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MateriaPrimaEditarDataFormulario" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.KgSeguimientoList">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "KgSeguimientoList" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DatosPresentacion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DatosPresentacion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ButtonUpdateMateriaPrima">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ButtonUpdateMateriaPrima" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsLazyLoading">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsLazyLoading" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MateriaPrimaView">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MateriaPrimaView" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CatalogoProductoView">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CatalogoProductoView" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FabricacionView">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FabricacionView" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PanelComponents">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PanelComponents" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ActivarPanelNuevasImagenes">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ActivarPanelNuevasImagenes" generated properties.</summary>
@@ -551,6 +718,9 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FileManyResults">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FileManyResults" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ImagenesGuardarFormularioComponentes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ImagenesGuardarFormularioComponentes" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TipoFormulario">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TipoFormulario" generated properties.</summary>
         </member>
@@ -562,6 +732,12 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BotonCancelar">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BotonCancelar" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FormularioCatalogoProducto">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FormularioCatalogoProducto" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MateriaPrimaFormulario">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MateriaPrimaFormulario" generated properties.</summary>
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
             <summary>
@@ -632,6 +808,18 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FechaActualizacion">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FechaActualizacion" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.EstadoFabricado">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "EstadoFabricado" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TipoProduccion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TipoProduccion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Creado">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Creado" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Actualizado">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Actualizado" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PermitirCargaDatos">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PermitirCargaDatos" generated properties.</summary>
         </member>
@@ -647,8 +835,71 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CatalogoProductoDetalle">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CatalogoProductoDetalle" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CatalogoProductoFormularioComponenets">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CatalogoProductoFormularioComponenets" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CheckBoxEstado">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CheckBoxEstado" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PanelVisible">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PanelVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CatalogoProductos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CatalogoProductos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MateriaPrimaProductos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MateriaPrimaProductos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FabricacionFormularioComponentes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FabricacionFormularioComponentes" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.StatusButtonTrash">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "StatusButtonTrash" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.StatusButtonPickerFile">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "StatusButtonPickerFile" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MateriaPrimaFormularioComponentes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MateriaPrimaFormularioComponentes" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MateriaPrimaProducto">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MateriaPrimaProducto" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MateriaPrimaDetalle">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MateriaPrimaDetalle" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MateriaPrimaDetalleFormulario">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MateriaPrimaDetalleFormulario" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Formulario">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Formulario" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MateriaPrimaEditarDataFormulario">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MateriaPrimaEditarDataFormulario" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.KgSeguimientoList">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "KgSeguimientoList" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DatosPresentacion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DatosPresentacion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ButtonUpdateMateriaPrima">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ButtonUpdateMateriaPrima" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsLazyLoading">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsLazyLoading" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MateriaPrimaView">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MateriaPrimaView" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CatalogoProductoView">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CatalogoProductoView" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FabricacionView">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FabricacionView" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PanelComponents">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PanelComponents" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ActivarPanelNuevasImagenes">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ActivarPanelNuevasImagenes" generated properties.</summary>
@@ -671,6 +922,9 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FileManyResults">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FileManyResults" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ImagenesGuardarFormularioComponentes">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ImagenesGuardarFormularioComponentes" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TipoFormulario">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TipoFormulario" generated properties.</summary>
         </member>
@@ -682,6 +936,12 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BotonCancelar">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BotonCancelar" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FormularioCatalogoProducto">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FormularioCatalogoProducto" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MateriaPrimaFormulario">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MateriaPrimaFormulario" generated properties.</summary>
         </member>
     </members>
 </doc>

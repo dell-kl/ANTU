@@ -46,14 +46,13 @@ public partial class MostrarImagenesDetalle : ContentPage
         if ( type is "Cancelar" )
         {
             this.mostrarImagenesDetalleViewModel.ActivarCheckBoxEliminar = false;
-            this.mostrarImagenesDetalleViewModel.ActivarPanelAcciones = false;
+            this.mostrarImagenesDetalleViewModel.ActivarPanelAcciones = false;                                                                                                                                                                              
             ListadoImagenesView.SelectionGesture = Syncfusion.Maui.ListView.TouchGesture.LongPress;
-        }
+        }   
 
         if ( type is "Eliminar" )
         {
             //mostrar opcion u alerta, de si esta seguro que va a realizar la eliminacion.
-
 
             //ejecutar peticion.
             if (this.mostrarImagenesDetalleViewModel.SeleccionarOpcionBarraHerramientasCommand.CanExecute(""))
