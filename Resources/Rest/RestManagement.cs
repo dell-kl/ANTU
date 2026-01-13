@@ -4,17 +4,20 @@ namespace ANTU.Resources.Rest
 {
     public class RestManagement : IRestManagement
     {
-        public IMateriaPrima MateriaPrima { get; set; }
-
         private readonly IHttpClientFactory _httpClientFactory;
-
         public HttpClient httpClient { set; get; }
+        
+        
+        public IMateriaPrima MateriaPrima { get; set; }
 
         public ICatalogoProducto CatalogoProduct { set; get; }
         
         public IProduccion Produccion { set; get; }
 
         public IFabricado Fabricado { set; get; }
+        
+        public IProduccionLista ProduccionLista { set; get; }
+        
         
         public RestManagement(IHttpClientFactory httpClientFactory)
         {
@@ -26,6 +29,7 @@ namespace ANTU.Resources.Rest
             this.CatalogoProduct = new CatalogoProductoRest(httpClient);
             this.Produccion = new ProduccionRest(httpClient);
             this.Fabricado = new FabricadoRest(httpClient);
+            this.ProduccionLista = new ProduccionListaRest(httpClient);
         }
 
     }

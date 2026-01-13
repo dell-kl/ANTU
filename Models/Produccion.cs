@@ -8,6 +8,9 @@ public partial class Produccion : ObservableObject
     private string identificador = "";
 
     [ObservableProperty] 
+    private string identificadorCatalogoProduccion = "";
+    
+    [ObservableProperty] 
     private bool estadoFabricado = false;
     
     [ObservableProperty]

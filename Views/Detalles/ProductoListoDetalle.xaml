@@ -4,8 +4,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ANTU.Views.Detalles.ProductoListoDetalle"
              xmlns:ViewModel="clr-namespace:ANTU.ViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:dataGrid="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:dataForm="clr-namespace:Syncfusion.Maui.DataForm;assembly=Syncfusion.Maui.DataForm"
+             xmlns:pager="clr-namespace:Syncfusion.Maui.DataGrid.DataPager;assembly=Syncfusion.Maui.DataGrid"
              BackgroundColor="#D9D6D2"
+             x:Name="ProductosListosView"
              x:DataType="ViewModel:ProductoListoDetalleViewModel">
     
     <Shell.TabBarIsVisible>False</Shell.TabBarIsVisible>
@@ -37,106 +41,144 @@
                 Margin="0,0,5,0"
                 FontSize="20"
                 HeightRequest="40"
-                Text="&#xee71;"
-                FontFamily="SegoeFluentIcons">
-                <!-- <Button.Behaviors> -->
-                <!--     <toolkit:TouchBehavior -->
-                <!--         Command="{Binding Path=BindingContext.SeleccionarArchivosCommand, Source={x:Reference PaginaContenidoImagenesDetalles}}" -->
-                <!--         PressedBackgroundColor="#EAA525"/> -->
-                <!-- </Button.Behaviors> -->
+                Text="&#xe5ca;"
+                FontFamily="MaterialSymbolSharp">
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                        Command="{Binding Path=BindingContext.FinalizarEmpaquetadoFabricadoCommand, Source={x:Reference ProductosListosView}}"
+                        PressedBackgroundColor="#EAA525"/>
+                </Button.Behaviors>
             </Button>
         </FlexLayout>
     </Shell.TitleView>
     
-    <VerticalStackLayout>
-        <VerticalStackLayout.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Color="#F0E7DA" Offset=".6" />
-                <GradientStop Color="#FFF" Offset="1" />
-            </LinearGradientBrush>
-        </VerticalStackLayout.Background>
-        
-        <!-- Insertar aqui -->
-        <Border 
-            Margin="10,15,10,10"
-            StrokeShape="RoundRectangle 10,10,10,10"
-            StrokeThickness="0"
-            BackgroundColor="#FFF">
-            <VerticalStackLayout>
-                <FlexLayout Padding="5">
-                    <Image
-                        MaximumHeightRequest="100"
-                        IsAnimationPlaying="True"
-                        Source="producto_listo2.gif"/>
-                    <VerticalStackLayout>
-                        <Label 
-                            FontFamily="SegoeUIBold"
-                            TextColor="#000"
-                            FontSize="20"
-                            Text="{Binding Produccion.NombreProducto}"/>
-                        <Label>
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span
-                                        TextColor="#BF8924"
-                                        FontFamily="SegoeUILight"
-                                        Text="KG Usado en Produccion: "/>
-                                    <Span
-                                        TextColor="#8C3623"
-                                        FontFamily="SegoeUIBold"
-                                        Text="{Binding Produccion.KgTotal, StringFormat='KG {0:F2}'}"/>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Label>
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span
-                                        TextColor="#BF8924"
-                                        FontFamily="SegoeUILight"
-                                        Text="Fecha Final Fabricacion: "/>
-                                    <Span
-                                        TextColor="#8C3623"
-                                        FontFamily="SegoeUIBold"
-                                        Text="{Binding Produccion.Actualizado, StringFormat='{0:dd/MM/yyyy}'}"/>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                        <Label>
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span
-                                        TextColor="#BF8924"
-                                        FontFamily="SegoeUILight"
-                                        Text="Tipo Producto: "/>
-                                    <Span
-                                        TextColor="#8C3623"
-                                        FontFamily="SegoeUIBold"
-                                        Text="{Binding Produccion.TipoProduccion}"/>
-                                </FormattedString>
-                            </Label.FormattedText>
-                        </Label>
-                    </VerticalStackLayout>
-                </FlexLayout>
-            </VerticalStackLayout>
-        </Border>
-        <Border 
-            Margin="10,15,10,10"
-            StrokeShape="RoundRectangle 10,10,10,10"
-            StrokeThickness="0"
-            BackgroundColor="#FFF">
-            <VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout>
+            <VerticalStackLayout.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#F0E7DA" Offset=".6" />
+                    <GradientStop Color="#FFF" Offset="1" />
+                </LinearGradientBrush>
+            </VerticalStackLayout.Background>
+            
+            <!-- Insertar aqui -->
+            <Border 
+                Margin="10,15,10,10"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                StrokeThickness="0"
+                BackgroundColor="#FFF">
+                <Border.Shadow>
+                    <Shadow
+                        Brush="#BF7A24"
+                        Offset="-1,0"
+                        Radius="9"
+                        Opacity=".7"/>
+                </Border.Shadow>
                 
-            </VerticalStackLayout>
-        </Border>
-        <Border 
-            Margin="10,15,10,10"
-            StrokeShape="RoundRectangle 10,10,10,10"
-            StrokeThickness="0"
-            BackgroundColor="#FFF">
-            <VerticalStackLayout>
-                
-            </VerticalStackLayout>
-        </Border>
-    </VerticalStackLayout>
+                <VerticalStackLayout>
+                    <FlexLayout Padding="5">
+                        <Image
+                            MaximumHeightRequest="100"
+                            IsAnimationPlaying="True"
+                            Source="producto_listo2.gif"/>
+                        <VerticalStackLayout>
+                            <Label 
+                                FontFamily="SegoeUIBold"
+                                TextColor="#000"
+                                FontSize="20"
+                                Text="{Binding Produccion.NombreProducto}"/>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            TextColor="#BF8924"
+                                            FontFamily="SegoeUILight"
+                                            Text="KG Usado en Produccion: "/>
+                                        <Span
+                                            TextColor="#8C3623"
+                                            FontFamily="SegoeUIBold"
+                                            Text="{Binding Produccion.KgTotal, StringFormat='KG {0:F2}'}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            TextColor="#BF8924"
+                                            FontFamily="SegoeUILight"
+                                            Text="Fecha Final Fabricacion: "/>
+                                        <Span
+                                            TextColor="#8C3623"
+                                            FontFamily="SegoeUIBold"
+                                            Text="{Binding Produccion.Actualizado, StringFormat='{0:dd/MM/yyyy}'}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            TextColor="#BF8924"
+                                            FontFamily="SegoeUILight"
+                                            Text="Tipo Producto: "/>
+                                        <Span
+                                            TextColor="#8C3623"
+                                            FontFamily="SegoeUIBold"
+                                            Text="{Binding Produccion.TipoProduccion}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </VerticalStackLayout>
+                    </FlexLayout>
+                </VerticalStackLayout>
+            </Border>
+            
+            <Border 
+                Margin="10,0,10,10"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                StrokeThickness="0"
+                BackgroundColor="#FFF">
+                <VerticalStackLayout x:Name="ContenedorVistaFormulario"/>
+            </Border>
+            
+            <Border 
+                Margin="10,0,10,10"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                StrokeThickness="0"
+                BackgroundColor="#FFF">
+                <VerticalStackLayout>
+                    <dataGrid:SfDataGrid
+                        ColumnWidthMode="Fill"
+                        SortingMode="Single"
+                        HeightRequest="480"
+                        x:Name="GridProductosListos"
+                        ItemsSource="{Binding Source={x:Reference PagerProduccionLista}, Path=PagedSource}">
+                        <dataGrid:SfDataGrid.Columns>
+                            <dataGrid:DataGridNumericColumn 
+                                HeaderText="N.Costales" 
+                                Format="0 Costales"
+                                MappingName="NumeroCostales"/>
+                            <dataGrid:DataGridTextColumn  
+                                HeaderText="Seccion"
+                                MappingName="Descripcion"/>
+                        </dataGrid:SfDataGrid.Columns>
+                    </dataGrid:SfDataGrid>
+                    
+                    <pager:SfDataPager
+                        PageSize="9"
+                        NumericButtonCount="0"
+                        DisplayMode="FirstLastPreviousNext"
+                        PageChanging="PagerProduccionLista_OnPageChanging"
+                        Source="{Binding ListadoProductosListos}"
+                        x:Name="PagerProduccionLista">
+                        <pager:SfDataPager.DefaultStyle>
+                            <pager:DataPagerStyle
+                                NavigationButtonIconColor="#BF7A24"/>
+                        </pager:SfDataPager.DefaultStyle>
+                    </pager:SfDataPager>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

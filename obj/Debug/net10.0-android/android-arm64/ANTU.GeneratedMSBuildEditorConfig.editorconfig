@@ -141,6 +141,16 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
+[/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Resources/Components/FormularioComponentes/ProductosListosFormularioComponentes.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.FormularioComponentes.ProductosListosFormularioComponentes.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources/Components/FormularioComponentes/ProductosListosFormularioComponentes.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources/Components/FormularioComponentes/ProductosListosFormularioComponentes.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
 [/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Resources/Components/PopupComponents/FormularioEmergente.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.PopupComponents.FormularioEmergente.xaml

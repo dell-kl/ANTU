@@ -45,11 +45,8 @@ public partial class CatalogoProductoDetalle : ContentPage
 
     private async void PaginationCatalogProduct_PageChanging(object sender, Syncfusion.Maui.DataGrid.DataPager.PageChangingEventArgs e)
     {
-        if (e.NewPageIndex is 1)
-        {
+        if (( e.NewPageIndex > e.OldPageIndex ) || (e.NewPageIndex is 0 && e.OldPageIndex is 0) )
             await this.ViewModel.cargarDatos();
-            PaginationCatalogProduct.MoveToNextPage();
-        }
     }
 
 

@@ -38,7 +38,11 @@
 
         public static string[] ENDPOINTS_FABRICADO =
         {
-            "/api/ReadyProductsManufactured/GetProductionReady"
+            "/api/ReadyProductsManufactured/GetProductionReady",
+            "/api/ReadyProductsManufactured/MostrarOpcionesDataCatalogProduct",
+            "/api/ReadyProductsManufactured/IngresarProductosABodega",
+            "/api/ReadyProductsManufactured/ObtenerInformacionProductosBodega",
+            "/api/ReadyProductsManufactured/ActualizarEstadoFabricado"
         };
     }
 }

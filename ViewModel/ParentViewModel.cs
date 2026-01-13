@@ -21,6 +21,9 @@ namespace ANTU.ViewModel
 
         [ObservableProperty]
         private object dataQuery = new object();
+        
+        [ObservableProperty]
+        private object _dataFormSource = new object();
 
         [ObservableProperty]
         private ObservableCollection<FileResultExtensible> _fileManyResults = new ObservableCollection<FileResultExtensible>();
@@ -49,6 +52,8 @@ namespace ANTU.ViewModel
             await MostrarSpinner();
             await Shell.Current.GoToAsync(objeto, queryParameters);
         }
+        
+        public virtual async Task RegresarFormulario(ShellNavigationQueryParameters queryParameters = null) => await Shell.Current.GoToAsync("..", queryParameters);
 
         public async Task MostrarSpinner()
         {

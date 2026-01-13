@@ -10,6 +10,8 @@
         
         public IFabricado Fabricado { get;  }
         
+        public IProduccionLista ProduccionLista { get;  }
+        
         public HttpClient httpClient { set; get; }
     }
 }

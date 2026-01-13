@@ -58,13 +58,8 @@ public partial class MateriaPrimaDetalle : ContentPage
 
     private async void PaginationKgSeguimiento_PageChanging(object sender, Syncfusion.Maui.DataGrid.DataPager.PageChangingEventArgs e)
     {
-        if ( e.NewPageIndex is 1 )
-        {
+        if ( ( e.NewPageIndex > e.OldPageIndex ) || (e.NewPageIndex is 0 && e.OldPageIndex is 0)  )
             await this.materiaPrimaDetalleViewModel.cargarDatosKgSeguimiento();
-
-            PaginationKgSeguimiento.MoveToNextPage();
-
-        }
     }
 
 

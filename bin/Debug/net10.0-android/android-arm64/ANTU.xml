@@ -43,6 +43,15 @@
         <member name="P:ANTU.Models.CatalogoProductoDetalle.Imagenes">
             <inheritdoc cref="F:ANTU.Models.CatalogoProductoDetalle.imagenes"/>
         </member>
+        <member name="T:ANTU.Models.DataCatalogoProduccion">
+            <inheritdoc/>
+        </member>
+        <member name="P:ANTU.Models.DataCatalogoProduccion.IdentificadorDataCatalogProducion">
+            <inheritdoc cref="F:ANTU.Models.DataCatalogoProduccion.identificadorDataCatalogProducion"/>
+        </member>
+        <member name="P:ANTU.Models.DataCatalogoProduccion.TextoDescriptivo">
+            <inheritdoc cref="F:ANTU.Models.DataCatalogoProduccion.textoDescriptivo"/>
+        </member>
         <member name="T:ANTU.Models.DataImage">
             <inheritdoc/>
         </member>
@@ -91,6 +100,9 @@
         <member name="P:ANTU.Models.Produccion.Identificador">
             <inheritdoc cref="F:ANTU.Models.Produccion.identificador"/>
         </member>
+        <member name="P:ANTU.Models.Produccion.IdentificadorCatalogoProduccion">
+            <inheritdoc cref="F:ANTU.Models.Produccion.identificadorCatalogoProduccion"/>
+        </member>
         <member name="P:ANTU.Models.Produccion.EstadoFabricado">
             <inheritdoc cref="F:ANTU.Models.Produccion.estadoFabricado"/>
         </member>
@@ -111,6 +123,15 @@
         </member>
         <member name="P:ANTU.Models.Produccion.Actualizado">
             <inheritdoc cref="F:ANTU.Models.Produccion.actualizado"/>
+        </member>
+        <member name="T:ANTU.Models.ProductosListos">
+            <inheritdoc/>
+        </member>
+        <member name="P:ANTU.Models.ProductosListos.NumeroCostales">
+            <inheritdoc cref="F:ANTU.Models.ProductosListos.numeroCostales"/>
+        </member>
+        <member name="P:ANTU.Models.ProductosListos.Descripcion">
+            <inheritdoc cref="F:ANTU.Models.ProductosListos.descripcion"/>
         </member>
         <member name="T:ANTU.ViewModel.CatalogoProductoDetalleViewModel">
             <inheritdoc/>
@@ -381,6 +402,9 @@
         <member name="P:ANTU.ViewModel.ParentViewModel.DataQuery">
             <inheritdoc cref="F:ANTU.ViewModel.ParentViewModel.dataQuery"/>
         </member>
+        <member name="P:ANTU.ViewModel.ParentViewModel.DataFormSource">
+            <inheritdoc cref="F:ANTU.ViewModel.ParentViewModel._dataFormSource"/>
+        </member>
         <member name="P:ANTU.ViewModel.ParentViewModel.FileManyResults">
             <inheritdoc cref="F:ANTU.ViewModel.ParentViewModel._fileManyResults"/>
         </member>
@@ -423,9 +447,35 @@
         </member>
         <member name="T:ANTU.ViewModel.ProductoListoDetalleViewModel">
             <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:ANTU.ViewModel.ProductoListoDetalleViewModel.Produccion">
             <inheritdoc cref="F:ANTU.ViewModel.ProductoListoDetalleViewModel.produccion"/>
+        </member>
+        <member name="P:ANTU.ViewModel.ProductoListoDetalleViewModel.ProductosListosFormulario">
+            <inheritdoc cref="F:ANTU.ViewModel.ProductoListoDetalleViewModel.productosListosFormulario"/>
+        </member>
+        <member name="P:ANTU.ViewModel.ProductoListoDetalleViewModel.ListadoProductosListos">
+            <inheritdoc cref="F:ANTU.ViewModel.ProductoListoDetalleViewModel.listadoProductosListos"/>
+        </member>
+        <member name="P:ANTU.ViewModel.ProductoListoDetalleViewModel.ListadoDataCatalogoProduccions">
+            <inheritdoc cref="F:ANTU.ViewModel.ProductoListoDetalleViewModel.listadoDataCatalogoProduccions"/>
+        </member>
+        <member name="P:ANTU.ViewModel.ProductoListoDetalleViewModel.FormularioProductosListosView">
+            <inheritdoc cref="F:ANTU.ViewModel.ProductoListoDetalleViewModel.formularioProductosListosView"/>
+        </member>
+        <member name="F:ANTU.ViewModel.ProductoListoDetalleViewModel.finalizarEmpaquetadoFabricadoCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ProductoListoDetalleViewModel.FinalizarEmpaquetadoFabricadoCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.ProductoListoDetalleViewModel.FinalizarEmpaquetadoFabricadoCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ProductoListoDetalleViewModel.FinalizarEmpaquetadoFabricado"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.ProductoListoDetalleViewModel.registrarProductosABodegaCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ProductoListoDetalleViewModel.RegistrarProductosABodegaCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.ProductoListoDetalleViewModel.RegistrarProductosABodegaCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ProductoListoDetalleViewModel.RegistrarProductosABodega"/>.</summary>
         </member>
         <member name="T:ANTU.Resource">
             <summary>
@@ -592,6 +642,12 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Imagenes">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Imagenes" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IdentificadorDataCatalogProducion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IdentificadorDataCatalogProducion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.TextoDescriptivo">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "TextoDescriptivo" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Url">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Url" generated properties.</summary>
         </member>
@@ -622,6 +678,9 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FechaActualizacion">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FechaActualizacion" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IdentificadorCatalogoProduccion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IdentificadorCatalogoProduccion" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.EstadoFabricado">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "EstadoFabricado" generated properties.</summary>
         </member>
@@ -633,6 +692,12 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Actualizado">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Actualizado" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NumeroCostales">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NumeroCostales" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Descripcion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Descripcion" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PermitirCargaDatos">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PermitirCargaDatos" generated properties.</summary>
@@ -736,6 +801,9 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DataQuery">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DataQuery" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DataFormSource">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DataFormSource" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FileManyResults">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FileManyResults" generated properties.</summary>
         </member>
@@ -762,6 +830,18 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Produccion">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Produccion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ProductosListosFormulario">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ProductosListosFormulario" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ListadoProductosListos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ListadoProductosListos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ListadoDataCatalogoProduccions">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ListadoDataCatalogoProduccions" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.FormularioProductosListosView">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "FormularioProductosListosView" generated properties.</summary>
         </member>
         <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
             <summary>
@@ -802,6 +882,12 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Imagenes">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Imagenes" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IdentificadorDataCatalogProducion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IdentificadorDataCatalogProducion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.TextoDescriptivo">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "TextoDescriptivo" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Url">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Url" generated properties.</summary>
         </member>
@@ -832,6 +918,9 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FechaActualizacion">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FechaActualizacion" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IdentificadorCatalogoProduccion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IdentificadorCatalogoProduccion" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.EstadoFabricado">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "EstadoFabricado" generated properties.</summary>
         </member>
@@ -843,6 +932,12 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Actualizado">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Actualizado" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NumeroCostales">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NumeroCostales" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Descripcion">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Descripcion" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PermitirCargaDatos">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PermitirCargaDatos" generated properties.</summary>
@@ -946,6 +1041,9 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DataQuery">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DataQuery" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DataFormSource">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DataFormSource" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FileManyResults">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FileManyResults" generated properties.</summary>
         </member>
@@ -972,6 +1070,18 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Produccion">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Produccion" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ProductosListosFormulario">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ProductosListosFormulario" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ListadoProductosListos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ListadoProductosListos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ListadoDataCatalogoProduccions">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ListadoDataCatalogoProduccions" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.FormularioProductosListosView">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "FormularioProductosListosView" generated properties.</summary>
         </member>
     </members>
 </doc>
