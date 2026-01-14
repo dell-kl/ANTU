@@ -39,6 +39,10 @@ Con ANTU, el negocio puede:
 
 > **Nota:** El sistema permite que el precio y la cantidad varíen en cada ingreso, manteniendo siempre un stock acumulado actualizado.
 
+
+https://github.com/user-attachments/assets/c847e111-4508-46a8-8d53-95671dfb2b66
+
+
 ---
 
 ### 2. Catálogo de Productos
