@@ -1,28 +1,52 @@
 ﻿using ANTU.Models;
 using ANTU.Models.Dto;
+using ANTU.Models.RequestDto;
 using ANTU.Resources.Components.PopupComponents;
 using ANTU.Resources.Rest.RestInterfaces;
+using ANTU.Resources.ValueConverter;
+using ANTU.ViewModel.PopupServicesViewModel;
+using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Maui.Core.Extensions;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
 using Syncfusion.Maui.DataForm;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
+
+
 
 namespace ANTU.ViewModel
 {
     public partial class MateriaPrimaDetalleViewModel : ParentViewModel
     {
+        [ObservableProperty]
         private MateriaPrimaProducto materiaPrimaProducto = new MateriaPrimaProducto(0);
-        public MateriaPrimaProducto MateriaPrimaProducto { set => SetProperty(ref materiaPrimaProducto, value); get => materiaPrimaProducto; }
 
-        private MateriaPrimaDetalle materiaPrimaDetalle = new MateriaPrimaDetalle();
-        public MateriaPrimaDetalle MateriaPrimaDetalle { set => SetProperty(ref materiaPrimaDetalle, value); get => materiaPrimaDetalle; }
 
+        //el formato para mostrar datos.
+        [ObservableProperty]
+        private MateriaPrimaDetalle? materiaPrimaDetalle = null;
+
+        //formulario para agregar mas stock
+        [ObservableProperty]
         private MateriaPrimaDetalleFormulario materiaPrimaDetalleFormulario = new MateriaPrimaDetalleFormulario();
-        public MateriaPrimaDetalleFormulario MateriaPrimaDetalleFormulario { set => SetProperty(ref materiaPrimaDetalleFormulario, value); get => materiaPrimaDetalleFormulario; }
 
-        public MateriaPrimaDetalleViewModel(IRestManagement IRestManagement) : base(IRestManagement) {
+        //donde establecemos los formularios para poder mostrarlos.
+        [ObservableProperty]
+        private FormularioEmergente formulario = new FormularioEmergente();
+
+        //formulario para editar el nombre de la materia prima
+        [ObservableProperty]
+        private MateriaPrimaEditarDataFormulario materiaPrimaEditarDataFormulario = new MateriaPrimaEditarDataFormulario();
+        
+        [ObservableProperty]
+        private ObservableCollection<KgSeguimiento> _kgSeguimientoList = new ObservableCollection<KgSeguimiento>();
+
+        public MateriaPrimaDetalleViewModel(IRestManagement restManagement, IPopupService popupService) : base(restManagement, popupService)
+        {
         }
+
 
         public override void ApplyQueryAttributes(IDictionary<string, object> query)
         {
@@ -34,156 +58,105 @@ namespace ANTU.ViewModel
 
         public async Task cargarDatosMateriaPrimaDetalle()
         {
-            this.MateriaPrimaDetalle = new MateriaPrimaDetalle()
-            {
-                KgTotal = 130.50,
-                TotalCompras = 20,
-                UltimaCompra = 20.50m,
-                KgSeguimiento = new ObservableCollection<KgSeguimiento>() { 
-                    new KgSeguimiento() { 
-                        fechaCompra = DateTime.Now,
-                        precioTotal = 40,
-                        KgTotal = 200,
-                        precioUnitario = 20,
-                        KgEstandar = 100
-                    },
-                    new KgSeguimiento() {
-                        fechaCompra = DateTime.Now,
-                        precioTotal = 50,
-                        KgTotal = 100,
-                        precioUnitario = 10,
-                        KgEstandar = 150
-                    },
-                    new KgSeguimiento() {
-                        fechaCompra = DateTime.Now,
-                        precioTotal = 50,
-                        KgTotal = 100,
-                        precioUnitario = 25,
-                        KgEstandar = 200
-                    },
-                    new KgSeguimiento() {
-                        fechaCompra = DateTime.Now,
-                        precioTotal = 80,
-                        KgTotal = 250,
-                        precioUnitario = 50,
-                        KgEstandar = 100
-                    },
-                    new KgSeguimiento() {
-                        fechaCompra = DateTime.Now,
-                        precioTotal = 80,
-                        KgTotal = 250,
-                        precioUnitario = 50,
-                        KgEstandar = 100
-                    },
-                    new KgSeguimiento() {
-                        fechaCompra = DateTime.Now,
-                        precioTotal = 80,
-                        KgTotal = 250,
-                        precioUnitario = 50,
-                        KgEstandar = 100
-                    },
-                    new KgSeguimiento() {
-                        fechaCompra = DateTime.Now,
-                        precioTotal = 80,
-                        KgTotal = 250,
-                        precioUnitario = 50,
-                        KgEstandar = 100
-                    },
-                                        new KgSeguimiento() {
-                        fechaCompra = DateTime.Now,
-                        precioTotal = 40,
-                        KgTotal = 200,
-                        precioUnitario = 20,
-                        KgEstandar = 100
-                    },
-                    new KgSeguimiento() {
-                        fechaCompra = DateTime.Now,
-                        precioTotal = 50,
-                        KgTotal = 100,
-                        precioUnitario = 10,
-                        KgEstandar = 150
-                    },
-                    new KgSeguimiento() {
-                        fechaCompra = DateTime.Now,
-                        precioTotal = 50,
-                        KgTotal = 100,
-                        precioUnitario = 25,
-                        KgEstandar = 200
-                    },
-                    new KgSeguimiento() {
-                        fechaCompra = DateTime.Now,
-                        precioTotal = 80,
-                        KgTotal = 250,
-                        precioUnitario = 50,
-                        KgEstandar = 100
-                    },
-                    new KgSeguimiento() {
-                        fechaCompra = DateTime.Now,
-                        precioTotal = 80,
-                        KgTotal = 250,
-                        precioUnitario = 50,
-                        KgEstandar = 100
-                    },
-                    new KgSeguimiento() {
-                        fechaCompra = DateTime.Now,
-                        precioTotal = 80,
-                        KgTotal = 250,
-                        precioUnitario = 50,
-                        KgEstandar = 100
-                    },
-                    new KgSeguimiento() {
-                        fechaCompra = DateTime.Now,
-                        precioTotal = 80,
-                        KgTotal = 250,
-                        precioUnitario = 50,
-                        KgEstandar = 100
-                    },
-                }
-            };
+            this.MateriaPrimaDetalle = await _restManagement.MateriaPrima.MateriaPrimaDetalles(this.MateriaPrimaProducto.guid);
         }
 
-       
+        public async Task cargarDatosKgSeguimiento()
+        {
+            if ( !this.KgSeguimientoList.Any() || this.KgSeguimientoList.Count() >= 10 )
+            {
+                IEnumerable<KgSeguimiento> listadokgSeguimientos = await _restManagement.MateriaPrima.GetKgSeguimientos(this.KgSeguimientoList.Count(), this.MateriaPrimaProducto.guid);
+
+                if (listadokgSeguimientos.Any()) {
+                    this.KgSeguimientoList = this.KgSeguimientoList.Union(listadokgSeguimientos).ToObservableCollection();
+                }
+            }
+
+        }
+
+
+        [RelayCommand(AllowConcurrentExecutions = false)]
+        public async Task MostrarDetallesImagenes()
+        {
+            
+            var datosNavegacion = new ShellNavigationQueryParameters {
+                {
+                    "DataQuery", new List<object>()
+                    {
+                        this.materiaPrimaDetalle!,
+                        this.materiaPrimaProducto.guid
+                    }
+                }
+            };
+
+
+            await base.NavegarFormulario("MostrarImagenesDetalle", datosNavegacion);
+        }
+
+        [RelayCommand(AllowConcurrentExecutions = false)]
+        public async Task VentanaFormularioEditarDatosMateriaPrima()
+        {
+
+            var datosNavegacion = new ShellNavigationQueryParameters
+            {
+                {
+                    "DataQuery", new List<object>() { "MateriaPrimaFormulario", "editar_materiaPrima", this.MateriaPrimaProducto}
+                }
+            };
+
+            IPopupResult<Object> resultado = await _popupService.ShowPopupAsync<VentanaPopupServiceViewModel, Object>(Shell.Current, shellParameters: datosNavegacion, options: PopupOptions.Empty);
+
+            if (resultado.Result is List<object> datos)
+            {
+                await base.MostrarSpinner();
+
+                MateriaPrimaFormulario formulario = (MateriaPrimaFormulario)datos[0];
+
+                bool solicitud = await _restManagement.MateriaPrima.EditarDatosMateriaPrima(new Models.RequestDto.MateriaPrimaRequestDto()
+                {
+                    id_dto = datos[1].ToString()!,
+                    nombre_dto = formulario.MateriaPrima
+                }, async () => { await base.DesmontarSpinner(); });
+
+                if (solicitud)
+                    this.MateriaPrimaProducto.nombreProducto = formulario.MateriaPrima;
+            }
+        }
 
         [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task VentanaFormularioMateriaPrimaDetalleStock(object data)
         {
-            FormularioEmergente formulario = new FormularioEmergente();
-            formulario.FindByName<SfDataForm>("Formulario").DataObject = this.MateriaPrimaDetalleFormulario;
-            formulario.FindByName<SfDataForm>("Formulario").ValidateForm += (sender, e) => {
-                this.MateriaPrimaDetalleFormulario.Cantidad = e.NewValues["Cantidad"] is null ? 0 : int.Parse(e.NewValues["Cantidad"].ToString()!);
-                this.MateriaPrimaDetalleFormulario.KGStandard = e.NewValues["KGStandard"] is null ? 0.0d : double.Parse(e.NewValues["KGStandard"].ToString()!);
-                this.MateriaPrimaDetalleFormulario.PrecioUnitario = e.NewValues["PrecioUnitario"] is null ? 0.0d : double.Parse(e.NewValues["PrecioUnitario"].ToString()!);
-            };
-            formulario.FindByName<Button>("BotonConfirmarFormulario").Clicked += async (sender, e) => {
-                SfDataForm dataForm = formulario.FindByName<SfDataForm>("Formulario");
-
-                if (dataForm.Validate())
+            var datosNavegacion = new ShellNavigationQueryParameters
+            {
                 {
-                    bool respuesta = MopupService.Instance.PopupStack.Where(item => item is VentanaConfirmacionEmergente).Any();
-                    MateriaPrimaDetalleFormulario datosFormulario = (dataForm.DataObject as MateriaPrimaDetalleFormulario)!;
-
-                    if ( !respuesta )
-                    {
-                        VentanaConfirmacionEmergente ventanaConfirmacion = new VentanaConfirmacionEmergente();
-
-                        //ventanaConfirmacion.FindByName<Button>("BotonConfirmacion").Command = ;
-
-                        //ventanaConfirmacion.FindByName<Button>("BotonConfirmacion").Clicked += (sender, e) => {
-                        //    ventanaConfirmacion.FindByName<Button>("BotonConfirmacion").IsEnabled = false;
-                        //    ventanaConfirmacion.FindByName<Button>("BotonConfirmacion").IsVisible = false;
-
-                        //    ventanaConfirmacion.FindByName<Button>("BotonRegresar").IsEnabled = false;
-                        //    ventanaConfirmacion.FindByName<Button>("BotonRegresar").IsVisible = false;
-
-                        //    ventanaConfirmacion.FindByName<Border>("MensajeCargando").IsVisible = true;
-
-                        //};
-                        await MopupService.Instance.PushAsync(ventanaConfirmacion);
-                    }
-                
+                    "DataQuery", new List<object>() { "MateriaPrimaFormulario", "agregar_compra", this.MateriaPrimaProducto}
                 }
             };
-            await MopupService.Instance.PushAsync(formulario);
+
+            IPopupResult<Object> resultado = await _popupService.ShowPopupAsync<VentanaPopupServiceViewModel, Object>(Shell.Current, shellParameters: datosNavegacion, options: PopupOptions.Empty);
+
+            if (resultado.Result is List<object> datos)
+            {
+                await base.MostrarSpinner();
+
+                MateriaPrimaFormulario formulario = (MateriaPrimaFormulario)datos[0];
+
+                bool solicitud = await _restManagement.MateriaPrima.AgregarStockMateriaPrima(new Models.RequestDto.StockMateriaPrimaRequestDto()
+                {
+                    Identificador = datos[1].ToString()!,
+                    Amount = formulario.Cantidad,
+                    KgStandard = formulario.KgStandard,
+                    PriceUnit = formulario.Precio
+                }, async () => { await base.DesmontarSpinner(); });
+
+                if (solicitud)
+                {
+                    this.MateriaPrimaDetalle!.TotalCompras += 1;
+                    this.MateriaPrimaDetalle!.UltimaCompra = (decimal)(formulario.Cantidad * formulario.Precio);
+                    this.MateriaPrimaDetalle!.KgTotal += (formulario.Cantidad * formulario.KgStandard);
+                }
+            }
+
         }
     }
 }

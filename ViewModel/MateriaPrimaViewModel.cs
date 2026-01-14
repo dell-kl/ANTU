@@ -1,6 +1,10 @@
 ﻿using ANTU.Models;
+using ANTU.Resources.Components.CollectionViewComponents;
+using ANTU.Resources.Components.ControlersComponents;
 using ANTU.Resources.Rest.RestInterfaces;
+using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Core.Extensions;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 
@@ -8,68 +12,116 @@ namespace ANTU.ViewModel
 {
     public partial class MateriaPrimaViewModel : ParentViewModel
     {
+        [ObservableProperty]
+        private ObservableCollection<object> datosPresentacion = new ObservableCollection<object>();
 
-        private ObservableCollection<MateriaPrimaProducto> modeloMateriaPrima = new ObservableCollection<MateriaPrimaProducto>();
-        public ObservableCollection<MateriaPrimaProducto> materiaPrimaProductos { set { SetProperty(ref modeloMateriaPrima, value); } get => modeloMateriaPrima; }
-
-        private bool buttonAddMateriaPrima = true;
-        public bool ButtonAddMateriaPrima { set => SetProperty(ref buttonAddMateriaPrima, value); get => buttonAddMateriaPrima; }
-
-        
+        [ObservableProperty]
         private bool buttonUpdateMateriaPrima = true;
-        public bool ButtonUpdateMateriaPrima { set => SetProperty(ref buttonUpdateMateriaPrima, value); get => buttonUpdateMateriaPrima; }
 
+        [ObservableProperty]
         private bool isLazyLoading = false;
-        public bool IsLazyLoading { set => SetProperty(ref isLazyLoading, value); get => isLazyLoading; }
 
-        public MateriaPrimaViewModel(IRestManagement restManagement)
-            : base(restManagement)
-        {
+        // Componente CollectionView de Materia Prima
+        [ObservableProperty]
+        private MateriaPrimaCollectionViewComponents? materiaPrimaView = new MateriaPrimaCollectionViewComponents();
+
+        // Componente CollectionView de Catalogo Producto
+        [ObservableProperty]
+        private CatalogoProductoCollectionViewComponents? catalogoProductoView = new CatalogoProductoCollectionViewComponents();
+
+        // Compoenete CollectionView de Fabricacion
+        [ObservableProperty]
+        private FabricacionCollectionViewComponents? fabricacionView = new FabricacionCollectionViewComponents();
+
+        // Componente CollectionView de Productos Listos
+        [ObservableProperty]
+        private ProductosListosCollectionViewComponents productosListosView = new ProductosListosCollectionViewComponents();
+        
+        // Componente Panel de controles e informacion.
+        [ObservableProperty]
+        private PanelComponents panelComponents = new PanelComponents();
+
+        public MateriaPrimaViewModel(IRestManagement restManagement, IPopupService popupService) : base(restManagement, popupService) {
         }
 
         public async Task cargaProductos()
         {
-            if ( this.materiaPrimaProductos.Count() == 0 || this.materiaPrimaProductos.Count() >= 10)
+            if ( this.DatosPresentacion.Count() == 0 || this.DatosPresentacion.Count() >= 10)
             {
-                 IEnumerable<MateriaPrimaProducto> listadoMateriaPrima = await _restManagement.MateriaPrima.Get(this.materiaPrimaProductos.Count().ToString());
+                 if (this.DataQuery.Equals("MateriaPrima"))
+                 {
+                     IEnumerable<MateriaPrimaProducto> listadoMateriaPrima = await _restManagement.MateriaPrima.Get(this.DatosPresentacion.Count().ToString());
 
-                if (listadoMateriaPrima.Any())
-                {
-                    materiaPrimaProductos = materiaPrimaProductos.Union(listadoMateriaPrima).ToObservableCollection();
-                }
+                     if (listadoMateriaPrima.Any()) 
+                        DatosPresentacion = DatosPresentacion.Union(listadoMateriaPrima).ToObservableCollection();
+                 }
+                 else if (this.DataQuery.Equals("Catalogo"))
+                 {
+                    IEnumerable<CatalogoProducto> listadoCatalogo = await _restManagement.CatalogoProduct.Get(this.DatosPresentacion.Count().ToString());
+                    if (listadoCatalogo.Any())
+                        DatosPresentacion = DatosPresentacion.Union(listadoCatalogo).ToObservableCollection();
+                 }
+                 else if (this.DataQuery.Equals("Fabricacion"))
+                 {
+                     IEnumerable<Produccion> listadoProduccion = await _restManagement.Produccion.Get(this.DatosPresentacion.Count().ToString());
+                     
+                    if (listadoProduccion.Any())
+                        DatosPresentacion = DatosPresentacion.Union(listadoProduccion).ToObservableCollection();
+                 }
+                 else if (this.DataQuery.Equals("ProductosListos"))
+                 {
+                     IEnumerable<Produccion> listadoProduccion = await _restManagement.Fabricado.Get(this.DatosPresentacion.Count().ToString());
+                     
+                     if (listadoProduccion.Any())
+                         DatosPresentacion = DatosPresentacion.Union(listadoProduccion).ToObservableCollection();
+                 }
             }
         }   
 
         [RelayCommand(AllowConcurrentExecutions = false)]
         public override async Task NavegarFormulario(string objeto)
         {
-            await base.NavegarFormulario(objeto);
+            if (this.DataQuery.Equals("MateriaPrima"))
+                await base.NavegarFormulario("FormularioMateriaPrima");
+            else if (this.DataQuery.Equals("Catalogo"))
+                await base.NavegarFormulario("CatalogoProductoFormulario");
+            else if (this.DataQuery.Equals("Fabricacion"))
+                await base.NavegarFormulario("FabricacionFormulario");
         }
 
 
         [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task NavegarPaginaProductoGestionar(string guid)
         {
-            MateriaPrimaProducto materiaPrimaProducto = materiaPrimaProductos.Where(item => item.guid.Equals(guid)).First();
+            string paginaShell;
+            object registro;
+
+            if ( DataQuery.Equals("Catalogo"))
+            {
+                paginaShell = "CatalogoProductoDetalle";
+                registro = this.DatosPresentacion.Where(item => (item as CatalogoProducto)!.Identificador.Equals(guid)).First();
+            }
+            else if (DataQuery.Equals("ProductosListos"))
+            {
+                paginaShell = "ProductoListoDetalle";
+                registro = this.DatosPresentacion
+                    .Where(item => item is Produccion produccion && produccion.Identificador.Equals(guid)).First();
+            }
+            else
+            {
+                paginaShell = "MateriaPrimaDetalle";
+                registro = this.DatosPresentacion.Where(item => (item as MateriaPrimaProducto)!.guid.Equals(guid)).First();
+            }
 
             var datosNavegacion = new ShellNavigationQueryParameters {
                 {
-                    "DataQuery", materiaPrimaProducto
+                    "DataQuery", registro
                 }
             };
 
-            await base.NavegarFormulario($"MateriaPrimaDetalle", datosNavegacion);
+            await base.NavegarFormulario(paginaShell, datosNavegacion);
         }
 
-        [RelayCommand]
-        public void EliminarProducto(string guid)
-        {
-           MateriaPrimaProducto? materiaProducto =  this.materiaPrimaProductos.Where(item => item.guid.Equals(guid)).FirstOrDefault();
-        
-            if ( materiaPrimaProductos is not null )
-                this.materiaPrimaProductos.Remove(materiaProducto!);
-            
-        }
 
         [RelayCommand]
         public async Task LoadMoreElements()

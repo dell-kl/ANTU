@@ -1,13 +1,21 @@
-﻿using System.Collections.ObjectModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace ANTU.Models
 {
-    public class MateriaPrimaDetalle
+    public class MateriaPrimaDetalle : ObservableObject
     {
-        public double KgTotal { set; get; } = 0.0d;
-        public int TotalCompras { set; get; }
-        public decimal UltimaCompra { set; get; } = 0.0m;
+        private double kgTotal;
+        private int totalCompras;
+        private decimal ultimaCompra;
+        private ObservableCollection<DataImage> _imagenes = new ObservableCollection<DataImage>();
 
-        public ObservableCollection<KgSeguimiento> KgSeguimiento { set; get; } = new ObservableCollection<KgSeguimiento>();
+        public double KgTotal { set => SetProperty(ref kgTotal, value); get => kgTotal; }
+        public int TotalCompras { set => SetProperty(ref totalCompras, value); get => totalCompras; }
+        public decimal UltimaCompra { set => SetProperty(ref ultimaCompra, value); get => ultimaCompra; }
+        
+        public ObservableCollection<DataImage> imagenes { set => SetProperty(ref _imagenes, value); get => _imagenes; }
     }
+
+
 }

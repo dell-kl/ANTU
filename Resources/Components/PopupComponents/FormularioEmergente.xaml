@@ -19,6 +19,7 @@
                     TextColor="#000"
                     FontFamily="SegoeUIBold"
                     FontSize="20"
+                    x:Name="TituloFormularioEmergente"
                     HorizontalTextAlignment="Center"
                     TextTransform="Uppercase"
                     Text="Agregar Mas Stock"/>
@@ -26,6 +27,7 @@
                     TextColor="#000"
                     FontFamily="SegoeUILight"
                     FontSize="15"
+                    x:Name="DescripcionFormularioEmergente"
                     WidthRequest="250"
                     HorizontalTextAlignment="Center"
                     Text="Rellena el formulario para agregar mas material a tu bodega"/>
@@ -48,7 +50,6 @@
                         FontSize="15"
                         WidthRequest="130"
                         x:Name="BontonCancelarFormulario"
-                        Clicked="BontonCancelarFormulario_Clicked"
                         TextColor="#FFF"
                         BackgroundColor="#F04"
                         Text="Cancelar"/>

@@ -1,16 +1,25 @@
-﻿namespace ANTU.Models
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace ANTU.Models
 {
-    public class KgSeguimiento
+    public partial class KgSeguimiento : ObservableObject
     {
-        
-        public DateTime fechaCompra { set; get; } = DateTime.Now;
+        [ObservableProperty]
+        private string guid = null!;
+        [ObservableProperty]
+        private int cantidad = 0;
+        [ObservableProperty]
+        private double kg = 0;
+        [ObservableProperty]
+        private decimal precio = 0;
+        [ObservableProperty]
+        private double kgTotal = 0;
+        [ObservableProperty]
+        private decimal precioTotal = 0;
+        [ObservableProperty]
+        private DateTime fechaCreacion = DateTime.Now;
+        [ObservableProperty]
+        private DateTime fechaActualizacion = DateTime.Now;
 
-        public decimal precioTotal { set; get; } = 0;
-
-        public double KgTotal { set; get; } = 0;
-
-        public decimal precioUnitario { set; get; } = 0;
-
-        public double KgEstandar { set; get; } = 0;
     }
 }

@@ -1,16 +1,23 @@
 using ANTU.ViewModel;
-using System.Threading.Tasks;
+
 
 namespace ANTU.Views.Formularios;
 
 public partial class MateriaPrimaFormulario : ContentPage
 {
-	public MateriaPrimaFormulario(FormularioMateriaPrimaViewModel formularioMPVM)
+    private FormularioMateriaPrimaViewModel formularioMateriaPrimaViewModel;
+
+	public MateriaPrimaFormulario(FormularioMateriaPrimaViewModel formularioMateriaPrimaViewModel)
 	{
 		InitializeComponent();
 
-		BindingContext = formularioMPVM;
-	}
+        this.formularioMateriaPrimaViewModel = formularioMateriaPrimaViewModel;
+		BindingContext = this.formularioMateriaPrimaViewModel;
+
+        //vamos a realizar las inyecciones.
+        EntradaFormularioImagenes.Add(this.formularioMateriaPrimaViewModel.ImagenesGuardarFormularioComponentes);
+        EntradaFormularioMateriaPrima.Add(this.formularioMateriaPrimaViewModel.MateriaPrimaFormularioComponentes);
+    }
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)
     {
@@ -19,10 +26,8 @@ public partial class MateriaPrimaFormulario : ContentPage
         await (BindingContext as FormularioMateriaPrimaViewModel)!.DesmontarSpinner();
     }
 
-    private void Button_Clicked(object sender, EventArgs e)
+    protected override bool OnBackButtonPressed()
     {
-		Button button = (Button)sender;
-		(BindingContext as FormularioMateriaPrimaViewModel)!.EliminarArchivo(button.ClassId);
+        return this.formularioMateriaPrimaViewModel.ControlarNavegacion();
     }
-
 }

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ANTU.Views.Detalles.MostrarImagenesDetalle"
+             xmlns:syncfusionListView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:syncfusionAccordion="clr-namespace:Syncfusion.Maui.Accordion;assembly=Syncfusion.Maui.Expander"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+             xmlns:viewModel="clr-namespace:ANTU.ViewModel"
+             xmlns:ValueConverter="clr-namespace:ANTU.Resources.ValueConverter"
+             xmlns:toolbar="clr-namespace:Syncfusion.Maui.Toolbar;assembly=Syncfusion.Maui.Toolbar"
+             xmlns:models="clr-namespace:ANTU.Models"
+             Title="MostrarImagenesDetalle"
+             BackgroundColor="#D9D6D2"
+             x:Name="PaginaContenidoImagenesDetalles"
+             x:DataType="viewModel:MostrarImagenesDetalleViewModel">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ValueConverter:ImageValueConverter x:Key="ImageValueConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Shell.TabBarIsVisible>False</Shell.TabBarIsVisible>
+    <Shell.TitleView>
+        <FlexLayout 
+            AlignItems="Center"
+            JustifyContent="SpaceBetween"
+            Direction="Row">
+            <StackLayout
+                Spacing="0">
+                <Label
+                    Padding="0"
+                    Margin="0"
+                    FontFamily="SegoeUIBold"
+                    FontSize="20"
+                    Text="Imagenes Detalle"/>
+                <Label
+                    Padding="0,0,0,0"
+                    Margin="0,-6,0,0"
+                    FontFamily="SegoeUILight"
+                    FontSize="15"
+                    Text="Gestionar y Agregar imagenes"/>
+            </StackLayout>
+            <Button
+                TextColor="#FFF"
+                FontAttributes="Bold"
+                BackgroundColor="#D49724"
+                Margin="0,0,5,0"
+                FontSize="20"
+                HeightRequest="40"
+                Text="&#xee71;"
+                FontFamily="SegoeFluentIcons">
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                        Command="{Binding Path=BindingContext.SeleccionarArchivosCommand, Source={x:Reference PaginaContenidoImagenesDetalles}}"
+                        PressedBackgroundColor="#EAA525"/>
+                </Button.Behaviors>
+            </Button>
+        </FlexLayout>
+    </Shell.TitleView>
+
+    <VerticalStackLayout BackgroundColor="#4CE39400">
+        <VerticalStackLayout.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#F0E7DA" Offset=".6" />
+                <GradientStop Color="#FFF" Offset="1" />
+            </LinearGradientBrush>
+        </VerticalStackLayout.Background>
+
+
+
+        <Grid 
+            RowDefinitions="*,*,*" ColumnDefinitions="*,*">
+
+            <StackLayout IsVisible="{Binding ActivarPanelNuevasImagenes}"
+                         Grid.Row="0"
+                         x:Name="ListadoImagenesNuevas"
+                         Grid.Column="0"
+                         Grid.ColumnSpan="2">
+                <Border
+                    Margin="10"
+                    Padding="10"
+                    BackgroundColor="#FFF"
+                    Stroke="#8C3623"
+                    StrokeShape="RoundRectangle 5,5,5,5">
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="#BF7A24"/>
+                    </Border.Shadow>
+                    <StackLayout>
+                        <HorizontalStackLayout 
+                            Margin="0,0,0,10"
+                            Spacing="90">
+                            <Label
+                                Padding="10,10,0,10"
+                                TextColor="#000"
+                                FontFamily="SegoeUILight"
+                                FontSize="22"
+                                Text="📷 Fotos Nuevas"/>
+                            <Button
+                                FontFamily="SegoeFluentIcons"
+                                Text="&#xe74e;"
+                                FontSize="25"
+                                TextColor="#FFF"
+                                FontAttributes="Bold"
+                                BackgroundColor="#BF7A24"
+                                BorderColor="#BF7A24"
+                                Command="{Binding GuardarNuevasImagenesCommand}"
+                                BorderWidth="1"/>
+                        </HorizontalStackLayout>
+                        <CollectionView
+                            ItemsLayout="HorizontalList"
+                            ItemsSource="{Binding FileManyResults}">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate x:Name="Plantilla" x:DataType="{x:Null}">
+                                    <AbsoluteLayout>
+                                        <Border
+                                            WidthRequest="100"
+                                            HeightRequest="100"
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            Stroke="LightGray"
+                                            StrokeShape="RoundRectangle 5,5,5,5">
+                                            <Image
+                                                Aspect="Fill"
+                                                Source="{Binding FullPath}"/>
+                                        </Border>
+                                        <Button 
+                                            FontSize="15"
+                                            x:Name="ButtonEliminarImagen"
+                                            AbsoluteLayout.LayoutBounds="1,1"
+                                            BackgroundColor="#7FF67400"
+                                            Clicked="ButtonEliminarImagen_Clicked"
+                                            ClassId="{Binding codigo}"
+                                            Text="🗑️"/>
+                                    </AbsoluteLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </Border>
+            </StackLayout>
+            
+            <StackLayout
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="2">
+                <syncfusionListView:SfListView x:Name="ListadoImagenesView" 
+                    ItemsSource="{Binding Data}" 
+                    SelectionMode="Multiple"
+                    SelectionGesture="LongPress"
+                    IsScrollingEnabled="True"
+                    MaximumHeightRequest="{Binding AlturaDinamicaListaImagenes}"
+                    SelectionChanging="listView_SelectionChanging"
+                    SelectionBackground="Transparent"
+                    ItemSize="200"
+                    Margin="4,4,4,0"
+                    ItemSpacing="1">
+                    <syncfusionListView:SfListView.ItemsLayout>
+                        <syncfusionListView:GridLayout SpanCount="2" />
+                    </syncfusionListView:SfListView.ItemsLayout>
+                    <syncfusionListView:SfListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:DataImage">
+                            <Grid 
+                                x:Name="gridImagenDetalle"
+                                ColumnDefinitions="*,*" RowDefinitions="*,*">
+                                <Image
+                                Aspect="Fill"
+                                Grid.Row="0"
+                                Grid.RowSpan="2"
+                                Grid.Column="0"
+                                x:Name="imagendetallePagina"
+                                ClassId="{Binding Path=Tipo}"
+                                Grid.ColumnSpan="2"
+                                Source="{Binding Path=Url, 
+                                    Converter={StaticResource ImageValueConverter}, 
+                                    ConverterParameter={Binding Source={x:Reference imagendetallePagina}}}"/>
+
+                                <StackLayout 
+                                    VerticalOptions="Start"
+                                    Grid.Column="0" 
+                                    Grid.ColumnSpan="2"
+                                    Grid.Row="0">
+
+                                    <buttons:SfCheckBox
+                                        TextColor="#fff"
+                                        FontFamily="SegoeUILight"
+                                        FontAttributes="Bold"
+                                        FontSize="15"
+                                        IsChecked="{Binding Path=Estado}"
+                                        IsVisible="{Binding Path=BindingContext.ActivarCheckBoxEliminar, Source={x:Reference PaginaContenidoImagenesDetalles}}"
+                                        UncheckedColor="#E39400"
+                                        CheckedColor="#E39400"
+                                        Text="Seleccionar"
+                                        x:Name="checkBox"/>
+                                </StackLayout>
+
+                                <StackLayout 
+                                    VerticalOptions="End"
+                                    Grid.ColumnSpan="2"
+                                    Grid.Row="1">
+
+                                    <Label
+                                    HeightRequest="50"
+                                    BackgroundColor="#666B4804"
+                                    TextColor="#FFF"
+                                    FontFamily="SegoeUIBold"
+                                    Padding="10"
+                                    LineBreakMode="TailTruncation"
+                                    FontAttributes="Bold"
+                                    Text="{Binding Path=Url, StringFormat='🖼️ {0}'}"/>
+                                </StackLayout>
+                            </Grid>
+
+                        </DataTemplate>
+                    </syncfusionListView:SfListView.ItemTemplate>
+                </syncfusionListView:SfListView>
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                VerticalOptions="End">
+                <toolbar:SfToolbar
+                    BackgroundColor="#33F08500"
+                    IsVisible="{Binding ActivarPanelAcciones}"
+                    x:Name="barraHerramientas"
+                    Tapped="barraHerramientas_Tapped"
+                    ItemSpacing="20"
+                    HeightRequest="60"
+                    >
+                    <toolbar:SfToolbar.Items>
+                        <toolbar:SfToolbarItem Name="Todos"
+                                Text="Todos"
+                                TextPosition="Right"
+                                IconSize="20"
+                                Size="90,40">
+                            <toolbar:SfToolbarItem.Icon>
+                                <FontImageSource 
+                                    Color="#BF7A24"
+                                    Glyph="&#xe7c9;"
+                                    FontFamily="SegoeFluentIcons" />
+                            </toolbar:SfToolbarItem.Icon>
+                            <toolbar:SfToolbarItem.TextStyle>
+                                <toolbar:ToolbarTextStyle TextColor="#BF7A24"
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    FontFamily="SegoeUILight"
+                                    FontAutoScalingEnabled="True"/>
+                            </toolbar:SfToolbarItem.TextStyle>
+                        </toolbar:SfToolbarItem>
+
+                        <toolbar:SfToolbarItem Name="Cancelar"
+                                Text="Cancelar"
+                                IconSize="20"
+                                TextPosition="Right"
+                                Size="90,50">
+                            <toolbar:SfToolbarItem.Icon>
+                                <FontImageSource
+                                    Color="#BF7A24"
+                                    Glyph="&#xe711;"
+                                    FontFamily="SegoeFluentIcons" />
+                            </toolbar:SfToolbarItem.Icon>
+                            <toolbar:SfToolbarItem.TextStyle>
+                                <toolbar:ToolbarTextStyle TextColor="#BF7A24"
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    FontFamily="SegoeUILight"
+                                    FontAutoScalingEnabled="True"/>
+                            </toolbar:SfToolbarItem.TextStyle>
+                        </toolbar:SfToolbarItem>
+
+                        <toolbar:SfToolbarItem Name="Eliminar"
+                                Text="Eliminar"
+                                IconSize="20"
+                                TextPosition="Right"
+                                Size="90,40">
+                            <toolbar:SfToolbarItem.Icon>
+                                <FontImageSource 
+                                    Color="#BF7A24"
+                                    Glyph="&#xe74d;"
+                                    FontFamily="SegoeFluentIcons" />
+                            </toolbar:SfToolbarItem.Icon>
+                            <toolbar:SfToolbarItem.TextStyle>
+                                <toolbar:ToolbarTextStyle TextColor="#BF7A24"
+                                    FontSize="15"
+                                    FontAttributes="Bold"
+                                    FontFamily="SegoeUILight"
+                                    FontAutoScalingEnabled="True"/>
+                            </toolbar:SfToolbarItem.TextStyle>
+                        </toolbar:SfToolbarItem>
+                    </toolbar:SfToolbar.Items>
+                </toolbar:SfToolbar>
+            </StackLayout>
+        </Grid>
+
+    </VerticalStackLayout>
+</ContentPage>

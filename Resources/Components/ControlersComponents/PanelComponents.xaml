@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ANTU.Resources.Components.ControlersComponents.PanelComponents">
+    <VerticalStackLayout
+            IsVisible="True"
+            x:Name="PanelPrincipal"
+            BackgroundColor="#FFF">
+
+        <Border 
+                Margin="0,10,0,0"
+                StrokeThickness="0"
+                HorizontalOptions="Center"
+                StrokeShape="RoundRectangle 5,5,5,5"
+                WidthRequest="300">
+            <SearchBar
+                   HeightRequest="40"
+                   TextColor="#fff"
+                   PlaceholderColor="#FFF"
+                   BackgroundColor="#E38919"
+                   FontSize="15"
+                   CancelButtonColor="#FFF"
+                   Placeholder="Busca mas rapido"
+                   TextChanged="SearchBar_TextChanged"
+                   />
+        </Border>
+
+        <FlexLayout JustifyContent="SpaceBetween"
+                        Margin="13,10,13,10">
+            <StackLayout>
+                <Label 
+                        HorizontalTextAlignment="Center"
+                        FontFamily="SegoeUIBold"
+                        TextColor="#BF7A24"
+                        FontSize="20"
+                        Text="26"/>
+                <Label
+                        FontSize="14"
+                        FontFamily="SegoeUILight"
+                        TextColor="#8C3623"
+                        Text="Total Items"/>
+            </StackLayout>
+            <StackLayout>
+                <Label 
+                        FontFamily="SegoeUIBold"
+                        TextColor="#BF7A24"
+                        FontSize="20"
+                        HorizontalTextAlignment="Center"
+                        Text="20"/>
+                <Label
+                        FontSize="14"
+                        FontFamily="SegoeUILight"
+                        TextColor="#8C3623"
+                        Text="Disponible"/>
+            </StackLayout>
+            <StackLayout>
+                <Label 
+                        FontFamily="SegoeUIBold"
+                        TextColor="#BF7A24"
+                        FontSize="20"
+                        HorizontalTextAlignment="Center"
+                        Text="4"/>
+                <Label
+                        FontSize="14"
+                        FontFamily="SegoeUILight"
+                        TextColor="#8C3623"
+                        Text="Stock Bajo"/>
+            </StackLayout>
+            <StackLayout>
+                <Label 
+                        FontFamily="SegoeUIBold"
+                        TextColor="#BF7A24"
+                        FontSize="20"
+                        HorizontalTextAlignment="Center"
+                        Text="2"/>
+                <Label
+                        FontSize="14"
+                        FontFamily="SegoeUILight"
+                        TextColor="#8C3623"
+                        Text="Agotado"/>
+            </StackLayout>
+        </FlexLayout>
+    </VerticalStackLayout>
+</ContentView>

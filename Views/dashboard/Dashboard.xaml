@@ -5,8 +5,11 @@
              xmlns:entryCustomizer="clr-namespace:ANTU.Resources.Customizer"
              x:Class="ANTU.Views.dashboard.Dashboard"
              Title="Dashboard"
+             xmlns:viewModel="clr-namespace:ANTU.ViewModel"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="#D9D6D2">
+             BackgroundColor="#D9D6D2"
+             x:Name="DashboardContentPage"
+             x:DataType="viewModel:DashboardViewModel">
 
     <Shell.NavBarIsVisible>False</Shell.NavBarIsVisible>
 
@@ -134,8 +137,7 @@
                     <toolkit:TouchBehavior
                         PressedBackgroundColor="#F6DEBC"
                         CommandParameter="MateriaPrima"
-                        IsEnabled="{Binding ButtonOption}"
-                        Command="{Binding NavegarFormularioCommand}"/>
+                        Command="{Binding Path=BindingContext.NavegarFormularioCommand, Source={x:Reference DashboardContentPage}}"/>
                 </Border.Behaviors>
                 <Border.Shadow>
                     <Shadow
@@ -187,8 +189,7 @@
                     <toolkit:TouchBehavior
                         PressedBackgroundColor="#F6DEBC"
                         CommandParameter="Catalogo"
-                        IsEnabled="{Binding ButtonOption}"
-                        Command="{Binding NavegarFormularioCommand}"/>
+                        Command="{Binding Path=BindingContext.NavegarFormularioCommand, Source={x:Reference DashboardContentPage}}"/>
                 </Border.Behaviors>
                 <Border.Shadow>
                     <Shadow
@@ -236,12 +237,12 @@
                 BackgroundColor="#FCE8CC"
                 Padding="15"
                 Grid.Column="0" Grid.Row="1">
+                
                 <Border.Behaviors>
                     <toolkit:TouchBehavior
                         PressedBackgroundColor="#F6DEBC"
                         CommandParameter="Fabricacion"
-                        IsEnabled="{Binding ButtonOption}"
-                        Command="{Binding NavegarFormularioCommand}"/>
+                        Command="{Binding Path=BindingContext.NavegarFormularioCommand, Source={x:Reference DashboardContentPage}}"/>
                 </Border.Behaviors>
                 <Border.Shadow>
                     <Shadow
@@ -292,8 +293,7 @@
                     <toolkit:TouchBehavior
                         PressedBackgroundColor="#F6DEBC"
                         CommandParameter="ProductosListos"
-                        IsEnabled="{Binding ButtonOption}"
-                        Command="{Binding NavegarFormularioCommand}"/>
+                        Command="{Binding Path=BindingContext.NavegarFormularioCommand, Source={x:Reference DashboardContentPage}}"/>
                 </Border.Behaviors>
                 <Border.Shadow>
                     <Shadow

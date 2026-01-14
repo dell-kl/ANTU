@@ -1,0 +1,10 @@
+<api type="debug" assembly-name="Mopups" mvid="becc73b2626b4ad2bbee0c6375fdbb3e">
+  <java-to-managed>
+    <entry java-name="crc648efb837642500d81/PopupPageRenderer" managed-name="Mopups.Platforms.Android.Renderers.PopupPageRenderer, Mopups" managed-type-token-id="33554444" />
+    <entry java-name="crc645f71566477e2fdd5/MopupGestureDetectorListener" managed-name="Mopups.Droid.Gestures.MopupGestureDetectorListener, Mopups" managed-type-token-id="33554448" />
+  </java-to-managed>
+  <managed-to-java>
+    <entry java-name="crc648efb837642500d81/PopupPageRenderer" managed-name="Mopups.Platforms.Android.Renderers.PopupPageRenderer, Mopups" managed-type-token-id="33554444" />
+    <entry java-name="crc645f71566477e2fdd5/MopupGestureDetectorListener" managed-name="Mopups.Droid.Gestures.MopupGestureDetectorListener, Mopups" managed-type-token-id="33554448" />
+  </managed-to-java>
+</api>

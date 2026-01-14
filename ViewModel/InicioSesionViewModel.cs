@@ -1,6 +1,7 @@
 ﻿using ANTU.Models.Dto;
 using ANTU.Resources.Messenger;
 using ANTU.Resources.Rest.RestInterfaces;
+using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 
@@ -9,8 +10,8 @@ namespace ANTU.ViewModel
 {
     public partial class InicioSesionViewModel : ParentViewModel
     {
-        public InicioSesionViewModel(IRestManagement IRestManagement)
-        : base(IRestManagement)
+        public InicioSesionViewModel(IRestManagement IRestManagement, IPopupService popupService)
+        : base(IRestManagement, popupService)
         {
 
         }
@@ -18,7 +19,7 @@ namespace ANTU.ViewModel
         public InicioSesionDto inicioSesion { set; get; } = new InicioSesionDto();
 
 
-        [RelayCommand]
+        [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task EnviarForm()
         {
             await Shell.Current.GoToAsync("SnipperComponent");

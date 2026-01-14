@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>UIAppFonts</key>
+  <array>
+	<string>ionicons.ttf</string>
+	<string>Material_Symbol_Sharp.ttf</string>
+	<string>MauiMaterialAssets.ttf</string>
+	<string>OpenSans-Regular.ttf</string>
+	<string>OpenSans-Semibold.ttf</string>
+	<string>Segoe_Fluent_Icons.ttf</string>
+	<string>Segoe_UI_Bold.ttf</string>
+	<string>Segoe_UI_Light.ttf</string>
+  </array>
+
+</dict>
+</plist>

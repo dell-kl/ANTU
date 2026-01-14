@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:dataGrid="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:pager="clr-namespace:Syncfusion.Maui.DataGrid.DataPager;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:shimmer="clr-namespace:Syncfusion.Maui.Shimmer;assembly=Syncfusion.Maui.Core"
+             xmlns:dataForm="clr-namespace:Syncfusion.Maui.DataForm;assembly=Syncfusion.Maui.DataForm"
+             xmlns:valueConverter="clr-namespace:ANTU.Resources.ValueConverter"
+             xmlns:restManagement="clr-namespace:ANTU.Resources.Rest.RestInterfaces"
+             xmlns:viewModel="clr-namespace:ANTU.ViewModel"
+             x:Class="ANTU.Views.Detalles.CatalogoProductoDetalle"
+             Title="CatalogoProductoDetalle"
+             BackgroundColor="#D9D6D2"
+             x:DataType="viewModel:CatalogoProductoDetalleViewModel"
+             x:Name="CatalogoProductoDetallePagina">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <valueConverter:ImageValueConverter x:Key="KeyImageValueConverter"/>
+        </ResourceDictionary>
+        <Style TargetType="dataGrid:DataGridHeaderCell">
+            <Setter Property="Background" Value="#24E19D0A"/>
+            <Setter Property="FontFamily" Value="SegoeUIBold"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="#BF7A24"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <Shell.TabBarIsVisible>False</Shell.TabBarIsVisible>
+    <Shell.TitleView>
+        <StackLayout>
+            <Label
+                x:Name="TituloMateriaPrima"
+                FontSize="20"
+                FontFamily="SegoeUIBold"
+                Text="{Binding CatalogoProducto.NombreProducto}"/>
+            <Label
+                Margin="0,-10,0,0"
+                FontFamily="SegoeUILight"
+                Text="Conoce y gestiona tu producto de venta"/>
+        </StackLayout>
+    </Shell.TitleView>
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <VerticalStackLayout.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="#F0E7DA" Offset=".6" />
+                    <GradientStop Color="#FFF" Offset="1" />
+                </LinearGradientBrush>
+            </VerticalStackLayout.Background>
+
+            <Border 
+                Margin="10,15,10,10"
+                StrokeShape="RoundRectangle 10,10,10,10"
+                StrokeThickness="0"
+                BackgroundColor="#FFF">
+                <VerticalStackLayout>
+                    <Grid
+                        Padding="10"
+                        ColumnSpacing="10"
+                        RowDefinitions="*"
+                        ColumnDefinitions=".9*,.2*">
+                        <StackLayout
+                            Grid.Row="0"
+                            Grid.Column="0">
+                            <Border
+                                Stroke="#BF7A24"
+                                StrokeThickness="2"
+                                StrokeShape="RoundRectangle 15,15,15,15">
+                                <Border.Shadow>
+                                    <Shadow
+                                        Brush="#BF8924"
+                                        Offset="0,3"
+                                        Radius="12"
+                                        Opacity="10"/>
+                                </Border.Shadow>
+
+                                <Image
+                                    Opacity=".8"
+                                    Aspect="Fill"
+                                    HeightRequest="160"
+                                    BackgroundColor="LightGray"
+                                    x:Name="ImagenPresentacionProductoDetalle"
+                                    IsAnimationPlaying="True"
+                                    Source="{Binding CatalogoProducto.RutaImagen, Converter={StaticResource Key='KeyImageValueConverter'},ConverterParameter='catalogProduct'}"/>
+                            </Border>
+                        </StackLayout>
+                        <StackLayout
+                            Padding="0,5,0,0"
+                            Grid.Row="0"
+                            Spacing="10"
+                            Grid.Column="1">
+                            <Button
+                                FontSize="25"
+                                BorderColor="#BF7A24"
+                                BorderWidth="2"
+                                TextColor="#BF7A24"
+                                BackgroundColor="Transparent"
+                                FontAttributes="Bold"
+                                FontFamily="Ionicons"
+                                Text="&#xf2e4;">
+                                <Button.Behaviors>
+                                    <toolkit:TouchBehavior
+                                        Command="{Binding Source={x:Reference CatalogoProductoDetallePagina}, Path=BindingContext.NavegarDetallesImagenesCommand}"
+                                        PressedBackgroundColor="#BF7A24"/>
+                                </Button.Behaviors>
+                            </Button>
+                            <Button
+                                FontSize="25"
+                                BackgroundColor="Transparent"
+                                BorderColor="#8C3623"
+                                BorderWidth="2"
+                                TextColor="#8C3623"
+                                FontAttributes="Bold"
+                                FontFamily="Ionicons"
+                                Text="&#xf12c;">
+                                <Button.Behaviors>
+                                    <toolkit:TouchBehavior
+                                        Command="{Binding Source={x:Reference CatalogoProductoDetallePagina}, Path=BindingContext.FormularioEditarDatosCommand}"
+                                        PressedBackgroundColor="#8C3623"/>
+                                </Button.Behaviors>
+                            </Button>
+                        </StackLayout>
+                    </Grid>
+                    
+                    <Grid 
+                        Padding="10"
+                        Margin="0,0,0,0" RowSpacing="15" ColumnSpacing="20" ColumnDefinitions="*,*" RowDefinitions="*,*">
+                        <Border 
+                            StrokeThickness="0"
+                            BackgroundColor="#26F0A313"
+                            Grid.Row="0" 
+                            StrokeShape="RoundRectangle 5,5,5,5"
+                            Grid.Column="0">
+
+                            <shimmer:SfShimmer 
+                                IsActive="True" 
+                                x:Name="ShimmerKgTotal"
+                                AnimationDuration="2000"
+                                BackgroundColor="Transparent"
+                                Fill="#BF7A24">
+                                <shimmer:SfShimmer.CustomView>
+
+                                    <FlexLayout 
+                                        JustifyContent="Center"
+                                        AlignItems="Center"
+                                        Direction="Column">
+                                        <shimmer:ShimmerView
+                                            WidthRequest="30"
+                                            HeightRequest="30"
+                                            ShapeType="Circle"/>
+                                        <shimmer:ShimmerView
+                                            Margin="0,8,0,0"
+                                            WidthRequest="100"
+                                            HeightRequest="10"
+                                            ShapeType="RoundedRectangle"/>
+                                    </FlexLayout>
+                                </shimmer:SfShimmer.CustomView>
+                                <StackLayout
+                                    Margin="0,10,0,10"
+                                    MaximumWidthRequest="110"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center">
+                                    <Label 
+                                        FontFamily="SegoeUIBold"
+                                        FontAttributes="Bold"
+                                        FontSize="25"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#BF7A24"
+                                        Text="{Binding CatalogoProductoDetalle.CostalesTotal}"/>
+                                    <Label
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    TextColor="#BF8924"
+                                                    FontSize="22"
+                                                    FontAttributes="Bold"
+                                                    FontFamily="MaterialSymbolSharp"
+                                                    Text="&#xf3ee;"/>
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    TextColor="#BF8924"
+                                                    FontSize="15"
+                                                    FontFamily="SegoeUILight"
+                                                    Text="Costales Total"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                            </shimmer:SfShimmer>
+                        </Border>
+                        <Border 
+                            StrokeThickness="0"
+                            BackgroundColor="#26F0A313"
+                            Grid.Row="0" 
+                            StrokeShape="RoundRectangle 5,5,5,5"
+                            Grid.Column="1">
+                            <shimmer:SfShimmer 
+                                IsActive="True"
+                                x:Name="ShimmerTotalCompra"
+                                AnimationDuration="2000"
+                                BackgroundColor="Transparent"
+                                Fill="#BF7A24">
+                                <shimmer:SfShimmer.CustomView>
+
+                                    <FlexLayout 
+                                        JustifyContent="Center"
+                                        AlignItems="Center"
+                                        Direction="Column">
+                                        <shimmer:ShimmerView
+                                            WidthRequest="30"
+                                            HeightRequest="30"
+                                            ShapeType="Circle"/>
+                                        <shimmer:ShimmerView
+                                            Margin="0,8,0,0"
+                                            WidthRequest="100"
+                                            HeightRequest="10"
+                                            ShapeType="RoundedRectangle"/>
+                                    </FlexLayout>
+                                </shimmer:SfShimmer.CustomView>
+                                <StackLayout
+                                    Margin="0,10,0,10"
+                                    MaximumWidthRequest="110"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center">
+                                    <Label 
+                                        FontFamily="SegoeUIBold"
+                                        FontAttributes="Bold"
+                                        FontSize="25"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#BF7A24"
+                                        Text="{Binding CatalogoProductoDetalle.Categorias}"/>
+                                    <Label
+                                        HorizontalTextAlignment="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontSize="22"
+                                                    FontFamily="MaterialSymbolSharp"
+                                                    TextColor="#BF8924"
+                                                    Text="&#xe574;"/>
+                                                <Span
+                                                    FontFamily="SegoeUILight"
+                                                    Text=" Categorias"
+                                                    TextColor="#BF8924"
+                                                    FontSize="15"
+                                                    FontAttributes="Bold"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                            </shimmer:SfShimmer>
+                        </Border>
+
+
+                        <Border 
+                            StrokeThickness="0"
+                            BackgroundColor="#26F0A313"
+                            Grid.Row="1" 
+                            StrokeShape="RoundRectangle 5,5,5,5"
+                            Grid.Column="0">
+
+                            <shimmer:SfShimmer 
+                                IsActive="True"
+                                x:Name="ShimmerPrecioPromedio"
+                                AnimationDuration="2000"
+                                BackgroundColor="Transparent"
+                                Fill="#BF7A24">
+                                <shimmer:SfShimmer.CustomView>
+
+                                    <FlexLayout 
+                                        JustifyContent="Center"
+                                        AlignItems="Center"
+                                        Direction="Column">
+                                        <shimmer:ShimmerView
+                                            WidthRequest="30"
+                                            HeightRequest="30"
+                                            ShapeType="Circle"/>
+                                        <shimmer:ShimmerView
+                                            Margin="0,8,0,0"
+                                            WidthRequest="100"
+                                            HeightRequest="10"
+                                            ShapeType="RoundedRectangle"/>
+                                    </FlexLayout>
+                                </shimmer:SfShimmer.CustomView>
+
+                                <StackLayout
+                                    Margin="0,10,0,10"
+                                    MaximumWidthRequest="110"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center">
+                                    <Label 
+                                        FontFamily="SegoeUIBold"
+                                        FontAttributes="Bold"
+                                        FontSize="25"
+                                        HorizontalTextAlignment="Center"
+                                        TextColor="#BF7A24"
+                                        Text="{Binding CatalogoProductoDetalle.UltimaVenta, StringFormat='${0}'}"/>
+                                    <Label
+                                        HorizontalTextAlignment="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontSize="22"
+                                                    FontFamily="MaterialSymbolSharp"
+                                                    TextColor="#BF8924"
+                                                    Text="&#xf041;"/>
+                                                <Span
+                                                    FontFamily="SegoeUILight"
+                                                    Text=" Ultima Venta"
+                                                    TextColor="#BF8924"
+                                                    FontSize="15"
+                                                    FontAttributes="Bold"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                            </shimmer:SfShimmer>
+                        </Border>
+
+                        <Border 
+                            StrokeThickness="0"
+                            BackgroundColor="#26F0A313"
+                            Grid.Row="1" 
+                            StrokeShape="RoundRectangle 5,5,5,5"
+                            Grid.Column="1">
+
+                            <shimmer:SfShimmer 
+                                IsActive="True"
+                                x:Name="ShimmerUltimaCompra"
+                                AnimationDuration="2000"
+                                BackgroundColor="Transparent"
+                                Fill="#BF7A24">
+                                <shimmer:SfShimmer.CustomView>
+
+                                    <FlexLayout 
+                                        JustifyContent="Center"
+                                        AlignItems="Center"
+                                        Direction="Column">
+                                        <shimmer:ShimmerView
+                                            WidthRequest="30"
+                                            HeightRequest="30"
+                                            ShapeType="Circle"/>
+                                        <shimmer:ShimmerView
+                                            Margin="0,8,0,0"
+                                            WidthRequest="100"
+                                            HeightRequest="10"
+                                            ShapeType="RoundedRectangle"/>
+                                    </FlexLayout>
+                                </shimmer:SfShimmer.CustomView>
+                                <StackLayout
+                                    Margin="0,10,0,10"
+                                    MaximumWidthRequest="110"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center">
+                                    <Label
+                                        HorizontalTextAlignment="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    TextColor="#BF7A24"
+                                                    FontSize="25"
+                                                    FontFamily="SegoeUIBold"
+                                                    Text="{Binding CatalogoProductoDetalle.UltimaProduccion}"/>
+                                                <Span
+                                                    FontAttributes="None"
+                                                    TextColor="#BF7A24"
+                                                    FontSize="12"
+                                                    Text=" Costales"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label
+                                        HorizontalTextAlignment="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span
+                                                    FontAttributes="Bold"
+                                                    FontSize="22"
+                                                    FontFamily="MaterialSymbolSharp"
+                                                    TextColor="#BF8924"
+                                                    Text="&#xebbc;"/>
+                                                <Span
+                                                    FontFamily="SegoeUILight"
+                                                    Text=" Ultima Produccion"
+                                                    TextColor="#BF8924"
+                                                    FontSize="15"
+                                                    FontAttributes="Bold"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                            </shimmer:SfShimmer>
+                        </Border>
+                    </Grid>
+
+                    <FlexLayout
+                        JustifyContent="SpaceBetween"
+                        Margin="10,10,10,10"
+                        AlignItems="Center">
+                        <StackLayout>
+                            <Label
+                                FontFamily="SegoeUIBold"
+                                TextColor="#000"
+                                FontSize="20"
+                                Text="Datos Venta"/>
+                            <Label
+                                FontFamily="SegoeUILight"
+                                FontSize="12"
+                                TextColor="Gray"
+                                Text="Edita y Agrega Datos de Venta"/>
+                        </StackLayout>
+                        <Button
+                            Text="&#xf359;"
+                            FontSize="20"
+                            Command="{Binding FormularioAgregarDatosVentaCommand}"
+                            TextColor="#FFF"
+                            BackgroundColor="#BF7A24"
+                            FontAttributes="Bold"
+                            FontFamily="Ionicons"/>
+                    </FlexLayout>
+
+                    <Grid
+                        HeightRequest="560">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <dataGrid:SfDataGrid
+                            Margin="0,10,0,0"
+                            Grid.Row="0"
+                            ColumnWidthMode="Fill"
+                            SortingMode="Single"
+                            EnableDataVirtualization="True"
+                            x:Name="DataGridCatalogoProducto"
+                            AllowAsyncScrolling="True"
+                            ItemsSource="{Binding Source={x:Reference PaginationCatalogProduct}, Path=PagedSource}">
+                            <dataGrid:SfDataGrid.Columns>
+                                <dataGrid:DataGridNumericColumn
+                                HeaderText="Precio"
+                                MappingName="precio"
+                                Format="$00.00"/>
+                                <dataGrid:DataGridNumericColumn
+                                HeaderText="PesoKg"
+                                MappingName="pesoKg"
+                                Format="KG 00.00"/>
+                                <dataGrid:DataGridNumericColumn
+                                HeaderText="Costales"
+                                MappingName="cantidadTotal"
+                                Format="0"/>
+                                <dataGrid:DataGridDateColumn
+                                MappingName="fechaCreacion"
+                                Visible="False"/>
+                                <dataGrid:DataGridDateColumn
+                                MappingName="fechaActualizacion"
+                                Visible="False"/>
+                                <dataGrid:DataGridTextColumn
+                                HeaderText="ID"
+                                MappingName="guid"
+                                Visible="False"/>
+                            </dataGrid:SfDataGrid.Columns>
+                        </dataGrid:SfDataGrid>
+
+                        <pager:SfDataPager
+                            Margin="0,20,0,0"
+                            PageSize="9"
+                            DisplayMode="FirstLastPreviousNext"
+                            Grid.Row="1"
+                            ButtonShape="Rectangle"
+                            ButtonSize="50"
+                            ButtonFontSize="60"
+                            PageChanging="PaginationCatalogProduct_PageChanging"
+                            x:Name="PaginationCatalogProduct"
+                            Source="{Binding ListadoDataCatalogoProductos}">
+                            <pager:SfDataPager.DefaultStyle>
+                                <pager:DataPagerStyle 
+                                              NumericButtonSelectionBackgroundColor="Pink"
+                                              NumericButtonBackgroundColor="Purple"
+                                              NavigationButtonBackgroundColor="#24E19D0A"
+                                              NavigationButtonIconColor="#BF7A24"/>
+                            </pager:SfDataPager.DefaultStyle>
+                        </pager:SfDataPager>
+                    </Grid>
+                    
+                    
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

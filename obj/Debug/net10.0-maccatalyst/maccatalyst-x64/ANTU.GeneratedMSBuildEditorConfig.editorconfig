@@ -1,0 +1,312 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.VerifyReferenceTrimCompatibility = 
+build_property.VerifyReferenceAotCompatibility = 
+build_property.MauiXamlNoWarn = 
+build_property.EnableMauiXamlDiagnostics = true
+build_property.MauiXamlLineInfo = 
+build_property.Configuration = Debug
+build_property.MvvmToolkitEnableINotifyPropertyChangingSupport = true
+build_property._MvvmToolkitIsUsingWindowsRuntimePack = false
+build_property.CsWinRTComponent = 
+build_property.CsWinRTAotOptimizerEnabled = 
+build_property.CsWinRTAotWarningLevel = 
+build_property.TargetFramework = net10.0-maccatalyst
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v10.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ANTU
+build_property.ProjectDir = D:\Sistemas\BodegaBalanceado\ANTU\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EffectiveAnalysisLevelStyle = 10.0
+build_property.EnableCodeStyleSeverity = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Resources/Components/CollectionViewComponents/CatalogoProductoCollectionViewComponents.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.CollectionViewComponents.CatalogoProductoCollectionViewComponents.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Components\CollectionViewComponents\CatalogoProductoCollectionViewComponents.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Components\CollectionViewComponents\CatalogoProductoCollectionViewComponents.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Resources/Components/CollectionViewComponents/MateriaPrimaCollectionViewComponents.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.CollectionViewComponents.MateriaPrimaCollectionViewComponents.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Components\CollectionViewComponents\MateriaPrimaCollectionViewComponents.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Components\CollectionViewComponents\MateriaPrimaCollectionViewComponents.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Resources/Components/ControlersComponents/PanelComponents.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.ControlersComponents.PanelComponents.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Components\ControlersComponents\PanelComponents.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Components\ControlersComponents\PanelComponents.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Resources/Components/FormularioComponentes/CatalogoProductoFormularioComponentes.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.FormularioComponentes.CatalogoProductoFormularioComponentes.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Components\FormularioComponentes\CatalogoProductoFormularioComponentes.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Components\FormularioComponentes\CatalogoProductoFormularioComponentes.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Resources/Components/FormularioComponentes/FabricacionFormularioComponentes.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.FormularioComponentes.FabricacionFormularioComponentes.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Components\FormularioComponentes\FabricacionFormularioComponentes.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Components\FormularioComponentes\FabricacionFormularioComponentes.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Resources/Components/FormularioComponentes/ImagenesGuardarFormularioComponentes.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.FormularioComponentes.ImagenesGuardarFormularioComponentes.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Components\FormularioComponentes\ImagenesGuardarFormularioComponentes.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Components\FormularioComponentes\ImagenesGuardarFormularioComponentes.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Resources/Components/FormularioComponentes/MateriaPrimaFormularioComponentes.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.FormularioComponentes.MateriaPrimaFormularioComponentes.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Components\FormularioComponentes\MateriaPrimaFormularioComponentes.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Components\FormularioComponentes\MateriaPrimaFormularioComponentes.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Resources/Components/PopupComponents/FormularioEmergente.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.PopupComponents.FormularioEmergente.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Components\PopupComponents\FormularioEmergente.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Components\PopupComponents\FormularioEmergente.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Resources/Components/PopupComponents/VentanaConfirmacionEmergente.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.PopupComponents.VentanaConfirmacionEmergente.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Components\PopupComponents\VentanaConfirmacionEmergente.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Components\PopupComponents\VentanaConfirmacionEmergente.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Resources/Components/PopupComponents/VentanaEmergente.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.PopupComponents.VentanaEmergente.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Components\PopupComponents\VentanaEmergente.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Components\PopupComponents\VentanaEmergente.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Resources/Components/PopupComponents/VentanaPopupService.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.PopupComponents.VentanaPopupService.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Components\PopupComponents\VentanaPopupService.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Components\PopupComponents\VentanaPopupService.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Resources/Components/PopupComponents/VentaSpinnerLoading.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.PopupComponents.VentaSpinnerLoading.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Components\PopupComponents\VentaSpinnerLoading.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Components\PopupComponents\VentaSpinnerLoading.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Resources/Components/SnipperComponent.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Components.SnipperComponent.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Components\SnipperComponent.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Components\SnipperComponent.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Views/Config/Configuracion.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Config.Configuracion.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Config\Configuracion.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Config\Configuracion.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Views/Contabilidad/InformeContabilidad.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Contabilidad.InformeContabilidad.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Contabilidad\InformeContabilidad.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Contabilidad\InformeContabilidad.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Views/dashboard/Dashboard.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.dashboard.Dashboard.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\dashboard\Dashboard.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\dashboard\Dashboard.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Views/Detalles/CatalogoProductoDetalle.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Detalles.CatalogoProductoDetalle.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Detalles\CatalogoProductoDetalle.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Detalles\CatalogoProductoDetalle.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Views/Detalles/MateriaPrimaDetalle.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Detalles.MateriaPrimaDetalle.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Detalles\MateriaPrimaDetalle.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Detalles\MateriaPrimaDetalle.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Views/Detalles/MostrarImagenesDetalle.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Detalles.MostrarImagenesDetalle.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Detalles\MostrarImagenesDetalle.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Detalles\MostrarImagenesDetalle.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Views/Formularios/CatalogoProductoFormulario.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Formularios.CatalogoProductoFormulario.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Formularios\CatalogoProductoFormulario.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Formularios\CatalogoProductoFormulario.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Views/Formularios/FabricacionFormulario.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Formularios.FabricacionFormulario.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Formularios\FabricacionFormulario.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Formularios\FabricacionFormulario.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Views/Formularios/MateriaPrimaFormulario.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Formularios.MateriaPrimaFormulario.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Formularios\MateriaPrimaFormulario.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Formularios\MateriaPrimaFormulario.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Views/Login/InicioSesion.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.Login.InicioSesion.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Login\InicioSesion.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Login\InicioSesion.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[D:/Sistemas/BodegaBalanceado/ANTU/Views/MateriaPrima.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = ANTU.Views.MateriaPrima.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\MateriaPrima.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\MateriaPrima.xaml
+build_metadata.AdditionalFiles.Inflator = Runtime
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 

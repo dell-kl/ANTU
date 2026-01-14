@@ -15,13 +15,15 @@
             <StackLayout>
                 <Label
                     TextColor="#000"
+                    x:Name="Titulo"
                     FontFamily="SegoeUIBold"
                     TextTransform="Uppercase"
                     FontSize="17"
                     Text="⚠️ Confirmar Formulario"/>
                 <Label
+                    x:Name="Descripcion"
                     WidthRequest="200"
-                    Text="⚡Si estas seguro de tus datos, da click en ENVIAR caso contrario presiona REGRESAR para volver al formulario."
+                    Text="⚡Si estas seguro de tus datos, da click en CONTINUAR caso contrario presiona Regresar para volver al formulario."
                     TextColor="#F02"/>
 
                 <HorizontalStackLayout 
@@ -37,14 +39,14 @@
                         Clicked="BotonRegresar_Clicked"
                         BackgroundColor="Transparent"
                         TextTransform="Uppercase"
-                        Text="⬅️ Regresar"/>
+                        Text="Regresar"/>
                     <Button
                         IsVisible="True"
                         IsEnabled="True"
                         x:Name="BotonConfirmacion"
                         BackgroundColor="Orange"
                         TextTransform="Uppercase"   
-                        Text="📑 Enviar">
+                        Text="Continuar">
                     </Button>
                     <Border
                         IsVisible="False"
@@ -60,6 +62,7 @@
                                 HeightRequest="30"
                                 Source="snipper.gif"/>
                             <Label
+                                x:Name="Mensaje"
                                 TextColor="#000"
                                 Text="Registrando datos, espere..."/>
                         </HorizontalStackLayout>

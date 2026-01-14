@@ -7,6 +7,16 @@ namespace ANTU.Resources.Rest.RestInterfaces
 {
     public interface IMateriaPrima : IRestGeneric<MateriaPrimaRequestDto, MateriaPrimaProducto>
     {
-         Task<bool> SaveImages(ObservableCollection<FileResultExtensible> fileResultExtensible, string guid);
+        Task<Dictionary<string, object>> SaveImages(ObservableCollection<FileResultExtensible> fileResultExtensible, string guid, bool activarVentanasAlerta = false, Func<Task>? ejecutarTask = null);
+
+        Task<MateriaPrimaDetalle> MateriaPrimaDetalles(string guid);
+
+        Task<bool> AgregarStockMateriaPrima(StockMateriaPrimaRequestDto stockMateriaPrima, Func<Task>? ejecutarTask = null);
+
+        Task<bool> EditarDatosMateriaPrima(MateriaPrimaRequestDto materiaPrimaRequestDTO, Func<Task>? ejecutarTask = null);
+
+        Task<bool> DeleteImages(ICollection<DataImage> dataImages, Func<Task>? ejecutarTask = null);
+
+        Task<IEnumerable<KgSeguimiento>> GetKgSeguimientos(object data, string guidMateriaPrima);
     }
 }

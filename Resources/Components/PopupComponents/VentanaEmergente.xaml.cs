@@ -23,8 +23,8 @@ public partial class VentanaEmergente
     }
 
 
-    private void Button_Clicked(object sender, EventArgs e)
+    private async void Button_Clicked(object sender, EventArgs e)
     {
-        MopupService.Instance.PopAsync();
+        await MopupService.Instance.PopAllAsync();
     }
 }

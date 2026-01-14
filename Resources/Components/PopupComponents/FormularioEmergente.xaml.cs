@@ -9,10 +9,6 @@ public partial class FormularioEmergente
 		InitializeComponent();
 	}
 
-    private void BontonCancelarFormulario_Clicked(object sender, EventArgs e)
-    {
-		MopupService.Instance.PopAsync();
-    }
 
     protected override bool OnBackButtonPressed()
     {

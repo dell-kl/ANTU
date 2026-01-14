@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:shimmer="clr-namespace:Syncfusion.Maui.Shimmer;assembly=Syncfusion.Maui.Core"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:models="clr-namespace:ANTU.Models"
+             xmlns:local="clr-namespace:ANTU.ViewModel"
+             xmlns:valueConverter="clr-namespace:ANTU.Resources.ValueConverter"
+             x:Name="ContentViewCatalogoProducto"
+             x:Class="ANTU.Resources.Components.CollectionViewComponents.CatalogoProductoCollectionViewComponents"
+             >
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <valueConverter:ImageValueConverter x:Key="KeyImageValueConverter"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <syncfusion:SfListView
+                ItemSize="150"
+                Margin="0,10,0,0"
+                Padding="0,0,0,10"
+                AllowSwiping="True"
+                EnableFadeOnScroll="True"
+                x:Name="ListadoMateriaPrima"
+                MaximumHeightRequest="550"
+                MinimumHeightRequest="550"
+                VerticalOptions="End"
+                ItemsSourceChangeCachingStrategy="RecycleItems"
+                LoadMoreOption="AutoOnScroll"
+                LoadMorePosition="End"
+                CanMaintainScrollPosition="True"
+                IsLazyLoading="{Binding Path=BindingContext.IsLazyLoading, Source={x:Reference ContentViewCatalogoProducto}}"
+                LoadMoreCommand="{Binding Path=BindingContext.LoadMoreElementsCommand, Source={x:Reference ContentViewCatalogoProducto}}"
+                ItemsSource="{Binding Path=BindingContext.DatosPresentacion, Source={x:Reference ContentViewCatalogoProducto} }">
+        <syncfusion:SfListView.EndSwipeTemplate>
+            <DataTemplate x:DataType="models:CatalogoProducto" x:Name="StartSwipeTemplate">
+                <Grid 
+                            RowSpacing="5"
+                            Margin="0,0,10,15"
+                            RowDefinitions="*,*">
+
+                    <Border
+                                StrokeShape="RoundRectangle 5,5,5,5"
+                                BackgroundColor="LightGreen"
+                                StrokeThickness="0"
+                                Grid.Row="0"
+                                x:Name="ContenedorBotonEditar"
+                                ClassId="{Binding Identificador}"
+                                >
+
+                        <Border.Behaviors>
+                            <toolkit:TouchBehavior
+                                    x:Name="BotonEditar"
+                                    IsEnabled="True"
+                                    CommandParameter="{Binding Path=ClassId,Source={x:Reference ContenedorBotonEditar}}"
+                                    Command="{Binding Path=BindingContext.NavegarPaginaProductoGestionarCommand, Source={x:Reference ContentViewCatalogoProducto}}"
+                                    PressedBackgroundColor="#59F059"/>
+                        </Border.Behaviors>
+
+                        <StackLayout 
+                                    MaximumWidthRequest="50"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                            <Image 
+                                    HeightRequest="35"
+                                    WidthRequest="35"
+                                    Source="edit.png" />
+                        </StackLayout>
+                    </Border>
+
+                    <Border
+                                StrokeShape="RoundRectangle 5,5,5,5"
+                                BackgroundColor="LightPink"
+                                StrokeThickness="0"
+                                Grid.Row="1">
+
+                        <Border.Behaviors>
+                            <toolkit:TouchBehavior
+                                    PressedBackgroundColor="#EB7486"/>
+                        </Border.Behaviors>
+
+                        <StackLayout
+                                    MaximumWidthRequest="50"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center">
+                            <Image Grid.Column="0"
+                                    Grid.Row="0"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="35"
+                                    WidthRequest="35"
+                                    Source="trash.png" />
+                        </StackLayout>
+                    </Border>
+                </Grid>
+            </DataTemplate>
+        </syncfusion:SfListView.EndSwipeTemplate>
+        <syncfusion:SfListView.ItemTemplate>
+            <DataTemplate x:DataType="models:CatalogoProducto">
+                <Border 
+                    Margin="10,0,10,15"
+                    Grid.Column="0"
+                    Padding="10,10,5,10"
+                    Stroke="Transparent"
+                    BackgroundColor="#FFF"
+                    StrokeShape="RoundRectangle 5,5,5,5">
+
+                    <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
+                        <Border
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Grid.RowSpan="2"
+                                Stroke="Transparent"
+                                BackgroundColor="LightGray"
+                                StrokeShape="RoundRectangle 10,10,10,10">
+
+                            <Image
+                                Aspect="Fill"
+                                BackgroundColor="Transparent"
+                                Source="{Binding RutaImagen, Converter={StaticResource KeyImageValueConverter}, ConverterParameter='catalogProduct'}">
+                            </Image>
+                        </Border>
+
+                        <HorizontalStackLayout 
+                                    Grid.Column="1"
+                                    Grid.Row="0"
+                                    Margin="5,0,0,0">
+                            <StackLayout>
+
+                                <Label 
+                                    FontFamily="SegoeUIBold"
+                                    FontAttributes="Bold"
+                                    TextColor="Black"
+                                    WidthRequest="150"
+                                    FontSize="17"
+                                    LineBreakMode="TailTruncation"
+                                    Text="{Binding NombreProducto}"/>
+
+                                <Label
+                                    TextColor="#000"
+                                    FontFamily="SegoeUILight"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding TotalSacosCatalogo, StringFormat='Total Stock: {0} Costales'}"/>
+                            </StackLayout>
+                        </HorizontalStackLayout>
+
+                        <StackLayout 
+                                    Grid.Column="1" 
+                                    Grid.Row="1"  
+                                    Margin="5,0,0,0">
+
+                            <StackLayout>
+                                <Label 
+                                            Margin="0,5,0,0"
+                                            TextColor="#8C3623"
+                                            FontFamily="SegoeUILight"
+                                            FontSize="12"
+                                            Text="{Binding FechaCreacion, StringFormat='Fecha Creacion {0:dd/MM/yyyy}'}"/>
+                            </StackLayout>
+                            <StackLayout>
+                                <Label
+                                    Padding="2,0,0,0"
+                                    FontAttributes="Bold"
+                                    FontFamily="SegoeUILight">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span 
+                                                TextColor="#D49724"
+                                                FontAttributes="Bold"
+                                                FontFamily="SegoeUILight" Text="Nr. Categorias: "/>
+                                            <Span 
+                                                TextColor="#D49724"
+                                                FontFamily="SegoeUIBold" Text="{Binding NumeroCategorias}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+
+                        </StackLayout>
+
+                    </Grid>
+                </Border>
+            </DataTemplate>
+        </syncfusion:SfListView.ItemTemplate>
+    </syncfusion:SfListView>
+
+
+</ContentView>
