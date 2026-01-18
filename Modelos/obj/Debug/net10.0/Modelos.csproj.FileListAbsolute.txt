@@ -1,0 +1,11 @@
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Modelos/bin/Debug/net10.0/Modelos.deps.json
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Modelos/bin/Debug/net10.0/Modelos.dll
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Modelos/bin/Debug/net10.0/Modelos.pdb
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Modelos/obj/Debug/net10.0/Modelos.csproj.AssemblyReference.cache
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Modelos/obj/Debug/net10.0/Modelos.GeneratedMSBuildEditorConfig.editorconfig
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Modelos/obj/Debug/net10.0/Modelos.csproj.CoreCompileInputs.cache
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Modelos/obj/Debug/net10.0/Modelos.sourcelink.json
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Modelos/obj/Debug/net10.0/Modelos.dll
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Modelos/obj/Debug/net10.0/refint/Modelos.dll
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Modelos/obj/Debug/net10.0/Modelos.pdb
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Modelos/obj/Debug/net10.0/ref/Modelos.dll

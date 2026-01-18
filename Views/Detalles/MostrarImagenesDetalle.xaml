@@ -9,7 +9,7 @@
              xmlns:viewModel="clr-namespace:ANTU.ViewModel"
              xmlns:ValueConverter="clr-namespace:ANTU.Resources.ValueConverter"
              xmlns:toolbar="clr-namespace:Syncfusion.Maui.Toolbar;assembly=Syncfusion.Maui.Toolbar"
-             xmlns:models="clr-namespace:ANTU.Models"
+             xmlns:models="clr-namespace:Modelos"
              Title="MostrarImagenesDetalle"
              BackgroundColor="#D9D6D2"
              x:Name="PaginaContenidoImagenesDetalles"

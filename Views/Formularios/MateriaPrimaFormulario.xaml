@@ -4,7 +4,7 @@
              x:Class="ANTU.Views.Formularios.MateriaPrimaFormulario"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:entryCustomizer="clr-namespace:ANTU.Resources.Customizer"
-             xmlns:models="clr-namespace:ANTU.Models.Dto"
+             xmlns:models="clr-namespace:Modelos.Dto"
              xmlns:viewModel="clr-namespace:ANTU.ViewModel"
              x:Name="ContentMateriaPrima"
              Title="MateriaPrimaFormulario"

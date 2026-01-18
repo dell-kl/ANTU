@@ -3,12 +3,13 @@ using ANTU.Views.Login;
 using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
 using ANTU.Resources.Components;
+using ANTU.Resources.Components.CollectionViewComponents;
 using ANTU.Views.dashboard;
 using ANTU.Views;
 using ANTU.Views.Formularios;
 using Syncfusion.Maui.Core.Hosting;
-using ANTU.Resources.Rest.RestInterfaces;
-using ANTU.Resources.Rest;
+using Data.Rest.RestInterfaces;
+using Data.Rest;
 using Mopups.Hosting;
 using Microsoft.Extensions.Http.Resilience;
 using ANTU.Views.Detalles;
@@ -16,6 +17,8 @@ using ANTU.Resources.ValueConverter;
 using ANTU.Resources.Components.PopupComponents;
 using ANTU.ViewModel.ComponentsViewModel;
 using ANTU.ViewModel.PopupServicesViewModel;
+using Business.Services;
+using Business.Services.IServices;
 
 namespace ANTU
 {
@@ -68,6 +71,7 @@ namespace ANTU
                 configure.TotalRequestTimeout.Timeout = TimeSpan.FromSeconds(25);
             });
 
+            //Register
             Routing.RegisterRoute("Inicio", typeof(Dashboard));
             Routing.RegisterRoute("SnipperComponent", typeof(SnipperComponent));
             Routing.RegisterRoute(nameof(MateriaPrima), typeof(MateriaPrima));
@@ -79,6 +83,7 @@ namespace ANTU
             Routing.RegisterRoute("FabricacionFormulario", typeof(FabricacionFormulario));
             Routing.RegisterRoute("ProductoListoDetalle", typeof(ProductoListoDetalle));
 
+            //View
             builder.Services.AddTransient<InicioSesion>();
             builder.Services.AddTransient<Dashboard>();
             builder.Services.AddTransient<MateriaPrima>();
@@ -90,6 +95,13 @@ namespace ANTU
             builder.Services.AddTransient<CatalogoProductoDetalle>();
             builder.Services.AddTransient<FabricacionFormulario>();
 
+            //Popup View
+            builder.Services.AddTransient<VentaEmergenteSinConexion>();
+            builder.Services.AddTransient<VentanaEmergente>();
+            // builder.Services.AddTransient<Mensaje>();
+            builder.Services.AddTransient<VentanaEmergenteSinConexionViewModel>();
+            
+            //ViewModel
             builder.Services.AddTransient<InicioSesionViewModel>();
             builder.Services.AddTransient<DashboardViewModel>();
             builder.Services.AddTransient<MateriaPrimaViewModel>();
@@ -102,14 +114,23 @@ namespace ANTU
             builder.Services.AddTransient<FabricacionFormularioViewModel>();
             builder.Services.AddTransient<ProductoListoDetalleViewModel>();
             
+            //CompoentesViewModel
+            builder.Services.AddTransient<MateriaPrimaCollectionViewComponentsVIewModel>();
             builder.Services.AddTransient<FabricacionCollectionViewComponentsViewModel>();
             builder.Services.AddTransient<ProductosListosCollectionViewComponentsViewModel>();
+            builder.Services.AddTransient<CatalogoProductoCollectionViewComponentsViewModel>();
             
+            //Compoentes Collection View
+            builder.Services.AddTransient<MateriaPrimaCollectionViewComponents>();
+            builder.Services.AddTransient<CatalogoProductoCollectionViewComponents>();
+            builder.Services.AddTransient<FabricacionCollectionViewComponents>();
+            builder.Services.AddTransient<ProductosListosCollectionViewComponents>();
+            
+            //otros
             builder.Services.AddTransient<ImageValueConverter>();
-
             builder.Services.AddTransient<IRestManagement, RestManagement>();
-
             builder.Services.AddTransientPopup<VentanaPopupService, VentanaPopupServiceViewModel>();
+            builder.Services.AddTransient<IManagementService, ManagementService>();
 
             return builder.Build();
         }

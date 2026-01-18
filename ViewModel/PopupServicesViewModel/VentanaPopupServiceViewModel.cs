@@ -1,7 +1,6 @@
-﻿
-using ANTU.Models.Dto;
-using ANTU.Resources.Components.FormularioComponentes;
-using ANTU.Resources.Rest.RestInterfaces;
+﻿using ANTU.Resources.Components.FormularioComponentes;
+using Business.Services.IServices;
+using Data.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -31,7 +30,7 @@ namespace ANTU.ViewModel.PopupServicesViewModel
         [ObservableProperty]
         private MateriaPrimaFormularioComponentes materiaPrimaFormulario = new MateriaPrimaFormularioComponentes();
 
-        public VentanaPopupServiceViewModel(IPopupService popupService, IRestManagement restManagement) : base(restManagement, popupService)
+        public VentanaPopupServiceViewModel(IPopupService popupService, IRestManagement restManagement, IManagementService managementService) : base(restManagement, popupService, managementService)
         {
         }
 

@@ -1,6 +1,6 @@
-﻿using ANTU.Models;
+﻿using Modelos;
 using ANTU.Resources.Components.PopupComponents;
-using ANTU.Resources.Rest.RestInterfaces;
+using Data.Rest.RestInterfaces;
 using ANTU.Resources.ValueConverter;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Core.Extensions;
@@ -8,6 +8,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
 using System.Collections.ObjectModel;
+using Business.Services.IServices;
 
 namespace ANTU.ViewModel
 {
@@ -34,7 +35,7 @@ namespace ANTU.ViewModel
         [ObservableProperty]
         private object _dataModel;
 
-        public MostrarImagenesDetalleViewModel(IRestManagement restManagement, IPopupService popupService) : base(restManagement, popupService) {
+        public MostrarImagenesDetalleViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) : base(restManagement, popupService, managementService) {
             
         }
 

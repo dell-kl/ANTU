@@ -1,7 +1,8 @@
-﻿using ANTU.Models.Dto;
-using ANTU.Models.RequestDto;
+﻿using Modelos.Dto;
+using Modelos.RequestDto;
 using ANTU.Resources.Components.FormularioComponentes;
-using ANTU.Resources.Rest.RestInterfaces;
+using Business.Services.IServices;
+using Data.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -15,8 +16,7 @@ namespace ANTU.ViewModel
         [ObservableProperty]
         private CatalogoProductoFormularioComponentes catalogoProductoFormularioComponenets = new CatalogoProductoFormularioComponentes();
 
-        public CatalogoProductoFormularioViewModel(IRestManagement restManagement, IPopupService popupService)
-            : base(restManagement, popupService)
+        public CatalogoProductoFormularioViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) : base(restManagement, popupService, managementService)
         {
             catalogoProductoFormularioComponenets.BindingContext = this;
         }
@@ -40,8 +40,8 @@ namespace ANTU.ViewModel
         public async Task RegistarCatalogoProducto(CatalogoProductoFormulario catalogoProductoFormulario)
         {
             await MostrarSpinner();
-            await _restManagement.CatalogoProduct.Add(
-                new Models.RequestDto.CatalogoProductoRequestDto()
+            bool resultado = await _restManagement.CatalogoProduct.Add(
+                new Modelos.RequestDto.CatalogoProductoRequestDto()
                 {
                     identificador = Guid.NewGuid().ToString(),
                     nombreProducto = catalogoProductoFormulario.NombreProducto!,

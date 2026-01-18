@@ -1,8 +1,8 @@
-﻿using ANTU.Models;
-using ANTU.Models.Dto;
-using ANTU.Models.RequestDto;
-using ANTU.Resources.Rest;
-using ANTU.Resources.Rest.RestInterfaces;
+﻿using Modelos;
+using Modelos.Dto;
+using Modelos.RequestDto;
+using Data.Rest;
+using Data.Rest.RestInterfaces;
 using ANTU.ViewModel.PopupServicesViewModel;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Alerts;
@@ -11,6 +11,7 @@ using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using Business.Services.IServices;
 
 namespace ANTU.ViewModel
 {
@@ -35,7 +36,7 @@ namespace ANTU.ViewModel
         [ObservableProperty]
         private CatalogoProductoDetalle _catalogoProductoDetalle = new CatalogoProductoDetalle();
 
-        public CatalogoProductoDetalleViewModel(IRestManagement restManagement, IPopupService popupService) : base(restManagement, popupService)
+        public CatalogoProductoDetalleViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) : base(restManagement, popupService, managementService)
         {
         }
 
@@ -125,7 +126,7 @@ namespace ANTU.ViewModel
 
                 CatalogoProductoFormulario formulario = (CatalogoProductoFormulario) datos[0];
                 
-                bool respuesta = await _restManagement.CatalogoProduct.AddDatosVentaDataCatalogProduct(new Models.RequestDto.CatalogoProductoRequestDto()
+                bool respuesta = await _restManagement.CatalogoProduct.AddDatosVentaDataCatalogProduct(new Modelos.RequestDto.CatalogoProductoRequestDto()
                 {
                     identificador = (string) datos[1],
                     nombreProducto = this.CatalogoProducto.NombreProducto,

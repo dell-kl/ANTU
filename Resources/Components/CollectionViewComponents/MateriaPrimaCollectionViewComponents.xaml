@@ -2,13 +2,13 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ANTU.Resources.Components.CollectionViewComponents.MateriaPrimaCollectionViewComponents"
-             xmlns:shimmer="clr-namespace:Syncfusion.Maui.Shimmer;assembly=Syncfusion.Maui.Core"
              xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
-             xmlns:local="clr-namespace:ANTU.ViewModel"
              xmlns:valueConverter="clr-namespace:ANTU.Resources.ValueConverter"
-             xmlns:models="clr-namespace:ANTU.Models"
+             xmlns:viewModel="clr-namespace:ANTU.ViewModel.ComponentsViewModel"
+             xmlns:models="clr-namespace:Modelos"
              x:Name="ContentViewMateriaPrima"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="viewModel:MateriaPrimaCollectionViewComponentsVIewModel">
 
     <ContentView.Resources>
         <ResourceDictionary>
@@ -31,9 +31,9 @@
                 LoadMoreOption="AutoOnScroll"
                 LoadMorePosition="End"
                 CanMaintainScrollPosition="True"
-                IsLazyLoading="{Binding Path=BindingContext.IsLazyLoading, Source={x:Reference ContentViewMateriaPrima}}"
-                LoadMoreCommand="{Binding Path=BindingContext.LoadMoreElementsCommand, Source={x:Reference ContentViewMateriaPrima}}"
-                ItemsSource="{Binding Path=BindingContext.DatosPresentacion, Source={x:Reference ContentViewMateriaPrima} }">
+                IsLazyLoading="{Binding IsLazyLoading}"
+                LoadMoreCommand="{Binding LoadMoreElementsCommand}"
+                ItemsSource="{Binding DatosMateriaPrimaProductos }">
             <syncfusion:SfListView.EndSwipeTemplate>
                 <DataTemplate x:DataType="models:MateriaPrimaProducto" x:Name="StartSwipeTemplate">
                     <Grid 
@@ -55,7 +55,7 @@
                                     x:Name="BotonEditar"
                                     IsEnabled="True"
                                     CommandParameter="{Binding Path=ClassId,Source={x:Reference ContenedorBotonEditar}}"
-                                    Command="{Binding Path=BindingContext.NavegarPaginaProductoGestionarCommand, Source={x:Reference ContentViewMateriaPrima}}"
+                                    Command="{Binding Path=BindingContext.NavegarPaginaDetalleCommand, Source={x:Reference ContentViewMateriaPrima}}"
                                     PressedBackgroundColor="#59F059"/>
                             </Border.Behaviors>
 
@@ -85,8 +85,7 @@
                                     MaximumWidthRequest="50"
                                     HorizontalOptions="Center"
                                     VerticalOptions="Center">
-                                <Image Grid.Column="0"
-                                    Grid.Row="0"
+                                <Image
                                     BackgroundColor="Transparent"
                                     HeightRequest="35"
                                     WidthRequest="35"
@@ -100,7 +99,6 @@
                 <DataTemplate x:DataType="models:MateriaPrimaProducto">
                     <Border 
                             Margin="10,0,10,15"
-                            Grid.Column="0"
                             Padding="10,10,5,10"
                             Stroke="Transparent"
                             BackgroundColor="#FFF"

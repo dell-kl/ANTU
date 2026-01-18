@@ -1,9 +1,10 @@
 using System.Collections.ObjectModel;
-using ANTU.Models;
-using ANTU.Models.Dto;
-using ANTU.Models.RequestDto;
+using Modelos;
+using Modelos.Dto;
+using Modelos.RequestDto;
 using ANTU.Resources.Components.FormularioComponentes;
-using ANTU.Resources.Rest.RestInterfaces;
+using Business.Services.IServices;
+using Data.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -28,7 +29,7 @@ public partial class ProductoListoDetalleViewModel : ParentViewModel
     [ObservableProperty]
     private ProductosListosFormularioComponentes formularioProductosListosView;
     
-    public ProductoListoDetalleViewModel(IRestManagement restManagement, IPopupService popupService) : base(restManagement, popupService) {
+    public ProductoListoDetalleViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) : base(restManagement, popupService, managementService) {
         
     }
     
@@ -100,18 +101,20 @@ public partial class ProductoListoDetalleViewModel : ParentViewModel
             () => base.DesmontarSpinner(),
             true
         );
+        
+    }
 
-        if (resultado)
-            this.ListadoProductosListos.Add(new ProductosListos()
-            {
-                NumeroCostales = this.ProductosListosFormulario.NumeroCostales,
-                Descripcion = this.ProductosListosFormulario.DatosVenta
-            });
+    [RelayCommand(AllowConcurrentExecutions = false)]
+    public async Task RefrescarTablaProductosListos()
+    {
+        await base.MostrarSpinner();
+        await agregarMasDatosVenta(true);
+        await base.DesmontarSpinner();
     }
     
-   public async Task agregarMasDatosVenta()
+   public async Task agregarMasDatosVenta(bool permitir = false)
     {
-        if (this.ListadoProductosListos.Count == 0 || this.ListadoProductosListos.Count >= 10)
+        if (this.ListadoProductosListos.Count == 0 || this.ListadoProductosListos.Count >= 10 || permitir)
         {
             var resultado = await _restManagement.ProduccionLista.ObtenerInformacionProductosBodega(this.Produccion.Identificador, this.ListadoProductosListos.Count());
 

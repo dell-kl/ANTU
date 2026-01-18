@@ -5,9 +5,11 @@
              xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:valueConverter="clr-namespace:ANTU.Resources.ValueConverter"
-             xmlns:models="clr-namespace:ANTU.Models"
+             xmlns:models="clr-namespace:Modelos"
+             xmlns:viewModel="clr-namespace:ANTU.ViewModel.ComponentsViewModel"
              x:Name="ContentViewProduccionLista"
-             x:Class="ANTU.Resources.Components.CollectionViewComponents.ProductosListosCollectionViewComponents">
+             x:Class="ANTU.Resources.Components.CollectionViewComponents.ProductosListosCollectionViewComponents"
+             x:DataType="viewModel:ProductosListosCollectionViewComponentsViewModel">
     <ContentView.Resources>
         <ResourceDictionary>
             <valueConverter:ImageValueConverter x:Key="KeyImageValueConverter"/>
@@ -32,9 +34,9 @@
             LoadMoreOption="AutoOnScroll"
             LoadMorePosition="End"
             CanMaintainScrollPosition="True"
-            IsLazyLoading="{Binding Path=BindingContext.IsLazyLoading, Source={x:Reference ContentViewProduccionLista}}"
-            LoadMoreCommand="{Binding Path=BindingContext.LoadMoreElementsCommand, Source={x:Reference ContentViewProduccionLista}}"
-            ItemsSource="{Binding Path=BindingContext.DatosPresentacion, Source={x:Reference ContentViewProduccionLista} }">
+            IsLazyLoading="{Binding IsLazyLoading}"
+            LoadMoreCommand="{Binding LoadMoreElementsCommand}"
+            ItemsSource="{Binding DatosProductosListos }">
             <syncfusion:SfListView.EndSwipeTemplate>
                 <DataTemplate x:DataType="models:Produccion" x:Name="StartSwipeTemplate">
                     <Grid 
@@ -56,7 +58,7 @@
                                     x:Name="BotonEditar"
                                     IsEnabled="True"
                                     CommandParameter="{Binding Path=ClassId,Source={x:Reference ContenedorBotonEditar}}"
-                                    Command="{Binding Path=BindingContext.NavegarPaginaProductoGestionarCommand, Source={x:Reference ContentViewProduccionLista}}"
+                                    Command="{Binding Path=BindingContext.NavegarPaginaDetalleCommand, Source={x:Reference ContentViewProduccionLista}}"
                                     PressedBackgroundColor="#59F059"/>
                             </Border.Behaviors>
 

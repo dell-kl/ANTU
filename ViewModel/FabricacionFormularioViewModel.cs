@@ -1,8 +1,9 @@
 ﻿using System.Collections.ObjectModel;
-using ANTU.Models;
-using ANTU.Models.RequestDto;
+using Modelos;
+using Modelos.RequestDto;
 using ANTU.Resources.Components.FormularioComponentes;
-using ANTU.Resources.Rest.RestInterfaces;
+using Business.Services.IServices;
+using Data.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Syncfusion.Maui.Data;
@@ -20,7 +21,7 @@ namespace ANTU.ViewModel
         [ObservableProperty]
         private FabricacionFormularioComponentes fabricacionFormularioComponentes = new FabricacionFormularioComponentes();
 
-        public FabricacionFormularioViewModel(IRestManagement restManagement, IPopupService popupService) : base(restManagement, popupService) {
+        public FabricacionFormularioViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) : base(restManagement, popupService, managementService) {
         }
 
         public async Task RegistrarDatosFabricacion(ProduccionReqestDto produccionReqestDto)

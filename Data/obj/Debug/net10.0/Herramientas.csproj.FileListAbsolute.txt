@@ -1,0 +1,10 @@
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Herramientas/bin/Debug/net10.0/Herramientas.deps.json
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Herramientas/bin/Debug/net10.0/Herramientas.dll
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Herramientas/bin/Debug/net10.0/Herramientas.pdb
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Herramientas/obj/Debug/net10.0/Herramientas.GeneratedMSBuildEditorConfig.editorconfig
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Herramientas/obj/Debug/net10.0/Herramientas.csproj.CoreCompileInputs.cache
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Herramientas/obj/Debug/net10.0/Herramientas.sourcelink.json
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Herramientas/obj/Debug/net10.0/Herramientas.dll
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Herramientas/obj/Debug/net10.0/refint/Herramientas.dll
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Herramientas/obj/Debug/net10.0/Herramientas.pdb
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Herramientas/obj/Debug/net10.0/ref/Herramientas.dll

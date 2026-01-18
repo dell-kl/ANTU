@@ -1,8 +1,8 @@
-﻿using ANTU.Models;
-using ANTU.Models.Dto;
-using ANTU.Models.RequestDto;
+﻿using Modelos;
+using Modelos.Dto;
+using Modelos.RequestDto;
 using ANTU.Resources.Components.PopupComponents;
-using ANTU.Resources.Rest.RestInterfaces;
+using Data.Rest.RestInterfaces;
 using ANTU.Resources.ValueConverter;
 using ANTU.ViewModel.PopupServicesViewModel;
 using CommunityToolkit.Maui;
@@ -13,7 +13,7 @@ using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
 using Syncfusion.Maui.DataForm;
 using System.Collections.ObjectModel;
-
+using Business.Services.IServices;
 
 
 namespace ANTU.ViewModel
@@ -43,7 +43,7 @@ namespace ANTU.ViewModel
         [ObservableProperty]
         private ObservableCollection<KgSeguimiento> _kgSeguimientoList = new ObservableCollection<KgSeguimiento>();
 
-        public MateriaPrimaDetalleViewModel(IRestManagement restManagement, IPopupService popupService) : base(restManagement, popupService)
+        public MateriaPrimaDetalleViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) : base(restManagement, popupService, managementService)
         {
         }
 
@@ -112,7 +112,7 @@ namespace ANTU.ViewModel
 
                 MateriaPrimaFormulario formulario = (MateriaPrimaFormulario)datos[0];
 
-                bool solicitud = await _restManagement.MateriaPrima.EditarDatosMateriaPrima(new Models.RequestDto.MateriaPrimaRequestDto()
+                bool solicitud = await _restManagement.MateriaPrima.EditarDatosMateriaPrima(new Modelos.RequestDto.MateriaPrimaRequestDto()
                 {
                     id_dto = datos[1].ToString()!,
                     nombre_dto = formulario.MateriaPrima
@@ -141,7 +141,7 @@ namespace ANTU.ViewModel
 
                 MateriaPrimaFormulario formulario = (MateriaPrimaFormulario)datos[0];
 
-                bool solicitud = await _restManagement.MateriaPrima.AgregarStockMateriaPrima(new Models.RequestDto.StockMateriaPrimaRequestDto()
+                bool solicitud = await _restManagement.MateriaPrima.AgregarStockMateriaPrima(new Modelos.RequestDto.StockMateriaPrimaRequestDto()
                 {
                     Identificador = datos[1].ToString()!,
                     Amount = formulario.Cantidad,

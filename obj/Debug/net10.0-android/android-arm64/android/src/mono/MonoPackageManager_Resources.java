@@ -192,6 +192,9 @@ public class MonoPackageManager_Resources {
 		"Syncfusion.Maui.Buttons.resources.dll",
 		"Syncfusion.Maui.DataGrid.resources.dll",
 		"Syncfusion.Maui.Inputs.resources.dll",
+		"Business.dll",
+		"Data.dll",
+		"Modelos.dll",
 		"_Microsoft.Android.Resource.Designer.dll",
 	};
 	public static String[] Dependencies = new String[]{

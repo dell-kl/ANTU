@@ -1,7 +1,8 @@
-﻿using ANTU.Models.Dto;
-using ANTU.Models.RequestDto;
+﻿using Modelos.Dto;
+using Modelos.RequestDto;
 using ANTU.Resources.Components.FormularioComponentes;
-using ANTU.Resources.Rest.RestInterfaces;
+using Business.Services.IServices;
+using Data.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -20,8 +21,8 @@ namespace ANTU.ViewModel
         [ObservableProperty]
         private MateriaPrimaFormularioComponentes materiaPrimaFormularioComponentes = new MateriaPrimaFormularioComponentes();
         
-        public FormularioMateriaPrimaViewModel(IRestManagement restManagement, IPopupService popupService)
-        : base(restManagement, popupService)
+        public FormularioMateriaPrimaViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService)
+        : base(restManagement, popupService, managementService)
         {
             this.materiaPrimaFormularioComponentes.BindingContext = this;
         }

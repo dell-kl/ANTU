@@ -4,135 +4,6 @@
         <name>ANTU</name>
     </assembly>
     <members>
-        <member name="T:ANTU.Models.CatalogoProducto">
-            <inheritdoc/>
-        </member>
-        <member name="P:ANTU.Models.CatalogoProducto.Identificador">
-            <inheritdoc cref="F:ANTU.Models.CatalogoProducto.identificador"/>
-        </member>
-        <member name="P:ANTU.Models.CatalogoProducto.NombreProducto">
-            <inheritdoc cref="F:ANTU.Models.CatalogoProducto.nombreProducto"/>
-        </member>
-        <member name="P:ANTU.Models.CatalogoProducto.RutaImagen">
-            <inheritdoc cref="F:ANTU.Models.CatalogoProducto.rutaImagen"/>
-        </member>
-        <member name="P:ANTU.Models.CatalogoProducto.FechaCreacion">
-            <inheritdoc cref="F:ANTU.Models.CatalogoProducto.fechaCreacion"/>
-        </member>
-        <member name="P:ANTU.Models.CatalogoProducto.NumeroCategorias">
-            <inheritdoc cref="F:ANTU.Models.CatalogoProducto.numeroCategorias"/>
-        </member>
-        <member name="P:ANTU.Models.CatalogoProducto.TotalSacosCatalogo">
-            <inheritdoc cref="F:ANTU.Models.CatalogoProducto.totalSacosCatalogo"/>
-        </member>
-        <member name="T:ANTU.Models.CatalogoProductoDetalle">
-            <inheritdoc/>
-        </member>
-        <member name="P:ANTU.Models.CatalogoProductoDetalle.UltimaProduccion">
-            <inheritdoc cref="F:ANTU.Models.CatalogoProductoDetalle.ultimaProduccion"/>
-        </member>
-        <member name="P:ANTU.Models.CatalogoProductoDetalle.UltimaVenta">
-            <inheritdoc cref="F:ANTU.Models.CatalogoProductoDetalle.ultimaVenta"/>
-        </member>
-        <member name="P:ANTU.Models.CatalogoProductoDetalle.Categorias">
-            <inheritdoc cref="F:ANTU.Models.CatalogoProductoDetalle.categorias"/>
-        </member>
-        <member name="P:ANTU.Models.CatalogoProductoDetalle.CostalesTotal">
-            <inheritdoc cref="F:ANTU.Models.CatalogoProductoDetalle.costalesTotal"/>
-        </member>
-        <member name="P:ANTU.Models.CatalogoProductoDetalle.Imagenes">
-            <inheritdoc cref="F:ANTU.Models.CatalogoProductoDetalle.imagenes"/>
-        </member>
-        <member name="T:ANTU.Models.DataCatalogoProduccion">
-            <inheritdoc/>
-        </member>
-        <member name="P:ANTU.Models.DataCatalogoProduccion.IdentificadorDataCatalogProducion">
-            <inheritdoc cref="F:ANTU.Models.DataCatalogoProduccion.identificadorDataCatalogProducion"/>
-        </member>
-        <member name="P:ANTU.Models.DataCatalogoProduccion.TextoDescriptivo">
-            <inheritdoc cref="F:ANTU.Models.DataCatalogoProduccion.textoDescriptivo"/>
-        </member>
-        <member name="T:ANTU.Models.DataImage">
-            <inheritdoc/>
-        </member>
-        <member name="P:ANTU.Models.DataImage.Identificador">
-            <inheritdoc cref="F:ANTU.Models.DataImage._identificador"/>
-        </member>
-        <member name="P:ANTU.Models.DataImage.Url">
-            <inheritdoc cref="F:ANTU.Models.DataImage._url"/>
-        </member>
-        <member name="P:ANTU.Models.DataImage.Estado">
-            <inheritdoc cref="F:ANTU.Models.DataImage._estado"/>
-        </member>
-        <member name="P:ANTU.Models.DataImage.Tipo">
-            <inheritdoc cref="F:ANTU.Models.DataImage._tipo"/>
-        </member>
-        <member name="T:ANTU.Models.KgSeguimiento">
-            <inheritdoc/>
-        </member>
-        <member name="P:ANTU.Models.KgSeguimiento.Guid">
-            <inheritdoc cref="F:ANTU.Models.KgSeguimiento.guid"/>
-        </member>
-        <member name="P:ANTU.Models.KgSeguimiento.Cantidad">
-            <inheritdoc cref="F:ANTU.Models.KgSeguimiento.cantidad"/>
-        </member>
-        <member name="P:ANTU.Models.KgSeguimiento.Kg">
-            <inheritdoc cref="F:ANTU.Models.KgSeguimiento.kg"/>
-        </member>
-        <member name="P:ANTU.Models.KgSeguimiento.Precio">
-            <inheritdoc cref="F:ANTU.Models.KgSeguimiento.precio"/>
-        </member>
-        <member name="P:ANTU.Models.KgSeguimiento.KgTotal">
-            <inheritdoc cref="F:ANTU.Models.KgSeguimiento.kgTotal"/>
-        </member>
-        <member name="P:ANTU.Models.KgSeguimiento.PrecioTotal">
-            <inheritdoc cref="F:ANTU.Models.KgSeguimiento.precioTotal"/>
-        </member>
-        <member name="P:ANTU.Models.KgSeguimiento.FechaCreacion">
-            <inheritdoc cref="F:ANTU.Models.KgSeguimiento.fechaCreacion"/>
-        </member>
-        <member name="P:ANTU.Models.KgSeguimiento.FechaActualizacion">
-            <inheritdoc cref="F:ANTU.Models.KgSeguimiento.fechaActualizacion"/>
-        </member>
-        <member name="T:ANTU.Models.Produccion">
-            <inheritdoc/>
-        </member>
-        <member name="P:ANTU.Models.Produccion.Identificador">
-            <inheritdoc cref="F:ANTU.Models.Produccion.identificador"/>
-        </member>
-        <member name="P:ANTU.Models.Produccion.IdentificadorCatalogoProduccion">
-            <inheritdoc cref="F:ANTU.Models.Produccion.identificadorCatalogoProduccion"/>
-        </member>
-        <member name="P:ANTU.Models.Produccion.EstadoFabricado">
-            <inheritdoc cref="F:ANTU.Models.Produccion.estadoFabricado"/>
-        </member>
-        <member name="P:ANTU.Models.Produccion.KgTotal">
-            <inheritdoc cref="F:ANTU.Models.Produccion.kgTotal"/>
-        </member>
-        <member name="P:ANTU.Models.Produccion.Estado">
-            <inheritdoc cref="F:ANTU.Models.Produccion.estado"/>
-        </member>
-        <member name="P:ANTU.Models.Produccion.NombreProducto">
-            <inheritdoc cref="F:ANTU.Models.Produccion.nombreProducto"/>
-        </member>
-        <member name="P:ANTU.Models.Produccion.TipoProduccion">
-            <inheritdoc cref="F:ANTU.Models.Produccion.tipoProduccion"/>
-        </member>
-        <member name="P:ANTU.Models.Produccion.Creado">
-            <inheritdoc cref="F:ANTU.Models.Produccion.creado"/>
-        </member>
-        <member name="P:ANTU.Models.Produccion.Actualizado">
-            <inheritdoc cref="F:ANTU.Models.Produccion.actualizado"/>
-        </member>
-        <member name="T:ANTU.Models.ProductosListos">
-            <inheritdoc/>
-        </member>
-        <member name="P:ANTU.Models.ProductosListos.NumeroCostales">
-            <inheritdoc cref="F:ANTU.Models.ProductosListos.numeroCostales"/>
-        </member>
-        <member name="P:ANTU.Models.ProductosListos.Descripcion">
-            <inheritdoc cref="F:ANTU.Models.ProductosListos.descripcion"/>
-        </member>
         <member name="T:ANTU.ViewModel.CatalogoProductoDetalleViewModel">
             <inheritdoc/>
             <inheritdoc/>
@@ -190,17 +61,54 @@
             <summary>The backing field for <see cref="P:ANTU.ViewModel.CatalogoProductoFormularioViewModel.RegistarCatalogoProductoCommand"/>.</summary>
         </member>
         <member name="P:ANTU.ViewModel.CatalogoProductoFormularioViewModel.RegistarCatalogoProductoCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.CatalogoProductoFormularioViewModel.RegistarCatalogoProducto(ANTU.Models.Dto.CatalogoProductoFormulario)"/>.</summary>
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.CatalogoProductoFormularioViewModel.RegistarCatalogoProducto(Modelos.Dto.CatalogoProductoFormulario)"/>.</summary>
+        </member>
+        <member name="T:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.DatosCatalogoProductos">
+            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel._datosCatalogoProductos"/>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.IsLazyLoading">
+            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel._isLazyLoading"/>
+        </member>
+        <member name="F:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.loadMoreElementsCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.LoadMoreElementsCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.LoadMoreElementsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.LoadMoreElements"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.navegarPaginaDetalleCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.NavegarPaginaDetalleCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.NavegarPaginaDetalleCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.NavegarPaginaDetalle(System.String)"/>.</summary>
         </member>
         <member name="T:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel">
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.CheckBoxEstado">
-            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.checkBoxEstado"/>
+            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel._checkBoxEstado"/>
         </member>
         <member name="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.PanelVisible">
-            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.panelVisible"/>
+            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel._panelVisible"/>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.DatosProducciones">
+            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel._datosProducciones"/>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.IsLazyLoading">
+            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel._isLazyLoading"/>
+        </member>
+        <member name="F:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.loadMoreElementsCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.LoadMoreElementsCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.LoadMoreElementsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.LoadMoreElements"/>.</summary>
         </member>
         <member name="F:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.generarCambioEstadoProductosFabricacionCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.GenerarCambioEstadoProductosFabricacionCommand"/>.</summary>
@@ -208,14 +116,63 @@
         <member name="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.GenerarCambioEstadoProductosFabricacionCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.GenerarCambioEstadoProductosFabricacion"/>.</summary>
         </member>
+        <member name="F:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.navegarPaginaDetalleCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.NavegarPaginaDetalleCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.NavegarPaginaDetalleCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.NavegarPaginaDetalle(System.String)"/>.</summary>
+        </member>
+        <member name="T:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.DatosMateriaPrimaProductos">
+            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel._datosMateriaPrimaProductos"/>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.IsLazyLoading">
+            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel._isLazyLoading"/>
+        </member>
+        <member name="F:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.loadMoreElementsCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.LoadMoreElementsCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.LoadMoreElementsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.LoadMoreElements"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.navegarPaginaDetalleCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.NavegarPaginaDetalleCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.NavegarPaginaDetalleCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.NavegarPaginaDetalle(System.String)"/>.</summary>
+        </member>
         <member name="T:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
             <inheritdoc/>
         </member>
         <member name="P:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.CheckBoxEstado">
-            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.checkBoxEstado"/>
+            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel._checkBoxEstado"/>
         </member>
         <member name="P:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.PanelVisible">
-            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.panelVisible"/>
+            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel._panelVisible"/>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.DatosProductosListos">
+            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel._datosProductosListos"/>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.IsLazyLoading">
+            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel._isLazyLoading"/>
+        </member>
+        <member name="F:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.loadMoreElementsCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.LoadMoreElementsCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.LoadMoreElementsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.LoadMoreElements"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.navegarPaginaDetalleCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.NavegarPaginaDetalleCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.NavegarPaginaDetalleCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.NavegarPaginaDetalle(System.String)"/>.</summary>
         </member>
         <member name="T:ANTU.ViewModel.DashboardViewModel">
             <inheritdoc/>
@@ -255,7 +212,7 @@
             <summary>The backing field for <see cref="P:ANTU.ViewModel.FormularioMateriaPrimaViewModel.RegistrarMateriaPrimaCommand"/>.</summary>
         </member>
         <member name="P:ANTU.ViewModel.FormularioMateriaPrimaViewModel.RegistrarMateriaPrimaCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.FormularioMateriaPrimaViewModel.RegistrarMateriaPrima(ANTU.Models.Dto.MateriaPrimaFormulario)"/>.</summary>
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.FormularioMateriaPrimaViewModel.RegistrarMateriaPrima(Modelos.Dto.MateriaPrimaFormulario)"/>.</summary>
         </member>
         <member name="T:ANTU.ViewModel.InicioSesionViewModel">
             <inheritdoc/>
@@ -311,50 +268,30 @@
         <member name="T:ANTU.ViewModel.MateriaPrimaViewModel">
             <inheritdoc/>
             <inheritdoc/>
-            <inheritdoc/>
-            <inheritdoc/>
-        </member>
-        <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.DatosPresentacion">
-            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.datosPresentacion"/>
         </member>
         <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.ButtonUpdateMateriaPrima">
-            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.buttonUpdateMateriaPrima"/>
-        </member>
-        <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.IsLazyLoading">
-            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.isLazyLoading"/>
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel._buttonUpdateMateriaPrima"/>
         </member>
         <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.MateriaPrimaView">
-            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.materiaPrimaView"/>
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel._materiaPrimaView"/>
         </member>
         <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.CatalogoProductoView">
-            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.catalogoProductoView"/>
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel._catalogoProductoView"/>
         </member>
         <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.FabricacionView">
-            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.fabricacionView"/>
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel._fabricacionView"/>
         </member>
         <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.ProductosListosView">
-            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.productosListosView"/>
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel._productosListosView"/>
         </member>
         <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.PanelComponents">
-            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel.panelComponents"/>
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaViewModel._panelComponents"/>
         </member>
         <member name="F:ANTU.ViewModel.MateriaPrimaViewModel.navegarFormularioCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.MateriaPrimaViewModel.NavegarFormularioCommand"/>.</summary>
         </member>
         <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.NavegarFormularioCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.MateriaPrimaViewModel.NavegarFormulario(System.String)"/>.</summary>
-        </member>
-        <member name="F:ANTU.ViewModel.MateriaPrimaViewModel.navegarPaginaProductoGestionarCommand">
-            <summary>The backing field for <see cref="P:ANTU.ViewModel.MateriaPrimaViewModel.NavegarPaginaProductoGestionarCommand"/>.</summary>
-        </member>
-        <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.NavegarPaginaProductoGestionarCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.MateriaPrimaViewModel.NavegarPaginaProductoGestionar(System.String)"/>.</summary>
-        </member>
-        <member name="F:ANTU.ViewModel.MateriaPrimaViewModel.loadMoreElementsCommand">
-            <summary>The backing field for <see cref="P:ANTU.ViewModel.MateriaPrimaViewModel.LoadMoreElementsCommand"/>.</summary>
-        </member>
-        <member name="P:ANTU.ViewModel.MateriaPrimaViewModel.LoadMoreElementsCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.MateriaPrimaViewModel.LoadMoreElements"/>.</summary>
         </member>
         <member name="T:ANTU.ViewModel.MostrarImagenesDetalleViewModel">
             <inheritdoc/>
@@ -417,6 +354,15 @@
         <member name="P:ANTU.ViewModel.ParentViewModel.SeleccionarArchivoMostrarCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ParentViewModel.SeleccionarArchivoMostrar"/>.</summary>
         </member>
+        <member name="T:ANTU.ViewModel.PopupServicesViewModel.VentanaEmergenteSinConexionViewModel">
+            <inheritdoc/>
+        </member>
+        <member name="F:ANTU.ViewModel.PopupServicesViewModel.VentanaEmergenteSinConexionViewModel.reintentarPeticionCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.PopupServicesViewModel.VentanaEmergenteSinConexionViewModel.ReintentarPeticionCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.PopupServicesViewModel.VentanaEmergenteSinConexionViewModel.ReintentarPeticionCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.PopupServicesViewModel.VentanaEmergenteSinConexionViewModel.ReintentarPeticion"/>.</summary>
+        </member>
         <member name="T:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel">
             <inheritdoc/>
             <inheritdoc/>
@@ -449,6 +395,7 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:ANTU.ViewModel.ProductoListoDetalleViewModel.Produccion">
             <inheritdoc cref="F:ANTU.ViewModel.ProductoListoDetalleViewModel.produccion"/>
@@ -477,11 +424,146 @@
         <member name="P:ANTU.ViewModel.ProductoListoDetalleViewModel.RegistrarProductosABodegaCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ProductoListoDetalleViewModel.RegistrarProductosABodega"/>.</summary>
         </member>
+        <member name="F:ANTU.ViewModel.ProductoListoDetalleViewModel.refrescarTablaProductosListosCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ProductoListoDetalleViewModel.RefrescarTablaProductosListosCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.ProductoListoDetalleViewModel.RefrescarTablaProductosListosCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ProductoListoDetalleViewModel.RefrescarTablaProductosListos"/>.</summary>
+        </member>
         <member name="T:ANTU.Resource">
             <summary>
             Android Resource Designer class.
             Exposes the Android Resource designer assembly into the project Namespace.
             </summary>
+        </member>
+        <member name="T:Modelos.CatalogoProducto">
+            <inheritdoc/>
+        </member>
+        <member name="P:Modelos.CatalogoProducto.Identificador">
+            <inheritdoc cref="F:Modelos.CatalogoProducto.identificador"/>
+        </member>
+        <member name="P:Modelos.CatalogoProducto.NombreProducto">
+            <inheritdoc cref="F:Modelos.CatalogoProducto.nombreProducto"/>
+        </member>
+        <member name="P:Modelos.CatalogoProducto.RutaImagen">
+            <inheritdoc cref="F:Modelos.CatalogoProducto.rutaImagen"/>
+        </member>
+        <member name="P:Modelos.CatalogoProducto.FechaCreacion">
+            <inheritdoc cref="F:Modelos.CatalogoProducto.fechaCreacion"/>
+        </member>
+        <member name="P:Modelos.CatalogoProducto.NumeroCategorias">
+            <inheritdoc cref="F:Modelos.CatalogoProducto.numeroCategorias"/>
+        </member>
+        <member name="P:Modelos.CatalogoProducto.TotalSacosCatalogo">
+            <inheritdoc cref="F:Modelos.CatalogoProducto.totalSacosCatalogo"/>
+        </member>
+        <member name="T:Modelos.CatalogoProductoDetalle">
+            <inheritdoc/>
+        </member>
+        <member name="P:Modelos.CatalogoProductoDetalle.UltimaProduccion">
+            <inheritdoc cref="F:Modelos.CatalogoProductoDetalle.ultimaProduccion"/>
+        </member>
+        <member name="P:Modelos.CatalogoProductoDetalle.UltimaVenta">
+            <inheritdoc cref="F:Modelos.CatalogoProductoDetalle.ultimaVenta"/>
+        </member>
+        <member name="P:Modelos.CatalogoProductoDetalle.Categorias">
+            <inheritdoc cref="F:Modelos.CatalogoProductoDetalle.categorias"/>
+        </member>
+        <member name="P:Modelos.CatalogoProductoDetalle.CostalesTotal">
+            <inheritdoc cref="F:Modelos.CatalogoProductoDetalle.costalesTotal"/>
+        </member>
+        <member name="P:Modelos.CatalogoProductoDetalle.Imagenes">
+            <inheritdoc cref="F:Modelos.CatalogoProductoDetalle.imagenes"/>
+        </member>
+        <member name="T:Modelos.DataCatalogoProduccion">
+            <inheritdoc/>
+        </member>
+        <member name="P:Modelos.DataCatalogoProduccion.IdentificadorDataCatalogProducion">
+            <inheritdoc cref="F:Modelos.DataCatalogoProduccion.identificadorDataCatalogProducion"/>
+        </member>
+        <member name="P:Modelos.DataCatalogoProduccion.TextoDescriptivo">
+            <inheritdoc cref="F:Modelos.DataCatalogoProduccion.textoDescriptivo"/>
+        </member>
+        <member name="T:Modelos.DataImage">
+            <inheritdoc/>
+        </member>
+        <member name="P:Modelos.DataImage.Identificador">
+            <inheritdoc cref="F:Modelos.DataImage._identificador"/>
+        </member>
+        <member name="P:Modelos.DataImage.Url">
+            <inheritdoc cref="F:Modelos.DataImage._url"/>
+        </member>
+        <member name="P:Modelos.DataImage.Estado">
+            <inheritdoc cref="F:Modelos.DataImage._estado"/>
+        </member>
+        <member name="P:Modelos.DataImage.Tipo">
+            <inheritdoc cref="F:Modelos.DataImage._tipo"/>
+        </member>
+        <member name="T:Modelos.KgSeguimiento">
+            <inheritdoc/>
+        </member>
+        <member name="P:Modelos.KgSeguimiento.Guid">
+            <inheritdoc cref="F:Modelos.KgSeguimiento.guid"/>
+        </member>
+        <member name="P:Modelos.KgSeguimiento.Cantidad">
+            <inheritdoc cref="F:Modelos.KgSeguimiento.cantidad"/>
+        </member>
+        <member name="P:Modelos.KgSeguimiento.Kg">
+            <inheritdoc cref="F:Modelos.KgSeguimiento.kg"/>
+        </member>
+        <member name="P:Modelos.KgSeguimiento.Precio">
+            <inheritdoc cref="F:Modelos.KgSeguimiento.precio"/>
+        </member>
+        <member name="P:Modelos.KgSeguimiento.KgTotal">
+            <inheritdoc cref="F:Modelos.KgSeguimiento.kgTotal"/>
+        </member>
+        <member name="P:Modelos.KgSeguimiento.PrecioTotal">
+            <inheritdoc cref="F:Modelos.KgSeguimiento.precioTotal"/>
+        </member>
+        <member name="P:Modelos.KgSeguimiento.FechaCreacion">
+            <inheritdoc cref="F:Modelos.KgSeguimiento.fechaCreacion"/>
+        </member>
+        <member name="P:Modelos.KgSeguimiento.FechaActualizacion">
+            <inheritdoc cref="F:Modelos.KgSeguimiento.fechaActualizacion"/>
+        </member>
+        <member name="T:Modelos.Produccion">
+            <inheritdoc/>
+        </member>
+        <member name="P:Modelos.Produccion.Identificador">
+            <inheritdoc cref="F:Modelos.Produccion.identificador"/>
+        </member>
+        <member name="P:Modelos.Produccion.IdentificadorCatalogoProduccion">
+            <inheritdoc cref="F:Modelos.Produccion.identificadorCatalogoProduccion"/>
+        </member>
+        <member name="P:Modelos.Produccion.EstadoFabricado">
+            <inheritdoc cref="F:Modelos.Produccion.estadoFabricado"/>
+        </member>
+        <member name="P:Modelos.Produccion.KgTotal">
+            <inheritdoc cref="F:Modelos.Produccion.kgTotal"/>
+        </member>
+        <member name="P:Modelos.Produccion.Estado">
+            <inheritdoc cref="F:Modelos.Produccion.estado"/>
+        </member>
+        <member name="P:Modelos.Produccion.NombreProducto">
+            <inheritdoc cref="F:Modelos.Produccion.nombreProducto"/>
+        </member>
+        <member name="P:Modelos.Produccion.TipoProduccion">
+            <inheritdoc cref="F:Modelos.Produccion.tipoProduccion"/>
+        </member>
+        <member name="P:Modelos.Produccion.Creado">
+            <inheritdoc cref="F:Modelos.Produccion.creado"/>
+        </member>
+        <member name="P:Modelos.Produccion.Actualizado">
+            <inheritdoc cref="F:Modelos.Produccion.actualizado"/>
+        </member>
+        <member name="T:Modelos.ProductosListos">
+            <inheritdoc/>
+        </member>
+        <member name="P:Modelos.ProductosListos.NumeroCostales">
+            <inheritdoc cref="F:Modelos.ProductosListos.numeroCostales"/>
+        </member>
+        <member name="P:Modelos.ProductosListos.Descripcion">
+            <inheritdoc cref="F:Modelos.ProductosListos.descripcion"/>
         </member>
         <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Button.TextColorTo(Microsoft.Maui.Controls.Button,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
             <summary>
@@ -717,11 +799,26 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CatalogoProductoFormularioComponenets">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CatalogoProductoFormularioComponenets" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DatosCatalogoProductos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DatosCatalogoProductos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsLazyLoading">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsLazyLoading" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CheckBoxEstado">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CheckBoxEstado" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.PanelVisible">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "PanelVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DatosProducciones">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DatosProducciones" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DatosMateriaPrimaProductos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DatosMateriaPrimaProductos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DatosProductosListos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DatosProductosListos" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CatalogoProductos">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CatalogoProductos" generated properties.</summary>
@@ -759,14 +856,8 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.KgSeguimientoList">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "KgSeguimientoList" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DatosPresentacion">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DatosPresentacion" generated properties.</summary>
-        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ButtonUpdateMateriaPrima">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ButtonUpdateMateriaPrima" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsLazyLoading">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsLazyLoading" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.MateriaPrimaView">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "MateriaPrimaView" generated properties.</summary>
@@ -957,11 +1048,26 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CatalogoProductoFormularioComponenets">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CatalogoProductoFormularioComponenets" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DatosCatalogoProductos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DatosCatalogoProductos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsLazyLoading">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsLazyLoading" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CheckBoxEstado">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CheckBoxEstado" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.PanelVisible">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "PanelVisible" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DatosProducciones">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DatosProducciones" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DatosMateriaPrimaProductos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DatosMateriaPrimaProductos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DatosProductosListos">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DatosProductosListos" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CatalogoProductos">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CatalogoProductos" generated properties.</summary>
@@ -999,14 +1105,8 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.KgSeguimientoList">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "KgSeguimientoList" generated properties.</summary>
         </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DatosPresentacion">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DatosPresentacion" generated properties.</summary>
-        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ButtonUpdateMateriaPrima">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ButtonUpdateMateriaPrima" generated properties.</summary>
-        </member>
-        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsLazyLoading">
-            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsLazyLoading" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.MateriaPrimaView">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "MateriaPrimaView" generated properties.</summary>

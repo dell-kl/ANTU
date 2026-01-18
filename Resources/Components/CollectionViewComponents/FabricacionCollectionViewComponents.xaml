@@ -7,10 +7,11 @@
              xmlns:valueConverter="clr-namespace:ANTU.Resources.ValueConverter"
              xmlns:toolbar="clr-namespace:Syncfusion.Maui.Toolbar;assembly=Syncfusion.Maui.Toolbar"
              xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-             xmlns:shimmer="clr-namespace:Syncfusion.Maui.Shimmer;assembly=Syncfusion.Maui.Core"
-             xmlns:models="clr-namespace:ANTU.Models"
+             xmlns:models="clr-namespace:Modelos"
+             xmlns:viewModel="clr-namespace:ANTU.ViewModel.ComponentsViewModel"
              x:Name="ContentViewProduccion"
-             x:Class="ANTU.Resources.Components.CollectionViewComponents.FabricacionCollectionViewComponents">
+             x:Class="ANTU.Resources.Components.CollectionViewComponents.FabricacionCollectionViewComponents"
+             x:DataType="viewModel:FabricacionCollectionViewComponentsViewModel">
     <ContentView.Resources>
         <ResourceDictionary>
             <valueConverter:ImageValueConverter x:Key="KeyImageValueConverter"/>
@@ -23,7 +24,7 @@
             Tapped="ToolbarProduccion_OnTapped"
             SelectionMode="Single"
             BackgroundColor="#33F08500"
-            IsVisible="{Binding Path=BindingContext.PanelVisible, Source={x:Reference ContentViewProduccion}}"
+            IsVisible="{Binding PanelVisible}"
             HeightRequest="56">
             <toolbar:SfToolbar.Items>
                 <toolbar:SfToolbarItem 
@@ -73,9 +74,9 @@
                 LoadMoreOption="AutoOnScroll"
                 LoadMorePosition="End"
                 CanMaintainScrollPosition="True"
-                IsLazyLoading="{Binding Path=BindingContext.IsLazyLoading, Source={x:Reference ContentViewProduccion}}"
-                LoadMoreCommand="{Binding Path=BindingContext.LoadMoreElementsCommand, Source={x:Reference ContentViewProduccion}}"
-                ItemsSource="{Binding Path=BindingContext.DatosPresentacion, Source={x:Reference ContentViewProduccion} }">
+                IsLazyLoading="{Binding IsLazyLoading}"
+                LoadMoreCommand="{Binding LoadMoreElementsCommand}"
+                ItemsSource="{Binding DatosProducciones }">
                 <syncfusion:SfListView.EndSwipeTemplate>
                     <DataTemplate x:DataType="models:Produccion" x:Name="StartSwipeTemplate">
                         <Grid 

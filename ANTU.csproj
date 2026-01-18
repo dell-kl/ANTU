@@ -88,6 +88,54 @@
 	  <Compile Update="Views\Formularios\CatalogoProductoFormulario.xaml.cs">
 	    <DependentUpon>CatalogoProductoFormulario.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Herramientas\Class1.cs">
+	    <Link>Utilidades\Class1.cs</Link>
+	  </Compile>
+	  <Compile Update="Data\Rest\RestInterfaces\ICatalogoProducto.cs">
+	    <Link>Herramientas\Rest\RestInterfaces\ICatalogoProducto.cs</Link>
+	  </Compile>
+	  <Compile Update="Data\Rest\RestInterfaces\IMateriaPrima.cs">
+	    <Link>Herramientas\Rest\RestInterfaces\IMateriaPrima.cs</Link>
+	  </Compile>
+	  <Compile Update="Data\Rest\RestInterfaces\IRestGeneric.cs">
+	    <Link>Herramientas\Rest\RestInterfaces\IRestGeneric.cs</Link>
+	  </Compile>
+	  <Compile Update="Data\Rest\RestInterfaces\IRestManagement.cs">
+	    <Link>Herramientas\Rest\RestInterfaces\IRestManagement.cs</Link>
+	  </Compile>
+	  <Compile Update="Data\Rest\RestInterfaces\IProduccion.cs">
+	    <Link>Herramientas\Rest\RestInterfaces\IProduccion.cs</Link>
+	  </Compile>
+	  <Compile Update="Data\Rest\RestInterfaces\IFabricado.cs">
+	    <Link>Herramientas\Rest\RestInterfaces\IFabricado.cs</Link>
+	  </Compile>
+	  <Compile Update="Data\Rest\RestInterfaces\IProduccionLista.cs">
+	    <Link>Herramientas\Rest\RestInterfaces\IProduccionLista.cs</Link>
+	  </Compile>
+	  <Compile Update="Data\Rest\CatalogoProductoRest.cs">
+	    <Link>Herramientas\Rest\CatalogoProductoRest.cs</Link>
+	  </Compile>
+	  <Compile Update="Data\Rest\Endpoints.cs">
+	    <Link>Herramientas\Rest\Endpoints.cs</Link>
+	  </Compile>
+	  <Compile Update="Data\Rest\FabricadoRest.cs">
+	    <Link>Herramientas\Rest\FabricadoRest.cs</Link>
+	  </Compile>
+	  <Compile Update="Data\Rest\MateriaPrimaRest.cs">
+	    <Link>Herramientas\Rest\MateriaPrimaRest.cs</Link>
+	  </Compile>
+	  <Compile Update="Data\Rest\ProduccionListaRest.cs">
+	    <Link>Herramientas\Rest\ProduccionListaRest.cs</Link>
+	  </Compile>
+	  <Compile Update="Data\Rest\ProduccionRest.cs">
+	    <Link>Herramientas\Rest\ProduccionRest.cs</Link>
+	  </Compile>
+	  <Compile Update="Data\Rest\RestManagement.cs">
+	    <Link>Herramientas\Rest\RestManagement.cs</Link>
+	  </Compile>
+	  <Compile Update="Data\Alertas\Mensaje.cs">
+	    <Link>Herramientas\Alertas\Mensaje.cs</Link>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -168,4 +216,12 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="Business\Business.csproj" />
+	</ItemGroup>
+	
+	<PropertyGroup>
+		<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	</PropertyGroup>
 </Project>

@@ -1,16 +1,15 @@
-﻿using ANTU.Models;
-using ANTU.Resources.Rest.RestInterfaces;
+﻿using Data.Rest.RestInterfaces;
 using ANTU.Views;
+using Business.Services.IServices;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.Input;
-using Mopups.Services;
 
 namespace ANTU.ViewModel
 {
     public partial class DashboardViewModel : ParentViewModel
     {
-
-        public DashboardViewModel(IRestManagement IRestManagement, IPopupService popupService) : base(IRestManagement, popupService) { 
+        public DashboardViewModel(IRestManagement IRestManagement, IPopupService popupService, IManagementService managementService) : base(IRestManagement, popupService, managementService) { 
+            
         }
         
         [RelayCommand(AllowConcurrentExecutions = false)]

@@ -1,7 +1,7 @@
-﻿using ANTU.Models.Dto;
+﻿using Modelos.Dto;
 using ANTU.Resources.Components.FormularioComponentes;
 using ANTU.Resources.Components.PopupComponents;
-using ANTU.Resources.Rest.RestInterfaces;
+using Data.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Core.Extensions;
@@ -11,6 +11,8 @@ using Mopups.Services;
 using Syncfusion.Maui.DataForm;
 using System.Collections.ObjectModel;
 using ANTU.Resources.Utilidades;
+using Business.Services.IServices;
+using Mopups.Pages;
 
 namespace ANTU.ViewModel
 {
@@ -18,6 +20,7 @@ namespace ANTU.ViewModel
     {
         protected readonly IPopupService _popupService;
         protected readonly IRestManagement _restManagement;
+        protected readonly IManagementService _managementService;
 
         [ObservableProperty]
         private object dataQuery = new object();
@@ -31,9 +34,10 @@ namespace ANTU.ViewModel
         [ObservableProperty]
         private ImagenesGuardarFormularioComponentes imagenesGuardarFormularioComponentes = new ImagenesGuardarFormularioComponentes();
 
-        public ParentViewModel(IRestManagement restManagement, IPopupService popupService) {
+        public ParentViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) {
             _restManagement = restManagement;
             _popupService = popupService;
+            _managementService = managementService;
 
             //Este formulario de imagenes se utilizara en varios formularios;
             this.imagenesGuardarFormularioComponentes.BindingContext = this;
@@ -64,7 +68,9 @@ namespace ANTU.ViewModel
         }
 
         public virtual async Task DesmontarSpinner() {
+            
             bool resultado = MopupService.Instance.PopupStack.Where(item => item is VentaSpinnerLoading).Any();
+
             if (resultado)
                 await MopupService.Instance.PopAsync();
         }

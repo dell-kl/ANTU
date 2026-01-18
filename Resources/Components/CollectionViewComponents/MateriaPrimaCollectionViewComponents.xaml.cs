@@ -1,24 +1,15 @@
-using ANTU.ViewModel;
+using System.Runtime.Versioning;
+using ANTU.ViewModel.ComponentsViewModel;
 
 namespace ANTU.Resources.Components.CollectionViewComponents;
 
-public partial class MateriaPrimaCollectionViewComponents : ContentView
+[SupportedOSPlatform("Android")]
+public partial class MateriaPrimaCollectionViewComponents
 {
-	public MateriaPrimaCollectionViewComponents()
+	public MateriaPrimaCollectionViewComponents(MateriaPrimaCollectionViewComponentsVIewModel itemViewModel)
 	{
 		InitializeComponent();
-
+		BindingContext = itemViewModel;
 	}
-
-    protected override async void OnBindingContextChanged()
-    {
-        base.OnBindingContextChanged();
-
-		if ( BindingContext is MateriaPrimaViewModel materiaPrimaViewModel)
-		{
-			await materiaPrimaViewModel.cargaProductos();
-			await materiaPrimaViewModel.DesmontarSpinner();
-		}
-    }
 
 }

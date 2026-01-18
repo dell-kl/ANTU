@@ -1,5 +1,5 @@
-﻿using ANTU.Resources.Rest;
-using ANTU.Resources.Rest.RestInterfaces;
+﻿using Data.Rest;
+using Data.Rest.RestInterfaces;
 using System.Globalization;
 
 namespace ANTU.Resources.ValueConverter

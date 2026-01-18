@@ -1,25 +1,50 @@
-using ANTU.Models;
-using ANTU.Resources.Rest.RestInterfaces;
+using System.Collections.ObjectModel;
+using System.Runtime.Versioning;
+using Business.Services.IServices;
+using Modelos;
+using Data.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 
 namespace ANTU.ViewModel.ComponentsViewModel;
 
-public partial class ProductosListosCollectionViewComponentsViewModel : MateriaPrimaViewModel
+public partial class ProductosListosCollectionViewComponentsViewModel : ParentViewModel
 {
     [ObservableProperty]
-    private bool checkBoxEstado = false;
+    private bool _checkBoxEstado;
 
     [ObservableProperty]
-    private bool panelVisible = false;
+    private bool _panelVisible;
     
-    public ProductosListosCollectionViewComponentsViewModel(IRestManagement restManagement, IPopupService popupService)
-    : base(restManagement, popupService)
+    [ObservableProperty]
+    private ObservableCollection<Produccion> _datosProductosListos = new ObservableCollection<Produccion>();
+
+    [ObservableProperty]
+    private bool _isLazyLoading;
+    
+    public ProductosListosCollectionViewComponentsViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService)
+    : base(restManagement, popupService, managementService)
     {
         
     }
 
-    public void acciones(string accion, object parametros)
+    public Task CargarDatosProductosListos()
+    {
+        // cargar datos del service de productos listos.
+        return Task.CompletedTask;
+    }
+
+    [RelayCommand(AllowConcurrentExecutions = false)]
+    public async Task LoadMoreElements()
+    {
+        this.IsLazyLoading = true;
+        TimeSpan.FromMilliseconds(10);
+        await CargarDatosProductosListos();
+        this.IsLazyLoading = false;
+    }
+    
+    public void Acciones(string accion, object parametros)
     {
         switch (accion)
         {
@@ -27,14 +52,31 @@ public partial class ProductosListosCollectionViewComponentsViewModel : MateriaP
                 
                 string identificadorProductoListo = ( parametros is string ) ? parametros.ToString()! : string.Empty;
 
-                Produccion? registro = this.DatosPresentacion.Where(item =>
-                    item is Produccion produccion && produccion.Identificador.Equals(identificadorProductoListo))
+                Produccion? registro = this.DatosProductosListos.Where(item =>
+                    item.Identificador.Equals(identificadorProductoListo))
                     .ToList()
-                    .FirstOrDefault() as Produccion;
+                    .FirstOrDefault();
                 
-                this.DatosPresentacion.Remove(registro);
+                if(registro != null)
+                    this.DatosProductosListos.Remove(registro);
                 
                 break;
         }
+    }
+    
+    [RelayCommand(AllowConcurrentExecutions = false)]
+    [SupportedOSPlatform("Android")]
+    public async Task NavegarPaginaDetalle(string guid)
+    {
+        Produccion? registro = this.DatosProductosListos.Where(item => item.Identificador.Equals(guid)).ToList()
+            .FirstOrDefault();
+        
+        var datosNavegacion = new ShellNavigationQueryParameters {
+            {
+                "DataQuery", registro is null ? "" : registro
+            }
+        };
+        
+        await base.NavegarFormulario("ProductoListoDetalle",datosNavegacion);
     }
 }

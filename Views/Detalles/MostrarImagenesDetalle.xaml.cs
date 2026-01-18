@@ -1,4 +1,4 @@
-using ANTU.Models;
+using Modelos;
 using ANTU.ViewModel;
 
 namespace ANTU.Views.Detalles;

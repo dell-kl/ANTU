@@ -1,6 +1,7 @@
-﻿using ANTU.Models.Dto;
+﻿using Modelos.Dto;
 using ANTU.Resources.Messenger;
-using ANTU.Resources.Rest.RestInterfaces;
+using Business.Services.IServices;
+using Data.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
@@ -10,8 +11,8 @@ namespace ANTU.ViewModel
 {
     public partial class InicioSesionViewModel : ParentViewModel
     {
-        public InicioSesionViewModel(IRestManagement IRestManagement, IPopupService popupService)
-        : base(IRestManagement, popupService)
+        public InicioSesionViewModel(IRestManagement IRestManagement, IPopupService popupService, IManagementService managementService)
+        : base(IRestManagement, popupService, managementService)
         {
 
         }

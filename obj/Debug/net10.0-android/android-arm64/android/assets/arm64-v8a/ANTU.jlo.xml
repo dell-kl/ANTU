@@ -9,7 +9,7 @@
     <type name="MainApplication" package="crc6421c7910cc80f95a8" application_java_class="android.app.Application" mono_runtime_initialization="mono.MonoPackageManager.LoadApplication (context);" extends_type="crc6488302ad6e9e4df1a.MauiApplication" is_application="True" partial_assembly_qualified_name="ANTU.MainApplication, ANTU" application_constructor="MainApplication" />
   </jcw-types>
   <acw-types partial-assembly-name="ANTU" module-name="ANTU.dll">
-    <type assembly-qualified-name="ANTU.MainActivity, ANTU, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="antu.MainActivity" java-key="crc6421c7910cc80f95a8.MainActivity" managed-key="ANTU.MainActivity" partial-assembly-qualified-name="ANTU.MainActivity, ANTU" />
-    <type assembly-qualified-name="ANTU.MainApplication, ANTU, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="antu.MainApplication" java-key="crc6421c7910cc80f95a8.MainApplication" managed-key="ANTU.MainApplication" partial-assembly-qualified-name="ANTU.MainApplication, ANTU" />
+    <type assembly-qualified-name="ANTU.MainActivity, ANTU, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="antu.MainActivity" java-key="crc6421c7910cc80f95a8.MainActivity" managed-key="ANTU.MainActivity" partial-assembly-qualified-name="ANTU.MainActivity, ANTU" />
+    <type assembly-qualified-name="ANTU.MainApplication, ANTU, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" compat-jni-name="antu.MainApplication" java-key="crc6421c7910cc80f95a8.MainApplication" managed-key="ANTU.MainApplication" partial-assembly-qualified-name="ANTU.MainApplication, ANTU" />
   </acw-types>
 </api>

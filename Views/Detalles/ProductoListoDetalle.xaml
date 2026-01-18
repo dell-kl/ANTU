@@ -148,6 +148,38 @@
                 StrokeThickness="0"
                 BackgroundColor="#FFF">
                 <VerticalStackLayout>
+                    
+                    <Grid ColumnDefinitions=".2*, *">
+                        <Button
+                            Grid.Column="0"
+                            BorderWidth="1"
+                            WidthRequest="50"
+                            FontFamily="MaterialSymbolSharp"
+                            Text="&#xe5d5;"
+                            x:Name="ButtonRefrescarListaProductos"
+                            FontSize="25"
+                            IsEnabled="True"
+                            Command="{Binding RefrescarTablaProductosListosCommand}"
+                            BackgroundColor="Transparent"
+                            TextColor="#592418">
+                            <Button.Behaviors>
+                                <toolkit:TouchBehavior
+                                    HoveredBackgroundColor="#BF7A24"
+                                    PressedBackgroundColor="#EAA525"/>
+                            </Button.Behaviors>
+                        </Button>
+                        <Label 
+                            Grid.Column="1"
+                            FontFamily="SegoeUIBold"
+                            TextColor="#BF8924"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            TextTransform="Uppercase"
+                            Text="Tabla Empaquetados"/>
+                    </Grid>
+                    
                     <dataGrid:SfDataGrid
                         ColumnWidthMode="Fill"
                         SortingMode="Single"

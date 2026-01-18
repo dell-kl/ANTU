@@ -7,7 +7,7 @@
              xmlns:shimmer="clr-namespace:Syncfusion.Maui.Shimmer;assembly=Syncfusion.Maui.Core"
              xmlns:dataForm="clr-namespace:Syncfusion.Maui.DataForm;assembly=Syncfusion.Maui.DataForm"
              xmlns:valueConverter="clr-namespace:ANTU.Resources.ValueConverter"
-             xmlns:restManagement="clr-namespace:ANTU.Resources.Rest.RestInterfaces"
+             xmlns:restManagement="clr-namespace:Data.Rest.RestInterfaces"
              xmlns:viewModel="clr-namespace:ANTU.ViewModel"
              x:Class="ANTU.Views.Detalles.CatalogoProductoDetalle"
              Title="CatalogoProductoDetalle"
