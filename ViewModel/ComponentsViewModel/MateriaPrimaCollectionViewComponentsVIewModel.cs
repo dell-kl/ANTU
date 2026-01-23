@@ -9,6 +9,7 @@ using Modelos;
 
 namespace ANTU.ViewModel.ComponentsViewModel;
 
+[SupportedOSPlatform("Android")]
 public partial class MateriaPrimaCollectionViewComponentsVIewModel : ParentViewModel
 {
     [ObservableProperty]
@@ -16,30 +17,35 @@ public partial class MateriaPrimaCollectionViewComponentsVIewModel : ParentViewM
 
     [ObservableProperty]
     private bool _isLazyLoading;
-    
+
+
     public MateriaPrimaCollectionViewComponentsVIewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) : base(restManagement, popupService, managementService)
     {
-        
     }
 
+    [RelayCommand(AllowConcurrentExecutions = false)]
     public async Task CargarDatosMateriaPrimaProducto()
     {
-        await _managementService.materiaPrimaService.GetMateriaPrimaAync(
-            this.DatosMateriaPrimaProductos.Count(),
-            this.DatosMateriaPrimaProductos);
-    }
-    
-    [RelayCommand(AllowConcurrentExecutions = false)]
-    public async Task LoadMoreElements()
-    {
+        if (this.IsLazyLoading)
+            return; 
+        
         this.IsLazyLoading = true;
-        TimeSpan.FromMilliseconds(10);
-        await CargarDatosMateriaPrimaProducto();
+
+        CancellationTokenSource tokenSource = new CancellationTokenSource();
+        
+        IEnumerable<MateriaPrimaProducto> listado = await ManagementService.materiaPrimaService.GetMateriaPrimaAync(
+            this.DatosMateriaPrimaProductos.Count(),
+            tokenSource.Token);
+
+        foreach (MateriaPrimaProducto item in listado)
+        {
+            this.DatosMateriaPrimaProductos.Add(item);
+        }
+
         this.IsLazyLoading = false;
     }
     
     [RelayCommand(AllowConcurrentExecutions = false)]
-    [SupportedOSPlatform("Android")]
     public async Task NavegarPaginaDetalle(string guid)
     {
         MateriaPrimaProducto? registro = this.DatosMateriaPrimaProductos.Where(item => item.guid.Equals(guid)).ToList()

@@ -32,7 +32,7 @@
                 LoadMorePosition="End"
                 CanMaintainScrollPosition="True"
                 IsLazyLoading="{Binding IsLazyLoading}"
-                LoadMoreCommand="{Binding LoadMoreElementsCommand}"
+                LoadMoreCommand="{Binding CargarDatosMateriaPrimaProductoCommand}"
                 ItemsSource="{Binding DatosMateriaPrimaProductos }">
             <syncfusion:SfListView.EndSwipeTemplate>
                 <DataTemplate x:DataType="models:MateriaPrimaProducto" x:Name="StartSwipeTemplate">
@@ -40,7 +40,6 @@
                             RowSpacing="5"
                             Margin="0,0,10,15"
                             RowDefinitions="*,*">
-
                         <Border
                                 StrokeShape="RoundRectangle 5,5,5,5"
                                 BackgroundColor="LightGreen"

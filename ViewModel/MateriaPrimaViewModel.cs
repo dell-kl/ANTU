@@ -1,4 +1,5 @@
-﻿using ANTU.Resources.Components.CollectionViewComponents;
+﻿using System.Runtime.Versioning;
+using ANTU.Resources.Components.CollectionViewComponents;
 using ANTU.Resources.Components.ControlersComponents;
 using Data.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
@@ -8,6 +9,7 @@ using Business.Services.IServices;
 
 namespace ANTU.ViewModel
 {
+    [SupportedOSPlatform("Android")]
     public partial class MateriaPrimaViewModel : ParentViewModel
     {
         [ObservableProperty]
@@ -27,7 +29,7 @@ namespace ANTU.ViewModel
 
         // Componente CollectionView de Productos Listos
         [ObservableProperty]
-        private ProductosListosCollectionViewComponents _productosListosView;
+        private ProductosListosCollectionViewComponents? _productosListosView;
         
         // Componente Panel de controles e informacion.
         [ObservableProperty]

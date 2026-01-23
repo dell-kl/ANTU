@@ -1,4 +1,5 @@
-﻿using Modelos.Dto;
+﻿using System.Runtime.Versioning;
+using Modelos.Dto;
 using Modelos.RequestDto;
 using ANTU.Resources.Components.FormularioComponentes;
 using Business.Services.IServices;
@@ -9,6 +10,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace ANTU.ViewModel
 {
+    [SupportedOSPlatform("Android")]
     public partial class FormularioMateriaPrimaViewModel : ParentViewModel
     {
         [ObservableProperty]
@@ -33,7 +35,7 @@ namespace ANTU.ViewModel
             //cubrir con ventana emergente.
             await base.MostrarSpinner();
 
-            await _restManagement.MateriaPrima.Add(
+            await RestManagement.MateriaPrima.Add(
                 new MateriaPrimaRequestDto()
                 {
                     id_dto = Guid.NewGuid().ToString(),

@@ -3,24 +3,23 @@ using ANTU.Resources.Components.FormularioComponentes;
 using ANTU.Resources.Components.PopupComponents;
 using Data.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
-using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
-using Syncfusion.Maui.DataForm;
 using System.Collections.ObjectModel;
-using ANTU.Resources.Utilidades;
+using System.Runtime.Versioning;
 using Business.Services.IServices;
-using Mopups.Pages;
+
 
 namespace ANTU.ViewModel
 {
-    public partial class ParentViewModel : ObservableObject, IQueryAttributable
+    [SupportedOSPlatform("Android")]
+    public abstract partial class ParentViewModel : ObservableObject, IQueryAttributable
     {
-        protected readonly IPopupService _popupService;
-        protected readonly IRestManagement _restManagement;
-        protected readonly IManagementService _managementService;
+        protected readonly IPopupService PopupService;
+        protected readonly IRestManagement RestManagement;
+        protected readonly IManagementService ManagementService;
 
         [ObservableProperty]
         private object dataQuery = new object();
@@ -35,9 +34,9 @@ namespace ANTU.ViewModel
         private ImagenesGuardarFormularioComponentes imagenesGuardarFormularioComponentes = new ImagenesGuardarFormularioComponentes();
 
         public ParentViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) {
-            _restManagement = restManagement;
-            _popupService = popupService;
-            _managementService = managementService;
+            RestManagement = restManagement;
+            PopupService = popupService;
+            ManagementService = managementService;
 
             //Este formulario de imagenes se utilizara en varios formularios;
             this.imagenesGuardarFormularioComponentes.BindingContext = this;

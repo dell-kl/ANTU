@@ -13,11 +13,13 @@ using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
 using Syncfusion.Maui.DataForm;
 using System.Collections.ObjectModel;
+using System.Runtime.Versioning;
 using Business.Services.IServices;
 
 
 namespace ANTU.ViewModel
 {
+    [SupportedOSPlatform("Android")]
     public partial class MateriaPrimaDetalleViewModel : ParentViewModel
     {
         [ObservableProperty]
@@ -58,14 +60,14 @@ namespace ANTU.ViewModel
 
         public async Task cargarDatosMateriaPrimaDetalle()
         {
-            this.MateriaPrimaDetalle = await _restManagement.MateriaPrima.MateriaPrimaDetalles(this.MateriaPrimaProducto.guid);
+            this.MateriaPrimaDetalle = await RestManagement.MateriaPrima.MateriaPrimaDetalles(this.MateriaPrimaProducto.guid);
         }
 
         public async Task cargarDatosKgSeguimiento()
         {
             if ( !this.KgSeguimientoList.Any() || this.KgSeguimientoList.Count() >= 10 )
             {
-                IEnumerable<KgSeguimiento> listadokgSeguimientos = await _restManagement.MateriaPrima.GetKgSeguimientos(this.KgSeguimientoList.Count(), this.MateriaPrimaProducto.guid);
+                IEnumerable<KgSeguimiento> listadokgSeguimientos = await RestManagement.MateriaPrima.GetKgSeguimientos(this.KgSeguimientoList.Count(), this.MateriaPrimaProducto.guid);
 
                 if (listadokgSeguimientos.Any()) {
                     this.KgSeguimientoList = this.KgSeguimientoList.Union(listadokgSeguimientos).ToObservableCollection();
@@ -104,7 +106,7 @@ namespace ANTU.ViewModel
                 }
             };
 
-            IPopupResult<Object> resultado = await _popupService.ShowPopupAsync<VentanaPopupServiceViewModel, Object>(Shell.Current, shellParameters: datosNavegacion, options: PopupOptions.Empty);
+            IPopupResult<Object> resultado = await PopupService.ShowPopupAsync<VentanaPopupServiceViewModel, Object>(Shell.Current, shellParameters: datosNavegacion, options: PopupOptions.Empty);
 
             if (resultado.Result is List<object> datos)
             {
@@ -112,7 +114,7 @@ namespace ANTU.ViewModel
 
                 MateriaPrimaFormulario formulario = (MateriaPrimaFormulario)datos[0];
 
-                bool solicitud = await _restManagement.MateriaPrima.EditarDatosMateriaPrima(new Modelos.RequestDto.MateriaPrimaRequestDto()
+                bool solicitud = await RestManagement.MateriaPrima.EditarDatosMateriaPrima(new Modelos.RequestDto.MateriaPrimaRequestDto()
                 {
                     id_dto = datos[1].ToString()!,
                     nombre_dto = formulario.MateriaPrima
@@ -133,7 +135,7 @@ namespace ANTU.ViewModel
                 }
             };
 
-            IPopupResult<Object> resultado = await _popupService.ShowPopupAsync<VentanaPopupServiceViewModel, Object>(Shell.Current, shellParameters: datosNavegacion, options: PopupOptions.Empty);
+            IPopupResult<Object> resultado = await PopupService.ShowPopupAsync<VentanaPopupServiceViewModel, Object>(Shell.Current, shellParameters: datosNavegacion, options: PopupOptions.Empty);
 
             if (resultado.Result is List<object> datos)
             {
@@ -141,7 +143,7 @@ namespace ANTU.ViewModel
 
                 MateriaPrimaFormulario formulario = (MateriaPrimaFormulario)datos[0];
 
-                bool solicitud = await _restManagement.MateriaPrima.AgregarStockMateriaPrima(new Modelos.RequestDto.StockMateriaPrimaRequestDto()
+                bool solicitud = await RestManagement.MateriaPrima.AgregarStockMateriaPrima(new Modelos.RequestDto.StockMateriaPrimaRequestDto()
                 {
                     Identificador = datos[1].ToString()!,
                     Amount = formulario.Cantidad,

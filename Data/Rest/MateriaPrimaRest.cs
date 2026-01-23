@@ -13,7 +13,6 @@ namespace Data.Rest
 {
     public class MateriaPrimaRest : IMateriaPrima
     {
-        
         internal readonly HttpClient httpClient;
         
         public MateriaPrimaRest(HttpClient httpClient)
@@ -72,9 +71,13 @@ namespace Data.Rest
             try
             {
                 using HttpResponseMessage? httpResponse =  await httpClient.GetAsync($"{Endpoints.ENDPOINTS[2]}/{data}");
-                
+
                 if (httpResponse.IsSuccessStatusCode)
-                    listMateriaPrima = JsonConvert.DeserializeObject<IEnumerable<MateriaPrimaProducto>>(await httpResponse.Content.ReadAsStringAsync())!;
+                    listMateriaPrima =
+                        JsonConvert.DeserializeObject<IEnumerable<MateriaPrimaProducto>>(
+                            await httpResponse.Content.ReadAsStringAsync())!;
+                else
+                    throw new OperationCanceledException();
             }
             catch (HttpRequestException exceptionConnection)
             {

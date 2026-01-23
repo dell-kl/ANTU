@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Runtime.Versioning;
 using Modelos;
 using Modelos.Dto;
 using Modelos.RequestDto;
@@ -12,6 +13,7 @@ using Syncfusion.Maui.Data;
 
 namespace ANTU.ViewModel;
 
+[SupportedOSPlatform("Android")]
 public partial class ProductoListoDetalleViewModel : ParentViewModel
 {
     [ObservableProperty] 
@@ -45,7 +47,7 @@ public partial class ProductoListoDetalleViewModel : ParentViewModel
     {
         if (this.ListadoDataCatalogoProduccions.Count() == 0 || this.ListadoDataCatalogoProduccions.Count() >= 10)
         {
-            IEnumerable<DataCatalogoProduccion> respuesta = await _restManagement.ProduccionLista.ObtenerDatosCatalogoProduccion(this.Produccion.IdentificadorCatalogoProduccion, this.ListadoDataCatalogoProduccions.Count());
+            IEnumerable<DataCatalogoProduccion> respuesta = await RestManagement.ProduccionLista.ObtenerDatosCatalogoProduccion(this.Produccion.IdentificadorCatalogoProduccion, this.ListadoDataCatalogoProduccions.Count());
 
             if (respuesta.Any())
                 this.ListadoDataCatalogoProduccions = this.ListadoDataCatalogoProduccions.Union( respuesta ).ToObservableCollection();
@@ -63,7 +65,7 @@ public partial class ProductoListoDetalleViewModel : ParentViewModel
             "Continuar",
             async () =>
             {
-                bool resultado = await _restManagement.ProduccionLista
+                bool resultado = await RestManagement.ProduccionLista
                     .ActualizarEstadoAFinalizado(this.Produccion.Identificador, () => base.DesmontarSpinner());
 
                 if (true)
@@ -91,7 +93,7 @@ public partial class ProductoListoDetalleViewModel : ParentViewModel
     {
         await base.MostrarSpinner();
         
-        bool resultado = await _restManagement.ProduccionLista.Add(
+        bool resultado = await RestManagement.ProduccionLista.Add(
             new FabricadoRequestDto()
             {
                 identificadorDataCatalogProduction = this.ProductosListosFormulario.DatosVenta,
@@ -116,7 +118,7 @@ public partial class ProductoListoDetalleViewModel : ParentViewModel
     {
         if (this.ListadoProductosListos.Count == 0 || this.ListadoProductosListos.Count >= 10 || permitir)
         {
-            var resultado = await _restManagement.ProduccionLista.ObtenerInformacionProductosBodega(this.Produccion.Identificador, this.ListadoProductosListos.Count());
+            var resultado = await RestManagement.ProduccionLista.ObtenerInformacionProductosBodega(this.Produccion.Identificador, this.ListadoProductosListos.Count());
 
             if (resultado.Any())
                 this.ListadoProductosListos = this.ListadoProductosListos.Union(resultado).ToObservableCollection();

@@ -19,9 +19,8 @@ namespace Data.Rest
         
         
         public RestManagement(IHttpClientFactory httpClientFactory)
-        {
+        {  
             _httpClientFactory = httpClientFactory;
-            
             httpClient = _httpClientFactory.CreateClient("HttpClientRest");
 
             this.MateriaPrima = new MateriaPrimaRest(httpClient);

@@ -11,10 +11,10 @@
             <inheritdoc/>
         </member>
         <member name="P:ANTU.ViewModel.CatalogoProductoDetalleViewModel.PermitirCargaDatos">
-            <inheritdoc cref="F:ANTU.ViewModel.CatalogoProductoDetalleViewModel.permitirCargaDatos"/>
+            <inheritdoc cref="F:ANTU.ViewModel.CatalogoProductoDetalleViewModel._permitirCargaDatos"/>
         </member>
         <member name="P:ANTU.ViewModel.CatalogoProductoDetalleViewModel.CatalogoProducto">
-            <inheritdoc cref="F:ANTU.ViewModel.CatalogoProductoDetalleViewModel.catalogoProducto"/>
+            <inheritdoc cref="F:ANTU.ViewModel.CatalogoProductoDetalleViewModel._catalogoProducto"/>
         </member>
         <member name="P:ANTU.ViewModel.CatalogoProductoDetalleViewModel.ListadoDataCatalogoProductos">
             <inheritdoc cref="F:ANTU.ViewModel.CatalogoProductoDetalleViewModel._listadoDataCatalogoProductos"/>
@@ -74,11 +74,11 @@
         <member name="P:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.IsLazyLoading">
             <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel._isLazyLoading"/>
         </member>
-        <member name="F:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.loadMoreElementsCommand">
-            <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.LoadMoreElementsCommand"/>.</summary>
+        <member name="F:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.cargarDatosCatalogoProductoCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.CargarDatosCatalogoProductoCommand"/>.</summary>
         </member>
-        <member name="P:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.LoadMoreElementsCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.LoadMoreElements"/>.</summary>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.CargarDatosCatalogoProductoCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.CargarDatosCatalogoProducto"/>.</summary>
         </member>
         <member name="F:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.navegarPaginaDetalleCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.NavegarPaginaDetalleCommand"/>.</summary>
@@ -104,11 +104,11 @@
         <member name="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.IsLazyLoading">
             <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel._isLazyLoading"/>
         </member>
-        <member name="F:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.loadMoreElementsCommand">
-            <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.LoadMoreElementsCommand"/>.</summary>
+        <member name="F:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.obtenerDatosProduccionCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.ObtenerDatosProduccionCommand"/>.</summary>
         </member>
-        <member name="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.LoadMoreElementsCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.LoadMoreElements"/>.</summary>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.ObtenerDatosProduccionCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.ObtenerDatosProduccion"/>.</summary>
         </member>
         <member name="F:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.generarCambioEstadoProductosFabricacionCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.FabricacionCollectionViewComponentsViewModel.GenerarCambioEstadoProductosFabricacionCommand"/>.</summary>
@@ -133,11 +133,11 @@
         <member name="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.IsLazyLoading">
             <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel._isLazyLoading"/>
         </member>
-        <member name="F:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.loadMoreElementsCommand">
-            <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.LoadMoreElementsCommand"/>.</summary>
+        <member name="F:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.cargarDatosMateriaPrimaProductoCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.CargarDatosMateriaPrimaProductoCommand"/>.</summary>
         </member>
-        <member name="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.LoadMoreElementsCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.LoadMoreElements"/>.</summary>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.CargarDatosMateriaPrimaProductoCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.CargarDatosMateriaPrimaProducto"/>.</summary>
         </member>
         <member name="F:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.navegarPaginaDetalleCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.NavegarPaginaDetalleCommand"/>.</summary>
@@ -162,11 +162,11 @@
         <member name="P:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.IsLazyLoading">
             <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel._isLazyLoading"/>
         </member>
-        <member name="F:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.loadMoreElementsCommand">
-            <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.LoadMoreElementsCommand"/>.</summary>
+        <member name="F:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.cargarDatosProductosListosCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.CargarDatosProductosListosCommand"/>.</summary>
         </member>
-        <member name="P:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.LoadMoreElementsCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.LoadMoreElements"/>.</summary>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.CargarDatosProductosListosCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.CargarDatosProductosListos"/>.</summary>
         </member>
         <member name="F:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.navegarPaginaDetalleCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.ProductosListosCollectionViewComponentsViewModel.NavegarPaginaDetalleCommand"/>.</summary>

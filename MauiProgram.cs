@@ -1,4 +1,5 @@
-﻿using ANTU.ViewModel;
+﻿using System.Runtime.Versioning;
+using ANTU.ViewModel;
 using ANTU.Views.Login;
 using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
@@ -22,6 +23,7 @@ using Business.Services.IServices;
 
 namespace ANTU
 {
+    [SupportedOSPlatform("Android")]
     public static class MauiProgram
     {
         public static MauiApp CreateMauiApp()

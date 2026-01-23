@@ -8,10 +8,12 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
 using System.Collections.ObjectModel;
+using System.Runtime.Versioning;
 using Business.Services.IServices;
 
 namespace ANTU.ViewModel
 {
+    [SupportedOSPlatform("Android")]
     public partial class MostrarImagenesDetalleViewModel : ParentViewModel
     {
 
@@ -76,9 +78,9 @@ namespace ANTU.ViewModel
                     bool resultado = false;
 
                     if(DataModel is MateriaPrimaDetalle materiaPrimaDetalle)
-                        resultado = await _restManagement.MateriaPrima.DeleteImages(ListDataImages, async() => { await base.DesmontarSpinner(); });
+                        resultado = await RestManagement.MateriaPrima.DeleteImages(ListDataImages, async() => { await base.DesmontarSpinner(); });
                     else if(DataModel is CatalogoProductoDetalle catalogoProductoDetalle)
-                        resultado = await _restManagement.CatalogoProduct.DeleteImages(ListDataImages, async() => { await base.DesmontarSpinner(); });
+                        resultado = await RestManagement.CatalogoProduct.DeleteImages(ListDataImages, async() => { await base.DesmontarSpinner(); });
 
                     if (resultado)
                     {
@@ -134,9 +136,9 @@ namespace ANTU.ViewModel
                        Dictionary<string, object> resultado = new Dictionary<string, object>();
 
                        if(DataModel is MateriaPrimaDetalle materiaPrimaDetalle)
-                            resultado = await _restManagement.MateriaPrima.SaveImages(FileManyResults, this.identificador, true, async() => { await base.DesmontarSpinner(); });
+                            resultado = await RestManagement.MateriaPrima.SaveImages(FileManyResults, this.identificador, true, async() => { await base.DesmontarSpinner(); });
                        else if(DataModel is CatalogoProductoDetalle catalogoProductoDetalle)
-                            resultado = await _restManagement.CatalogoProduct.SaveImages(FileManyResults, this.identificador, true, async() => { await base.DesmontarSpinner(); });
+                            resultado = await RestManagement.CatalogoProduct.SaveImages(FileManyResults, this.identificador, true, async() => { await base.DesmontarSpinner(); });
 
                        if ((bool)resultado["estado"])
                        {

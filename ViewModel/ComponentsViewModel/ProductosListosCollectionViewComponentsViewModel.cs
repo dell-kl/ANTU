@@ -9,6 +9,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace ANTU.ViewModel.ComponentsViewModel;
 
+[SupportedOSPlatform("Android")]
 public partial class ProductosListosCollectionViewComponentsViewModel : ParentViewModel
 {
     [ObservableProperty]
@@ -18,7 +19,7 @@ public partial class ProductosListosCollectionViewComponentsViewModel : ParentVi
     private bool _panelVisible;
     
     [ObservableProperty]
-    private ObservableCollection<Produccion> _datosProductosListos = new ObservableCollection<Produccion>();
+    private ObservableCollection<Produccion> _datosProductosListos;
 
     [ObservableProperty]
     private bool _isLazyLoading;
@@ -26,21 +27,24 @@ public partial class ProductosListosCollectionViewComponentsViewModel : ParentVi
     public ProductosListosCollectionViewComponentsViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService)
     : base(restManagement, popupService, managementService)
     {
-        
-    }
-
-    public Task CargarDatosProductosListos()
-    {
-        // cargar datos del service de productos listos.
-        return Task.CompletedTask;
+        this.DatosProductosListos = new ObservableCollection<Produccion>();
     }
 
     [RelayCommand(AllowConcurrentExecutions = false)]
-    public async Task LoadMoreElements()
+    public async Task CargarDatosProductosListos()
     {
+        if (this.IsLazyLoading)
+            return;
+        
         this.IsLazyLoading = true;
-        TimeSpan.FromMilliseconds(10);
-        await CargarDatosProductosListos();
+
+        var listado = await ManagementService.ProductosListosService.GetProductosListosAync(this.DatosProductosListos.Count());
+
+        foreach (var item in listado)
+        {
+            this.DatosProductosListos.Add(item);
+        }
+        
         this.IsLazyLoading = false;
     }
     
@@ -65,7 +69,6 @@ public partial class ProductosListosCollectionViewComponentsViewModel : ParentVi
     }
     
     [RelayCommand(AllowConcurrentExecutions = false)]
-    [SupportedOSPlatform("Android")]
     public async Task NavegarPaginaDetalle(string guid)
     {
         Produccion? registro = this.DatosProductosListos.Where(item => item.Identificador.Equals(guid)).ToList()

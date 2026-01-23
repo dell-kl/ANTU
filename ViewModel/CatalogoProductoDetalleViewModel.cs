@@ -1,29 +1,29 @@
 ﻿using Modelos;
 using Modelos.Dto;
 using Modelos.RequestDto;
-using Data.Rest;
 using Data.Rest.RestInterfaces;
 using ANTU.ViewModel.PopupServicesViewModel;
 using CommunityToolkit.Maui;
-using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using System.Runtime.Versioning;
 using Business.Services.IServices;
 
 namespace ANTU.ViewModel
 {
+    [SupportedOSPlatform("Android")]
     public partial class CatalogoProductoDetalleViewModel : ParentViewModel
     {
 
         [ObservableProperty]
-        private bool permitirCargaDatos = true;
+        private bool _permitirCargaDatos = true;
 
         //datos que compartimos con nuestro producto que seleccionamos en la pagina o pantalla anterior.
         [ObservableProperty]
-        private CatalogoProducto catalogoProducto = new CatalogoProducto();
+        private CatalogoProducto _catalogoProducto = new CatalogoProducto();
 
         //El listado de todas las ventas que se van a realizar.
         [ObservableProperty]
@@ -31,13 +31,14 @@ namespace ANTU.ViewModel
 
         //Este es el formulario que se inyectara en un PopupService, para poder editar datos del producto o seguir llenando mas datos de venta.
         [ObservableProperty]
-        private CatalogoProductoFormulario _catalogoProductoFormulario;
+        private CatalogoProductoFormulario? _catalogoProductoFormulario;
 
         [ObservableProperty]
         private CatalogoProductoDetalle _catalogoProductoDetalle = new CatalogoProductoDetalle();
 
         public CatalogoProductoDetalleViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) : base(restManagement, popupService, managementService)
         {
+            
         }
 
         public override void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -50,7 +51,7 @@ namespace ANTU.ViewModel
         {
             if ( !this.ListadoDataCatalogoProductos.Any() || this.ListadoDataCatalogoProductos.Count() >= 10)
             {
-                IEnumerable<DataCatalogProducto> datos = await _restManagement.CatalogoProduct.GetDataCatalogProducto(this.ListadoDataCatalogoProductos.Count(), CatalogoProducto.Identificador);
+                IEnumerable<DataCatalogProducto> datos = await RestManagement.CatalogoProduct.GetDataCatalogProducto(this.ListadoDataCatalogoProductos.Count(), CatalogoProducto.Identificador);
 
                 if (datos.Any())
                     ListadoDataCatalogoProductos = ListadoDataCatalogoProductos.Union(datos).ToObservableCollection();
@@ -60,7 +61,7 @@ namespace ANTU.ViewModel
 
         public async Task cargarDatosDetalle()
         {
-            this.CatalogoProductoDetalle = await _restManagement.CatalogoProduct.GetDataCatalogProductoDetalle(CatalogoProducto.Identificador);
+            this.CatalogoProductoDetalle = await RestManagement.CatalogoProduct.GetDataCatalogProductoDetalle(CatalogoProducto.Identificador);
         }
 
         [RelayCommand(AllowConcurrentExecutions = false)]
@@ -90,7 +91,7 @@ namespace ANTU.ViewModel
                 }
             };
 
-            IPopupResult<Object> resultado = await _popupService.ShowPopupAsync<VentanaPopupServiceViewModel, Object>(Shell.Current, shellParameters : datosNavegacion, options: PopupOptions.Empty);
+            IPopupResult<Object> resultado = await PopupService.ShowPopupAsync<VentanaPopupServiceViewModel, Object>(Shell.Current, shellParameters : datosNavegacion, options: PopupOptions.Empty);
         
             if ( resultado.Result is List<object> datos )
             {
@@ -98,7 +99,7 @@ namespace ANTU.ViewModel
 
                 CatalogoProductoFormulario formulario = (CatalogoProductoFormulario)datos[0];
 
-                bool respuesta = await _restManagement.CatalogoProduct.Update(new CatalogoProductoRequestDto() { 
+                bool respuesta = await RestManagement.CatalogoProduct.Update(new CatalogoProductoRequestDto() { 
                     identificador = (string) datos[1],
                     nombreProducto = formulario.NombreProducto
                 }, () => base.DesmontarSpinner());
@@ -118,7 +119,7 @@ namespace ANTU.ViewModel
                 }
             };
 
-            IPopupResult<Object> resultado = await _popupService.ShowPopupAsync<VentanaPopupServiceViewModel, Object>(Shell.Current, shellParameters : datosNavegacion, options: PopupOptions.Empty);
+            IPopupResult<Object> resultado = await PopupService.ShowPopupAsync<VentanaPopupServiceViewModel, Object>(Shell.Current, shellParameters : datosNavegacion, options: PopupOptions.Empty);
 
             if( resultado.Result is List<object> datos )
             {
@@ -126,7 +127,7 @@ namespace ANTU.ViewModel
 
                 CatalogoProductoFormulario formulario = (CatalogoProductoFormulario) datos[0];
                 
-                bool respuesta = await _restManagement.CatalogoProduct.AddDatosVentaDataCatalogProduct(new Modelos.RequestDto.CatalogoProductoRequestDto()
+                bool respuesta = await RestManagement.CatalogoProduct.AddDatosVentaDataCatalogProduct(new Modelos.RequestDto.CatalogoProductoRequestDto()
                 {
                     identificador = (string) datos[1],
                     nombreProducto = this.CatalogoProducto.NombreProducto,

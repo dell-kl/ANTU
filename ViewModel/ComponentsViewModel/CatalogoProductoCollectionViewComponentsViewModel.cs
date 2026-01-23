@@ -9,36 +9,39 @@ using Modelos;
 
 namespace ANTU.ViewModel.ComponentsViewModel;
 
+[SupportedOSPlatform("Android")]
 public partial class CatalogoProductoCollectionViewComponentsViewModel : ParentViewModel
 {
     [ObservableProperty]
-    private ObservableCollection<CatalogoProducto> _datosCatalogoProductos = new ObservableCollection<CatalogoProducto>();
+    private ObservableCollection<CatalogoProducto> _datosCatalogoProductos;
     
     [ObservableProperty]
     private bool _isLazyLoading;
     
     public CatalogoProductoCollectionViewComponentsViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) : base(restManagement, popupService, managementService)
     {
-        
+        this.DatosCatalogoProductos = new ObservableCollection<CatalogoProducto>();
     }
 
-    public Task CargarDatosCatalogoProducto()
-    {
-        // llamamos al service para trar los datos de Catalogo Productos.
-        return Task.CompletedTask;
-    }
-    
     [RelayCommand(AllowConcurrentExecutions = false)]
-    public async Task LoadMoreElements()
+    public async Task CargarDatosCatalogoProducto()
     {
+        if (this.IsLazyLoading)
+            return;
+        
         this.IsLazyLoading = true;
-        TimeSpan.FromMilliseconds(10);
-        await CargarDatosCatalogoProducto();
+
+        var listado = await ManagementService.CatalogoProductoService.GetCatalogoProductosAync(this.DatosCatalogoProductos.Count());
+
+        foreach (var item in listado)
+        {
+            this.DatosCatalogoProductos.Add(item);
+        }
+        
         this.IsLazyLoading = false;
     }
 
     [RelayCommand(AllowConcurrentExecutions = false)]
-    [SupportedOSPlatform("Android")]
     public async Task NavegarPaginaDetalle(string guid)
     {
         CatalogoProducto? registro = this.DatosCatalogoProductos.Where(item => item.Identificador.Equals(guid)).ToList()

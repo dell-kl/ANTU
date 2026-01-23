@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Runtime.Versioning;
 using Modelos;
 using Modelos.RequestDto;
 using ANTU.Resources.Components.FormularioComponentes;
@@ -10,6 +11,7 @@ using Syncfusion.Maui.Data;
 
 namespace ANTU.ViewModel
 {
+    [SupportedOSPlatform("Android")]
     public partial class FabricacionFormularioViewModel : ParentViewModel
     {
         [ObservableProperty]
@@ -27,14 +29,14 @@ namespace ANTU.ViewModel
         public async Task RegistrarDatosFabricacion(ProduccionReqestDto produccionReqestDto)
         {
             await base.MostrarSpinner();
-            await _restManagement.Produccion.Add(produccionReqestDto, () => base.DesmontarSpinner(), true);
+            await RestManagement.Produccion.Add(produccionReqestDto, () => base.DesmontarSpinner(), true);
         }
         
         public async Task ObtenerDatosCatalogoProducto()
         {
             if (this.CatalogoProductos.Count() == 0 || this.CatalogoProductos.Count() >= 10)
             {
-                IEnumerable<CatalogoProducto> listadoCatalogo = await _restManagement.CatalogoProduct.Get(this.CatalogoProductos.Count().ToString());
+                IEnumerable<CatalogoProducto> listadoCatalogo = await RestManagement.CatalogoProduct.Get(this.CatalogoProductos.Count().ToString());
                 
                 if (listadoCatalogo.Any())
                     this.CatalogoProductos = this.CatalogoProductos.Union(listadoCatalogo).ToObservableCollection();
@@ -45,7 +47,7 @@ namespace ANTU.ViewModel
         {
             if ( this.MateriaPrimaProductos.Count() == 0 || this.MateriaPrimaProductos.Count() >= 10)
             {
-                IEnumerable<MateriaPrimaProducto> listadoMateriaPrima = await _restManagement.MateriaPrima.Get(this.MateriaPrimaProductos.Count().ToString());
+                IEnumerable<MateriaPrimaProducto> listadoMateriaPrima = await RestManagement.MateriaPrima.Get(this.MateriaPrimaProductos.Count().ToString());
 
                 if (listadoMateriaPrima.Any())
                     this.MateriaPrimaProductos = this.MateriaPrimaProductos.Union(listadoMateriaPrima).ToObservableCollection();

@@ -5,5 +5,5 @@ namespace Business.Services.IServices;
 
 public interface IMateriaPrimaService
 {
-    public Task GetMateriaPrimaAync(object data, ObservableCollection<MateriaPrimaProducto> listadoMateriaPrimaProductos);
+    public Task<IEnumerable<MateriaPrimaProducto>> GetMateriaPrimaAync(object data, CancellationToken cancellationToken = default);
 }

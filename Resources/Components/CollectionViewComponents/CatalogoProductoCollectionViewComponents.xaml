@@ -31,7 +31,7 @@
                 LoadMorePosition="End"
                 CanMaintainScrollPosition="True"
                 IsLazyLoading="{Binding IsLazyLoading}"
-                LoadMoreCommand="{Binding LoadMoreElementsCommand}"
+                LoadMoreCommand="{Binding CargarDatosCatalogoProductoCommand}"
                 ItemsSource="{Binding DatosCatalogoProductos}">
         <syncfusion:SfListView.EndSwipeTemplate>
             <DataTemplate x:DataType="models:CatalogoProducto" x:Name="StartSwipeTemplate">

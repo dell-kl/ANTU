@@ -75,7 +75,7 @@
                 LoadMorePosition="End"
                 CanMaintainScrollPosition="True"
                 IsLazyLoading="{Binding IsLazyLoading}"
-                LoadMoreCommand="{Binding LoadMoreElementsCommand}"
+                LoadMoreCommand="{Binding ObtenerDatosProduccionCommand}"
                 ItemsSource="{Binding DatosProducciones }">
                 <syncfusion:SfListView.EndSwipeTemplate>
                     <DataTemplate x:DataType="models:Produccion" x:Name="StartSwipeTemplate">
@@ -92,7 +92,6 @@
                                     x:Name="ContenedorBotonEditar"
                                     ClassId="{Binding Identificador}"
                                     >
-
                                 <Border.Behaviors>
                                     <toolkit:TouchBehavior
                                         x:Name="BotonEditar"

@@ -1,4 +1,5 @@
-﻿using ANTU.Resources.Components.FormularioComponentes;
+﻿using System.Runtime.Versioning;
+using ANTU.Resources.Components.FormularioComponentes;
 using Business.Services.IServices;
 using Data.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
@@ -7,6 +8,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace ANTU.ViewModel.PopupServicesViewModel
 {
+    [SupportedOSPlatform("Android")]
     public partial class VentanaPopupServiceViewModel : ParentViewModel
     {
         //Esto servira para el code-behind de VentanaPopupService y decidira que tipo de ContentView inyectar.
@@ -64,7 +66,7 @@ namespace ANTU.ViewModel.PopupServicesViewModel
         [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task CerrarPopup(object datos)
         {
-            await _popupService.ClosePopupAsync<object>(Shell.Current, datos);
+            await PopupService.ClosePopupAsync<object>(Shell.Current, datos);
         }
 
     }

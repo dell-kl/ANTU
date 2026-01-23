@@ -1,3 +1,4 @@
+using System.Runtime.Versioning;
 using Modelos;
 using ANTU.ViewModel.ComponentsViewModel;
 using Syncfusion.Maui.ListView;
@@ -5,6 +6,7 @@ using Syncfusion.Maui.Toolbar;
 
 namespace ANTU.Resources.Components.CollectionViewComponents;
 
+[SupportedOSPlatform("Android")]
 public partial class FabricacionCollectionViewComponents : ContentView
 {
 
@@ -15,13 +17,6 @@ public partial class FabricacionCollectionViewComponents : ContentView
         InitializeComponent();
         this.itemViewModel = itemViewModel;
         BindingContext = this.itemViewModel;
-        
-        // Loaded += OnLoaded;
-    }
-
-    private async void OnLoaded(object? sender, EventArgs e)
-    {
-        await this.itemViewModel.ObtenerDatosProduccion();
     }
     
     private void ListadoProduccion_OnSelectionChanging(object? sender, ItemSelectionChangingEventArgs e)

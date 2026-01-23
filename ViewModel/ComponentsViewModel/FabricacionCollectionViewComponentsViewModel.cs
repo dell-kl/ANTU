@@ -10,6 +10,7 @@ using Syncfusion.Maui.Data;
 
 namespace ANTU.ViewModel.ComponentsViewModel;
 
+[SupportedOSPlatform("Android")]
 public partial class FabricacionCollectionViewComponentsViewModel : ParentViewModel
 {
     [ObservableProperty]
@@ -17,9 +18,8 @@ public partial class FabricacionCollectionViewComponentsViewModel : ParentViewMo
 
     [ObservableProperty]
     private bool _panelVisible;
-    
-    [ObservableProperty]
-    private ObservableCollection<Produccion> _datosProducciones = new ObservableCollection<Produccion>();
+
+    [ObservableProperty] private ObservableCollection<Produccion> _datosProducciones;
     
     [ObservableProperty]
     private bool _isLazyLoading;
@@ -27,26 +27,29 @@ public partial class FabricacionCollectionViewComponentsViewModel : ParentViewMo
     public FabricacionCollectionViewComponentsViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService)
     : base(restManagement, popupService, managementService)
     {
+        this.DatosProducciones = new ObservableCollection<Produccion>();
     }
 
-    public Task ObtenerDatosProduccion()
-    {
-        //llamamos a nuestro service aqui.
-        return Task.CompletedTask;
-    }
-    
     [RelayCommand(AllowConcurrentExecutions = false)]
-    public async Task LoadMoreElements()
+    public async Task ObtenerDatosProduccion()
     {
+        if (this.IsLazyLoading)
+            return;
+        
         this.IsLazyLoading = true;
-        TimeSpan.FromMilliseconds(10);
-        await ObtenerDatosProduccion();
+
+        var listado = await ManagementService.FabricacionService.GetProduccionAync(this.DatosProducciones.Count());
+
+        foreach (var item in listado)
+        {
+            this.DatosProducciones.Add(item);
+        }
+        
         this.IsLazyLoading = false;
     }
-    
+
     //LLama al api para cambiar productos en produccion a ya fabricados.
     [RelayCommand(AllowConcurrentExecutions = false)]
-    [SupportedOSPlatform("Android")]
     public async Task GenerarCambioEstadoProductosFabricacion()
     {
         var productosFabricados = this.DatosProducciones
@@ -63,7 +66,7 @@ public partial class FabricacionCollectionViewComponentsViewModel : ParentViewMo
             await MostrarSpinner();
             
             bool resultado =
-                await _restManagement.Produccion.cambiarEstadoProduccionAFabricado(productosFabricados,
+                await RestManagement.Produccion.cambiarEstadoProduccionAFabricado(productosFabricados,
                     () => base.DesmontarSpinner());
             if (resultado)
                 this.DatosProducciones = this.DatosProducciones.Where(item => !item.EstadoFabricado).ToObservableCollection();
@@ -72,7 +75,6 @@ public partial class FabricacionCollectionViewComponentsViewModel : ParentViewMo
     }
     
     [RelayCommand(AllowConcurrentExecutions = false)]
-    [SupportedOSPlatform("Android")]
     public async Task NavegarPaginaDetalle(string guid)
     {
         // MateriaPrimaProducto? registro = this.DatosProducciones.Where(item => item.guid.Equals(guid)).ToList()

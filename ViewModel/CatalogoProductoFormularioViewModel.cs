@@ -1,4 +1,5 @@
-﻿using Modelos.Dto;
+﻿using System.Runtime.Versioning;
+using Modelos.Dto;
 using Modelos.RequestDto;
 using ANTU.Resources.Components.FormularioComponentes;
 using Business.Services.IServices;
@@ -9,6 +10,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace ANTU.ViewModel
 {
+    [SupportedOSPlatform("Android")]
     public partial class CatalogoProductoFormularioViewModel : ParentViewModel
     {
         //public CatalogoProductoFormulario catalogoProductoFormulario { set; get; } = new CatalogoProductoFormulario();
@@ -40,7 +42,7 @@ namespace ANTU.ViewModel
         public async Task RegistarCatalogoProducto(CatalogoProductoFormulario catalogoProductoFormulario)
         {
             await MostrarSpinner();
-            bool resultado = await _restManagement.CatalogoProduct.Add(
+            bool resultado = await RestManagement.CatalogoProduct.Add(
                 new Modelos.RequestDto.CatalogoProductoRequestDto()
                 {
                     identificador = Guid.NewGuid().ToString(),
