@@ -16,6 +16,7 @@ using Microsoft.Extensions.Http.Resilience;
 using ANTU.Views.Detalles;
 using ANTU.Resources.ValueConverter;
 using ANTU.Resources.Components.PopupComponents;
+using ANTU.Resources.Utilidades;
 using ANTU.ViewModel.ComponentsViewModel;
 using ANTU.ViewModel.PopupServicesViewModel;
 using Business.Services;
@@ -98,10 +99,7 @@ namespace ANTU
             builder.Services.AddTransient<FabricacionFormulario>();
 
             //Popup View
-            builder.Services.AddTransient<VentaEmergenteSinConexion>();
-            builder.Services.AddTransient<VentanaEmergente>();
-            // builder.Services.AddTransient<Mensaje>();
-            builder.Services.AddTransient<VentanaEmergenteSinConexionViewModel>();
+            builder.Services.AddTransient<Mensaje>();
             
             //ViewModel
             builder.Services.AddTransient<InicioSesionViewModel>();

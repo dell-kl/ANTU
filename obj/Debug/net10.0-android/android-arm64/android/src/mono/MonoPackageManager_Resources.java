@@ -195,6 +195,7 @@ public class MonoPackageManager_Resources {
 		"Business.dll",
 		"Data.dll",
 		"Modelos.dll",
+		"Utilidades.dll",
 		"_Microsoft.Android.Resource.Designer.dll",
 	};
 	public static String[] Dependencies = new String[]{

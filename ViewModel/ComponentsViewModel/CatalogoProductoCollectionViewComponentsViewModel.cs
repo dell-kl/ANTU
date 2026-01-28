@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Runtime.Versioning;
+using ANTU.Resources.Utilidades;
 using Business.Services.IServices;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -18,7 +19,7 @@ public partial class CatalogoProductoCollectionViewComponentsViewModel : ParentV
     [ObservableProperty]
     private bool _isLazyLoading;
     
-    public CatalogoProductoCollectionViewComponentsViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) : base(restManagement, popupService, managementService)
+    public CatalogoProductoCollectionViewComponentsViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService, Mensaje mensaje) : base(restManagement, popupService, managementService, mensaje)
     {
         this.DatosCatalogoProductos = new ObservableCollection<CatalogoProducto>();
     }
@@ -26,19 +27,27 @@ public partial class CatalogoProductoCollectionViewComponentsViewModel : ParentV
     [RelayCommand(AllowConcurrentExecutions = false)]
     public async Task CargarDatosCatalogoProducto()
     {
-        if (this.IsLazyLoading)
-            return;
-        
-        this.IsLazyLoading = true;
-
-        var listado = await ManagementService.CatalogoProductoService.GetCatalogoProductosAync(this.DatosCatalogoProductos.Count());
-
-        foreach (var item in listado)
+        try
         {
-            this.DatosCatalogoProductos.Add(item);
-        }
+            if (this.IsLazyLoading)
+                return;
         
-        this.IsLazyLoading = false;
+            this.IsLazyLoading = true;
+
+            var listado = await ManagementService.CatalogoProductoService.GetCatalogoProductosAync(this.DatosCatalogoProductos.Count());
+
+            foreach (var item in listado)
+            {
+                this.DatosCatalogoProductos.Add(item);
+            }
+        
+            this.IsLazyLoading = false;
+        }
+        catch (HttpRequestException e)
+        {
+            await DesmontarSpinner();
+            await Mensaje.MostrarAlertaSinConexion("Conexion fallo, intentalo en otro momento.");
+        }
     }
 
     [RelayCommand(AllowConcurrentExecutions = false)]

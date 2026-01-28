@@ -2,6 +2,7 @@
 using Modelos.Dto;
 using Modelos.RequestDto;
 using ANTU.Resources.Components.FormularioComponentes;
+using ANTU.Resources.Utilidades;
 using Business.Services.IServices;
 using Data.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
@@ -18,7 +19,7 @@ namespace ANTU.ViewModel
         [ObservableProperty]
         private CatalogoProductoFormularioComponentes catalogoProductoFormularioComponenets = new CatalogoProductoFormularioComponentes();
 
-        public CatalogoProductoFormularioViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) : base(restManagement, popupService, managementService)
+        public CatalogoProductoFormularioViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService, Mensaje mensaje) : base(restManagement, popupService, managementService, mensaje)
         {
             catalogoProductoFormularioComponenets.BindingContext = this;
         }

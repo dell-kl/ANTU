@@ -1,12 +1,11 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using ANTU.ViewModel.PopupServicesViewModel;
 
 namespace ANTU.Resources.Components.PopupComponents;
 
 public partial class VentaEmergenteSinConexion : INotifyPropertyChanged
 {
-    private string? descripcion = "No se pudo completar la solicitud por falta de conexión a internet. Por favor, verifica tu conexión e inténtalo de nuevo.";
+    private string? descripcion = "Error conexion...";
 
     public string? Descripcion
     {
@@ -17,20 +16,23 @@ public partial class VentaEmergenteSinConexion : INotifyPropertyChanged
         }
     }
     
-    public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler? PropertyChanged;
     
-    private VentanaEmergenteSinConexionViewModel itemViewModel;
-    
-    public VentaEmergenteSinConexion( VentanaEmergenteSinConexionViewModel itemViewModel )
+    public VentaEmergenteSinConexion( )
     {
         InitializeComponent();
-        this.itemViewModel = itemViewModel;
-        Contenido.Text = Descripcion;
-        BindingContext = this.itemViewModel;
+
+        BindingContext = this;
+
     }
     
     private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    private void ReintentarPeticionButton_OnClicked(object? sender, EventArgs e)
+    {
+        
     }
 }

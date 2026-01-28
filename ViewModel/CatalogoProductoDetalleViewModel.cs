@@ -10,6 +10,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Runtime.Versioning;
+using ANTU.Resources.Utilidades;
 using Business.Services.IServices;
 
 namespace ANTU.ViewModel
@@ -22,23 +23,22 @@ namespace ANTU.ViewModel
         private bool _permitirCargaDatos = true;
 
         //datos que compartimos con nuestro producto que seleccionamos en la pagina o pantalla anterior.
-        [ObservableProperty]
-        private CatalogoProducto _catalogoProducto = new CatalogoProducto();
+        [ObservableProperty] private CatalogoProducto _catalogoProducto;
 
         //El listado de todas las ventas que se van a realizar.
-        [ObservableProperty]
-        private ObservableCollection<DataCatalogProducto> _listadoDataCatalogoProductos = new ObservableCollection<DataCatalogProducto>();
+        [ObservableProperty] private ObservableCollection<DataCatalogProducto> _listadoDataCatalogoProductos;
 
         //Este es el formulario que se inyectara en un PopupService, para poder editar datos del producto o seguir llenando mas datos de venta.
         [ObservableProperty]
         private CatalogoProductoFormulario? _catalogoProductoFormulario;
 
-        [ObservableProperty]
-        private CatalogoProductoDetalle _catalogoProductoDetalle = new CatalogoProductoDetalle();
+        [ObservableProperty] private CatalogoProductoDetalle _catalogoProductoDetalle;
 
-        public CatalogoProductoDetalleViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) : base(restManagement, popupService, managementService)
+        public CatalogoProductoDetalleViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService, Mensaje mensaje) : base(restManagement, popupService, managementService, mensaje)
         {
-            
+            this.CatalogoProducto = new CatalogoProducto();
+            this.ListadoDataCatalogoProductos = new ObservableCollection<DataCatalogProducto>();
+            this.CatalogoProductoDetalle = new CatalogoProductoDetalle();
         }
 
         public override void ApplyQueryAttributes(IDictionary<string, object> query)

@@ -3,6 +3,7 @@ using System.Runtime.Versioning;
 using Modelos;
 using Modelos.RequestDto;
 using ANTU.Resources.Components.FormularioComponentes;
+using ANTU.Resources.Utilidades;
 using Business.Services.IServices;
 using Data.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
@@ -23,7 +24,7 @@ namespace ANTU.ViewModel
         [ObservableProperty]
         private FabricacionFormularioComponentes fabricacionFormularioComponentes = new FabricacionFormularioComponentes();
 
-        public FabricacionFormularioViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) : base(restManagement, popupService, managementService) {
+        public FabricacionFormularioViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService, Mensaje mensaje) : base(restManagement, popupService, managementService, mensaje) {
         }
 
         public async Task RegistrarDatosFabricacion(ProduccionReqestDto produccionReqestDto)

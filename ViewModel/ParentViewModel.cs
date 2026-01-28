@@ -9,8 +9,8 @@ using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Runtime.Versioning;
+using ANTU.Resources.Utilidades;
 using Business.Services.IServices;
-
 
 namespace ANTU.ViewModel
 {
@@ -26,6 +26,9 @@ namespace ANTU.ViewModel
         
         [ObservableProperty]
         private object _dataFormSource = new object();
+        
+        [ObservableProperty]
+        private Mensaje _mensaje;
 
         [ObservableProperty]
         private ObservableCollection<FileResultExtensible> _fileManyResults = new ObservableCollection<FileResultExtensible>();
@@ -33,10 +36,11 @@ namespace ANTU.ViewModel
         [ObservableProperty]
         private ImagenesGuardarFormularioComponentes imagenesGuardarFormularioComponentes = new ImagenesGuardarFormularioComponentes();
 
-        public ParentViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) {
+        public ParentViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService, Mensaje mensaje) {
             RestManagement = restManagement;
             PopupService = popupService;
             ManagementService = managementService;
+            Mensaje = mensaje;
 
             //Este formulario de imagenes se utilizara en varios formularios;
             this.imagenesGuardarFormularioComponentes.BindingContext = this;

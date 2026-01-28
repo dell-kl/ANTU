@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mopup:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                            xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
                             xmlns:mopup="clr-namespace:Mopups.Pages;assembly=Mopups"
-                            xmlns:viewModel="clr-namespace:ANTU.ViewModel.PopupServicesViewModel"
                             x:Class="ANTU.Resources.Components.PopupComponents.VentaEmergenteSinConexion"
                             BackgroundColor="#FFFF"
-                            CloseWhenBackgroundIsClicked="False"
-                            x:DataType="viewModel:VentanaEmergenteSinConexionViewModel">
+                            CloseWhenBackgroundIsClicked="False">
     <VerticalStackLayout
         VerticalOptions="Center">
         <Image
@@ -19,6 +16,8 @@
             TextColor="#FFF"
             Command="{Binding ReintentarPeticionCommand}"
             Text="&#xe7a2; Reintentar"
+            x:Name="ReintentarPeticionButton"
+            Clicked="ReintentarPeticionButton_OnClicked"
             FontFamily="MaterialAssets"/>
         
         <Label VerticalOptions="Center"
@@ -36,6 +35,7 @@
                     <Span
                         FontFamily="SegoeUILight"
                         x:Name="Contenido"
+                        Text="{Binding Path=Descripcion}"
                         FontAttributes="Bold"
                         FontSize="15"
                         TextColor="red"/>

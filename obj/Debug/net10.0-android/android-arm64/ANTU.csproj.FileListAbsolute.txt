@@ -5866,3 +5866,9 @@ D:/Sistemas/BodegaBalanceado/ANTU/obj/Debug/net10.0-android/android-arm64/stamp/
 /home/dell-kl/Escritorio/SistemaBalanceado/ANTU/obj/Debug/net10.0-android/android-arm64/stamp/_GenerateJavaStubs.stamp
 /home/dell-kl/Escritorio/SistemaBalanceado/ANTU/obj/Debug/net10.0-android/android-arm64/stamp/_GeneratePackageManagerJava.stamp
 /home/dell-kl/Escritorio/SistemaBalanceado/ANTU/obj/Debug/net10.0-android/android-arm64/stamp/_ResolveLibraryProjectImports.stamp
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/bin/Debug/net10.0-android/android-arm64/Utilidades.dll
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/bin/Debug/net10.0-android/android-arm64/Utilidades.pdb
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/obj/Debug/net10.0-android/android-arm64/android/assets/arm64-v8a/Utilidades.dll
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/obj/Debug/net10.0-android/android-arm64/android/assets/arm64-v8a/Utilidades.jlo.xml
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/obj/Debug/net10.0-android/android-arm64/android/assets/arm64-v8a/Utilidades.pdb
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/obj/Debug/net10.0-android/android-arm64/android/assets/arm64-v8a/Utilidades.typemap.xml

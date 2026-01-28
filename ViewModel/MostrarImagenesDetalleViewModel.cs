@@ -9,6 +9,7 @@ using CommunityToolkit.Mvvm.Input;
 using Mopups.Services;
 using System.Collections.ObjectModel;
 using System.Runtime.Versioning;
+using ANTU.Resources.Utilidades;
 using Business.Services.IServices;
 
 namespace ANTU.ViewModel
@@ -37,7 +38,7 @@ namespace ANTU.ViewModel
         [ObservableProperty]
         private object _dataModel;
 
-        public MostrarImagenesDetalleViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) : base(restManagement, popupService, managementService) {
+        public MostrarImagenesDetalleViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService, Mensaje mensaje) : base(restManagement, popupService, managementService, mensaje) {
             
         }
 

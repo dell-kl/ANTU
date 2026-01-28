@@ -4,6 +4,7 @@ using Modelos;
 using Modelos.Dto;
 using Modelos.RequestDto;
 using ANTU.Resources.Components.FormularioComponentes;
+using ANTU.Resources.Utilidades;
 using Business.Services.IServices;
 using Data.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
@@ -31,7 +32,7 @@ public partial class ProductoListoDetalleViewModel : ParentViewModel
     [ObservableProperty]
     private ProductosListosFormularioComponentes formularioProductosListosView;
     
-    public ProductoListoDetalleViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) : base(restManagement, popupService, managementService) {
+    public ProductoListoDetalleViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService, Mensaje mensaje) : base(restManagement, popupService, managementService, mensaje) {
         
     }
     

@@ -3268,7 +3268,8 @@
           "Microsoft.Extensions.Http.Resilience": "10.0.0",
           "Microsoft.Extensions.Resilience": "10.0.0",
           "Modelos": "1.0.0",
-          "Newtonsoft.Json": "13.0.4"
+          "Newtonsoft.Json": "13.0.4",
+          "Utilidades": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Data.dll": {}
@@ -3290,6 +3291,16 @@
         },
         "runtime": {
           "bin/placeholder/Modelos.dll": {}
+        }
+      },
+      "Utilidades/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/Utilidades.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Utilidades.dll": {}
         }
       }
     },
@@ -6560,7 +6571,8 @@
           "Microsoft.Extensions.Http.Resilience": "10.0.0",
           "Microsoft.Extensions.Resilience": "10.0.0",
           "Modelos": "1.0.0",
-          "Newtonsoft.Json": "13.0.4"
+          "Newtonsoft.Json": "13.0.4",
+          "Utilidades": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Data.dll": {}
@@ -6582,6 +6594,16 @@
         },
         "runtime": {
           "bin/placeholder/Modelos.dll": {}
+        }
+      },
+      "Utilidades/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/Utilidades.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Utilidades.dll": {}
         }
       }
     },
@@ -9852,7 +9874,8 @@
           "Microsoft.Extensions.Http.Resilience": "10.0.0",
           "Microsoft.Extensions.Resilience": "10.0.0",
           "Modelos": "1.0.0",
-          "Newtonsoft.Json": "13.0.4"
+          "Newtonsoft.Json": "13.0.4",
+          "Utilidades": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Data.dll": {}
@@ -9874,6 +9897,16 @@
         },
         "runtime": {
           "bin/placeholder/Modelos.dll": {}
+        }
+      },
+      "Utilidades/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/Utilidades.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Utilidades.dll": {}
         }
       }
     }
@@ -14791,6 +14824,11 @@
       "type": "project",
       "path": "Modelos/Modelos.csproj",
       "msbuildProject": "Modelos/Modelos.csproj"
+    },
+    "Utilidades/1.0.0": {
+      "type": "project",
+      "path": "Utilidades/Utilidades.csproj",
+      "msbuildProject": "Utilidades/Utilidades.csproj"
     }
   },
   "projectFileDependencyGroups": {

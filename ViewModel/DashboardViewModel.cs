@@ -1,4 +1,6 @@
-﻿using Data.Rest.RestInterfaces;
+﻿using System.Runtime.Versioning;
+using ANTU.Resources.Utilidades;
+using Data.Rest.RestInterfaces;
 using ANTU.Views;
 using Business.Services.IServices;
 using CommunityToolkit.Maui;
@@ -6,9 +8,10 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace ANTU.ViewModel
 {
+    [SupportedOSPlatform("Android")]
     public partial class DashboardViewModel : ParentViewModel
     {
-        public DashboardViewModel(IRestManagement IRestManagement, IPopupService popupService, IManagementService managementService) : base(IRestManagement, popupService, managementService) { 
+        public DashboardViewModel(IRestManagement IRestManagement, IPopupService popupService, IManagementService managementService, Mensaje mensaje) : base(IRestManagement, popupService, managementService, mensaje) { 
             
         }
         

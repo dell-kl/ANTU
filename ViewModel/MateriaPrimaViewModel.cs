@@ -1,6 +1,7 @@
 ﻿using System.Runtime.Versioning;
 using ANTU.Resources.Components.CollectionViewComponents;
 using ANTU.Resources.Components.ControlersComponents;
+using ANTU.Resources.Utilidades;
 using Data.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -42,7 +43,8 @@ namespace ANTU.ViewModel
             ProductosListosCollectionViewComponents productosListosView,
             IRestManagement restManagement, 
             IPopupService popupService, 
-            IManagementService managementService) : base(restManagement, popupService, managementService)
+            IManagementService managementService,
+            Mensaje mensaje) : base(restManagement, popupService, managementService, mensaje)
         {
             this._materiaPrimaView = materiaPrimaView;
             this._catalogoProductoView = catalogoProductoView;

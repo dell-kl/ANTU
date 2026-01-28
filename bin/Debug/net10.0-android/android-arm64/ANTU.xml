@@ -133,6 +133,9 @@
         <member name="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.IsLazyLoading">
             <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel._isLazyLoading"/>
         </member>
+        <member name="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.Mensaje">
+            <inheritdoc cref="F:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel._mensaje"/>
+        </member>
         <member name="F:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.cargarDatosMateriaPrimaProductoCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.CargarDatosMateriaPrimaProductoCommand"/>.</summary>
         </member>
@@ -353,15 +356,6 @@
         </member>
         <member name="P:ANTU.ViewModel.ParentViewModel.SeleccionarArchivoMostrarCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ParentViewModel.SeleccionarArchivoMostrar"/>.</summary>
-        </member>
-        <member name="T:ANTU.ViewModel.PopupServicesViewModel.VentanaEmergenteSinConexionViewModel">
-            <inheritdoc/>
-        </member>
-        <member name="F:ANTU.ViewModel.PopupServicesViewModel.VentanaEmergenteSinConexionViewModel.reintentarPeticionCommand">
-            <summary>The backing field for <see cref="P:ANTU.ViewModel.PopupServicesViewModel.VentanaEmergenteSinConexionViewModel.ReintentarPeticionCommand"/>.</summary>
-        </member>
-        <member name="P:ANTU.ViewModel.PopupServicesViewModel.VentanaEmergenteSinConexionViewModel.ReintentarPeticionCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.PopupServicesViewModel.VentanaEmergenteSinConexionViewModel.ReintentarPeticion"/>.</summary>
         </member>
         <member name="T:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel">
             <inheritdoc/>
@@ -817,6 +811,9 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DatosMateriaPrimaProductos">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DatosMateriaPrimaProductos" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Mensaje">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Mensaje" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DatosProductosListos">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DatosProductosListos" generated properties.</summary>
         </member>
@@ -1065,6 +1062,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DatosMateriaPrimaProductos">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DatosMateriaPrimaProductos" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Mensaje">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Mensaje" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DatosProductosListos">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DatosProductosListos" generated properties.</summary>

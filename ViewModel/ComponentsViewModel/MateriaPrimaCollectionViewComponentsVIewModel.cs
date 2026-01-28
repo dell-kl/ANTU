@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Runtime.Versioning;
+using ANTU.Resources.Utilidades;
 using Business.Services.IServices;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -12,37 +13,45 @@ namespace ANTU.ViewModel.ComponentsViewModel;
 [SupportedOSPlatform("Android")]
 public partial class MateriaPrimaCollectionViewComponentsVIewModel : ParentViewModel
 {
-    [ObservableProperty]
-    private ObservableCollection<MateriaPrimaProducto> _datosMateriaPrimaProductos = new ObservableCollection<MateriaPrimaProducto>();
+    [ObservableProperty] 
+    private ObservableCollection<MateriaPrimaProducto> _datosMateriaPrimaProductos;
 
     [ObservableProperty]
     private bool _isLazyLoading;
-
-
-    public MateriaPrimaCollectionViewComponentsVIewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) : base(restManagement, popupService, managementService)
+    
+    public MateriaPrimaCollectionViewComponentsVIewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService, Mensaje mensaje) : base(restManagement, popupService, managementService, mensaje)
     {
+        this.DatosMateriaPrimaProductos = new ObservableCollection<MateriaPrimaProducto>();
     }
 
     [RelayCommand(AllowConcurrentExecutions = false)]
     public async Task CargarDatosMateriaPrimaProducto()
     {
-        if (this.IsLazyLoading)
-            return; 
-        
-        this.IsLazyLoading = true;
-
-        CancellationTokenSource tokenSource = new CancellationTokenSource();
-        
-        IEnumerable<MateriaPrimaProducto> listado = await ManagementService.materiaPrimaService.GetMateriaPrimaAync(
-            this.DatosMateriaPrimaProductos.Count(),
-            tokenSource.Token);
-
-        foreach (MateriaPrimaProducto item in listado)
+        try
         {
-            this.DatosMateriaPrimaProductos.Add(item);
-        }
+            if (this.IsLazyLoading)
+                return;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+        
+            this.IsLazyLoading = true;
 
-        this.IsLazyLoading = false;
+            CancellationTokenSource tokenSource = new CancellationTokenSource();
+        
+            IEnumerable<MateriaPrimaProducto> listado = await ManagementService.materiaPrimaService.GetMateriaPrimaAync(
+                this.DatosMateriaPrimaProductos.Count(),
+                tokenSource.Token);
+
+            foreach (MateriaPrimaProducto item in listado)
+            {
+                this.DatosMateriaPrimaProductos.Add(item);
+            }
+
+            this.IsLazyLoading = false;
+        }
+        catch (HttpRequestException e)
+        {
+            await DesmontarSpinner();
+            await Mensaje.MostrarAlertaSinConexion("Conexion fallo, intentalo en otro momento.");
+        }
     }
     
     [RelayCommand(AllowConcurrentExecutions = false)]

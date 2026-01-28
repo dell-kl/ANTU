@@ -12,3 +12,5 @@
 /home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Data/obj/Debug/net10.0/refint/Data.dll
 /home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Data/obj/Debug/net10.0/Data.pdb
 /home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Data/obj/Debug/net10.0/ref/Data.dll
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Data/bin/Debug/net10.0/Utilidades.dll
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/Data/bin/Debug/net10.0/Utilidades.pdb

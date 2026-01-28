@@ -14,6 +14,7 @@ using Mopups.Services;
 using Syncfusion.Maui.DataForm;
 using System.Collections.ObjectModel;
 using System.Runtime.Versioning;
+using ANTU.Resources.Utilidades;
 using Business.Services.IServices;
 
 
@@ -45,7 +46,7 @@ namespace ANTU.ViewModel
         [ObservableProperty]
         private ObservableCollection<KgSeguimiento> _kgSeguimientoList = new ObservableCollection<KgSeguimiento>();
 
-        public MateriaPrimaDetalleViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService) : base(restManagement, popupService, managementService)
+        public MateriaPrimaDetalleViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService, Mensaje mensaje) : base(restManagement, popupService, managementService, mensaje)
         {
         }
 

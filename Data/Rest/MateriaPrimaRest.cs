@@ -68,21 +68,12 @@ namespace Data.Rest
         {
             IEnumerable<MateriaPrimaProducto> listMateriaPrima = new List<MateriaPrimaProducto>();
             
-            try
-            {
-                using HttpResponseMessage? httpResponse =  await httpClient.GetAsync($"{Endpoints.ENDPOINTS[2]}/{data}");
+            using HttpResponseMessage? httpResponse =  await httpClient.GetAsync($"{Endpoints.ENDPOINTS[2]}/{data}");
 
-                if (httpResponse.IsSuccessStatusCode)
-                    listMateriaPrima =
-                        JsonConvert.DeserializeObject<IEnumerable<MateriaPrimaProducto>>(
-                            await httpResponse.Content.ReadAsStringAsync())!;
-                else
-                    throw new OperationCanceledException();
-            }
-            catch (HttpRequestException exceptionConnection)
-            {
-                throw;
-            }                
+            if (httpResponse.IsSuccessStatusCode)
+                listMateriaPrima =
+                    JsonConvert.DeserializeObject<IEnumerable<MateriaPrimaProducto>>(
+                        await httpResponse.Content.ReadAsStringAsync())!;
             
             return listMateriaPrima;
         }

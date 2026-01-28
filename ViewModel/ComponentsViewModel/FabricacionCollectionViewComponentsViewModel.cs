@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Runtime.Versioning;
+using ANTU.Resources.Utilidades;
 using Business.Services.IServices;
 using Modelos;
 using Data.Rest.RestInterfaces;
@@ -24,8 +25,8 @@ public partial class FabricacionCollectionViewComponentsViewModel : ParentViewMo
     [ObservableProperty]
     private bool _isLazyLoading;
 
-    public FabricacionCollectionViewComponentsViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService)
-    : base(restManagement, popupService, managementService)
+    public FabricacionCollectionViewComponentsViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService, Mensaje mensaje)
+    : base(restManagement, popupService, managementService, mensaje)
     {
         this.DatosProducciones = new ObservableCollection<Produccion>();
     }
