@@ -2,7 +2,6 @@
 <mopup:PopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ANTU.Resources.Components.PopupComponents.VentanaEmergente"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:mopup="clr-namespace:Mopups.Pages;assembly=Mopups"
              BackgroundColor="#80000000"
              CloseWhenBackgroundIsClicked="False">
@@ -15,21 +14,21 @@
                 StrokeThickness="0"
                 Padding="20">
             <StackLayout>
-                <ActivityIndicator 
-                    x:Name="LoadingElement"
-                    IsRunning="True" Color="Orange"></ActivityIndicator>
+                <!-- <ActivityIndicator  -->
+                <!--     x:Name="LoadingElement" -->
+                <!--     IsRunning="True" Color="Orange"></ActivityIndicator> -->
 
                 <Image
                     WidthRequest="50"
-                    x:Name="ImagenIcon"/>
+                    Source="{Binding Source}"/>
                 <Label 
-                    x:Name="Titulo"
+                    Text="{Binding Titulo}"
                     FontFamily="SegoeUIBold"
                     FontSize="20"
                     HorizontalTextAlignment="Center"
                     TextColor="#000"/>
                 <Label 
-                    x:Name="Contenido"
+                    Text="{Binding Contenido}"
                     FontFamily="SegoeUILight"
                     FontSize="15"
                     HorizontalTextAlignment="Center"
@@ -41,6 +40,8 @@
                     BackgroundColor="Orange"
                     x:Name="Button"
                     Clicked="Button_Clicked"
+                    IsVisible="{Binding ShowButton}"
+                    IsEnabled="{Binding ShowButton}"
                     Text="Entendido"/>
             </StackLayout>
         </Border>

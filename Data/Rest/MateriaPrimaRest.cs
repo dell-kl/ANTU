@@ -1,4 +1,5 @@
-﻿using Modelos;
+﻿using System.Collections.Immutable;
+using Modelos;
 using Modelos.Dto;
 using Modelos.RequestDto;
 using Data.Rest.RestInterfaces;
@@ -8,6 +9,8 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Text;
+using Modelos.ResultDto;
+using Result = Modelos.ResultDto.Result;
 
 namespace Data.Rest
 {
@@ -20,34 +23,37 @@ namespace Data.Rest
             this.httpClient = httpClient;
         }
 
-        public async Task<bool> Add(MateriaPrimaRequestDto materiaPrimaRequestDto, Func<Task> ejecutarTarea, bool mostrarMensajes = false)
+        public async Task<RequestResultDto<string>> Add(MateriaPrimaRequestDto materiaPrimaRequestDto)
         {
-            using StringContent json = new(
-                JsonConvert.SerializeObject(materiaPrimaRequestDto),
-                Encoding.UTF8,
-                MediaTypeNames.Application.Json);
+            try
+            {
+                using StringContent json = new(
+                    JsonConvert.SerializeObject(materiaPrimaRequestDto),
+                    Encoding.UTF8,
+                    MediaTypeNames.Application.Json);
 
-            using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS[0], json);
+                using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS[0], json);
 
-            await ejecutarTarea();
+                if (httpResponse.StatusCode != HttpStatusCode.OK)
+                    return Result.Failure<string>(await httpResponse.Content.ReadAsStringAsync(), httpResponse.StatusCode);
 
-            // if (httpResponse.IsSuccessStatusCode && mostrarMensajes) 
-            //     await _mensaje.MensajeCorrecto("Guardado Exitosamente", await httpResponse.Content.ReadAsStringAsync());
-            // else if (httpResponse.StatusCode == HttpStatusCode.InternalServerError && mostrarMensajes)
-            //     await _mensaje.MensajeError("Error Guardado", await httpResponse.Content.ReadAsStringAsync());
-
-            return (httpResponse.IsSuccessStatusCode) ? true : false;
+                return Result.Success<string>(await httpResponse.Content.ReadAsStringAsync());
+            }
+            catch (Exception e)
+            {
+                return Result.Failure<string>(Error.Exception(e).ToImmutableArray());
+            }
         }
 
-        public async Task<bool> Add(MateriaPrimaRequestDto data, Func<Task> ejecutarTarea, ObservableCollection<FileResultExtensible> fileResultExtensibles)
+        public async Task<RequestResultDto<string>> Add(MateriaPrimaRequestDto data, ObservableCollection<FileResultExtensible> fileResultExtensibles)
         {
-            if (!fileResultExtensibles.Any())
-                return await this.Add(data, ejecutarTarea, true);
-
-            bool resultado = await this.Add(data, async () => { }, false);
-            Dictionary<string, object> resultadoImagenes = await SaveImages(fileResultExtensibles, data.id_dto!, activarVentanasAlerta: false);
-            await ejecutarTarea();
-
+            // RequestResultDto<string> resultado = await this.Add(data);
+            //
+            // if (resultado.IsSuccess)
+            // {
+            //     Dictionary<string, object> resultadoImagenes = await SaveImages(fileResultExtensibles, data.id_dto!, activarVentanasAlerta: false);
+            // }
+            //
             // if (resultado && resultadoImagenes["estado"] is true)
             //     await _mensaje.MensajeCorrecto("Guardado Exitosamente", "Materia prima guardada correctamente.");
             // else if (resultado && resultadoImagenes["estado"] is false)
@@ -55,7 +61,8 @@ namespace Data.Rest
             // else
             //     await _mensaje.MensajeError("Error Guardado", "No se pudieron guardar los datos de la materia prima.");
 
-            return resultado;
+            // return resultado;
+            throw new NotImplementedException();
         }
 
 
@@ -91,7 +98,7 @@ namespace Data.Rest
 
                 multipartFormData.Add(streamContent, "formFiles", fileResult.FileName);
             }
-
+            
             using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS[1], multipartFormData);
 
             if (ejecutarTask != null)

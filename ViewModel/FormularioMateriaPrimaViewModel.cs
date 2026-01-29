@@ -8,6 +8,7 @@ using Data.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Modelos.ResultDto;
 
 namespace ANTU.ViewModel
 {
@@ -22,12 +23,13 @@ namespace ANTU.ViewModel
 
         // Componente de formulario.
         [ObservableProperty]
-        private MateriaPrimaFormularioComponentes materiaPrimaFormularioComponentes = new MateriaPrimaFormularioComponentes();
+        private MateriaPrimaFormularioComponentes _materiaPrimaFormularioComponentes;
         
         public FormularioMateriaPrimaViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService, Mensaje mensaje)
         : base(restManagement, popupService, managementService, mensaje)
         {
-            this.materiaPrimaFormularioComponentes.BindingContext = this;
+            this.MateriaPrimaFormularioComponentes = new MateriaPrimaFormularioComponentes();
+            this.MateriaPrimaFormularioComponentes.BindingContext = this;
         }
 
         [RelayCommand(AllowConcurrentExecutions = false)]
@@ -36,28 +38,21 @@ namespace ANTU.ViewModel
             //cubrir con ventana emergente.
             await base.MostrarSpinner();
 
-            await RestManagement.MateriaPrima.Add(
-                new MateriaPrimaRequestDto()
-                {
-                    id_dto = Guid.NewGuid().ToString(),
-                    nombre_dto = materiaPrimaFormulario.MateriaPrima,
-                    KgMonitoringDtos = new List<KgSeguimientoRequestDto>()
-                    {
-                        new KgSeguimientoRequestDto()
-                        {
-                            id_dto = null,
-                            cantidad_dto = materiaPrimaFormulario.Cantidad,
-                            kg_standard = materiaPrimaFormulario.KgStandard,
-                            price_dto = (decimal) materiaPrimaFormulario.Precio
-                        }   
-                    }
-                }, 
-                () => DesmontarSpinner(),
-                FileManyResults);
+            RequestResultDto<string> resultado = await ManagementService.materiaPrimaService.RegistrarMateriaPrima(materiaPrimaFormulario, FileManyResults);
 
-
-            FileManyResults.Clear();
-
+            // if (!resultado.IsSuccess)
+            //     Mensaje.MensajeCorrecto("Error Registrar", resultado.Error!);
+            // else
+            // {
+            //     await ManagementService.materiaPrimaService.RegistarImagenesMateriaPrima(FileManyResults);
+            //     
+            //     Mensaje.MensajeCorrecto("Registrado Materia Prima", resultado.Value!);
+            // }
+            //
+            //
+            // await base.DesmontarSpinner();    
+            // FileManyResults.Clear();
+            
         }
     }
 }

@@ -42,28 +42,28 @@ namespace ANTU.ViewModel
         [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task RegistarCatalogoProducto(CatalogoProductoFormulario catalogoProductoFormulario)
         {
-            await MostrarSpinner();
-            bool resultado = await RestManagement.CatalogoProduct.Add(
-                new Modelos.RequestDto.CatalogoProductoRequestDto()
-                {
-                    identificador = Guid.NewGuid().ToString(),
-                    nombreProducto = catalogoProductoFormulario.NombreProducto!,
-                    dataCatalogProducts = new List<DataProduct>()
-                    {
-                        new DataProduct()
-                        {
-                            precio = (decimal) catalogoProductoFormulario.DatosVentas.Precio,
-                            pesoKg = catalogoProductoFormulario.DatosVentas.Kg,
-                            cantidadTotal = catalogoProductoFormulario.DatosVentas.Cantidad
-                        }
-                    }
-                },
-                () => DesmontarSpinner(),
-                FileManyResults
-            );
-
-            catalogoProductoFormulario.limpiarDatos();
-            FileManyResults.Clear();
+            // await MostrarSpinner();
+            // var resultado = await RestManagement.CatalogoProduct.Add(
+            //     new Modelos.RequestDto.CatalogoProductoRequestDto()
+            //     {
+            //         identificador = Guid.NewGuid().ToString(),
+            //         nombreProducto = catalogoProductoFormulario.NombreProducto!,
+            //         dataCatalogProducts = new List<DataProduct>()
+            //         {
+            //             new DataProduct()
+            //             {
+            //                 precio = (decimal) catalogoProductoFormulario.DatosVentas.Precio,
+            //                 pesoKg = catalogoProductoFormulario.DatosVentas.Kg,
+            //                 cantidadTotal = catalogoProductoFormulario.DatosVentas.Cantidad
+            //             }
+            //         }
+            //     },
+            //     () => DesmontarSpinner(),
+            //     FileManyResults
+            // );
+            //
+            // catalogoProductoFormulario.limpiarDatos();
+            // FileManyResults.Clear();
         }
     }
 }

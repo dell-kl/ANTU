@@ -1,4 +1,5 @@
-﻿using Modelos;
+﻿using System.Collections.Immutable;
+using Modelos;
 using Modelos.Dto;
 using Modelos.RequestDto;
 using Data.Rest.RestInterfaces;
@@ -9,6 +10,7 @@ using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Text;
+using Modelos.ResultDto;
 
 namespace Data.Rest
 {
@@ -21,35 +23,33 @@ namespace Data.Rest
             this.httpClient = httpClient;
         }
 
-        public async Task<bool> Add(CatalogoProductoRequestDto data, Func<Task> ejecutarTarea, bool mostrarMensajes = false)
+        public async Task<RequestResultDto<string>> Add(CatalogoProductoRequestDto data)
         {
-            using StringContent json = new(
-                JsonConvert.SerializeObject(data),
-                Encoding.UTF8,
-                MediaTypeNames.Application.Json);
+            try
+            {
+                using StringContent json = new(
+                    JsonConvert.SerializeObject(data),
+                    Encoding.UTF8,
+                    MediaTypeNames.Application.Json);
 
-            using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS_CATALOGPRODUCT[0], json);
+                using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS_CATALOGPRODUCT[0], json);
 
-            if (ejecutarTarea != null)
-                await ejecutarTarea();
+                if (httpResponse.StatusCode != HttpStatusCode.OK)
+                    return Result.Failure(await httpResponse.Content.ReadAsStringAsync(), httpResponse.StatusCode);
 
-            // if (httpResponse.IsSuccessStatusCode && mostrarMensajes)
-            //     await _mensaje.MensajeCorrecto("Guardado Exitosamente", await httpResponse.Content.ReadAsStringAsync());
-            // else if(!httpResponse.IsSuccessStatusCode && mostrarMensajes)
-            //     await _mensaje.MensajeError("Error Guardado", await httpResponse.Content.ReadAsStringAsync());
-
-            return (httpResponse.IsSuccessStatusCode) ? true : false;
+                return Result.Success(await httpResponse.Content.ReadAsStringAsync());
+            }
+            catch (Exception e)
+            {
+                return Result.Failure<string>(Error.Exception(e).ToImmutableArray());
+            }
         }
 
-        public async Task<bool> Add(CatalogoProductoRequestDto data, Func<Task> ejecutarTarea, ObservableCollection<FileResultExtensible> fileResultExtensibles)
+        public async Task<RequestResultDto<string>> Add(CatalogoProductoRequestDto data, ObservableCollection<FileResultExtensible> fileResultExtensibles)
         {
-            if(!fileResultExtensibles.Any())
-                return await this.Add(data, ejecutarTarea, true);
-
-            bool resultado = await this.Add(data, async () => { }, false);
+            RequestResultDto<string> resultado = await this.Add(data);
             Dictionary<string, object> resultadoImagenes = await SaveImages(fileResultExtensibles, data.identificador, activarVentanasAlerta: false);
-            await ejecutarTarea();
-
+            
             // if ( resultado && resultadoImagenes.ContainsKey("estado") && resultadoImagenes["estado"] is true )
             //     await _mensaje.MensajeCorrecto("Guardado Exitosamente", "Producto e imagenes guardadas correctamente.");
             // else if (resultado && resultadoImagenes.ContainsKey("estado") && resultadoImagenes["estado"] is false)
@@ -57,7 +57,7 @@ namespace Data.Rest
             // else
             //     await _mensaje.MensajeError("Error Guardado", "No se pudieron guardar los datos del producto nuevo.");
             
-            return resultado;
+            throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<CatalogoProducto>> Get(object data, Func<Task>? ejecutarTarea = null)

@@ -1,7 +1,11 @@
+using System.Collections.ObjectModel;
 using System.Runtime.Versioning;
 using Business.Services.IServices;
 using Data.Rest.RestInterfaces;
 using Modelos;
+using Modelos.Dto;
+using Modelos.RequestDto;
+using Modelos.ResultDto;
 using Syncfusion.Maui.DataSource.Extensions;
 
 namespace Business.Services;
@@ -32,4 +36,33 @@ public class MateriaPrimaService : IMateriaPrimaService
         return resultado!;
     }
 
+    public async Task<RequestResultDto<string>> RegistrarMateriaPrima(MateriaPrimaFormulario materiaPrimaFormulario, ObservableCollection<FileResultExtensible> listadoImagenes)
+    {
+        
+        // RequestResultDto<string> resultado = await _restManagement.MateriaPrima.Add(
+        //     new MateriaPrimaRequestDto()
+        //     {
+        //         id_dto = Guid.NewGuid().ToString(),
+        //         nombre_dto = materiaPrimaFormulario.MateriaPrima,
+        //         KgMonitoringDtos = new List<KgSeguimientoRequestDto>()
+        //         {
+        //             new KgSeguimientoRequestDto()
+        //             {
+        //                 id_dto = null,
+        //                 cantidad_dto = materiaPrimaFormulario.Cantidad,
+        //                 kg_standard = materiaPrimaFormulario.KgStandard,
+        //                 price_dto = (decimal) materiaPrimaFormulario.Precio
+        //             }   
+        //         }
+        //     });
+        
+        
+        // return resultado;
+        return null;
+    }
+
+    public async Task RegistarImagenesMateriaPrima(ObservableCollection<FileResultExtensible> listadoImagenes)
+    {
+        
+    }
 }

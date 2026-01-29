@@ -19,26 +19,24 @@ namespace ANTU.Resources.Utilidades
 
         public async Task MensajeCorrecto(string mensaje, string cuerpo)
         {
-            this._ventanaEmergente.FindByName<Label>("Titulo").Text = mensaje;
-            this._ventanaEmergente.FindByName<Label>("Contenido").Text = mensaje;
-            this._ventanaEmergente.FindByName<ActivityIndicator>("LoadingElement").IsVisible = false;
-            this._ventanaEmergente.FindByName<Image>("ImagenIcon").Source = "successful.png";
-            this._ventanaEmergente.FindByName<Image>("ImagenIcon").IsVisible = true;
-            this._ventanaEmergente.FindByName<Button>("Button").IsVisible = true;
-            this._ventanaEmergente.FindByName<Button>("Button").IsEnabled = true;
+            this._ventanaEmergente.Titulo = mensaje;
+            this._ventanaEmergente.Contenido = cuerpo;
+            // this._ventanaEmergente.Loading = false;
+            this._ventanaEmergente.ShowImage = true;
+            this._ventanaEmergente.Source = "successful.png";
+            this._ventanaEmergente.ShowButton = true;
             
             await MopupService.Instance.PushAsync(this._ventanaEmergente);
         }
 
         public async Task MensajeError(string mensaje, string cuerpo) 
         {
-            this._ventanaEmergente.FindByName<Label>("Titulo").Text = mensaje;
-            this._ventanaEmergente.FindByName<Label>("Contenido").Text = mensaje;
-            this._ventanaEmergente.FindByName<ActivityIndicator>("LoadingElement").IsVisible = false;
-            this._ventanaEmergente.FindByName<Image>("ImagenIcon").Source = "alert.png";
-            this._ventanaEmergente.FindByName<Image>("ImagenIcon").IsVisible = true;
-            this._ventanaEmergente.FindByName<Button>("Button").IsVisible = true;
-            this._ventanaEmergente.FindByName<Button>("Button").IsEnabled = true;
+            this._ventanaEmergente.Titulo = mensaje;
+            this._ventanaEmergente.Contenido = cuerpo;
+            // this._ventanaEmergente.Loading = false;
+            this._ventanaEmergente.ShowImage = true;
+            this._ventanaEmergente.Source = "alert.png";
+            this._ventanaEmergente.ShowButton = true;
             
             await MopupService.Instance.PushAsync(this._ventanaEmergente);
         }

@@ -34,19 +34,27 @@ public partial class ProductosListosCollectionViewComponentsViewModel : ParentVi
     [RelayCommand(AllowConcurrentExecutions = false)]
     public async Task CargarDatosProductosListos()
     {
-        if (this.IsLazyLoading)
-            return;
-        
-        this.IsLazyLoading = true;
-
-        var listado = await ManagementService.ProductosListosService.GetProductosListosAync(this.DatosProductosListos.Count());
-
-        foreach (var item in listado)
+        try
         {
-            this.DatosProductosListos.Add(item);
-        }
+            if (this.IsLazyLoading)
+                return;
         
-        this.IsLazyLoading = false;
+            this.IsLazyLoading = true;
+
+            var listado = await ManagementService.ProductosListosService.GetProductosListosAync(this.DatosProductosListos.Count());
+
+            foreach (var item in listado)
+            {
+                this.DatosProductosListos.Add(item);
+            }
+        
+            this.IsLazyLoading = false;
+        }
+        catch (HttpRequestException e)
+        {
+            await DesmontarSpinner();
+            await Mensaje.MostrarAlertaSinConexion("Conexion fallo, intentalo en otro momento.");
+        }
     }
     
     public void Acciones(string accion, object parametros)

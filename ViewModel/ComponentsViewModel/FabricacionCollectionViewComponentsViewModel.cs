@@ -34,19 +34,27 @@ public partial class FabricacionCollectionViewComponentsViewModel : ParentViewMo
     [RelayCommand(AllowConcurrentExecutions = false)]
     public async Task ObtenerDatosProduccion()
     {
-        if (this.IsLazyLoading)
-            return;
-        
-        this.IsLazyLoading = true;
-
-        var listado = await ManagementService.FabricacionService.GetProduccionAync(this.DatosProducciones.Count());
-
-        foreach (var item in listado)
+        try
         {
-            this.DatosProducciones.Add(item);
-        }
+            if (this.IsLazyLoading)
+                return;
         
-        this.IsLazyLoading = false;
+            this.IsLazyLoading = true;
+
+            var listado = await ManagementService.FabricacionService.GetProduccionAync(this.DatosProducciones.Count());
+
+            foreach (var item in listado)
+            {
+                this.DatosProducciones.Add(item);
+            }
+        
+            this.IsLazyLoading = false;
+        }
+        catch (HttpRequestException e)
+        {
+            await DesmontarSpinner();
+            await Mensaje.MostrarAlertaSinConexion("Conexion fallo, intentalo en otro momento.");
+        }
     }
 
     //LLama al api para cambiar productos en produccion a ya fabricados.

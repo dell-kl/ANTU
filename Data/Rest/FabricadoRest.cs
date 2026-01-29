@@ -3,6 +3,7 @@ using Modelos;
 using Modelos.Dto;
 using Modelos.RequestDto;
 using Data.Rest.RestInterfaces;
+using Modelos.ResultDto;
 using Newtonsoft.Json;
 
 namespace Data.Rest;
@@ -16,12 +17,12 @@ public class FabricadoRest : IFabricado
         this.httpClient = httpClient;
     }
     
-    public Task<bool> Add(FabricadoRequestDto data, Func<Task> ejecutarTarea, bool mostrarMensajes = false)
+    public Task<RequestResultDto<string>> Add(FabricadoRequestDto data)
     {
         throw new NotImplementedException();
     }
 
-    public Task<bool> Add(FabricadoRequestDto data, Func<Task> ejecutarTarea, ObservableCollection<FileResultExtensible> fileResultExtensibles)
+    public Task<RequestResultDto<string>> Add(FabricadoRequestDto data, ObservableCollection<FileResultExtensible> fileResultExtensibles)
     {
         throw new NotImplementedException();
     }

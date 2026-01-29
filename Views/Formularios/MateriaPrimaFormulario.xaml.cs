@@ -1,22 +1,23 @@
+using System.Runtime.Versioning;
 using ANTU.ViewModel;
-
 
 namespace ANTU.Views.Formularios;
 
-public partial class MateriaPrimaFormulario : ContentPage
+[SupportedOSPlatform("Android")]
+public partial class MateriaPrimaFormulario
 {
-    private FormularioMateriaPrimaViewModel formularioMateriaPrimaViewModel;
+    private FormularioMateriaPrimaViewModel _formularioMateriaPrimaViewModel;
 
 	public MateriaPrimaFormulario(FormularioMateriaPrimaViewModel formularioMateriaPrimaViewModel)
 	{
 		InitializeComponent();
 
-        this.formularioMateriaPrimaViewModel = formularioMateriaPrimaViewModel;
-		BindingContext = this.formularioMateriaPrimaViewModel;
+        this._formularioMateriaPrimaViewModel = formularioMateriaPrimaViewModel;
+		BindingContext = this._formularioMateriaPrimaViewModel;
 
         //vamos a realizar las inyecciones.
-        EntradaFormularioImagenes.Add(this.formularioMateriaPrimaViewModel.ImagenesGuardarFormularioComponentes);
-        EntradaFormularioMateriaPrima.Add(this.formularioMateriaPrimaViewModel.MateriaPrimaFormularioComponentes);
+        EntradaFormularioImagenes.Add(this._formularioMateriaPrimaViewModel.ImagenesGuardarFormularioComponentes);
+        EntradaFormularioMateriaPrima.Add(this._formularioMateriaPrimaViewModel.MateriaPrimaFormularioComponentes);
     }
 
     protected override async void OnNavigatedTo(NavigatedToEventArgs args)
@@ -28,6 +29,6 @@ public partial class MateriaPrimaFormulario : ContentPage
 
     protected override bool OnBackButtonPressed()
     {
-        return this.formularioMateriaPrimaViewModel.ControlarNavegacion();
+        return this._formularioMateriaPrimaViewModel.ControlarNavegacion();
     }
 }

@@ -30,7 +30,7 @@ namespace ANTU.ViewModel
         public async Task RegistrarDatosFabricacion(ProduccionReqestDto produccionReqestDto)
         {
             await base.MostrarSpinner();
-            await RestManagement.Produccion.Add(produccionReqestDto, () => base.DesmontarSpinner(), true);
+            // await RestManagement.Produccion.Add(produccionReqestDto, () => base.DesmontarSpinner(), true);
         }
         
         public async Task ObtenerDatosCatalogoProducto()

@@ -30,11 +30,9 @@ namespace ANTU.ViewModel
         [ObservableProperty]
         private Mensaje _mensaje;
 
-        [ObservableProperty]
-        private ObservableCollection<FileResultExtensible> _fileManyResults = new ObservableCollection<FileResultExtensible>();
+        [ObservableProperty] private ObservableCollection<FileResultExtensible> _fileManyResults;
 
-        [ObservableProperty]
-        private ImagenesGuardarFormularioComponentes imagenesGuardarFormularioComponentes = new ImagenesGuardarFormularioComponentes();
+        [ObservableProperty] private ImagenesGuardarFormularioComponentes _imagenesGuardarFormularioComponentes;
 
         public ParentViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService, Mensaje mensaje) {
             RestManagement = restManagement;
@@ -42,8 +40,12 @@ namespace ANTU.ViewModel
             ManagementService = managementService;
             Mensaje = mensaje;
 
+            //inicializar nuestra lista de imagenes que vamos a gaurdar.
+            this.FileManyResults = new ObservableCollection<FileResultExtensible>();
+            
             //Este formulario de imagenes se utilizara en varios formularios;
-            this.imagenesGuardarFormularioComponentes.BindingContext = this;
+            this.ImagenesGuardarFormularioComponentes = new ImagenesGuardarFormularioComponentes();
+            this.ImagenesGuardarFormularioComponentes.BindingContext = this;
         }
 
         //Navigate

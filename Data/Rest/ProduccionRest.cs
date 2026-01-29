@@ -1,10 +1,13 @@
+using System.Collections.Immutable;
 using System.Collections.ObjectModel;
+using System.Net;
 using System.Net.Mime;
 using System.Text;
 using Modelos;
 using Modelos.Dto;
 using Modelos.RequestDto;
 using Data.Rest.RestInterfaces;
+using Modelos.ResultDto;
 using Newtonsoft.Json;
 
 namespace Data.Rest;
@@ -18,26 +21,29 @@ public class ProduccionRest : IProduccion
         this.httpClient = httpClient; 
     }
     
-    public async Task<bool> Add(ProduccionReqestDto data, Func<Task> ejecutarTarea, bool mostrarMensajes = false)
+    public async Task<RequestResultDto<string>> Add(ProduccionReqestDto data)
     {
-        using StringContent json = new(
-            JsonConvert.SerializeObject(data), 
-            Encoding.UTF8, 
-            MediaTypeNames.Application.Json);
+        try
+        {
+            using StringContent json = new(
+                JsonConvert.SerializeObject(data), 
+                Encoding.UTF8, 
+                MediaTypeNames.Application.Json);
 
-        using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS_FABRICACION[1], json);
-
-        await ejecutarTarea();
-
-        // if (httpResponse.IsSuccessStatusCode && mostrarMensajes) 
-        //     await _mensaje.MensajeCorrecto("Guardado Exitosamente", await httpResponse.Content.ReadAsStringAsync());
-        // else if (httpResponse.StatusCode == HttpStatusCode.InternalServerError && mostrarMensajes)
-        //     await _mensaje.MensajeError("Error Guardado", await httpResponse.Content.ReadAsStringAsync());
-
-        return (httpResponse.IsSuccessStatusCode) ? true : false;
+            using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS_FABRICACION[1], json);
+        
+            if(httpResponse.StatusCode != HttpStatusCode.OK)
+                return Result.Failure(await httpResponse.Content.ReadAsStringAsync(), httpResponse.StatusCode);
+        
+            return Result.Success(await httpResponse.Content.ReadAsStringAsync());
+        }
+        catch (Exception e)
+        {
+            return Result.Failure<string>(Error.Exception(e).ToImmutableArray());
+        }
     }
 
-    public Task<bool> Add(ProduccionReqestDto data, Func<Task> ejecutarTarea, ObservableCollection<FileResultExtensible> fileResultExtensibles)
+    public Task<RequestResultDto<string>> Add(ProduccionReqestDto data, ObservableCollection<FileResultExtensible> fileResultExtensibles)
     {
         throw new NotImplementedException();
     }

@@ -10,15 +10,15 @@
         <Image
             HeightRequest="270"
             Source="conexion_perdida.jpg"/>
-        <Button
-            HorizontalOptions="Center"
-            BackgroundColor="#8C3623"
-            TextColor="#FFF"
-            Command="{Binding ReintentarPeticionCommand}"
-            Text="&#xe7a2; Reintentar"
-            x:Name="ReintentarPeticionButton"
-            Clicked="ReintentarPeticionButton_OnClicked"
-            FontFamily="MaterialAssets"/>
+        <!-- <Button -->
+        <!--     HorizontalOptions="Center" -->
+        <!--     BackgroundColor="#8C3623" -->
+        <!--     TextColor="#FFF" -->
+        <!--     Command="{Binding ReintentarPeticionCommand}" -->
+        <!--     Text="&#xe7a2; Reintentar" -->
+        <!--     x:Name="ReintentarPeticionButton" -->
+        <!--     Clicked="ReintentarPeticionButton_OnClicked" -->
+        <!--     FontFamily="MaterialAssets"/> -->
         
         <Label VerticalOptions="Center"
                WidthRequest="250"

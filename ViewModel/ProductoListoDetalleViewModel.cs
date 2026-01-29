@@ -94,16 +94,16 @@ public partial class ProductoListoDetalleViewModel : ParentViewModel
     {
         await base.MostrarSpinner();
         
-        bool resultado = await RestManagement.ProduccionLista.Add(
-            new FabricadoRequestDto()
-            {
-                identificadorDataCatalogProduction = this.ProductosListosFormulario.DatosVenta,
-                identificadorProduccion = this.Produccion.Identificador,
-                cantidadCostales = this.ProductosListosFormulario.NumeroCostales
-            },
-            () => base.DesmontarSpinner(),
-            true
-        );
+        // bool resultado = await RestManagement.ProduccionLista.Add(
+        //     new FabricadoRequestDto()
+        //     {
+        //         identificadorDataCatalogProduction = this.ProductosListosFormulario.DatosVenta,
+        //         identificadorProduccion = this.Produccion.Identificador,
+        //         cantidadCostales = this.ProductosListosFormulario.NumeroCostales
+        //     },
+        //     () => base.DesmontarSpinner(),
+        //     true
+        // );
         
     }
 
