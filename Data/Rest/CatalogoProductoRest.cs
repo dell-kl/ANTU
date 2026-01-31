@@ -41,7 +41,7 @@ namespace Data.Rest
             }
             catch (Exception e)
             {
-                return Result.Failure<string>(Error.Exception(e).ToImmutableArray());
+                return Result.Failure<string>(Error.Exception(e).ToList());
             }
         }
 

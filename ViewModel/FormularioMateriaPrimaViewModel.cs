@@ -53,7 +53,9 @@ namespace ANTU.ViewModel
                 await Mensaje.MensajeError("Error Registrar", mensajeErrorCompleto);
             }
             else
+            {
                 await Mensaje.MensajeCorrecto("Registrado Materia Prima", resultado.Value);
+            }
 
             FileManyResults.Clear();
         }

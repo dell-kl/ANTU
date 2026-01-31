@@ -3,19 +3,15 @@ using System.Net;
 
 namespace Modelos.ResultDto;
 
-public class RequestResultDto<T>
+public struct RequestResultDto<T>
 {
     public readonly T Value;
-
     public static implicit operator RequestResultDto<T>(T value) => new RequestResultDto<T>(value, HttpStatusCode.OK);
-
-    public static implicit operator RequestResultDto<T>(ImmutableArray<Error> errors) => new RequestResultDto<T>(errors, System.Net.HttpStatusCode.BadRequest);
-
-    public readonly ImmutableArray<Error> Errors;
-
+    public static implicit operator RequestResultDto<T>(List<Error> errors) => new RequestResultDto<T>(errors, System.Net.HttpStatusCode.BadRequest);
+    public List<Error> Errors = new();
     public readonly HttpStatusCode HttpStatusCode;
     
-    public bool Success => Errors.Length == 0;
+    public bool Success => Errors.Count == 0;
 
     public RequestResultDto(string error, HttpStatusCode statusCode)
     {
@@ -26,13 +22,13 @@ public class RequestResultDto<T>
     public RequestResultDto(T value, HttpStatusCode statusCode)
     {
         Value = value;
-        Errors = ImmutableArray<Error>.Empty;
+        Errors = [];
         HttpStatusCode = statusCode;
     }
     
-    public RequestResultDto(ImmutableArray<Error> errors, HttpStatusCode statusCode)
+    public RequestResultDto(List<Error> errors, HttpStatusCode statusCode)
     {
-        if (errors.Length == 0)
+        if (errors.Count == 0)
         {
             throw new InvalidOperationException("Deberias especificar al menos un error");
         }

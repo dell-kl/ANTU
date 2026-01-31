@@ -31,7 +31,7 @@ public static class Result_Bind
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
+            ExceptionDispatchInfo.Capture(e).Throw();
             throw;
         }
     }

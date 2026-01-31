@@ -1,4 +1,3 @@
-using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Net;
 using System.Net.Mime;
@@ -39,7 +38,7 @@ public class ProduccionRest : IProduccion
         }
         catch (Exception e)
         {
-            return Result.Failure<string>(Error.Exception(e).ToImmutableArray());
+            return Result.Failure<string>(Error.Exception(e).ToList());
         }
     }
 

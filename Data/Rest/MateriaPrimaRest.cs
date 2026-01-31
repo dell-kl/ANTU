@@ -41,7 +41,7 @@ namespace Data.Rest
             }
             catch (Exception e)
             {
-                return Result.Failure<string>(Error.Exception(e).ToImmutableArray());
+                return Result.Failure<string>(Error.Exception(e).ToList());
             }
         }
 
@@ -138,20 +138,19 @@ namespace Data.Rest
                     streamContent.Headers.ContentType = MediaTypeHeaderValue.Parse(MediaTypeNames.Image.Jpeg);
 
                     multipartFormData.Add(streamContent, "formFiles", fileResult.FileName);
-
                 }
 
                 using HttpResponseMessage httpResponse =
                     await httpClient.PostAsync(Endpoints.ENDPOINTS[1], multipartFormData);
 
                 if (httpResponse.StatusCode != HttpStatusCode.OK)
-                    return Result.Failure(await httpResponse.Content.ReadAsStringAsync(), httpResponse.StatusCode);
+                    return Result.Failure<string>(await httpResponse.Content.ReadAsStringAsync(), httpResponse.StatusCode);
 
                 return Result.Success(await httpResponse.Content.ReadAsStringAsync(), HttpStatusCode.OK);
             }
             catch (Exception e)
             {
-                return Result.Failure<string>(Error.Exception(e).ToImmutableArray());
+                return Result.Failure<string>(Error.Exception(e).ToList());
             }
             finally
             {
