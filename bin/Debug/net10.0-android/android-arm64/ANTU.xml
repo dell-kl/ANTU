@@ -206,7 +206,7 @@
             <inheritdoc cref="F:ANTU.ViewModel.FormularioMateriaPrimaViewModel.statusButtonPickerFile"/>
         </member>
         <member name="P:ANTU.ViewModel.FormularioMateriaPrimaViewModel.MateriaPrimaFormularioComponentes">
-            <inheritdoc cref="F:ANTU.ViewModel.FormularioMateriaPrimaViewModel.materiaPrimaFormularioComponentes"/>
+            <inheritdoc cref="F:ANTU.ViewModel.FormularioMateriaPrimaViewModel._materiaPrimaFormularioComponentes"/>
         </member>
         <member name="F:ANTU.ViewModel.FormularioMateriaPrimaViewModel.registrarMateriaPrimaCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.FormularioMateriaPrimaViewModel.RegistrarMateriaPrimaCommand"/>.</summary>
@@ -349,7 +349,7 @@
             <inheritdoc cref="F:ANTU.ViewModel.ParentViewModel._fileManyResults"/>
         </member>
         <member name="P:ANTU.ViewModel.ParentViewModel.ImagenesGuardarFormularioComponentes">
-            <inheritdoc cref="F:ANTU.ViewModel.ParentViewModel.imagenesGuardarFormularioComponentes"/>
+            <inheritdoc cref="F:ANTU.ViewModel.ParentViewModel._imagenesGuardarFormularioComponentes"/>
         </member>
         <member name="F:ANTU.ViewModel.ParentViewModel.seleccionarArchivoMostrarCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.ParentViewModel.SeleccionarArchivoMostrarCommand"/>.</summary>

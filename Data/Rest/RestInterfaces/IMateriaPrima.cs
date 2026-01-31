@@ -2,6 +2,7 @@
 using Modelos.Dto;
 using Modelos.RequestDto;
 using System.Collections.ObjectModel;
+using Modelos.ResultDto;
 
 namespace Data.Rest.RestInterfaces
 {
@@ -9,6 +10,8 @@ namespace Data.Rest.RestInterfaces
     {
         Task<Dictionary<string, object>> SaveImages(ObservableCollection<FileResultExtensible> fileResultExtensible, string guid, bool activarVentanasAlerta = false, Func<Task>? ejecutarTask = null);
 
+        Task<RequestResultDto<string>> RegistrarImagenesMateriaPrima(ObservableCollection<FileResultExtensible> fileResultExtensibles, string guid);
+        
         Task<MateriaPrimaDetalle> MateriaPrimaDetalles(string guid);
 
         Task<bool> AgregarStockMateriaPrima(StockMateriaPrimaRequestDto stockMateriaPrima, Func<Task>? ejecutarTask = null);

@@ -119,6 +119,49 @@ namespace Data.Rest
             return datos;
         }
 
+        public async Task<RequestResultDto<string>> RegistrarImagenesMateriaPrima(ObservableCollection<FileResultExtensible> fileResultExtensibles, string guid)
+        {
+            MultipartFormDataContent multipartFormData = new();
+            List<FileStream> archivosAbiertos = new();
+            try
+            {
+                Dictionary<string, object> datos = new Dictionary<string, object>();
+                multipartFormData.Add(new StringContent(guid, Encoding.UTF8, MediaTypeNames.Text.Plain),
+                    "identificador");
+
+                foreach (FileResultExtensible fileResult in fileResultExtensibles)
+                {
+                    FileStream leyendoArchivo = File.OpenRead(fileResult.FullPath!);
+                    archivosAbiertos.Add(leyendoArchivo);
+
+                    var streamContent = new StreamContent(leyendoArchivo);
+                    streamContent.Headers.ContentType = MediaTypeHeaderValue.Parse(MediaTypeNames.Image.Jpeg);
+
+                    multipartFormData.Add(streamContent, "formFiles", fileResult.FileName);
+
+                }
+
+                using HttpResponseMessage httpResponse =
+                    await httpClient.PostAsync(Endpoints.ENDPOINTS[1], multipartFormData);
+
+                if (httpResponse.StatusCode != HttpStatusCode.OK)
+                    return Result.Failure(await httpResponse.Content.ReadAsStringAsync(), httpResponse.StatusCode);
+
+                return Result.Success(await httpResponse.Content.ReadAsStringAsync(), HttpStatusCode.OK);
+            }
+            catch (Exception e)
+            {
+                return Result.Failure<string>(Error.Exception(e).ToImmutableArray());
+            }
+            finally
+            {
+                foreach(FileStream archivo in archivosAbiertos)
+                    await archivo.DisposeAsync();
+                
+                multipartFormData.Dispose();
+            }
+        }
+
         public async Task<bool> DeleteImages(ICollection<DataImage> dataImages, Func<Task>? ejecutarTask = null)
         {
             using StringContent json = new(

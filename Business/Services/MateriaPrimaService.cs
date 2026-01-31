@@ -38,29 +38,27 @@ public class MateriaPrimaService : IMateriaPrimaService
 
     public async Task<RequestResultDto<string>> RegistrarMateriaPrima(MateriaPrimaFormulario materiaPrimaFormulario, ObservableCollection<FileResultExtensible> listadoImagenes)
     {
+        RequestResultDto<string> resultado = await _restManagement.MateriaPrima.Add(
+            new MateriaPrimaRequestDto()
+            {
+                id_dto = Guid.NewGuid().ToString(),
+                nombre_dto = materiaPrimaFormulario.MateriaPrima,
+                KgMonitoringDtos = new List<KgSeguimientoRequestDto>()
+                {
+                    new KgSeguimientoRequestDto()
+                    {
+                        id_dto = null,
+                        cantidad_dto = materiaPrimaFormulario.Cantidad,
+                        kg_standard = materiaPrimaFormulario.KgStandard,
+                        price_dto = (decimal) materiaPrimaFormulario.Precio
+                    }   
+                }
+            });
+        resultado.Bind(_restManagement.MateriaPrima.RegistrarImagenesMateriaPrima, listadoImagenes);
         
-        // RequestResultDto<string> resultado = await _restManagement.MateriaPrima.Add(
-        //     new MateriaPrimaRequestDto()
-        //     {
-        //         id_dto = Guid.NewGuid().ToString(),
-        //         nombre_dto = materiaPrimaFormulario.MateriaPrima,
-        //         KgMonitoringDtos = new List<KgSeguimientoRequestDto>()
-        //         {
-        //             new KgSeguimientoRequestDto()
-        //             {
-        //                 id_dto = null,
-        //                 cantidad_dto = materiaPrimaFormulario.Cantidad,
-        //                 kg_standard = materiaPrimaFormulario.KgStandard,
-        //                 price_dto = (decimal) materiaPrimaFormulario.Precio
-        //             }   
-        //         }
-        //     });
-        
-        
-        // return resultado;
-        return null;
+        return resultado;
     }
-
+    
     public async Task RegistarImagenesMateriaPrima(ObservableCollection<FileResultExtensible> listadoImagenes)
     {
         
