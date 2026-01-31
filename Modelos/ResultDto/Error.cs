@@ -8,6 +8,11 @@ public class Error
 
     public readonly string[] TranslationVariables;
 
+    public Error(string message)
+    {
+        Message = message;
+    }
+    
     private Error(string message, Guid? errorCode, string[] translationVariables)
     {
         Message = message;

@@ -14,42 +14,42 @@ public partial class VentanaEmergente : INotifyPropertyChanged
 
     public bool ShowButton
     {
-        set { _showButton = value; cambios("showButton"); }
+        set { _showButton = value; cambios("ShowButton"); }
         get => _showButton;
     }
 
     public string Source
     {
         set
-        { _source = value; cambios("source"); }
+        { _source = value; cambios("Source"); }
         get => _source;
     }
 
     public bool ShowImage
     {
         set
-        { _showImage = value; cambios("showImage"); }
+        { _showImage = value; cambios("ShowImage"); }
         get => _showImage;
     }
     
     public bool Loading
     {
         set
-        { _loading = value; cambios("loading"); }
+        { _loading = value; cambios("Loading"); }
         get => _loading;
     }
     
     public string Contenido
     {
         set
-        { _contenido = value; cambios("contenido"); }
+        { _contenido = value; cambios("Contenido"); }
         get => _contenido;
     }
     
     public string Titulo
     {
         set
-        { _titulo = value; cambios("titulo"); }
+        { _titulo = value; cambios("Titulo"); }
         get => _titulo;
     }
 
@@ -60,20 +60,9 @@ public partial class VentanaEmergente : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
     
-	public VentanaEmergente(
-        // string titulo, string contenido, bool loading, bool showImage = false, string source = "", bool showButton = false
-        )
+	public VentanaEmergente()
 	{
 		InitializeComponent();
-
-        // Titulo.Text = titulo;
-        // Contenido.Text = contenido;
-        // LoadingElement.IsVisible = loading;
-        // ImagenIcon.Source = source;
-        // ImagenIcon.IsVisible = showImage;
-        // Button.IsVisible = showButton;
-        // Button.IsEnabled = showButton;
-
         BindingContext = this;
     }
 

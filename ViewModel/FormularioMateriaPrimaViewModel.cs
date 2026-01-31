@@ -35,24 +35,27 @@ namespace ANTU.ViewModel
         [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task RegistrarMateriaPrima(MateriaPrimaFormulario materiaPrimaFormulario)
         {
-            //cubrir con ventana emergente.
             await base.MostrarSpinner();
 
             RequestResultDto<string> resultado = await ManagementService.materiaPrimaService.RegistrarMateriaPrima(materiaPrimaFormulario, FileManyResults);
 
-            // if (!resultado.IsSuccess)
-            //     Mensaje.MensajeCorrecto("Error Registrar", resultado.Error!);
-            // else
-            // {
-            //     await ManagementService.materiaPrimaService.RegistarImagenesMateriaPrima(FileManyResults);
-            //     
-            //     Mensaje.MensajeCorrecto("Registrado Materia Prima", resultado.Value!);
-            // }
-            //
-            //
-            // await base.DesmontarSpinner();    
-            // FileManyResults.Clear();
+            await base.DesmontarSpinner();
             
+            if (!resultado.Success)
+            {
+                string mensajeErrorCompleto = "";
+
+                foreach (var resultadoError in resultado.Errors)
+                {   
+                    mensajeErrorCompleto += $"{resultadoError.Message}\n";
+                }
+
+                await Mensaje.MensajeError("Error Registrar", mensajeErrorCompleto);
+            }
+            else
+                await Mensaje.MensajeCorrecto("Registrado Materia Prima", resultado.Value);
+
+            FileManyResults.Clear();
         }
     }
 }

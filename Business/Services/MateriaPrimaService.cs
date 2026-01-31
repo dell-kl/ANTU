@@ -54,9 +54,7 @@ public class MateriaPrimaService : IMateriaPrimaService
                     }   
                 }
             });
-        resultado.Bind(_restManagement.MateriaPrima.RegistrarImagenesMateriaPrima, listadoImagenes);
-        
-        return resultado;
+        return  await resultado.Bind(_restManagement.MateriaPrima.RegistrarImagenesMateriaPrima, listadoImagenes);
     }
     
     public async Task RegistarImagenesMateriaPrima(ObservableCollection<FileResultExtensible> listadoImagenes)

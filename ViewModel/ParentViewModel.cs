@@ -75,9 +75,18 @@ namespace ANTU.ViewModel
         public virtual async Task DesmontarSpinner() {
             
             bool resultado = MopupService.Instance.PopupStack.Where(item => item is VentaSpinnerLoading).Any();
-
+            
             if (resultado)
                 await MopupService.Instance.PopAsync();
+        }
+
+        public async Task EliminarSpinnerDirectamente()
+        {
+            if (MopupService.IsSupported)
+            {
+                var pagina = MopupService.Instance.PopupStack.Where(item => item is VentaSpinnerLoading).ToList().First();
+                await MopupService.Instance.RemovePageAsync(pagina);
+            }
         }
 
         public bool ControlarNavegacion()

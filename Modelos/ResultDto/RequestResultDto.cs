@@ -17,6 +17,12 @@ public class RequestResultDto<T>
     
     public bool Success => Errors.Length == 0;
 
+    public RequestResultDto(string error, HttpStatusCode statusCode)
+    {
+        HttpStatusCode = statusCode;
+        Errors.Add(new Error(error));
+    }
+
     public RequestResultDto(T value, HttpStatusCode statusCode)
     {
         Value = value;

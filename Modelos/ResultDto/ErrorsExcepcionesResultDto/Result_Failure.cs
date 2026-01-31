@@ -11,4 +11,5 @@ public static partial class Result
     public static RequestResultDto<T> Failure<T>(string error) => new RequestResultDto<T>(ImmutableArray.Create(Error.Create(error)), HttpStatusCode.BadRequest);
     public static RequestResultDto<T> Failure<T>(Guid errorCode) => Failure<T>(Error.Create(errorCode));
     public static RequestResultDto<T> Failure<T>(this T result, HttpStatusCode httpStatusCode) => new RequestResultDto<T>(result, httpStatusCode);
+    public static RequestResultDto<T> Failure<T>(string error, HttpStatusCode httpStatusCode) => new RequestResultDto<T>(error, httpStatusCode);
 }
