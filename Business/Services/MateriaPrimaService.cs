@@ -22,6 +22,10 @@ public class MateriaPrimaService : IMateriaPrimaService
         this._restManagement = restManagement;
     }
     
+    //Este codigo realizaremos algunas modificaciones mas
+    //adelante con implementacion de cache,
+    //por el momento tendremos esta
+    //configuracion.
     public async Task<IEnumerable<MateriaPrimaProducto>> GetMateriaPrimaAync(object data, CancellationToken cancellationToken = default)
     {
         if (!_hasMore)
@@ -38,10 +42,12 @@ public class MateriaPrimaService : IMateriaPrimaService
 
     public async Task<RequestResultDto<string>> RegistrarMateriaPrima(MateriaPrimaFormulario materiaPrimaFormulario, ObservableCollection<FileResultExtensible> listadoImagenes)
     {
+        string identificador = Guid.NewGuid().ToString();
+        
         RequestResultDto<string> resultado = await _restManagement.MateriaPrima.Add(
             new MateriaPrimaRequestDto()
             {
-                id_dto = Guid.NewGuid().ToString(),
+                id_dto = identificador,
                 nombre_dto = materiaPrimaFormulario.MateriaPrima,
                 KgMonitoringDtos = new List<KgSeguimientoRequestDto>()
                 {
@@ -54,11 +60,28 @@ public class MateriaPrimaService : IMateriaPrimaService
                     }   
                 }
             });
-        return  await resultado.Bind(_restManagement.MateriaPrima.RegistrarImagenesMateriaPrima, listadoImagenes);
+        return  await resultado.Bind(_restManagement.MateriaPrima.RegistrarImagenesMateriaPrima, listadoImagenes, identificador);
     }
-    
-    public async Task RegistarImagenesMateriaPrima(ObservableCollection<FileResultExtensible> listadoImagenes)
+
+    public async Task<RequestResultDto<(MateriaPrimaDetalle, IEnumerable<KgSeguimiento>)>> ObtenerDatosMateriaPrimaDetalle(string identificador)
     {
+        RequestResultDto<MateriaPrimaDetalle> resultado = await _restManagement.MateriaPrima.MateriaPrimaDetalles(identificador);
+
+        if (resultado.Value != null)
+        {
+            resultado.Value.Identificador = identificador;
+            resultado.Value.NValoresListadoKgSeguimiento = 0;
+        }
         
+        RequestResultDto<(MateriaPrimaDetalle, IEnumerable<KgSeguimiento>)> resultadoNuevo = await resultado
+            .Combine(_restManagement.MateriaPrima.GetKgSeguimientos);
+        
+        return resultadoNuevo;
+    }
+
+
+    public Task RegistarImagenesMateriaPrima(ObservableCollection<FileResultExtensible> listadoImagenes)
+    {
+        throw new NotImplementedException();
     }
 }

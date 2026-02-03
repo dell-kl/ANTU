@@ -11,5 +11,7 @@ public interface IMateriaPrimaService
 
     public Task<RequestResultDto<string>> RegistrarMateriaPrima(MateriaPrimaFormulario materiaPrimaFormulario, ObservableCollection<FileResultExtensible> listadoImagenes);
 
+    public Task<RequestResultDto<(MateriaPrimaDetalle, IEnumerable<KgSeguimiento>)>> ObtenerDatosMateriaPrimaDetalle(string identificador);
+    
     public Task RegistarImagenesMateriaPrima(ObservableCollection<FileResultExtensible> listadoImagenes);
 }

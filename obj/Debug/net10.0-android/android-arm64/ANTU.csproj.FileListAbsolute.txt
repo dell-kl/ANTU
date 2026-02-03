@@ -5872,3 +5872,4 @@ D:/Sistemas/BodegaBalanceado/ANTU/obj/Debug/net10.0-android/android-arm64/stamp/
 /home/dell-kl/Escritorio/SistemaBalanceado/ANTU/obj/Debug/net10.0-android/android-arm64/android/assets/arm64-v8a/Utilidades.jlo.xml
 /home/dell-kl/Escritorio/SistemaBalanceado/ANTU/obj/Debug/net10.0-android/android-arm64/android/assets/arm64-v8a/Utilidades.pdb
 /home/dell-kl/Escritorio/SistemaBalanceado/ANTU/obj/Debug/net10.0-android/android-arm64/android/assets/arm64-v8a/Utilidades.typemap.xml
+/home/dell-kl/Escritorio/SistemaBalanceado/ANTU/obj/Debug/net10.0-android/android-arm64/resizetizer/r/drawable/warning.png

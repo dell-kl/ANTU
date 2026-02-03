@@ -12,7 +12,7 @@ namespace Data.Rest.RestInterfaces
 
         Task<RequestResultDto<string>> RegistrarImagenesMateriaPrima(ObservableCollection<FileResultExtensible> fileResultExtensibles, string guid);
         
-        Task<MateriaPrimaDetalle> MateriaPrimaDetalles(string guid);
+        Task<RequestResultDto<MateriaPrimaDetalle>> MateriaPrimaDetalles(string guid);
 
         Task<bool> AgregarStockMateriaPrima(StockMateriaPrimaRequestDto stockMateriaPrima, Func<Task>? ejecutarTask = null);
 
@@ -20,6 +20,6 @@ namespace Data.Rest.RestInterfaces
 
         Task<bool> DeleteImages(ICollection<DataImage> dataImages, Func<Task>? ejecutarTask = null);
 
-        Task<IEnumerable<KgSeguimiento>> GetKgSeguimientos(object data, string guidMateriaPrima);
+        Task<RequestResultDto<IEnumerable<KgSeguimiento>>> GetKgSeguimientos(MateriaPrimaDetalle datos);
     }
 }

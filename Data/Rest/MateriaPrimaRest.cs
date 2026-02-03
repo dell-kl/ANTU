@@ -1,5 +1,4 @@
-﻿using System.Collections.Immutable;
-using Modelos;
+﻿using Modelos;
 using Modelos.Dto;
 using Modelos.RequestDto;
 using Data.Rest.RestInterfaces;
@@ -10,7 +9,6 @@ using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Text;
 using Modelos.ResultDto;
-using Result = Modelos.ResultDto.Result;
 
 namespace Data.Rest
 {
@@ -39,12 +37,17 @@ namespace Data.Rest
 
                 return Result.Success<string>(await httpResponse.Content.ReadAsStringAsync());
             }
+            catch (HttpRequestException)
+            {
+                return Result.Failure<string>("Se ha perdido la conexion al servicio", HttpStatusCode.RequestTimeout);
+            }
             catch (Exception e)
             {
-                return Result.Failure<string>(Error.Exception(e).ToList());
+                return Result.Failure<string>("No se puedo procesar la solicitud para registrar materia prima", HttpStatusCode.BadRequest);
             }
         }
 
+        //Realizando modificaciones a este codigo. Por el momento que comentado para posible actualizaciones.
         public async Task<RequestResultDto<string>> Add(MateriaPrimaRequestDto data, ObservableCollection<FileResultExtensible> fileResultExtensibles)
         {
             // RequestResultDto<string> resultado = await this.Add(data);
@@ -84,7 +87,7 @@ namespace Data.Rest
             
             return listMateriaPrima;
         }
-
+        
         public async Task<Dictionary<string, object>> SaveImages(ObservableCollection<FileResultExtensible> fileResultExtensible, string guid, bool activarVentanasAlerta = false, Func<Task>? ejecutarTask = null)
         {
             Dictionary<string, object> datos = new Dictionary<string, object>();
@@ -145,12 +148,18 @@ namespace Data.Rest
 
                 if (httpResponse.StatusCode != HttpStatusCode.OK)
                     return Result.Failure<string>(await httpResponse.Content.ReadAsStringAsync(), httpResponse.StatusCode);
-
-                return Result.Success(await httpResponse.Content.ReadAsStringAsync(), HttpStatusCode.OK);
+                
+                RequestDataImage resultadoContenido = JsonConvert.DeserializeObject<RequestDataImage>(await httpResponse.Content.ReadAsStringAsync())!;
+                
+                return Result.Success(resultadoContenido.mensaje);
+            }
+            catch (HttpRequestException)
+            {
+                return Result.Failure<string>("Conexion perdida, no se pudieron registrar las imagenes", HttpStatusCode.RequestTimeout);
             }
             catch (Exception e)
             {
-                return Result.Failure<string>(Error.Exception(e).ToList());
+                return Result.Failure<string>("Hubo un error en procesar la solicitud de subida de imagenes", HttpStatusCode.BadRequest);
             }
             finally
             {
@@ -186,17 +195,30 @@ namespace Data.Rest
             return false;
         }
 
-        public async Task<MateriaPrimaDetalle> MateriaPrimaDetalles(string guid)
+        public async Task<RequestResultDto<MateriaPrimaDetalle>> MateriaPrimaDetalles(string guid)
         {
-            MateriaPrimaDetalle materiaPrimaDetalle = new MateriaPrimaDetalle();
-            using HttpResponseMessage httpResponse = await httpClient.GetAsync($"{Endpoints.ENDPOINTS[3]}/{guid}");
-
-            if ( httpResponse.IsSuccessStatusCode )
+            try
             {
-                materiaPrimaDetalle = JsonConvert.DeserializeObject<MateriaPrimaDetalle>(await httpResponse.Content.ReadAsStringAsync())!;
-            }
+                using HttpResponseMessage httpResponse = await httpClient.GetAsync($"{Endpoints.ENDPOINTS[3]}/{guid}");
 
-            return materiaPrimaDetalle;
+                if (httpResponse.StatusCode != HttpStatusCode.OK)
+                    return Result.Failure<MateriaPrimaDetalle>(await httpResponse.Content.ReadAsStringAsync(),
+                        httpResponse.StatusCode);
+
+                MateriaPrimaDetalle materiaPrimaDetalle =
+                    JsonConvert.DeserializeObject<MateriaPrimaDetalle>(await httpResponse.Content.ReadAsStringAsync())!;
+
+                return Result.Success(materiaPrimaDetalle);
+            }
+            catch (HttpRequestException e)
+            {
+                return Result.Failure<MateriaPrimaDetalle>("Se perdio la conexion al servicio, intentalo en otro momento.",
+                    HttpStatusCode.RequestTimeout);
+            }
+            catch (Exception)
+            {
+                return Result.Failure<MateriaPrimaDetalle>("Error interno del servidor al procesar los datos", HttpStatusCode.InternalServerError);
+            }
         }
 
         public async Task<bool> AgregarStockMateriaPrima(StockMateriaPrimaRequestDto stockMateriaPrima, Func<Task>? ejecutarTask = null)
@@ -240,16 +262,31 @@ namespace Data.Rest
             return (httpResponse.IsSuccessStatusCode) ? true : false;
         }
 
-        public async Task<IEnumerable<KgSeguimiento>> GetKgSeguimientos(object data, string guidMateriaPrima)
+        public async Task<RequestResultDto<IEnumerable<KgSeguimiento>>> GetKgSeguimientos(MateriaPrimaDetalle datos)
         {
-            IEnumerable<KgSeguimiento> listadoKgSeguimientos = new List<KgSeguimiento>();
+            try
+            {
+                IEnumerable<KgSeguimiento> listadoKgSeguimientos = new List<KgSeguimiento>();
 
-            using HttpResponseMessage httpResponse = await httpClient.GetAsync($"{Endpoints.ENDPOINTS[8]}/{data}?guid={guidMateriaPrima}");
+                using HttpResponseMessage httpResponse = await httpClient.GetAsync(
+                    $"{Endpoints.ENDPOINTS[8]}/{datos!.NValoresListadoKgSeguimiento}?guid={datos!.Identificador}");
 
-            if (httpResponse.IsSuccessStatusCode)
-                listadoKgSeguimientos = JsonConvert.DeserializeObject<IEnumerable<KgSeguimiento>>(await httpResponse.Content.ReadAsStringAsync())!;
+                if (httpResponse.StatusCode != HttpStatusCode.OK)
+                    return Result.Failure<IEnumerable<KgSeguimiento>>(
+                        "No se pudieron obtener los datos de seguimientos sobre tus compras", httpResponse.StatusCode);
 
-            return listadoKgSeguimientos;
+                return Result.Success(listadoKgSeguimientos);
+            }
+            catch (HttpRequestException)
+            {
+                return Result.Failure<IEnumerable<KgSeguimiento>>(
+                    "Se perdio la conexion al servicio, intentalo en otro momento.",
+                    HttpStatusCode.RequestTimeout);
+            }
+            catch (Exception)
+            {
+                return Result.Failure<IEnumerable<KgSeguimiento>>("Error interno del servidor al procesar los datos", HttpStatusCode.InternalServerError);
+            }
         }
     }
 }

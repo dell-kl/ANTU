@@ -1,16 +1,18 @@
+using System.Runtime.Versioning;
 using ANTU.ViewModel;
 
 namespace ANTU.Views.Detalles;
 
+[SupportedOSPlatform("Android")]
 public partial class MateriaPrimaDetalle : ContentPage
 {
-    private MateriaPrimaDetalleViewModel materiaPrimaDetalleViewModel;
+    private MateriaPrimaDetalleViewModel _materiaPrimaDetalleViewModel;
 
 	public MateriaPrimaDetalle(MateriaPrimaDetalleViewModel materiaPrimaDetalleViewModel)
 	{
 		InitializeComponent();
-        this.materiaPrimaDetalleViewModel = materiaPrimaDetalleViewModel;
-		BindingContext = this.materiaPrimaDetalleViewModel;
+        this._materiaPrimaDetalleViewModel = materiaPrimaDetalleViewModel;
+		BindingContext = this._materiaPrimaDetalleViewModel;
         MateriaPrimaSeguimiento.SearchController.AllowFiltering = true;
     }
 
@@ -19,29 +21,27 @@ public partial class MateriaPrimaDetalle : ContentPage
     {
         base.OnNavigatedTo(args);
 
-        if (this.materiaPrimaDetalleViewModel.MateriaPrimaDetalle == null )
+        if (this._materiaPrimaDetalleViewModel.MateriaPrimaDetalle == null )
         {
-            await this.materiaPrimaDetalleViewModel.cargarDatosMateriaPrimaDetalle();
-            await this.materiaPrimaDetalleViewModel.cargarDatosKgSeguimiento();
-            await this.materiaPrimaDetalleViewModel.DesmontarSpinner();
+            await this._materiaPrimaDetalleViewModel.ObtenerDatosMateriaPrimaDetalle();
             ShimmerKgTotal.IsActive = false;
             ShimmerPrecioPromedio.IsActive = false;
             ShimmerTotalCompra.IsActive = false;
             ShimmerUltimaCompra.IsActive = false;
         }
 
-        if(!this.materiaPrimaDetalleViewModel.MateriaPrimaDetalle.imagenes.Any())
-            this.materiaPrimaDetalleViewModel.MateriaPrimaProducto.rutaImagen = "default_icon.png";
+        if(!this._materiaPrimaDetalleViewModel.MateriaPrimaDetalle.imagenes.Any())
+            this._materiaPrimaDetalleViewModel.MateriaPrimaProducto.rutaImagen = "default_icon.png";
         else if (
             (
-            this.materiaPrimaDetalleViewModel.MateriaPrimaProducto!.rutaImagen is "default_icon.png" ||
-            !this.materiaPrimaDetalleViewModel.MateriaPrimaDetalle!.imagenes
-                .Where(item => item.Url == this.materiaPrimaDetalleViewModel.MateriaPrimaProducto!.rutaImagen).Any()
+            this._materiaPrimaDetalleViewModel.MateriaPrimaProducto!.rutaImagen is "default_icon.png" ||
+            !this._materiaPrimaDetalleViewModel.MateriaPrimaDetalle!.imagenes
+                .Where(item => item.Url == this._materiaPrimaDetalleViewModel.MateriaPrimaProducto!.rutaImagen).Any()
             )
             &&
-            this.materiaPrimaDetalleViewModel.MateriaPrimaDetalle!.imagenes.Any()
+            this._materiaPrimaDetalleViewModel.MateriaPrimaDetalle!.imagenes.Any()
             )
-            this.materiaPrimaDetalleViewModel.MateriaPrimaProducto!.rutaImagen = this.materiaPrimaDetalleViewModel.MateriaPrimaDetalle!.imagenes.First().Url;
+            this._materiaPrimaDetalleViewModel.MateriaPrimaProducto!.rutaImagen = this._materiaPrimaDetalleViewModel.MateriaPrimaDetalle!.imagenes.First().Url;
     }
 
     private void SearchMateriaPrimaSeguimiento_TextChanged(object sender, TextChangedEventArgs e)
@@ -59,12 +59,12 @@ public partial class MateriaPrimaDetalle : ContentPage
     private async void PaginationKgSeguimiento_PageChanging(object sender, Syncfusion.Maui.DataGrid.DataPager.PageChangingEventArgs e)
     {
         if ( ( e.NewPageIndex > e.OldPageIndex ) || (e.NewPageIndex is 0 && e.OldPageIndex is 0)  )
-            await this.materiaPrimaDetalleViewModel.cargarDatosKgSeguimiento();
+            await this._materiaPrimaDetalleViewModel.cargarDatosKgSeguimiento();
     }
 
 
     protected override bool OnBackButtonPressed()
     {
-        return this.materiaPrimaDetalleViewModel.ControlarNavegacion();
+        return this._materiaPrimaDetalleViewModel.ControlarNavegacion();
     }
 }

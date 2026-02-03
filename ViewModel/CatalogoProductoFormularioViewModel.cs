@@ -33,11 +33,7 @@ namespace ANTU.ViewModel
         //este codigo de aqui tiene que ver con la parte de nuestras imagenes, el 
         //boton con la funcionalidad de eliminar la imagen de la lista 
         //este metodo es de prueba solamente, mas adelante hay que reemplazarlo.
-        [RelayCommand(AllowConcurrentExecutions = false)]
-        public override async Task EliminarArchivoPrueba(string codigo)
-        {
-            await base.EliminarArchivoPrueba(codigo);
-        }
+
 
         [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task RegistarCatalogoProducto(CatalogoProductoFormulario catalogoProductoFormulario)

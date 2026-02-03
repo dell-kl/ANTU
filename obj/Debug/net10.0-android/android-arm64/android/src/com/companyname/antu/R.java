@@ -11929,6 +11929,7 @@ public final class R {
     public static final int tooltip_frame_dark=0x7f0700f6;
     public static final int tooltip_frame_light=0x7f0700f7;
     public static final int trash=0x7f0700f8;
+    public static final int warning=0x7f0700f9;
   }
   public static final class id {
     public static final int ALT=0x7f080000;

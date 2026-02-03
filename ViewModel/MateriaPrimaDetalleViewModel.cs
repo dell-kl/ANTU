@@ -1,53 +1,44 @@
 ﻿using Modelos;
 using Modelos.Dto;
-using Modelos.RequestDto;
 using ANTU.Resources.Components.PopupComponents;
 using Data.Rest.RestInterfaces;
-using ANTU.Resources.ValueConverter;
 using ANTU.ViewModel.PopupServicesViewModel;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Mopups.Services;
-using Syncfusion.Maui.DataForm;
 using System.Collections.ObjectModel;
+using System.Net;
 using System.Runtime.Versioning;
 using ANTU.Resources.Utilidades;
 using Business.Services.IServices;
-
+using Modelos.ResultDto;    
 
 namespace ANTU.ViewModel
 {
     [SupportedOSPlatform("Android")]
     public partial class MateriaPrimaDetalleViewModel : ParentViewModel
     {
-        [ObservableProperty]
-        private MateriaPrimaProducto materiaPrimaProducto = new MateriaPrimaProducto(0);
-
-
+        [ObservableProperty] private MateriaPrimaProducto _materiaPrimaProducto;
         //el formato para mostrar datos.
-        [ObservableProperty]
-        private MateriaPrimaDetalle? materiaPrimaDetalle = null;
-
+        [ObservableProperty] private MateriaPrimaDetalle? _materiaPrimaDetalle;
         //formulario para agregar mas stock
-        [ObservableProperty]
-        private MateriaPrimaDetalleFormulario materiaPrimaDetalleFormulario = new MateriaPrimaDetalleFormulario();
-
+        [ObservableProperty] private MateriaPrimaDetalleFormulario _materiaPrimaDetalleFormulario;
         //donde establecemos los formularios para poder mostrarlos.
-        [ObservableProperty]
-        private FormularioEmergente formulario = new FormularioEmergente();
-
+        [ObservableProperty] private FormularioEmergente _formulario;
         //formulario para editar el nombre de la materia prima
-        [ObservableProperty]
-        private MateriaPrimaEditarDataFormulario materiaPrimaEditarDataFormulario = new MateriaPrimaEditarDataFormulario();
-        
-        [ObservableProperty]
-        private ObservableCollection<KgSeguimiento> _kgSeguimientoList = new ObservableCollection<KgSeguimiento>();
+        [ObservableProperty] private MateriaPrimaEditarDataFormulario _materiaPrimaEditarDataFormulario;
+        [ObservableProperty] private ObservableCollection<KgSeguimiento> _kgSeguimientoList;
 
         public MateriaPrimaDetalleViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService, Mensaje mensaje) : base(restManagement, popupService, managementService, mensaje)
         {
+            this.MateriaPrimaDetalle = new MateriaPrimaDetalle();
+            this.MateriaPrimaProducto = new MateriaPrimaProducto(0);
+            this.MateriaPrimaDetalleFormulario = new MateriaPrimaDetalleFormulario();
+            this.Formulario = new FormularioEmergente();
+            this.MateriaPrimaEditarDataFormulario = new MateriaPrimaEditarDataFormulario();
+            this.KgSeguimientoList = new ObservableCollection<KgSeguimiento>();
         }
 
 
@@ -59,22 +50,50 @@ namespace ANTU.ViewModel
                 this.MateriaPrimaProducto = (base.DataQuery as MateriaPrimaProducto)!;
         }
 
+        //Este metodo de aqui se encarga de traer datos informativos sobre la materia prima
+        //Incluido con los 10 primeros registros de la tabla que muestra las compras realizadas.
+        public async Task ObtenerDatosMateriaPrimaDetalle()
+        {
+            RequestResultDto<(MateriaPrimaDetalle, IEnumerable<KgSeguimiento>)> resultado = await ManagementService.materiaPrimaService
+                .ObtenerDatosMateriaPrimaDetalle(this.MateriaPrimaProducto.guid);
+
+            if (!resultado.Success && resultado.HttpStatusCode == HttpStatusCode.RequestTimeout)
+            {
+                string mensajeSinConexion = "";
+                foreach (var mensaje in resultado.Errors)
+                    mensajeSinConexion += $"{mensaje.Message}\n";
+                await Mensaje.MostrarAlertaSinConexion(mensajeSinConexion);
+            }
+            else if (resultado.Success)
+            {
+                MateriaPrimaDetalle = resultado.Value.Item1;
+                foreach(var item in resultado.Value.Item2)
+                    KgSeguimientoList.Add(item);
+            }
+            
+            await this.EliminarSpinnerDirectamente();
+        }
+        
         public async Task cargarDatosMateriaPrimaDetalle()
         {
-            this.MateriaPrimaDetalle = await RestManagement.MateriaPrima.MateriaPrimaDetalles(this.MateriaPrimaProducto.guid);
+            // this.MateriaPrimaDetalle = await RestManagement.MateriaPrima.MateriaPrimaDetalles(this.MateriaPrimaProducto.guid);
+            throw new NotImplementedException();
         }
 
         public async Task cargarDatosKgSeguimiento()
         {
-            if ( !this.KgSeguimientoList.Any() || this.KgSeguimientoList.Count() >= 10 )
-            {
-                IEnumerable<KgSeguimiento> listadokgSeguimientos = await RestManagement.MateriaPrima.GetKgSeguimientos(this.KgSeguimientoList.Count(), this.MateriaPrimaProducto.guid);
+            // if ( !this.KgSeguimientoList.Any() || this.KgSeguimientoList.Count() >= 10 )
+            // {
+            //     IEnumerable<KgSeguimiento> listadokgSeguimientos = await RestManagement.MateriaPrima.GetKgSeguimientos(this.KgSeguimientoList.Count(), this.MateriaPrimaProducto.guid);
+            //
+            //     if (listadokgSeguimientos.Any()) {
+            //         this.KgSeguimientoList = this.KgSeguimientoList.Union(listadokgSeguimientos).ToObservableCollection();
+            //     }
+            // }
 
-                if (listadokgSeguimientos.Any()) {
-                    this.KgSeguimientoList = this.KgSeguimientoList.Union(listadokgSeguimientos).ToObservableCollection();
-                }
-            }
 
+
+            throw new NotImplementedException();
         }
 
 
@@ -86,8 +105,8 @@ namespace ANTU.ViewModel
                 {
                     "DataQuery", new List<object>()
                     {
-                        this.materiaPrimaDetalle!,
-                        this.materiaPrimaProducto.guid
+                        this.MateriaPrimaDetalle!,
+                        this.MateriaPrimaProducto.guid
                     }
                 }
             };

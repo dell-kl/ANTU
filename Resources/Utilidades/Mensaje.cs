@@ -40,6 +40,18 @@ namespace ANTU.Resources.Utilidades
             
             await MopupService.Instance.PushAsync(this._ventanaEmergente);
         }
+        
+        public async Task MensajeAdvertencia(string mensaje, string cuerpo) 
+        {
+            this._ventanaEmergente.Titulo = mensaje;
+            this._ventanaEmergente.Contenido = cuerpo;
+            // this._ventanaEmergente.Loading = false;
+            this._ventanaEmergente.ShowImage = true;
+            this._ventanaEmergente.Source = "warning.png";
+            this._ventanaEmergente.ShowButton = true;
+            
+            await MopupService.Instance.PushAsync(this._ventanaEmergente);
+        }
 
         public async Task MostrarAlertaSinConexion(string mensaje)
         {

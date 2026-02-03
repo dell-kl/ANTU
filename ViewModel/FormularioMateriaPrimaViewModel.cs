@@ -1,6 +1,5 @@
 ﻿using System.Runtime.Versioning;
 using Modelos.Dto;
-using Modelos.RequestDto;
 using ANTU.Resources.Components.FormularioComponentes;
 using ANTU.Resources.Utilidades;
 using Business.Services.IServices;
@@ -31,7 +30,7 @@ namespace ANTU.ViewModel
             this.MateriaPrimaFormularioComponentes = new MateriaPrimaFormularioComponentes();
             this.MateriaPrimaFormularioComponentes.BindingContext = this;
         }
-
+        
         [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task RegistrarMateriaPrima(MateriaPrimaFormulario materiaPrimaFormulario)
         {
@@ -41,21 +40,21 @@ namespace ANTU.ViewModel
 
             await base.DesmontarSpinner();
             
-            if (!resultado.Success)
-            {
-                string mensajeErrorCompleto = "";
-
-                foreach (var resultadoError in resultado.Errors)
-                {   
-                    mensajeErrorCompleto += $"{resultadoError.Message}\n";
-                }
-
-                await Mensaje.MensajeError("Error Registrar", mensajeErrorCompleto);
-            }
-            else
-            {
-                await Mensaje.MensajeCorrecto("Registrado Materia Prima", resultado.Value);
-            }
+            string mensajeErrorCompleto = "", mensajeSuccesful = "";
+            
+            foreach (var resultadoError in resultado.Errors)
+                mensajeErrorCompleto += $" - {resultadoError.Message}\n";
+            
+            foreach (var resultadoSuccessful in resultado.Successful)
+                mensajeSuccesful += $"- {resultadoSuccessful}\n";
+            
+            if (!resultado.Success && resultado.Successful.Count == 0)
+                await Mensaje.MensajeError($"Error Registrar", mensajeErrorCompleto);
+            else if (!resultado.Success && resultado.Successful.Count != 0)
+                await Mensaje.MensajeAdvertencia($"Materia Prima Registrada", mensajeErrorCompleto);
+            else if(resultado.Success)
+                await Mensaje.MensajeCorrecto("Solicitud Aceptada", mensajeSuccesful);
+            
 
             FileManyResults.Clear();
         }

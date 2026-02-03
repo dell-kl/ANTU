@@ -46,16 +46,9 @@
         <member name="T:ANTU.ViewModel.CatalogoProductoFormularioViewModel">
             <inheritdoc/>
             <inheritdoc/>
-            <inheritdoc/>
         </member>
         <member name="P:ANTU.ViewModel.CatalogoProductoFormularioViewModel.CatalogoProductoFormularioComponenets">
             <inheritdoc cref="F:ANTU.ViewModel.CatalogoProductoFormularioViewModel.catalogoProductoFormularioComponenets"/>
-        </member>
-        <member name="F:ANTU.ViewModel.CatalogoProductoFormularioViewModel.eliminarArchivoPruebaCommand">
-            <summary>The backing field for <see cref="P:ANTU.ViewModel.CatalogoProductoFormularioViewModel.EliminarArchivoPruebaCommand"/>.</summary>
-        </member>
-        <member name="P:ANTU.ViewModel.CatalogoProductoFormularioViewModel.EliminarArchivoPruebaCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.CatalogoProductoFormularioViewModel.EliminarArchivoPrueba(System.String)"/>.</summary>
         </member>
         <member name="F:ANTU.ViewModel.CatalogoProductoFormularioViewModel.registarCatalogoProductoCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.CatalogoProductoFormularioViewModel.RegistarCatalogoProductoCommand"/>.</summary>
@@ -230,19 +223,19 @@
             <inheritdoc/>
         </member>
         <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.MateriaPrimaProducto">
-            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel.materiaPrimaProducto"/>
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel._materiaPrimaProducto"/>
         </member>
         <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.MateriaPrimaDetalle">
-            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel.materiaPrimaDetalle"/>
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel._materiaPrimaDetalle"/>
         </member>
         <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.MateriaPrimaDetalleFormulario">
-            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel.materiaPrimaDetalleFormulario"/>
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel._materiaPrimaDetalleFormulario"/>
         </member>
         <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.Formulario">
-            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel.formulario"/>
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel._formulario"/>
         </member>
         <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.MateriaPrimaEditarDataFormulario">
-            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel.materiaPrimaEditarDataFormulario"/>
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel._materiaPrimaEditarDataFormulario"/>
         </member>
         <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.KgSeguimientoList">
             <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel._kgSeguimientoList"/>
@@ -335,6 +328,7 @@
         <member name="T:ANTU.ViewModel.ParentViewModel">
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
         </member>
         <member name="P:ANTU.ViewModel.ParentViewModel.DataQuery">
             <inheritdoc cref="F:ANTU.ViewModel.ParentViewModel.dataQuery"/>
@@ -356,6 +350,12 @@
         </member>
         <member name="P:ANTU.ViewModel.ParentViewModel.SeleccionarArchivoMostrarCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ParentViewModel.SeleccionarArchivoMostrar"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.ParentViewModel.eliminarArchivoPruebaCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.ParentViewModel.EliminarArchivoPruebaCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.ParentViewModel.EliminarArchivoPruebaCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.ParentViewModel.EliminarArchivoPrueba(System.String)"/>.</summary>
         </member>
         <member name="T:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel">
             <inheritdoc/>

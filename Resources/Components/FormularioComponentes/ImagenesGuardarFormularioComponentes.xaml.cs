@@ -7,11 +7,4 @@ public partial class ImagenesGuardarFormularioComponentes : ContentView
 		InitializeComponent();
 
 	}
-
-    protected override void OnBindingContextChanged()
-    {
-        base.OnBindingContextChanged();
-
-
-    }
 }

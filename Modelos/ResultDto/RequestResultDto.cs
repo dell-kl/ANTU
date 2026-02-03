@@ -1,4 +1,3 @@
-using System.Collections.Immutable;
 using System.Net;
 
 namespace Modelos.ResultDto;
@@ -6,10 +5,11 @@ namespace Modelos.ResultDto;
 public struct RequestResultDto<T>
 {
     public readonly T Value;
-    public static implicit operator RequestResultDto<T>(T value) => new RequestResultDto<T>(value, HttpStatusCode.OK);
-    public static implicit operator RequestResultDto<T>(List<Error> errors) => new RequestResultDto<T>(errors, System.Net.HttpStatusCode.BadRequest);
-    public List<Error> Errors = new();
+    public List<Error> Errors = new(); // vamos recolectando cada error de cada proceso. 
+    public List<string?> Successful = new(); // vamos recolectando cada successful de cada proceso.
     public readonly HttpStatusCode HttpStatusCode;
+    
+    public static implicit operator RequestResultDto<T>(T value) => new RequestResultDto<T>(value, HttpStatusCode.OK);
     
     public bool Success => Errors.Count == 0;
 
@@ -24,6 +24,9 @@ public struct RequestResultDto<T>
         Value = value;
         Errors = [];
         HttpStatusCode = statusCode;
+        
+        if(value is not Unit)
+            Successful.Add(value?.ToString());
     }
     
     public RequestResultDto(List<Error> errors, HttpStatusCode statusCode)

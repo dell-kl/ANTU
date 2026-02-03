@@ -72,8 +72,6 @@
                         <Border
                             WidthRequest="100"
                             HeightRequest="100"
-                            Grid.Column="0"
-                            Grid.Row="0"
                             Stroke="LightGray"
                             StrokeShape="RoundRectangle 5,5,5,5">
                             <Image

@@ -6,7 +6,7 @@ namespace ANTU
 {
     internal class Program : MauiApplication
     {
-        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+        protected override MauiApp CrteateMauiApp() => MauiProgram.CreateMauiApp();
 
         static void Main(string[] args)
         {

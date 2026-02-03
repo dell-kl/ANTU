@@ -107,22 +107,24 @@ namespace ANTU.ViewModel
                 options.PickerTitle = "Selecciona hasta 5 imagenes";
 
                 IEnumerable<FileResult?> resultado = await FilePicker.PickMultipleAsync(options);
+                IEnumerable<FileResultExtensible> listadoFileResult =
+                    resultado.Select(item => new FileResultExtensible(item));
+
+                //restamos cinco para ver las imagenes que faltan para completar las 5.
+                int longitudImagenesTotal = 5 - FileManyResults.Count;
+                int longitudAgregarImagenes = listadoFileResult.Count();
                 
-                if (resultado is null || (this.FileManyResults.Count()) + (resultado.Count()) > 5)
-                    return;
-                
-                var fileResultList = resultado.Select(item =>
-                {
-                    return new FileResultExtensible(item) { };
-                });
-                
-                this.FileManyResults = this.FileManyResults.Concat(fileResultList).ToObservableCollection();
+                if(longitudImagenesTotal < longitudAgregarImagenes)
+                    listadoFileResult = listadoFileResult.Take(longitudImagenesTotal);
+                    
+                foreach (var file in listadoFileResult)
+                    FileManyResults.Add(file);
             }
             catch (TaskCanceledException ex) {
                 Console.WriteLine(ex.Message);
             }
         }
-
+        
         public virtual void EliminarArchivo(string codigo)
         {
             FileResultExtensible? archivo = this.FileManyResults.Where(item => item.codigo.Equals(codigo)).FirstOrDefault();
@@ -132,6 +134,7 @@ namespace ANTU.ViewModel
 
         }
 
+        [RelayCommand(AllowConcurrentExecutions = false)]
         public virtual async Task EliminarArchivoPrueba(string codigo)
         {
             FileResultExtensible? archivo = this.FileManyResults.Where(item => item.codigo.Equals(codigo)).FirstOrDefault();

@@ -14,10 +14,6 @@
                 StrokeThickness="0"
                 Padding="20">
             <StackLayout>
-                <!-- <ActivityIndicator  -->
-                <!--     x:Name="LoadingElement" -->
-                <!--     IsRunning="True" Color="Orange"></ActivityIndicator> -->
-
                 <Image
                     WidthRequest="50"
                     Source="{Binding Source}"/>
