@@ -58,5 +58,11 @@ namespace ANTU.Resources.Utilidades
             this._ventaEmergenteSinConexion.Descripcion = mensaje;
             await MopupService.Instance.PushAsync(this._ventaEmergenteSinConexion);
         }
+
+        public async Task MostrarAlertaServidor(string mensaje)
+        {
+            this._ventaEmergenteSinConexion.Descripcion = mensaje;
+            this._ventaEmergenteSinConexion.Icono = "error_del_servidor.png";
+        }
     }
 }

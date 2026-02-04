@@ -5,7 +5,6 @@ using Data.Rest.RestInterfaces;
 using ANTU.ViewModel.PopupServicesViewModel;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Core;
-using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
@@ -22,7 +21,7 @@ namespace ANTU.ViewModel
     {
         [ObservableProperty] private MateriaPrimaProducto _materiaPrimaProducto;
         //el formato para mostrar datos.
-        [ObservableProperty] private MateriaPrimaDetalle? _materiaPrimaDetalle;
+        [ObservableProperty] private MateriaPrimaDetalle? _materiaPrimaDetalle = null;
         //formulario para agregar mas stock
         [ObservableProperty] private MateriaPrimaDetalleFormulario _materiaPrimaDetalleFormulario;
         //donde establecemos los formularios para poder mostrarlos.
@@ -33,7 +32,6 @@ namespace ANTU.ViewModel
 
         public MateriaPrimaDetalleViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService, Mensaje mensaje) : base(restManagement, popupService, managementService, mensaje)
         {
-            this.MateriaPrimaDetalle = new MateriaPrimaDetalle();
             this.MateriaPrimaProducto = new MateriaPrimaProducto(0);
             this.MateriaPrimaDetalleFormulario = new MateriaPrimaDetalleFormulario();
             this.Formulario = new FormularioEmergente();
@@ -50,21 +48,32 @@ namespace ANTU.ViewModel
                 this.MateriaPrimaProducto = (base.DataQuery as MateriaPrimaProducto)!;
         }
 
-        //Este metodo de aqui se encarga de traer datos informativos sobre la materia prima
-        //Incluido con los 10 primeros registros de la tabla que muestra las compras realizadas.
+        /// <summary>
+        ///  Este es el primer metodo que se ejecutara cuando entremos a los
+        /// detalles de la materia prima que seleccionamos.
+        ///
+        ///
+        /// HttpStatusCode.RequestTimeout : Cuando la conexion se perdio mandamos un mensaje de que se ha perdido la conexion.
+        /// HttpStatusCode.InternalServerError: Un error en el procesamiento de los datos que se logro obtener.
+        /// HttpStatusCode.OK: Todo se proceso exitosamente.
+        /// </summary>
         public async Task ObtenerDatosMateriaPrimaDetalle()
         {
             RequestResultDto<(MateriaPrimaDetalle, IEnumerable<KgSeguimiento>)> resultado = await ManagementService.materiaPrimaService
                 .ObtenerDatosMateriaPrimaDetalle(this.MateriaPrimaProducto.guid);
 
-            if (!resultado.Success && resultado.HttpStatusCode == HttpStatusCode.RequestTimeout)
+            if (!resultado.Success)
             {
                 string mensajeSinConexion = "";
                 foreach (var mensaje in resultado.Errors)
                     mensajeSinConexion += $"{mensaje.Message}\n";
-                await Mensaje.MostrarAlertaSinConexion(mensajeSinConexion);
+                
+                if (resultado.HttpStatusCode == HttpStatusCode.RequestTimeout)
+                    await Mensaje.MostrarAlertaSinConexion(mensajeSinConexion);
+                else if (resultado.HttpStatusCode == HttpStatusCode.InternalServerError)
+                    await Mensaje.MostrarAlertaServidor(mensajeSinConexion);
             }
-            else if (resultado.Success)
+            else
             {
                 MateriaPrimaDetalle = resultado.Value.Item1;
                 foreach(var item in resultado.Value.Item2)
@@ -74,33 +83,27 @@ namespace ANTU.ViewModel
             await this.EliminarSpinnerDirectamente();
         }
         
-        public async Task cargarDatosMateriaPrimaDetalle()
-        {
-            // this.MateriaPrimaDetalle = await RestManagement.MateriaPrima.MateriaPrimaDetalles(this.MateriaPrimaProducto.guid);
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Este metodo nos permite obtener todos los datos de compra que realiza el usuario sobre la materia prima
+        /// que selecciono. Esto es un historial de compras. Los datos se van trayendo de 10 en 10, para no
+        /// colapsar el aplicativo movil. 
+        /// </summary>
         public async Task cargarDatosKgSeguimiento()
         {
-            // if ( !this.KgSeguimientoList.Any() || this.KgSeguimientoList.Count() >= 10 )
-            // {
-            //     IEnumerable<KgSeguimiento> listadokgSeguimientos = await RestManagement.MateriaPrima.GetKgSeguimientos(this.KgSeguimientoList.Count(), this.MateriaPrimaProducto.guid);
-            //
-            //     if (listadokgSeguimientos.Any()) {
-            //         this.KgSeguimientoList = this.KgSeguimientoList.Union(listadokgSeguimientos).ToObservableCollection();
-            //     }
-            // }
+            this.MateriaPrimaDetalle!.NValoresListadoKgSeguimiento = KgSeguimientoList.Count;
+            RequestResultDto<IEnumerable<KgSeguimiento>> resultado = await ManagementService.materiaPrimaService.GetKgSeguimientoMateriaPrimaDetalle(MateriaPrimaDetalle!);
 
-
-
-            throw new NotImplementedException();
+            if (resultado.Success)
+                foreach (var item in resultado.Value)
+                    KgSeguimientoList.Add(item);
+            else
+                await Mensaje.MensajeError("Error", "No se pudieron traer los registros");
         }
 
 
         [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task MostrarDetallesImagenes()
         {
-            
             var datosNavegacion = new ShellNavigationQueryParameters {
                 {
                     "DataQuery", new List<object>()
@@ -110,8 +113,6 @@ namespace ANTU.ViewModel
                     }
                 }
             };
-
-
             await base.NavegarFormulario("MostrarImagenesDetalle", datosNavegacion);
         }
 

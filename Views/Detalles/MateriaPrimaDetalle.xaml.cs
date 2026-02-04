@@ -30,9 +30,12 @@ public partial class MateriaPrimaDetalle : ContentPage
             ShimmerUltimaCompra.IsActive = false;
         }
 
-        if(!this._materiaPrimaDetalleViewModel.MateriaPrimaDetalle.imagenes.Any())
+        if( 
+            this._materiaPrimaDetalleViewModel.MateriaPrimaDetalle != null &&
+            !this._materiaPrimaDetalleViewModel.MateriaPrimaDetalle.imagenes.Any())
             this._materiaPrimaDetalleViewModel.MateriaPrimaProducto.rutaImagen = "default_icon.png";
         else if (
+            this._materiaPrimaDetalleViewModel.MateriaPrimaDetalle != null &&
             (
             this._materiaPrimaDetalleViewModel.MateriaPrimaProducto!.rutaImagen is "default_icon.png" ||
             !this._materiaPrimaDetalleViewModel.MateriaPrimaDetalle!.imagenes

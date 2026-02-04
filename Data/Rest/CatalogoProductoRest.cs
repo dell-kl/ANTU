@@ -60,7 +60,7 @@ namespace Data.Rest
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<CatalogoProducto>> Get(object data, Func<Task>? ejecutarTarea = null)
+        public async Task<RequestResultDto<IEnumerable<CatalogoProducto>>> Get(object data)
         {
             IEnumerable<CatalogoProducto> listado = new List<CatalogoProducto>();
 
@@ -70,7 +70,7 @@ namespace Data.Rest
             if (httpResponse.IsSuccessStatusCode)
                 listado = JsonConvert.DeserializeObject<IEnumerable<CatalogoProducto>>(await httpResponse.Content.ReadAsStringAsync())!;
 
-            return listado;
+            return null;
         }
 
         //aqui crearemos otro metodo parecido al metodo GET implementado.

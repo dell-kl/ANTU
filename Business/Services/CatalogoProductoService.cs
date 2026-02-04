@@ -18,15 +18,16 @@ public class CatalogoProductoService : ICatalogoProductoService
     
     public async Task<IEnumerable<CatalogoProducto>> GetCatalogoProductosAync(object data, CancellationToken cancellationToken = default)
     {
-        if (!_hasMore)
-            return new List<CatalogoProducto>();
-        
-        var resultado = await _restManagement.CatalogoProduct.Get(data);
-
-        resultado = resultado.ToObservableCollection();
-        if (resultado!.Count() < 10)
-            _hasMore = false;
-
-        return resultado!;
+        // if (!_hasMore)
+        //     return new List<CatalogoProducto>();
+        //
+        // var resultado = await _restManagement.CatalogoProduct.Get(data);
+        //
+        // resultado = resultado.ToObservableCollection();
+        // if (resultado!.Count() < 10)
+        //     _hasMore = false;
+        //
+        // return resultado!;
+        return null;
     }
 }

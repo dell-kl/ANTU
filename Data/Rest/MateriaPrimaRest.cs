@@ -50,21 +50,6 @@ namespace Data.Rest
         //Realizando modificaciones a este codigo. Por el momento que comentado para posible actualizaciones.
         public async Task<RequestResultDto<string>> Add(MateriaPrimaRequestDto data, ObservableCollection<FileResultExtensible> fileResultExtensibles)
         {
-            // RequestResultDto<string> resultado = await this.Add(data);
-            //
-            // if (resultado.IsSuccess)
-            // {
-            //     Dictionary<string, object> resultadoImagenes = await SaveImages(fileResultExtensibles, data.id_dto!, activarVentanasAlerta: false);
-            // }
-            //
-            // if (resultado && resultadoImagenes["estado"] is true)
-            //     await _mensaje.MensajeCorrecto("Guardado Exitosamente", "Materia prima guardada correctamente.");
-            // else if (resultado && resultadoImagenes["estado"] is false)
-            //     await _mensaje.MensajeError("Guardado Incompleto", "Materia prima guardado correctamente, pero no se pudieron guardar las imagenes.");
-            // else
-            //     await _mensaje.MensajeError("Error Guardado", "No se pudieron guardar los datos de la materia prima.");
-
-            // return resultado;
             throw new NotImplementedException();
         }
 
@@ -74,7 +59,7 @@ namespace Data.Rest
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<MateriaPrimaProducto>> Get(object data, Func<Task>? ejecutarTarea = null)
+        public async Task<RequestResultDto<IEnumerable<MateriaPrimaProducto>>> Get(object data)
         {
             IEnumerable<MateriaPrimaProducto> listMateriaPrima = new List<MateriaPrimaProducto>();
             
@@ -85,7 +70,7 @@ namespace Data.Rest
                     JsonConvert.DeserializeObject<IEnumerable<MateriaPrimaProducto>>(
                         await httpResponse.Content.ReadAsStringAsync())!;
             
-            return listMateriaPrima;
+            return null;
         }
         
         public async Task<Dictionary<string, object>> SaveImages(ObservableCollection<FileResultExtensible> fileResultExtensible, string guid, bool activarVentanasAlerta = false, Func<Task>? ejecutarTask = null)
@@ -275,6 +260,8 @@ namespace Data.Rest
                     return Result.Failure<IEnumerable<KgSeguimiento>>(
                         "No se pudieron obtener los datos de seguimientos sobre tus compras", httpResponse.StatusCode);
 
+                listadoKgSeguimientos = JsonConvert.DeserializeObject<IEnumerable<KgSeguimiento>>(await httpResponse.Content.ReadAsStringAsync())!;
+                
                 return Result.Success(listadoKgSeguimientos);
             }
             catch (HttpRequestException)

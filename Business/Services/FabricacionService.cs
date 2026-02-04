@@ -17,16 +17,17 @@ public class FabricacionService : IFabricacionService
 
     public async Task<IEnumerable<Produccion>> GetProduccionAync(object data, CancellationToken cancellationToken = default)
     {
-        if (!_hasMore)
-            return new List<Produccion>();
-        
-        var resultado = await _restManagement.Produccion.Get(data);
-
-        resultado = resultado.ToObservableCollection();
-        
-        if (resultado!.Count() < 10)
-            _hasMore = false;
-
-        return resultado!;
+        // if (!_hasMore)
+        //     return new List<Produccion>();
+        //
+        // var resultado = await _restManagement.Produccion.Get(data);
+        //
+        // resultado = resultado.ToObservableCollection();
+        //
+        // if (resultado!.Count() < 10)
+        //     _hasMore = false;
+        //
+        // return resultado!;
+        return null;
     }
 }

@@ -1,7 +1,6 @@
 using Business.Services.IServices;
 using Data.Rest.RestInterfaces;
 using Modelos;
-using Syncfusion.Maui.DataSource.Extensions;
 
 namespace Business.Services;
 
@@ -17,15 +16,16 @@ public class ProductosListosService : IProductosListosService
     
     public async Task<IEnumerable<Produccion>> GetProductosListosAync(object data, CancellationToken cancellationToken = default)
     {
-        if (!_hasMore)
-            return new List<Produccion>();
-        
-        var resultado = await _restManagement.Fabricado.Get(data);
-
-        resultado = resultado.ToObservableCollection();
-        if (resultado!.Count() < 10)
-            _hasMore = false;
-
-        return resultado!;
+        // if (!_hasMore)
+        //     return new List<Produccion>();
+        //
+        // var resultado = await _restManagement.Fabricado.Get(data);
+        //
+        // resultado = resultado.ToObservableCollection();
+        // if (resultado!.Count() < 10)
+        //     _hasMore = false;
+        //
+        // return resultado!;
+        return null;
     }
 }

@@ -49,7 +49,7 @@ public class ProduccionListaRest : IProduccionLista
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<DataCatalogoProduccion>> Get(object data, Func<Task>? ejecutarTarea = null)
+    public Task<RequestResultDto<IEnumerable<DataCatalogoProduccion>>> Get(object data)
     {
         throw new NotImplementedException();
     }

@@ -222,6 +222,24 @@
             <inheritdoc/>
             <inheritdoc/>
         </member>
+        <member name="M:ANTU.ViewModel.MateriaPrimaDetalleViewModel.ObtenerDatosMateriaPrimaDetalle">
+             <summary>
+              Este es el primer metodo que se ejecutara cuando entremos a los
+             detalles de la materia prima que seleccionamos.
+            
+            
+             HttpStatusCode.RequestTimeout : Cuando la conexion se perdio mandamos un mensaje de que se ha perdido la conexion.
+             HttpStatusCode.InternalServerError: Un error en el procesamiento de los datos que se logro obtener.
+             HttpStatusCode.OK: Todo se proceso exitosamente.
+             </summary>
+        </member>
+        <member name="M:ANTU.ViewModel.MateriaPrimaDetalleViewModel.cargarDatosKgSeguimiento">
+            <summary>
+            Este metodo nos permite obtener todos los datos de compra que realiza el usuario sobre la materia prima
+            que selecciono. Esto es un historial de compras. Los datos se van trayendo de 10 en 10, para no
+            colapsar el aplicativo movil. 
+            </summary>
+        </member>
         <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.MateriaPrimaProducto">
             <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel._materiaPrimaProducto"/>
         </member>

@@ -84,8 +84,10 @@ namespace ANTU.ViewModel
         {
             if (MopupService.IsSupported)
             {
-                var pagina = MopupService.Instance.PopupStack.Where(item => item is VentaSpinnerLoading).ToList().First();
-                await MopupService.Instance.RemovePageAsync(pagina);
+                var pagina = MopupService.Instance.PopupStack.Where(item => item is VentaSpinnerLoading).ToList().FirstOrDefault();
+                
+                if(pagina is not null )
+                    await MopupService.Instance.RemovePageAsync(pagina);
             }
         }
 

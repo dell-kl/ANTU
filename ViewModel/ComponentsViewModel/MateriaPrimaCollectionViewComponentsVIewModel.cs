@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Net;
 using System.Runtime.Versioning;
 using ANTU.Resources.Utilidades;
 using Business.Services.IServices;
@@ -7,6 +8,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Data.Rest.RestInterfaces;
 using Modelos;
+using Modelos.ResultDto;
 
 namespace ANTU.ViewModel.ComponentsViewModel;
 
@@ -27,31 +29,32 @@ public partial class MateriaPrimaCollectionViewComponentsVIewModel : ParentViewM
     [RelayCommand(AllowConcurrentExecutions = false)]
     public async Task CargarDatosMateriaPrimaProducto()
     {
-        try
-        {
-            if (this.IsLazyLoading)
-                return;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-        
-            this.IsLazyLoading = true;
+        if (this.IsLazyLoading)
+            return;
 
-            CancellationTokenSource tokenSource = new CancellationTokenSource();
-        
-            IEnumerable<MateriaPrimaProducto> listado = await ManagementService.materiaPrimaService.GetMateriaPrimaAync(
-                this.DatosMateriaPrimaProductos.Count(),
-                tokenSource.Token);
+        this.IsLazyLoading = true;
 
-            foreach (MateriaPrimaProducto item in listado)
-            {
+        RequestResultDto<IEnumerable<MateriaPrimaProducto>> listado =
+            await ManagementService.materiaPrimaService.GetMateriaPrimaAync(this.DatosMateriaPrimaProductos.Count());
+        
+        if (listado.Success)
+            foreach (var item in listado.Value)
                 this.DatosMateriaPrimaProductos.Add(item);
-            }
-
-            this.IsLazyLoading = false;
-        }
-        catch (HttpRequestException e)
+        else
         {
-            await DesmontarSpinner();
-            await Mensaje.MostrarAlertaSinConexion("Conexion fallo, intentalo en otro momento.");
+            string mensajeError = "";
+            foreach (var mensaje in listado.Errors)
+                mensajeError += $"- {mensaje.Message}\n";
+            
+            if (listado.HttpStatusCode is HttpStatusCode.RequestTimeout)
+                await Mensaje.MostrarAlertaSinConexion(mensajeError);
+            else if ( listado.HttpStatusCode is HttpStatusCode.InternalServerError)
+                await Mensaje.MostrarAlertaServidor(mensajeError);
         }
+        
+        await EliminarSpinnerDirectamente();
+        
+        this.IsLazyLoading = false;
     }
     
     [RelayCommand(AllowConcurrentExecutions = false)]

@@ -1,4 +1,4 @@
-<api type="debug" assembly-name="ANTU" mvid="2df71302972643b48621e1921a479aa2">
+<api type="debug" assembly-name="ANTU" mvid="c5dcf3e834f14c879a01520d523929dc">
   <java-to-managed>
     <entry java-name="crc6421c7910cc80f95a8/MainActivity" managed-name="ANTU.MainActivity, ANTU" managed-type-token-id="33554515" />
     <entry java-name="crc6421c7910cc80f95a8/MainApplication" managed-name="ANTU.MainApplication, ANTU" managed-type-token-id="33554516" />

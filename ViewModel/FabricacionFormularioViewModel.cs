@@ -33,26 +33,28 @@ namespace ANTU.ViewModel
             // await RestManagement.Produccion.Add(produccionReqestDto, () => base.DesmontarSpinner(), true);
         }
         
-        public async Task ObtenerDatosCatalogoProducto()
+        public Task ObtenerDatosCatalogoProducto()
         {
-            if (this.CatalogoProductos.Count() == 0 || this.CatalogoProductos.Count() >= 10)
-            {
-                IEnumerable<CatalogoProducto> listadoCatalogo = await RestManagement.CatalogoProduct.Get(this.CatalogoProductos.Count().ToString());
-                
-                if (listadoCatalogo.Any())
-                    this.CatalogoProductos = this.CatalogoProductos.Union(listadoCatalogo).ToObservableCollection();
-            }
+            // if (this.CatalogoProductos.Count() == 0 || this.CatalogoProductos.Count() >= 10)
+            // {
+            //     IEnumerable<CatalogoProducto> listadoCatalogo = await RestManagement.CatalogoProduct.Get(this.CatalogoProductos.Count().ToString());
+            //     
+            //     if (listadoCatalogo.Any())
+            //         this.CatalogoProductos = this.CatalogoProductos.Union(listadoCatalogo).ToObservableCollection();
+            // }
+            return Task.CompletedTask;
         }
 
-        public async Task ObtenerDatosMateriaPrimaProducto()
+        public Task ObtenerDatosMateriaPrimaProducto()
         {
-            if ( this.MateriaPrimaProductos.Count() == 0 || this.MateriaPrimaProductos.Count() >= 10)
-            {
-                IEnumerable<MateriaPrimaProducto> listadoMateriaPrima = await RestManagement.MateriaPrima.Get(this.MateriaPrimaProductos.Count().ToString());
-
-                if (listadoMateriaPrima.Any())
-                    this.MateriaPrimaProductos = this.MateriaPrimaProductos.Union(listadoMateriaPrima).ToObservableCollection();
-            }
+            // if ( this.MateriaPrimaProductos.Count() == 0 || this.MateriaPrimaProductos.Count() >= 10)
+            // {
+            //     IEnumerable<MateriaPrimaProducto> listadoMateriaPrima = await RestManagement.MateriaPrima.Get(this.MateriaPrimaProductos.Count().ToString());
+            //
+            //     if (listadoMateriaPrima.Any())
+            //         this.MateriaPrimaProductos = this.MateriaPrimaProductos.Union(listadoMateriaPrima).ToObservableCollection();
+            // }
+            return Task.CompletedTask;
         }
     }
 }

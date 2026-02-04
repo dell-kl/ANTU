@@ -27,7 +27,7 @@ public class FabricadoRest : IFabricado
         throw new NotImplementedException();
     }
 
-    public async Task<IEnumerable<Produccion>> Get(object data, Func<Task>? ejecutarTarea = null)
+    public async Task<RequestResultDto<IEnumerable<Produccion>>> Get(object data)
     {
         IEnumerable<Produccion> listProduccion = new List<Produccion>();
 
@@ -36,7 +36,7 @@ public class FabricadoRest : IFabricado
         if (httpResponse.IsSuccessStatusCode)
             listProduccion = JsonConvert.DeserializeObject<IEnumerable<Produccion>>(await httpResponse.Content.ReadAsStringAsync())!;
 
-        return listProduccion;
+        return null;
     }
 
     public Task<bool> Update(FabricadoRequestDto data, Func<Task> ejecutarTarea)

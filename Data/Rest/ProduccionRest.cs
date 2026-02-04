@@ -47,7 +47,7 @@ public class ProduccionRest : IProduccion
         throw new NotImplementedException();
     }
 
-    public async Task<IEnumerable<Produccion>> Get(object data, Func<Task>? ejecutarTarea = null)
+    public async Task<RequestResultDto<IEnumerable<Produccion>>> Get(object data)
     {
         IEnumerable<Produccion> listProduccion = new List<Produccion>();
 
@@ -56,7 +56,7 @@ public class ProduccionRest : IProduccion
         if (httpResponse.IsSuccessStatusCode)
             listProduccion = JsonConvert.DeserializeObject<IEnumerable<Produccion>>(await httpResponse.Content.ReadAsStringAsync())!;
 
-        return listProduccion;
+        return null;
     }
 
     public Task<bool> Update(ProduccionReqestDto data, Func<Task> ejecutarTarea)

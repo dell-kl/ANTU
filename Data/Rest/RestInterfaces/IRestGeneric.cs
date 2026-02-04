@@ -9,7 +9,7 @@ namespace Data.Rest.RestInterfaces
     {
         public Task<RequestResultDto<string>> Add(TRequestPost data);
         public Task<RequestResultDto<string>> Add(TRequestPost data, ObservableCollection<FileResultExtensible> fileResultExtensibles);
-        public Task<IEnumerable<TRequestGet>> Get(object data, Func<Task>? ejecutarTarea = null);
+        public Task<RequestResultDto<IEnumerable<TRequestGet>>> Get(object data);
         public Task<bool> Update(TRequestPost data, Func<Task> ejecutarTarea);
         public void Delete();
     }

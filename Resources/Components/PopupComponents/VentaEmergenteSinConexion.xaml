@@ -9,7 +9,7 @@
         VerticalOptions="Center">
         <Image
             HeightRequest="270"
-            Source="conexion_perdida.jpg"/>
+            Source="{Binding Path=Icono}"/>
         <!-- <Button -->
         <!--     HorizontalOptions="Center" -->
         <!--     BackgroundColor="#8C3623" -->

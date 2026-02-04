@@ -6,7 +6,6 @@ using Modelos;
 using Modelos.Dto;
 using Modelos.RequestDto;
 using Modelos.ResultDto;
-using Syncfusion.Maui.DataSource.Extensions;
 
 namespace Business.Services;
 
@@ -14,8 +13,8 @@ namespace Business.Services;
 public class MateriaPrimaService : IMateriaPrimaService
 {
     private bool _hasMore = true;
-    
     private readonly IRestManagement _restManagement;
+    
     
     public MateriaPrimaService(IRestManagement restManagement)
     {
@@ -26,15 +25,14 @@ public class MateriaPrimaService : IMateriaPrimaService
     //adelante con implementacion de cache,
     //por el momento tendremos esta
     //configuracion.
-    public async Task<IEnumerable<MateriaPrimaProducto>> GetMateriaPrimaAync(object data, CancellationToken cancellationToken = default)
+    public async Task<RequestResultDto<IEnumerable<MateriaPrimaProducto>>> GetMateriaPrimaAync(object data)
     {
         if (!_hasMore)
             return new List<MateriaPrimaProducto>();
         
-        var resultado = await _restManagement.MateriaPrima.Get(data);
-
-        resultado = resultado.ToObservableCollection();
-        if (resultado!.Count() < 10)
+        RequestResultDto<IEnumerable<MateriaPrimaProducto>> resultado = await _restManagement.MateriaPrima.Get(data);
+        
+        if ( resultado.Value != null && resultado!.Value.Count() < 10)
             _hasMore = false;
 
         return resultado!;
@@ -83,5 +81,12 @@ public class MateriaPrimaService : IMateriaPrimaService
     public Task RegistarImagenesMateriaPrima(ObservableCollection<FileResultExtensible> listadoImagenes)
     {
         throw new NotImplementedException();
+    }
+
+    public async Task<RequestResultDto<IEnumerable<KgSeguimiento>>> GetKgSeguimientoMateriaPrimaDetalle(MateriaPrimaDetalle materiaPrimaDetalle)
+    {
+        RequestResultDto<IEnumerable<KgSeguimiento>> resultado = await _restManagement.MateriaPrima.GetKgSeguimientos(materiaPrimaDetalle);
+
+        return resultado;
     }
 }
