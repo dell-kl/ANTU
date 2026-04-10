@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Net;
 using System.Runtime.Versioning;
 using ANTU.Resources.Utilidades;
 using Business.Services.IServices;
@@ -7,6 +8,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Data.Rest.RestInterfaces;
 using Modelos;
+using Modelos.ResultDto;
+using Syncfusion.Maui.Data;
 
 namespace ANTU.ViewModel.ComponentsViewModel;
 
@@ -25,29 +28,45 @@ public partial class CatalogoProductoCollectionViewComponentsViewModel : ParentV
     }
 
     [RelayCommand(AllowConcurrentExecutions = false)]
-    public async Task CargarDatosCatalogoProducto()
+    public async Task CargarDatosCatalogoProducto(object? reintento = null)
     {
-        try
-        {
-            if (this.IsLazyLoading)
-                return;
-        
-            this.IsLazyLoading = true;
+        if (IsLazyLoading)
+            return;
 
-            var listado = await ManagementService.CatalogoProductoService.GetCatalogoProductosAync(this.DatosCatalogoProductos.Count());
+        IsLazyLoading = true;
 
-            foreach (var item in listado)
-            {
-                this.DatosCatalogoProductos.Add(item);
-            }
+        //Mostramos la pantalla de "Cargando..." cuando el usuario presione el boton de reintentar.
+        if (reintento is bool && Boolean.TryParse(reintento?.ToString(), out var reintentarPeticion) && reintentarPeticion)
+            await MostrarSpinner();
         
-            this.IsLazyLoading = false;
-        }
-        catch (HttpRequestException e)
+        RequestResultDto<IEnumerable<CatalogoProducto>> resultado = await ManagementService.CatalogoProductoService.GetCatalogoProductosAync(DatosCatalogoProductos.Count);
+        
+        if (resultado.Success)
         {
-            await DesmontarSpinner();
-            await Mensaje.MostrarAlertaSinConexion("Conexion fallo, intentalo en otro momento.");
+            if (!DatosCatalogoProductos.Any())
+                DatosCatalogoProductos = resultado.Value.ToObservableCollection();
+            else
+                foreach (var item in resultado.Value)
+                    DatosCatalogoProductos.Add(item);
+            
+            await Mensaje.EliminarVentaSinConexion();
         }
+        else
+        {
+            string mensajeError = "";
+            foreach (var mensaje in resultado.Errors)
+                mensajeError += $"- {mensaje.Message}\n";
+            
+            //Pasamos como argumento este mismo metodo, porque el Command esta vinculado a un boton de la venta
+            // de "sin conexion". Cuando se presione el boton de Reintentar, volvar a llamar a esta funcion.
+            if (resultado.HttpStatusCode is HttpStatusCode.RequestTimeout)
+                await Mensaje.MostrarAlertaSinConexion(mensajeError, command: new AsyncRelayCommand(async () => await CargarDatosCatalogoProducto(true)) );
+            else if ( resultado.HttpStatusCode is HttpStatusCode.InternalServerError)
+                await Mensaje.MostrarAlertaServidor(mensajeError, command: new AsyncRelayCommand(async () => await CargarDatosCatalogoProducto(true)));
+        }
+        
+        await EliminarSpinnerDirectamente();
+        IsLazyLoading = false;
     }
 
     [RelayCommand(AllowConcurrentExecutions = false)]

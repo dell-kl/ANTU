@@ -1,27 +1,39 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using CommunityToolkit.Mvvm.Input;
 
 namespace ANTU.Resources.Components.PopupComponents;
 
 public partial class VentaEmergenteSinConexion : INotifyPropertyChanged
 {
-    private string? icono = "conexion_perdida.jpg";
-    private string? descripcion = "Error conexion...";
+    private string _icono = "conexion_perdida.jpg";
+    private string _descripcion = "Error conexion...";
+    private AsyncRelayCommand command;
 
-    public string Icono
+    public AsyncRelayCommand Command
     {
-        get => icono;
+        get => command;
         set
         {
-            icono = value;
+            command = value;
+            NotifyPropertyChanged();
+        }
+    }
+    
+    public string Icono
+    {
+        get => _icono;
+        set
+        {
+            _icono = value;
             NotifyPropertyChanged();
         }
     }
     public string? Descripcion
     {
-        get => descripcion;
+        get => _descripcion;
         set {
-            descripcion = value;
+            _descripcion = value;
             NotifyPropertyChanged();
         }
     }
@@ -41,8 +53,4 @@ public partial class VentaEmergenteSinConexion : INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    private void ReintentarPeticionButton_OnClicked(object? sender, EventArgs e)
-    {
-        
-    }
 }

@@ -30,8 +30,8 @@ public partial class MateriaPrima
                     Titulo.Text = "Materia Prima";
                     Descripcion.Text = "Inventario de productos comprados";
                     if (this._materiaPrimaViewModel.MateriaPrimaView != null && this._materiaPrimaViewModel.MateriaPrimaView.BindingContext is
-                        MateriaPrimaCollectionViewComponentsVIewModel item && item.CargarDatosMateriaPrimaProductoCommand.CanExecute(this))
-                        await item.CargarDatosMateriaPrimaProductoCommand.ExecuteAsync(this);
+                        MateriaPrimaCollectionViewComponentsVIewModel item && item.CargarDatosMateriaPrimaProductoCommand.CanExecute(""))
+                        await item.CargarDatosMateriaPrimaProductoCommand.ExecuteAsync(false);
                     ListadoDatosPresentacion.Add(this._materiaPrimaViewModel.MateriaPrimaView);
                     break;
                 case "Catalogo":
@@ -41,7 +41,7 @@ public partial class MateriaPrima
                         this._materiaPrimaViewModel.CatalogoProductoView.BindingContext is
                             CatalogoProductoCollectionViewComponentsViewModel item2 &&
                         item2.CargarDatosCatalogoProductoCommand.CanExecute(this))
-                        await item2.CargarDatosCatalogoProductoCommand.ExecuteAsync(this);
+                        await item2.CargarDatosCatalogoProductoCommand.ExecuteAsync(false);
                     ListadoDatosPresentacion.Add(this._materiaPrimaViewModel.CatalogoProductoView);
                     break;
                 case "Fabricacion":

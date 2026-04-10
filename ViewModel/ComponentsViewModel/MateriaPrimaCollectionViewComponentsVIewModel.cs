@@ -9,6 +9,7 @@ using CommunityToolkit.Mvvm.Input;
 using Data.Rest.RestInterfaces;
 using Modelos;
 using Modelos.ResultDto;
+using Syncfusion.Maui.Data;
 
 namespace ANTU.ViewModel.ComponentsViewModel;
 
@@ -26,34 +27,48 @@ public partial class MateriaPrimaCollectionViewComponentsVIewModel : ParentViewM
         this.DatosMateriaPrimaProductos = new ObservableCollection<MateriaPrimaProducto>();
     }
 
+    public event Action<string> EventoReintentar; 
+    
     [RelayCommand(AllowConcurrentExecutions = false)]
-    public async Task CargarDatosMateriaPrimaProducto()
+    public async Task CargarDatosMateriaPrimaProducto(object? reintento = null)
     {
         if (this.IsLazyLoading)
             return;
 
         this.IsLazyLoading = true;
-
+        
+        //Mostramos la pantalla de "Cargando..." cuando el usuario presione el boton de reintentar.
+        if (reintento is bool && Boolean.TryParse(reintento?.ToString(), out var reintentarPeticion) && reintentarPeticion)
+            await MostrarSpinner();
+        
         RequestResultDto<IEnumerable<MateriaPrimaProducto>> listado =
             await ManagementService.materiaPrimaService.GetMateriaPrimaAync(this.DatosMateriaPrimaProductos.Count());
-        
+
         if (listado.Success)
-            foreach (var item in listado.Value)
-                this.DatosMateriaPrimaProductos.Add(item);
+        {
+            if (!DatosMateriaPrimaProductos.Any())
+                DatosMateriaPrimaProductos = listado.Value.ToObservableCollection();
+            else
+                foreach (var item in listado.Value)
+                    this.DatosMateriaPrimaProductos.Add(item);
+
+            await Mensaje.EliminarVentaSinConexion();
+        }
         else
         {
             string mensajeError = "";
             foreach (var mensaje in listado.Errors)
                 mensajeError += $"- {mensaje.Message}\n";
             
+            //Pasamos como argumento este mismo metodo, porque el Command esta vinculado a un boton de la venta
+            // de "sin conexion". Cuando se presione el boton de Reintentar, volvar a llamar a esta funcion.
             if (listado.HttpStatusCode is HttpStatusCode.RequestTimeout)
-                await Mensaje.MostrarAlertaSinConexion(mensajeError);
+                await Mensaje.MostrarAlertaSinConexion(mensajeError, command: new AsyncRelayCommand(async () => await CargarDatosMateriaPrimaProducto(true)) );
             else if ( listado.HttpStatusCode is HttpStatusCode.InternalServerError)
-                await Mensaje.MostrarAlertaServidor(mensajeError);
+                await Mensaje.MostrarAlertaServidor(mensajeError, command: new AsyncRelayCommand(async () => await CargarDatosMateriaPrimaProducto(true)));
         }
         
         await EliminarSpinnerDirectamente();
-        
         this.IsLazyLoading = false;
     }
     

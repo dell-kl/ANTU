@@ -20,7 +20,7 @@ public class ProduccionRest : IProduccion
         this.httpClient = httpClient; 
     }
     
-    public async Task<RequestResultDto<string>> Add(ProduccionReqestDto data)
+    public async Task<RequestResultDto<object>> Add(ProduccionReqestDto data)
     {
         try
         {

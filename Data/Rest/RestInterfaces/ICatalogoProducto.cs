@@ -2,13 +2,14 @@
 using Modelos.RequestDto;
 using System.Collections.ObjectModel;
 using Modelos.Dto;
+using Modelos.ResultDto;
 
 namespace Data.Rest.RestInterfaces
 {
     public interface ICatalogoProducto : IRestGeneric<CatalogoProductoRequestDto, CatalogoProducto>
     {
-        Task<Dictionary<string, object>> SaveImages(ObservableCollection<FileResultExtensible> fileResultExtensible, string guid, bool activarVentanasAlerta = false, Func<Task>? ejecutarTask = null);
-
+        Task<RequestResultDto<object>> RegistrarImagenesCatalogoProducto(ObservableCollection<FileResultExtensible> fileResultExtensibles, string guid);
+        
         Task<IEnumerable<DataCatalogProducto>> GetDataCatalogProducto(object data, string GuidCatalogProduct);
 
         Task<bool> AddDatosVentaDataCatalogProduct(CatalogoProductoRequestDto catalogProductRequestDto, Func<Task> ejecutarTarea);

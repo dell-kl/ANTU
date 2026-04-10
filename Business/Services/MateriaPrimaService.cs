@@ -32,17 +32,16 @@ public class MateriaPrimaService : IMateriaPrimaService
         
         RequestResultDto<IEnumerable<MateriaPrimaProducto>> resultado = await _restManagement.MateriaPrima.Get(data);
         
-        if ( resultado.Value != null && resultado!.Value.Count() < 10)
+        if ( resultado.Success && resultado!.Value.Count() < 10)
             _hasMore = false;
 
         return resultado!;
     }
-
-    public async Task<RequestResultDto<string>> RegistrarMateriaPrima(MateriaPrimaFormulario materiaPrimaFormulario, ObservableCollection<FileResultExtensible> listadoImagenes)
+    
+    public async Task<RequestResultDto<object>> RegistrarMateriaPrima(MateriaPrimaFormulario materiaPrimaFormulario, ObservableCollection<FileResultExtensible> listadoImagenes)
     {
         string identificador = Guid.NewGuid().ToString();
-        
-        RequestResultDto<string> resultado = await _restManagement.MateriaPrima.Add(
+        RequestResultDto<object> resultado = await _restManagement.MateriaPrima.Add(
             new MateriaPrimaRequestDto()
             {
                 id_dto = identificador,
@@ -58,6 +57,10 @@ public class MateriaPrimaService : IMateriaPrimaService
                     }   
                 }
             });
+
+        if (!listadoImagenes.Any())
+            return resultado;
+        
         return  await resultado.Bind(_restManagement.MateriaPrima.RegistrarImagenesMateriaPrima, listadoImagenes, identificador);
     }
 
@@ -78,9 +81,14 @@ public class MateriaPrimaService : IMateriaPrimaService
     }
 
 
-    public Task RegistarImagenesMateriaPrima(ObservableCollection<FileResultExtensible> listadoImagenes)
+    public async Task<RequestResultDto<object>> RegistarImagenesMateriaPrima(ObservableCollection<FileResultExtensible> listadoImagenes, string identificador)
     {
-        throw new NotImplementedException();
+        return await _restManagement.MateriaPrima.RegistrarImagenesMateriaPrima(listadoImagenes, identificador);
+    }
+
+    public async Task<RequestResultDto<bool>> EliminarImagenesMateriaPrima(ICollection<DataImage> dataImages)
+    {
+        return await _restManagement.MateriaPrima.DeleteImages(dataImages);
     }
 
     public async Task<RequestResultDto<IEnumerable<KgSeguimiento>>> GetKgSeguimientoMateriaPrimaDetalle(MateriaPrimaDetalle materiaPrimaDetalle)
@@ -88,5 +96,23 @@ public class MateriaPrimaService : IMateriaPrimaService
         RequestResultDto<IEnumerable<KgSeguimiento>> resultado = await _restManagement.MateriaPrima.GetKgSeguimientos(materiaPrimaDetalle);
 
         return resultado;
+    }
+
+    public async Task<RequestResultDto<KgSeguimiento>> AgregarStockMateriaPrima(MateriaPrimaFormulario materiaPrimaFormulario, string identificador)
+    { 
+        RequestResultDto<KgSeguimiento> solicitud = await _restManagement.MateriaPrima.AgregarStockMateriaPrima(new Modelos.RequestDto.StockMateriaPrimaRequestDto()
+        {
+            Identificador = identificador,
+            Amount = materiaPrimaFormulario.Cantidad,
+            KgStandard = materiaPrimaFormulario.KgStandard,
+            PriceUnit = materiaPrimaFormulario.Precio
+        });
+
+        return solicitud;
+    }
+
+    public async Task<RequestResultDto<bool>> EditarDatosMateriaPrima(MateriaPrimaRequestDto materiaPrimaRequestDto)
+    {
+        return await _restManagement.MateriaPrima.EditarDatosMateriaPrima(materiaPrimaRequestDto);
     }
 }

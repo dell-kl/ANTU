@@ -44,5 +44,18 @@
             "/api/ReadyProductsManufactured/ObtenerInformacionProductosBodega",
             "/api/ReadyProductsManufactured/ActualizarEstadoFabricado"
         };
+
+        public static class MateriaPrimaRutas
+        {
+            public const string RegistrarMateriaPrima = "/api/RawMaterial/RegistrarMateriaPrima";
+            public const string RegistrarImagenes = "/api/RawMaterial/RegistrarImagenes";
+            public const string SolicitarMateriaPrima = "/api/RawMaterial/SolicitarMateriaPrima";
+            public const string DetalleMateriaPrima = "/api/RawMaterial/DetalleMateriaPrima";
+            public const string AgregarEnStock = "/api/RawMaterial/AgregarEnStock";
+            public const string EditarNombreMateriaPrima = "/api/RawMaterial/EditNameRawMaterial";
+            public const string VerImagen = "api/RawMaterial/ViewImage"; // este ruta debe estar asi sin diagonal en el principio
+            public const string EliminarImagenesMateriaPrima = "/api/RawMaterial/DeleteImagesRawMaterial";
+            public const string SolicitarKgMonitoring = "/api/RawMaterial/SolicitarKgMonitoring";
+        }
     }
 }

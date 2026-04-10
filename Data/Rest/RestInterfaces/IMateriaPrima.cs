@@ -8,17 +8,15 @@ namespace Data.Rest.RestInterfaces
 {
     public interface IMateriaPrima : IRestGeneric<MateriaPrimaRequestDto, MateriaPrimaProducto>
     {
-        Task<Dictionary<string, object>> SaveImages(ObservableCollection<FileResultExtensible> fileResultExtensible, string guid, bool activarVentanasAlerta = false, Func<Task>? ejecutarTask = null);
-
-        Task<RequestResultDto<string>> RegistrarImagenesMateriaPrima(ObservableCollection<FileResultExtensible> fileResultExtensibles, string guid);
+        Task<RequestResultDto<object>> RegistrarImagenesMateriaPrima(ObservableCollection<FileResultExtensible> fileResultExtensibles, string guid);
         
         Task<RequestResultDto<MateriaPrimaDetalle>> MateriaPrimaDetalles(string guid);
 
-        Task<bool> AgregarStockMateriaPrima(StockMateriaPrimaRequestDto stockMateriaPrima, Func<Task>? ejecutarTask = null);
+        Task<RequestResultDto<KgSeguimiento>> AgregarStockMateriaPrima(StockMateriaPrimaRequestDto stockMateriaPrima);
 
-        Task<bool> EditarDatosMateriaPrima(MateriaPrimaRequestDto materiaPrimaRequestDTO, Func<Task>? ejecutarTask = null);
+        Task<RequestResultDto<bool>> EditarDatosMateriaPrima(MateriaPrimaRequestDto materiaPrimaRequestDTO);
 
-        Task<bool> DeleteImages(ICollection<DataImage> dataImages, Func<Task>? ejecutarTask = null);
+        Task<RequestResultDto<bool>> DeleteImages(ICollection<DataImage> dataImages);
 
         Task<RequestResultDto<IEnumerable<KgSeguimiento>>> GetKgSeguimientos(MateriaPrimaDetalle datos);
     }

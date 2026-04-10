@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Versioning;
 using Modelos.Dto;
-using Modelos.RequestDto;
+using Modelos;
 using ANTU.Resources.Components.FormularioComponentes;
 using ANTU.Resources.Utilidades;
 using Business.Services.IServices;
@@ -23,43 +23,38 @@ namespace ANTU.ViewModel
         {
             catalogoProductoFormularioComponenets.BindingContext = this;
         }
-
-        //[RelayCommand(AllowConcurrentExecutions = false)]
-        //public override async Task SeleccionarArchivoMostrar()
-        //{
-        //    await base.SeleccionarArchivoMostrar();
-        //}
-
-        //este codigo de aqui tiene que ver con la parte de nuestras imagenes, el 
-        //boton con la funcionalidad de eliminar la imagen de la lista 
-        //este metodo es de prueba solamente, mas adelante hay que reemplazarlo.
-
-
+        
         [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task RegistarCatalogoProducto(CatalogoProductoFormulario catalogoProductoFormulario)
         {
-            // await MostrarSpinner();
-            // var resultado = await RestManagement.CatalogoProduct.Add(
-            //     new Modelos.RequestDto.CatalogoProductoRequestDto()
-            //     {
-            //         identificador = Guid.NewGuid().ToString(),
-            //         nombreProducto = catalogoProductoFormulario.NombreProducto!,
-            //         dataCatalogProducts = new List<DataProduct>()
-            //         {
-            //             new DataProduct()
-            //             {
-            //                 precio = (decimal) catalogoProductoFormulario.DatosVentas.Precio,
-            //                 pesoKg = catalogoProductoFormulario.DatosVentas.Kg,
-            //                 cantidadTotal = catalogoProductoFormulario.DatosVentas.Cantidad
-            //             }
-            //         }
-            //     },
-            //     () => DesmontarSpinner(),
-            //     FileManyResults
-            // );
-            //
-            // catalogoProductoFormulario.limpiarDatos();
-            // FileManyResults.Clear();
+            await MostrarSpinner();
+
+            var resultado = await ManagementService.CatalogoProductoService.RegistrarCatalogoProductoAsync(
+                catalogoProductoFormulario,
+                FileManyResults
+            );
+            
+            string mensajeErrorCompleto = "", mensajeSuccesful = "";
+            foreach (var resultadoError in resultado.Errors)
+                mensajeErrorCompleto += $" - {resultadoError.Message}\n";
+            foreach (var resultadoSuccessful in resultado.Successful)
+            {
+                mensajeSuccesful += $"- {resultadoSuccessful}\n";
+            }
+            
+            if (!resultado.Success && resultado.Successful.Count == 0) // No se registro nada                                                                                       
+                await Mensaje.MensajeError($"Error Registrar", mensajeErrorCompleto);
+            else
+            {
+                FileManyResults.Clear();
+                
+                if (!resultado.Success && resultado.Successful.Count != 0) // Se registro la materia prima y no las imagenes
+                    await Mensaje.MensajeAdvertencia($"Catalogo Producto Registrado", $"{mensajeSuccesful}\n{mensajeErrorCompleto}");
+                else if(resultado.Success) // Se ejecutaron exitosamente todos los procesos.
+                    await Mensaje.MensajeCorrecto("Solicitud Aceptada", mensajeSuccesful);
+            }
+            this.CatalogoProductoFormularioComponenets.ResetearValoresFormulario();
+            await EliminarSpinnerDirectamente();
         }
     }
 }

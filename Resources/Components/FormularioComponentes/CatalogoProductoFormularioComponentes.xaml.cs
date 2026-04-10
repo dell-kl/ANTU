@@ -1,3 +1,6 @@
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Runtime.Versioning;
 using Modelos;
 using Modelos.Dto;
 using ANTU.ViewModel;
@@ -6,17 +9,29 @@ using Syncfusion.Maui.DataForm;
 
 namespace ANTU.Resources.Components.FormularioComponentes;
 
-public partial class CatalogoProductoFormularioComponentes : ContentView
+[SupportedOSPlatform("Android")]
+public partial class CatalogoProductoFormularioComponentes : ContentView, INotifyPropertyChanged
 {
-    private CatalogoProductoFormulario catalogoProductoFormulario;
-
+    private CatalogoProductoFormulario _catalogoProductoFormulario;
+    public event PropertyChangedEventHandler? PropertyChanged;
+    
+    public CatalogoProductoFormulario CatalogoProductoFormulario
+    {
+        get => _catalogoProductoFormulario;
+        set
+        {
+            _catalogoProductoFormulario = value;
+            NotifyPropertyChanged();
+        }
+    }
+    
 	public CatalogoProductoFormularioComponentes()
 	{
 		InitializeComponent();
 
-        this.catalogoProductoFormulario = new CatalogoProductoFormulario();
+        this.CatalogoProductoFormulario = new CatalogoProductoFormulario();
 
-        FormularioCatalogoProducto.DataObject = this.catalogoProductoFormulario;
+        FormularioCatalogoProducto.DataObject = this.CatalogoProductoFormulario;
         FormularioCatalogoProducto.Items.Add(new DataFormTextItem() { FieldName = "NombreProducto", GroupName = "Datos Productos" });
         FormularioCatalogoProducto.Items.Add(new DataFormNumericItem() { FieldName = "Precio", GroupName = "Datos Venta" });
         FormularioCatalogoProducto.Items.Add(new DataFormNumericItem() { FieldName = "Kg", GroupName = "Datos Venta" });
@@ -116,10 +131,10 @@ public partial class CatalogoProductoFormularioComponentes : ContentView
 
     private void dataForm_ValidateForm(object sender, DataFormValidateFormEventArgs e)
     {
-        this.catalogoProductoFormulario.NombreProducto = (e.NewValues["NombreProducto"] is null) ? "" : e.NewValues["NombreProducto"].ToString();
-        this.catalogoProductoFormulario.DatosVentas.Precio = (e.NewValues["DatosVentas.Precio"] is null) ? 0 : (double)e.NewValues["DatosVentas.Precio"];
-        this.catalogoProductoFormulario.DatosVentas.Kg = (e.NewValues["DatosVentas.Kg"] is null) ? 0 : (double)e.NewValues["DatosVentas.Kg"];
-        this.catalogoProductoFormulario.DatosVentas.Cantidad = (e.NewValues["DatosVentas.Cantidad"] is null) ? 0 : int.Parse(e.NewValues["DatosVentas.Cantidad"].ToString()!);
+        this.CatalogoProductoFormulario.NombreProducto = (e.NewValues["NombreProducto"] is null) ? "" : e.NewValues["NombreProducto"].ToString();
+        this.CatalogoProductoFormulario.DatosVentas.Precio = (e.NewValues["DatosVentas.Precio"] is null) ? 0 : (double)e.NewValues["DatosVentas.Precio"];
+        this.CatalogoProductoFormulario.DatosVentas.Kg = (e.NewValues["DatosVentas.Kg"] is null) ? 0 : (double)e.NewValues["DatosVentas.Kg"];
+        this.CatalogoProductoFormulario.DatosVentas.Cantidad = (e.NewValues["DatosVentas.Cantidad"] is null) ? 0 : int.Parse(e.NewValues["DatosVentas.Cantidad"].ToString()!);
     }
 
 
@@ -144,7 +159,7 @@ public partial class CatalogoProductoFormularioComponentes : ContentView
                     //CatalogoProductoDetalleViewModel se encargue de realizar la peticion de mandar a guardar.
                     await viewModelPopup.CerrarPopupCommand.ExecuteAsync(new List<object>()
                     {
-                        this.catalogoProductoFormulario ,
+                        this.CatalogoProductoFormulario ,
                         datos.Identificador
                     });
                 }
@@ -153,6 +168,17 @@ public partial class CatalogoProductoFormularioComponentes : ContentView
         }
 
         if(FormularioCatalogoProducto.Validate() && BindingContext is CatalogoProductoFormularioViewModel viewModel && viewModel.RegistarCatalogoProductoCommand.CanExecute(null))
-            await viewModel.RegistarCatalogoProductoCommand.ExecuteAsync(this.catalogoProductoFormulario);
+            await viewModel.RegistarCatalogoProductoCommand.ExecuteAsync(this.CatalogoProductoFormulario);
+        
+    }
+    
+    public void ResetearValoresFormulario()
+    {
+        // FormularioCatalogoProducto.ClearValue
+    }
+    
+    private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

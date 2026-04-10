@@ -1,16 +1,15 @@
 ﻿using Modelos;
-using ANTU.Resources.Components.PopupComponents;
 using Data.Rest.RestInterfaces;
-using ANTU.Resources.ValueConverter;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Mopups.Services;
 using System.Collections.ObjectModel;
+using System.Net;
 using System.Runtime.Versioning;
 using ANTU.Resources.Utilidades;
 using Business.Services.IServices;
+using Modelos.ResultDto;
 
 namespace ANTU.ViewModel
 {
@@ -73,29 +72,51 @@ namespace ANTU.ViewModel
                 "Eliminando, espere...",
                 "Cancelar",
                 "Continuar",
-                (Func<Task>)(async () => {
+                (Func<Task>)(async () =>
+                {
 
                     ICollection<DataImage> ListDataImages = this.Data.Where((Func<DataImage, bool>)(item => (bool)item.Estado)).ToList();
-                    bool resultado = false;
+                    RequestResultDto<bool> respuestaServidor = new();
 
-                    if(DataModel is MateriaPrimaDetalle materiaPrimaDetalle)
-                        resultado = await RestManagement.MateriaPrima.DeleteImages(ListDataImages, async() => { await base.DesmontarSpinner(); });
-                    else if(DataModel is CatalogoProductoDetalle catalogoProductoDetalle)
-                        resultado = await RestManagement.CatalogoProduct.DeleteImages(ListDataImages, async() => { await base.DesmontarSpinner(); });
+                    if (DataModel is MateriaPrimaDetalle materiaPrimaDetalle)
+                        respuestaServidor = await ManagementService.materiaPrimaService.EliminarImagenesMateriaPrima(ListDataImages);
 
-                    if (resultado)
+                    //ESTE ES PARA CATALOGO PRODUCTO... REALIZARLO MAS ADELANTE!!!!
+                    // else if(DataModel is CatalogoProductoDetalle catalogoProductoDetalle)
+                    //     resultado = await RestManagement.CatalogoProduct.DeleteImages(ListDataImages, async() => { await base.DesmontarSpinner(); });
+                    //
+                    
+                    if (respuestaServidor.Success)
                     {
-                        //tenemos que quitar manualmente de la coleccion en caso de que si se hayan eliminado exitosamente en el servidor.
-                        this.Data = this.Data.Where((Func<DataImage, bool>)(item => (bool)!item.Estado)).ToObservableCollection();
-
+                        Data = this.Data.Where((Func<DataImage, bool>)(item => (bool)!item.Estado)).ToObservableCollection();
+                        
                         if (DataModel is MateriaPrimaDetalle modelo1)
-                            modelo1.imagenes = this.Data;
+                            modelo1.imagenes = Data;
                         else if (DataModel is CatalogoProductoDetalle modelo2)
-                            modelo2.Imagenes = this.Data;
+                            modelo2.Imagenes = Data;
+                        
+                        await Mensaje.MensajeCorrecto("Eliminar imagenes", "Las imagenes se eliminaron exitosamente");
                     }
+                    else
+                    {
+                        string mensajeError = "";
+                        foreach (var item in respuestaServidor.Errors)
+                            mensajeError += $"{item.Message}\n";   
+                    
+                        if(respuestaServidor.HttpStatusCode is HttpStatusCode.RequestTimeout)
+                            await Mensaje.MensajeError("Fuera de red/sin conexion", mensajeError);
+                        else if (respuestaServidor.HttpStatusCode is HttpStatusCode.InternalServerError)
+                            await Mensaje.MensajeError("Error procesar datos", mensajeError);
+                        else
+                            await Mensaje.MensajeError("Error procesar eliminado", mensajeError);
+                    }
+                    
+                    ActivarPanelNuevasImagenes = false;
+                    AlturaDinamicaListaImagenes = 700;
+                    
+                    await EliminarSpinnerDirectamente();
                 })
             );
-
         }
 
         [RelayCommand(AllowConcurrentExecutions = false)]
@@ -132,30 +153,51 @@ namespace ANTU.ViewModel
                    "Registrar, espere...",
                    "Cancelar",
                    "Continuar",
-                   async () => {
-
-                       Dictionary<string, object> resultado = new Dictionary<string, object>();
-
+                   async () =>
+                   {
+                       RequestResultDto<object> respuestaServidor = new();
+                       
                        if(DataModel is MateriaPrimaDetalle materiaPrimaDetalle)
-                            resultado = await RestManagement.MateriaPrima.SaveImages(FileManyResults, this.identificador, true, async() => { await base.DesmontarSpinner(); });
-                       else if(DataModel is CatalogoProductoDetalle catalogoProductoDetalle)
-                            resultado = await RestManagement.CatalogoProduct.SaveImages(FileManyResults, this.identificador, true, async() => { await base.DesmontarSpinner(); });
+                           respuestaServidor = await ManagementService.materiaPrimaService.RegistarImagenesMateriaPrima(FileManyResults, this.identificador);
 
-                       if ((bool)resultado["estado"])
+                       // NECESITAMOS ESTE METODO PARA PROCESAR IMAGENES PARA LA PARTE DE CATALOOG PRODUCTO.!!!!
+                       // else if(DataModel is CatalogoProductoDetalle catalogoProductoDetalle)
+                       //      resultado = await RestManagement.CatalogoProduct.SaveImages(FileManyResults, this.identificador, true, async() => { await base.DesmontarSpinner(); });
+                       //
+                       
+                       FileManyResults.Clear();
+                       ActivarPanelNuevasImagenes = false;
+                       AlturaDinamicaListaImagenes = 700;
+                       
+                       if (respuestaServidor.Success)
                        {
-                           FileManyResults.Clear();
-                           ActivarPanelNuevasImagenes = false;
-                           AlturaDinamicaListaImagenes = 700;
+                           RequestDataImage imagenesModelo = (respuestaServidor.Value as RequestDataImage)!;
+                           
+                           foreach(var imagen in imagenesModelo.imagenes)
+                               Data.Add(imagen);
 
-                           ICollection<DataImage> data = (resultado["imagenes"] as ICollection<DataImage>)!;
-                           this.Data = this.Data.Union(data).ToObservableCollection();
-
-                           if (DataModel is MateriaPrimaDetalle modelo1)
-                               modelo1.imagenes = this.Data;
+                           if (DataModel is MateriaPrimaDetalle modelo)
+                               modelo.imagenes = Data;
                            else if (DataModel is CatalogoProductoDetalle modelo2)
-                               modelo2.Imagenes = this.Data;
+                               modelo2.Imagenes = Data;
+                           
+                           await Mensaje.MensajeCorrecto("Registrar Imagenes", "Las imagenes se registraron exitosamente");
                        }
-
+                       else
+                       {
+                           string mensajeError = "";
+                           foreach (var item in respuestaServidor.Errors)
+                               mensajeError += $"{item.Message}\n";   
+                    
+                           if(respuestaServidor.HttpStatusCode is HttpStatusCode.RequestTimeout)
+                               await Mensaje.MensajeError("Fuera de red/sin conexion", mensajeError);
+                           else if (respuestaServidor.HttpStatusCode is HttpStatusCode.InternalServerError)
+                               await Mensaje.MensajeError("Error procesar datos", mensajeError);
+                           else
+                               await Mensaje.MensajeError("Error procesar imagenes", mensajeError);
+                       }
+                       
+                       await EliminarSpinnerDirectamente();
                    }
                 );
 

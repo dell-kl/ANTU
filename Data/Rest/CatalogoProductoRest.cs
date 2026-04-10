@@ -1,9 +1,7 @@
-﻿using System.Collections.Immutable;
-using Modelos;
+﻿using Modelos;
 using Modelos.Dto;
 using Modelos.RequestDto;
 using Data.Rest.RestInterfaces;
-// using ANTU.Resources.Utilidades;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Net;
@@ -23,7 +21,7 @@ namespace Data.Rest
             this.httpClient = httpClient;
         }
 
-        public async Task<RequestResultDto<string>> Add(CatalogoProductoRequestDto data)
+        public async Task<RequestResultDto<object>> Add(CatalogoProductoRequestDto data)
         {
             try
             {
@@ -32,48 +30,59 @@ namespace Data.Rest
                     Encoding.UTF8,
                     MediaTypeNames.Application.Json);
 
-                using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS_CATALOGPRODUCT[0], json);
+                using HttpResponseMessage httpResponse =
+                    await httpClient.PostAsync(Endpoints.ENDPOINTS_CATALOGPRODUCT[0], json);
 
                 if (httpResponse.StatusCode != HttpStatusCode.OK)
-                    return Result.Failure(await httpResponse.Content.ReadAsStringAsync(), httpResponse.StatusCode);
+                    return Result.Failure<object>(await httpResponse.Content.ReadAsStringAsync(), httpResponse.StatusCode);
 
-                return Result.Success(await httpResponse.Content.ReadAsStringAsync());
+                return Result.Success<object>(await httpResponse.Content.ReadAsStringAsync());
             }
-            catch (Exception e)
+            catch (HttpRequestException)
             {
-                return Result.Failure<string>(Error.Exception(e).ToList());
+                return Result.Failure<object>("Se ha perdido la conexion al servicio", HttpStatusCode.RequestTimeout);
+            }
+            catch (Exception)
+            {
+                return Result.Failure<object>("No se puedo procesar la solicitud para registrar tu nuevo catalogo de producto", HttpStatusCode.BadRequest);
             }
         }
 
-        public async Task<RequestResultDto<string>> Add(CatalogoProductoRequestDto data, ObservableCollection<FileResultExtensible> fileResultExtensibles)
+        public Task<RequestResultDto<string>> Add(CatalogoProductoRequestDto data, ObservableCollection<FileResultExtensible> fileResultExtensibles)
         {
-            RequestResultDto<string> resultado = await this.Add(data);
-            Dictionary<string, object> resultadoImagenes = await SaveImages(fileResultExtensibles, data.identificador, activarVentanasAlerta: false);
-            
-            // if ( resultado && resultadoImagenes.ContainsKey("estado") && resultadoImagenes["estado"] is true )
-            //     await _mensaje.MensajeCorrecto("Guardado Exitosamente", "Producto e imagenes guardadas correctamente.");
-            // else if (resultado && resultadoImagenes.ContainsKey("estado") && resultadoImagenes["estado"] is false)
-            //     await _mensaje.MensajeError("Guardado Incompleto", "Producto guardado correctamente, pero no se pudieron guardar las imagenes.");
-            // else
-            //     await _mensaje.MensajeError("Error Guardado", "No se pudieron guardar los datos del producto nuevo.");
-            
             throw new NotImplementedException();
         }
 
         public async Task<RequestResultDto<IEnumerable<CatalogoProducto>>> Get(object data)
         {
-            IEnumerable<CatalogoProducto> listado = new List<CatalogoProducto>();
+            try
+            {
+                //Endpoints.ENDPOINTS_CATALOGPRODUCT[3] es el endpoint para obtener productos por categoria
+                using HttpResponseMessage httpResponse =
+                    await httpClient.GetAsync($"{Endpoints.ENDPOINTS_CATALOGPRODUCT[3]}/{data}");
 
-            //Endpoints.ENDPOINTS_CATALOGPRODUCT[3] es el endpoint para obtener productos por categoria
-            using HttpResponseMessage httpResponse = await httpClient.GetAsync($"{Endpoints.ENDPOINTS_CATALOGPRODUCT[3]}/{data}");
+                if (httpResponse.StatusCode != HttpStatusCode.OK)
+                    return Result.Failure<IEnumerable<CatalogoProducto>>(await httpResponse.Content.ReadAsStringAsync(),
+                        httpResponse.StatusCode);
 
-            if (httpResponse.IsSuccessStatusCode)
-                listado = JsonConvert.DeserializeObject<IEnumerable<CatalogoProducto>>(await httpResponse.Content.ReadAsStringAsync())!;
+                IEnumerable<CatalogoProducto> listado =
+                    JsonConvert.DeserializeObject<IEnumerable<CatalogoProducto>>(
+                        await httpResponse.Content.ReadAsStringAsync())!;
 
-            return null;
+                return Result.Success(listado);
+            }
+            catch (HttpRequestException)
+            {
+                return Result.Failure<IEnumerable<CatalogoProducto>>("Conexin perdida, no se pudieron traer mas datos",
+                    HttpStatusCode.RequestTimeout);
+            }
+            catch (Exception)
+            {
+                return Result.Failure<IEnumerable<CatalogoProducto>>("Hubo un error en procesar los datos del servidor.",
+                    HttpStatusCode.InternalServerError);
+            }
         }
-
-        //aqui crearemos otro metodo parecido al metodo GET implementado.
+        
         public async Task<IEnumerable<DataCatalogProducto>> GetDataCatalogProducto(object data, string GuidCatalogProduct)
         {
             IEnumerable<DataCatalogProducto> listado = new List<DataCatalogProducto>();
@@ -85,45 +94,57 @@ namespace Data.Rest
 
             return listado;
         }
-
-        public async Task<Dictionary<string, object>> SaveImages(ObservableCollection<FileResultExtensible> fileResultExtensible, string guid, bool activarVentanasAlerta = false, Func<Task>? ejecutarTask = null)
+        
+        
+        //aqui crearemos otro metodo parecido al metodo GET implementado.
+        public  async Task<RequestResultDto<object>> RegistrarImagenesCatalogoProducto(ObservableCollection<FileResultExtensible> fileResultExtensibles, string guid)
         {
-            Dictionary<string, object> datos = new Dictionary<string, object>();
             MultipartFormDataContent multipartFormData = new();
-            multipartFormData.Add(new StringContent(guid, Encoding.UTF8, MediaTypeNames.Text.Plain), "identificador");
-
-            foreach (FileResultExtensible fileResult in fileResultExtensible)
+            List<FileStream> archivosAbiertos = new();
+            try
             {
-                var streamContent = new StreamContent(File.OpenRead(fileResult.FullPath));
-                streamContent.Headers.ContentType = MediaTypeHeaderValue.Parse(MediaTypeNames.Image.Jpeg);
+                Dictionary<string, object> datos = new Dictionary<string, object>();
+                multipartFormData.Add(new StringContent(guid, Encoding.UTF8, MediaTypeNames.Text.Plain),
+                    "identificador");
 
-                multipartFormData.Add(streamContent, "formFiles", fileResult.FileName);
-            }
+                foreach (FileResultExtensible fileResult in fileResultExtensibles)
+                {
+                    FileStream leyendoArchivo = File.OpenRead(fileResult.FullPath!);
+                    archivosAbiertos.Add(leyendoArchivo);
 
-            //El Endpoints.ENDPOINTS_CATALOGPRODUCT[2] es el endpoint para subir imagenes
-            using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS_CATALOGPRODUCT[2], multipartFormData);
+                    var streamContent = new StreamContent(leyendoArchivo);
+                    streamContent.Headers.ContentType = MediaTypeHeaderValue.Parse(MediaTypeNames.Image.Jpeg);
 
-            if (ejecutarTask != null)
-                await ejecutarTask();
+                    multipartFormData.Add(streamContent, "formFiles", fileResult.FileName);
+                }
 
-            if (httpResponse.IsSuccessStatusCode && activarVentanasAlerta)
-            {
+                using HttpResponseMessage httpResponse =
+                    await httpClient.PostAsync(Endpoints.ENDPOINTS_CATALOGPRODUCT[2], multipartFormData);
+
+                if (httpResponse.StatusCode != HttpStatusCode.OK)
+                    return Result.Failure<object>(await httpResponse.Content.ReadAsStringAsync(), httpResponse.StatusCode);
+                
                 RequestDataImage resultadoContenido = JsonConvert.DeserializeObject<RequestDataImage>(await httpResponse.Content.ReadAsStringAsync())!;
-                // await _mensaje.MensajeCorrecto("Subida Imagenes", resultadoContenido.mensaje);
-
-                datos.Add("imagenes", resultadoContenido.imagenes);
+                
+                return Result.Success<object>(resultadoContenido);
             }
-            else if (!httpResponse.IsSuccessStatusCode && activarVentanasAlerta)
+            catch (HttpRequestException)
             {
-                string mensajeError = await httpResponse.Content.ReadAsStringAsync();
-                // await _mensaje.MensajeError("Error Subida Imagenes", mensajeError);
+                return Result.Failure<object>("Conexion perdida, no se pudieron registrar las imagenes", HttpStatusCode.RequestTimeout);
             }
-
-            datos.Add("estado", (httpResponse.IsSuccessStatusCode) ? true : false);
-
-            return datos;
+            catch (Exception e)
+            {
+                return Result.Failure<object>("Hubo un error en procesar la solicitud de subida de imagenes", HttpStatusCode.BadRequest);
+            }
+            finally
+            {
+                foreach(FileStream archivo in archivosAbiertos)
+                    await archivo.DisposeAsync();
+                
+                multipartFormData.Dispose();
+            }
         }
-
+        
         public void Delete()
         {
             throw new NotImplementedException();

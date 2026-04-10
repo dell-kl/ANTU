@@ -12,6 +12,7 @@ using System.Net;
 using System.Runtime.Versioning;
 using ANTU.Resources.Utilidades;
 using Business.Services.IServices;
+using Modelos.RequestDto;
 using Modelos.ResultDto;    
 
 namespace ANTU.ViewModel
@@ -30,6 +31,15 @@ namespace ANTU.ViewModel
         [ObservableProperty] private MateriaPrimaEditarDataFormulario _materiaPrimaEditarDataFormulario;
         [ObservableProperty] private ObservableCollection<KgSeguimiento> _kgSeguimientoList;
 
+        /// <summary> 
+        ///Esta propiedad de aqui esta relacionado con la parte de SfDataGrid, es para poder obtener el item seleccionado
+        ///y realiazar alguna accion especifica.
+        /// Revisar: EditarCompraRegistradaStock (Command) y EliminarCompraRegistradaStock (Command)
+        /// XAML relacionado: Views/Detalles/MateriaPrimaDetalle.xaml:503-519 (acciones swipe que disparan los comandos)
+        /// 
+        /// </summary>
+        [ObservableProperty] private KgSeguimiento _kgSeguimientoSeleccionado;
+        
         public MateriaPrimaDetalleViewModel(IRestManagement restManagement, IPopupService popupService, IManagementService managementService, Mensaje mensaje) : base(restManagement, popupService, managementService, mensaje)
         {
             this.MateriaPrimaProducto = new MateriaPrimaProducto(0);
@@ -57,7 +67,8 @@ namespace ANTU.ViewModel
         /// HttpStatusCode.InternalServerError: Un error en el procesamiento de los datos que se logro obtener.
         /// HttpStatusCode.OK: Todo se proceso exitosamente.
         /// </summary>
-        public async Task ObtenerDatosMateriaPrimaDetalle()
+        [RelayCommand(AllowConcurrentExecutions = false)]
+        public async Task ObtenerDatosMateriaPrimaDetalle(object? estado=null)
         {
             RequestResultDto<(MateriaPrimaDetalle, IEnumerable<KgSeguimiento>)> resultado = await ManagementService.materiaPrimaService
                 .ObtenerDatosMateriaPrimaDetalle(this.MateriaPrimaProducto.guid);
@@ -134,15 +145,30 @@ namespace ANTU.ViewModel
                 await base.MostrarSpinner();
 
                 MateriaPrimaFormulario formulario = (MateriaPrimaFormulario)datos[0];
-
-                bool solicitud = await RestManagement.MateriaPrima.EditarDatosMateriaPrima(new Modelos.RequestDto.MateriaPrimaRequestDto()
+                RequestResultDto<bool> respuesta = await ManagementService.materiaPrimaService.EditarDatosMateriaPrima(new MateriaPrimaRequestDto()
                 {
                     id_dto = datos[1].ToString()!,
-                    nombre_dto = formulario.MateriaPrima
-                }, async () => { await base.DesmontarSpinner(); });
+                    nombre_dto = (datos[0] as MateriaPrimaFormulario)!.MateriaPrima
+                });
 
-                if (solicitud)
+                if (respuesta.Success)
+                {
+                    await Mensaje.MensajeCorrecto("Editar Materia Prima", "Se han editado los datos de la materia prima");
                     this.MateriaPrimaProducto.nombreProducto = formulario.MateriaPrima;
+                }
+                else
+                {
+                    string mensajeError = "";
+                    foreach (var item in respuesta.Errors)
+                        mensajeError += $"{item.Message}\n";   
+                    
+                    if(respuesta.HttpStatusCode is HttpStatusCode.RequestTimeout)
+                        await Mensaje.MensajeError("Fuera de red/sin conexion", mensajeError);
+                    else if(respuesta.HttpStatusCode is HttpStatusCode.InternalServerError)
+                        await Mensaje.MensajeError("Error procesar datos", mensajeError);
+                }
+           
+                await base.EliminarSpinnerDirectamente();
             }
         }
 
@@ -161,25 +187,57 @@ namespace ANTU.ViewModel
             if (resultado.Result is List<object> datos)
             {
                 await base.MostrarSpinner();
-
                 MateriaPrimaFormulario formulario = (MateriaPrimaFormulario)datos[0];
+                RequestResultDto<KgSeguimiento> resultadoServidor = await ManagementService.materiaPrimaService.AgregarStockMateriaPrima(formulario, datos[1].ToString()!);
 
-                bool solicitud = await RestManagement.MateriaPrima.AgregarStockMateriaPrima(new Modelos.RequestDto.StockMateriaPrimaRequestDto()
-                {
-                    Identificador = datos[1].ToString()!,
-                    Amount = formulario.Cantidad,
-                    KgStandard = formulario.KgStandard,
-                    PriceUnit = formulario.Precio
-                }, async () => { await base.DesmontarSpinner(); });
-
-                if (solicitud)
+                if (resultadoServidor.Success)
                 {
                     this.MateriaPrimaDetalle!.TotalCompras += 1;
                     this.MateriaPrimaDetalle!.UltimaCompra = (decimal)(formulario.Cantidad * formulario.Precio);
                     this.MateriaPrimaDetalle!.KgTotal += (formulario.Cantidad * formulario.KgStandard);
+                    await Mensaje.MensajeCorrecto("Agregar a Bodega", "Se he agregado mas material a la bodega");
                 }
+                else if (!resultadoServidor.Success)
+                {
+                    string mensajeError = "";
+                    foreach (var item in resultadoServidor.Errors)
+                        mensajeError += $"{item.Message}\n";    
+                    
+                    if(resultadoServidor.HttpStatusCode is HttpStatusCode.RequestTimeout)
+                        await Mensaje.MensajeError("Fuera de red/sin conexion", mensajeError);
+                    else if(resultadoServidor.HttpStatusCode is HttpStatusCode.InternalServerError)
+                        await Mensaje.MensajeError("Error procesar datos", mensajeError);
+                }
+                
+                await EliminarSpinnerDirectamente();
             }
+        }
 
+        [RelayCommand(AllowConcurrentExecutions = false)]
+        public Task EditarCompraRegistradaStock(object datos)
+        {
+            //vamos a realizar la respectiva edicion de la compra registrada.
+            
+            return Task.CompletedTask;
+        }
+
+        [RelayCommand(AllowConcurrentExecutions = false)]
+        public async Task EliminarCompraRegistradaStock(string identificador)
+        {
+            //vamos a realizar la respectiva eliminacion de la compra registrada.
+            await MostrarVentanaConfirmacion(
+                "Proceso Eliminar",
+                "Desear eliminar este registro de compra, se descontara el stock agregado por esta compra",
+                "Eliminando, espere...",
+                "Cancelar",
+                "Continuar", async () =>
+                {
+                    await Task.Delay(4000);
+
+                    await Mensaje.MensajeCorrecto("Eliminacion registro", "Se elimino el registro de compra exitosamente");
+
+                    await EliminarSpinnerDirectamente();
+                });
         }
     }
 }

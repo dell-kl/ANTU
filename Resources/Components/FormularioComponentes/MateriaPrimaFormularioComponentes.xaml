@@ -30,6 +30,7 @@
             FontFamily="MaterialAssets"
             FontSize="17"
             IsEnabled="True"
+            Margin="0,0,0,10"
             IsVisible="True"
             TextColor="#000"
             BackgroundColor="#B2F8A400"/>

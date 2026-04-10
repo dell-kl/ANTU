@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using System.Net;
 using System.Runtime.ExceptionServices;
 using Modelos.Dto;
 
@@ -65,7 +66,10 @@ public static class Result_Bind
     }
     
     //este fue para algo de imagenes, necesitamos hacer una modificacion ... no me gusta esta parte.
-    public static async Task<RequestResultDto<U>> Bind<T, U>(this RequestResultDto<T> r, Func<ObservableCollection<FileResultExtensible>,string,Task<RequestResultDto<U>>> method, ObservableCollection<FileResultExtensible> files, string identificador)
+    public static async Task<RequestResultDto<U>> Bind<T, U>(
+        this RequestResultDto<T> r, 
+        Func<ObservableCollection<FileResultExtensible>,string,Task<RequestResultDto<U>>> method, 
+        ObservableCollection<FileResultExtensible> files, string identificador)
     {
         try
         {

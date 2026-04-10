@@ -21,7 +21,7 @@ namespace Data.Rest
             this.httpClient = httpClient;
         }
 
-        public async Task<RequestResultDto<string>> Add(MateriaPrimaRequestDto materiaPrimaRequestDto)
+        public async Task<RequestResultDto<object>> Add(MateriaPrimaRequestDto materiaPrimaRequestDto)
         {
             try
             {
@@ -30,20 +30,20 @@ namespace Data.Rest
                     Encoding.UTF8,
                     MediaTypeNames.Application.Json);
 
-                using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS[0], json);
+                using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.MateriaPrimaRutas.RegistrarMateriaPrima, json);
 
                 if (httpResponse.StatusCode != HttpStatusCode.OK)
-                    return Result.Failure<string>(await httpResponse.Content.ReadAsStringAsync(), httpResponse.StatusCode);
+                    return Result.Failure<object>(await httpResponse.Content.ReadAsStringAsync(), httpResponse.StatusCode);
 
-                return Result.Success<string>(await httpResponse.Content.ReadAsStringAsync());
+                return Result.Success<object>(await httpResponse.Content.ReadAsStringAsync());
             }
             catch (HttpRequestException)
             {
-                return Result.Failure<string>("Se ha perdido la conexion al servicio", HttpStatusCode.RequestTimeout);
+                return Result.Failure<object>("Se ha perdido la conexion al servicio", HttpStatusCode.RequestTimeout);
             }
             catch (Exception e)
             {
-                return Result.Failure<string>("No se puedo procesar la solicitud para registrar materia prima", HttpStatusCode.BadRequest);
+                return Result.Failure<object>("No se puedo procesar la solicitud para registrar materia prima", HttpStatusCode.BadRequest);
             }
         }
 
@@ -61,53 +61,30 @@ namespace Data.Rest
 
         public async Task<RequestResultDto<IEnumerable<MateriaPrimaProducto>>> Get(object data)
         {
-            IEnumerable<MateriaPrimaProducto> listMateriaPrima = new List<MateriaPrimaProducto>();
-            
-            using HttpResponseMessage? httpResponse =  await httpClient.GetAsync($"{Endpoints.ENDPOINTS[2]}/{data}");
+            try
+            {
+                using HttpResponseMessage? httpResponse = await httpClient.GetAsync($"{Endpoints.MateriaPrimaRutas.SolicitarMateriaPrima}/{data}");
 
-            if (httpResponse.IsSuccessStatusCode)
-                listMateriaPrima =
+                if (httpResponse.StatusCode != HttpStatusCode.OK)
+                    return Result.Failure<IEnumerable<MateriaPrimaProducto>>(
+                        await httpResponse.Content.ReadAsStringAsync(), httpResponse.StatusCode);
+
+                IEnumerable<MateriaPrimaProducto> listMateriaPrima =
                     JsonConvert.DeserializeObject<IEnumerable<MateriaPrimaProducto>>(
                         await httpResponse.Content.ReadAsStringAsync())!;
-            
-            return null;
+                return Result.Success<IEnumerable<MateriaPrimaProducto>>(listMateriaPrima);
+            }
+            catch (HttpRequestException)
+            {
+                return Result.Failure<IEnumerable<MateriaPrimaProducto>>("Conexion perdida, no se pudieron traer mas datos", HttpStatusCode.RequestTimeout);
+            }
+            catch (Exception)
+            {
+                return Result.Failure<IEnumerable<MateriaPrimaProducto>>("Hubo un error en procesar los datos del servidor.", HttpStatusCode.InternalServerError);
+            }
         }
         
-        public async Task<Dictionary<string, object>> SaveImages(ObservableCollection<FileResultExtensible> fileResultExtensible, string guid, bool activarVentanasAlerta = false, Func<Task>? ejecutarTask = null)
-        {
-            Dictionary<string, object> datos = new Dictionary<string, object>();
-            MultipartFormDataContent multipartFormData = new();
-            multipartFormData.Add(new StringContent(guid, Encoding.UTF8, MediaTypeNames.Text.Plain), "identificador");
-
-            foreach(FileResultExtensible fileResult in fileResultExtensible)
-            {
-                var streamContent = new StreamContent(File.OpenRead(fileResult.FullPath));
-                streamContent.Headers.ContentType = MediaTypeHeaderValue.Parse(MediaTypeNames.Image.Jpeg);
-
-                multipartFormData.Add(streamContent, "formFiles", fileResult.FileName);
-            }
-            
-            using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS[1], multipartFormData);
-
-            if (ejecutarTask != null)
-                await ejecutarTask();
-
-            if (httpResponse.IsSuccessStatusCode && activarVentanasAlerta)
-            {
-                RequestDataImage resultadoContenido = JsonConvert.DeserializeObject<RequestDataImage>(await httpResponse.Content.ReadAsStringAsync())!;
-                // await _mensaje.MensajeCorrecto("Subida Imagenes", resultadoContenido.mensaje);
-
-                datos.Add("imagenes", resultadoContenido.imagenes);
-            }
-            // else if (httpResponse.StatusCode == HttpStatusCode.InternalServerError && activarVentanasAlerta)
-            //     await _mensaje.MensajeError("Error Subida Imagenes", await httpResponse.Content.ReadAsStringAsync());
-
-            datos.Add("estado", (httpResponse.IsSuccessStatusCode) ? true : false);
-
-            return datos;
-        }
-
-        public async Task<RequestResultDto<string>> RegistrarImagenesMateriaPrima(ObservableCollection<FileResultExtensible> fileResultExtensibles, string guid)
+        public async Task<RequestResultDto<object>> RegistrarImagenesMateriaPrima(ObservableCollection<FileResultExtensible> fileResultExtensibles, string guid)
         {
             MultipartFormDataContent multipartFormData = new();
             List<FileStream> archivosAbiertos = new();
@@ -129,22 +106,22 @@ namespace Data.Rest
                 }
 
                 using HttpResponseMessage httpResponse =
-                    await httpClient.PostAsync(Endpoints.ENDPOINTS[1], multipartFormData);
+                    await httpClient.PostAsync(Endpoints.MateriaPrimaRutas.RegistrarImagenes, multipartFormData);
 
                 if (httpResponse.StatusCode != HttpStatusCode.OK)
-                    return Result.Failure<string>(await httpResponse.Content.ReadAsStringAsync(), httpResponse.StatusCode);
+                    return Result.Failure<object>(await httpResponse.Content.ReadAsStringAsync(), httpResponse.StatusCode);
                 
                 RequestDataImage resultadoContenido = JsonConvert.DeserializeObject<RequestDataImage>(await httpResponse.Content.ReadAsStringAsync())!;
                 
-                return Result.Success(resultadoContenido.mensaje);
+                return Result.Success<object>(resultadoContenido);
             }
             catch (HttpRequestException)
             {
-                return Result.Failure<string>("Conexion perdida, no se pudieron registrar las imagenes", HttpStatusCode.RequestTimeout);
+                return Result.Failure<object>("Conexion perdida, no se pudieron registrar las imagenes", HttpStatusCode.RequestTimeout);
             }
             catch (Exception e)
             {
-                return Result.Failure<string>("Hubo un error en procesar la solicitud de subida de imagenes", HttpStatusCode.BadRequest);
+                return Result.Failure<object>("Hubo un error en procesar la solicitud de subida de imagenes", HttpStatusCode.BadRequest);
             }
             finally
             {
@@ -155,24 +132,31 @@ namespace Data.Rest
             }
         }
 
-        public async Task<bool> DeleteImages(ICollection<DataImage> dataImages, Func<Task>? ejecutarTask = null)
+        public async Task<RequestResultDto<bool>> DeleteImages(ICollection<DataImage> dataImages)
         {
-            using StringContent json = new(
-                JsonConvert.SerializeObject(dataImages),
-                Encoding.UTF8,
-                MediaTypeNames.Application.Json);
+            try
+            {
+                using StringContent json = new(
+                    JsonConvert.SerializeObject(dataImages),
+                    Encoding.UTF8,
+                    MediaTypeNames.Application.Json);
 
-            using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS[7], json);
+                using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.MateriaPrimaRutas.EliminarImagenesMateriaPrima, json);
 
-            if (httpResponse != null)
-                await ejecutarTask();
+                if (httpResponse.StatusCode != HttpStatusCode.OK)
+                    return Result.Failure<bool>(await httpResponse.Content.ReadAsStringAsync(),
+                        httpResponse.StatusCode);
 
-            // if (httpResponse.IsSuccessStatusCode)
-            //     await _mensaje.MensajeCorrecto("Eliminar Imagenes", await httpResponse.Content.ReadAsStringAsync());
-            // else
-            //     await _mensaje.MensajeError("Error Eliminar Imagenes", await httpResponse.Content.ReadAsStringAsync());
-            
-            return (httpResponse.IsSuccessStatusCode) ? true : false;
+                return Result.Success(true);
+            }
+            catch (HttpRequestException)
+            {
+                return Result.Failure<bool>("Conexion perdida, no se pudieron eliminar las imagenes", HttpStatusCode.RequestTimeout);
+            }
+            catch (Exception)
+            {
+                return Result.Failure<bool>("Error del servidor para eliminar las imagenes", HttpStatusCode.InternalServerError);
+            }
         }
 
         public async Task<bool> Update(MateriaPrimaRequestDto data, Func<Task> ejecutarTarea)
@@ -184,7 +168,7 @@ namespace Data.Rest
         {
             try
             {
-                using HttpResponseMessage httpResponse = await httpClient.GetAsync($"{Endpoints.ENDPOINTS[3]}/{guid}");
+                using HttpResponseMessage httpResponse = await httpClient.GetAsync($"{Endpoints.MateriaPrimaRutas.DetalleMateriaPrima}/{guid}");
 
                 if (httpResponse.StatusCode != HttpStatusCode.OK)
                     return Result.Failure<MateriaPrimaDetalle>(await httpResponse.Content.ReadAsStringAsync(),
@@ -206,45 +190,64 @@ namespace Data.Rest
             }
         }
 
-        public async Task<bool> AgregarStockMateriaPrima(StockMateriaPrimaRequestDto stockMateriaPrima, Func<Task>? ejecutarTask = null)
+        public async Task<RequestResultDto<KgSeguimiento>> AgregarStockMateriaPrima(StockMateriaPrimaRequestDto stockMateriaPrima)
         {
-            using StringContent stringContenido = new(
-                JsonConvert.SerializeObject(stockMateriaPrima),
-                Encoding.UTF8,
-                MediaTypeNames.Application.Json
-            );
+            try
+            {
+                using StringContent stringContenido = new(
+                    JsonConvert.SerializeObject(stockMateriaPrima),
+                    Encoding.UTF8,
+                    MediaTypeNames.Application.Json
+                );
 
-            using HttpResponseMessage httpResponse = await httpClient.PostAsync(Endpoints.ENDPOINTS[4], stringContenido);
+                using HttpResponseMessage httpResponse =
+                    await httpClient.PostAsync(Endpoints.MateriaPrimaRutas.AgregarEnStock, stringContenido);
 
-            if (ejecutarTask != null)
-                await ejecutarTask();
+                if (httpResponse.StatusCode != HttpStatusCode.OK)
+                    return Result.Failure<KgSeguimiento>(await httpResponse.Content.ReadAsStringAsync(),
+                        httpResponse.StatusCode);
 
-            // if (httpResponse.IsSuccessStatusCode)
-            //     await _mensaje.MensajeCorrecto("Agregar stock materia prima", await httpResponse.Content.ReadAsStringAsync());
-            // else
-            //     await _mensaje.MensajeError("Error Agregar stock materia prima", await httpResponse.Content.ReadAsStringAsync());
-
-            return (httpResponse.IsSuccessStatusCode) ? true : false;
+                KgSeguimiento resultado = JsonConvert.DeserializeObject<KgSeguimiento>(await httpResponse.Content.ReadAsStringAsync())!;
+                
+                return Result.Success(resultado);
+            }
+            catch (HttpRequestException)
+            {
+                return Result.Failure<KgSeguimiento>("Conexion perdida, no se pudo enviar los datos", HttpStatusCode.RequestTimeout);
+            }
+            catch (Exception)
+            {
+                return Result.Failure<KgSeguimiento>("Error del servidor para procesar los datos", HttpStatusCode.InternalServerError);
+            }
         }
 
-        public async Task<bool> EditarDatosMateriaPrima(MateriaPrimaRequestDto materiaPrimaRequestDTO, Func<Task>? ejecutarTask = null)
+        public async Task<RequestResultDto<bool>> EditarDatosMateriaPrima(MateriaPrimaRequestDto materiaPrimaRequestDTO)
         {
-            using StringContent stringContent = new(
-                JsonConvert.SerializeObject(materiaPrimaRequestDTO),
-                Encoding.UTF8,
-                MediaTypeNames.Application.Json
-            );
-            using HttpResponseMessage httpResponse = await httpClient.PutAsync(Endpoints.ENDPOINTS[5], stringContent);
+            try
+            {
+                using StringContent stringContent = new(
+                    JsonConvert.SerializeObject(materiaPrimaRequestDTO),
+                    Encoding.UTF8,
+                    MediaTypeNames.Application.Json
+                );
+                using HttpResponseMessage httpResponse =
+                    await httpClient.PutAsync(Endpoints.MateriaPrimaRutas.EditarNombreMateriaPrima, stringContent);
 
-            if (ejecutarTask != null)
-                await ejecutarTask();
+                if (httpResponse.StatusCode != HttpStatusCode.OK)
+                    return Result.Failure<bool>(await httpResponse.Content.ReadAsStringAsync(),
+                        httpResponse.StatusCode);
 
-            // if (httpResponse.IsSuccessStatusCode)
-            //     await _mensaje.MensajeCorrecto("Editar Materia Prima", await httpResponse.Content.ReadAsStringAsync());
-            // else
-            //     await _mensaje.MensajeError("Error Materia Prima", await httpResponse.Content.ReadAsStringAsync());
-
-            return (httpResponse.IsSuccessStatusCode) ? true : false;
+                return Result.Success(true);
+            }
+            catch (HttpRequestException)
+            {
+                return Result.Failure<bool>("Error de conexion con el servidor, no se pudieron editar los datos",
+                    HttpStatusCode.RequestTimeout);
+            }
+            catch (Exception)
+            {
+                return Result.Failure<bool>("Error del servidor para procesar los datos", HttpStatusCode.InternalServerError);
+            }
         }
 
         public async Task<RequestResultDto<IEnumerable<KgSeguimiento>>> GetKgSeguimientos(MateriaPrimaDetalle datos)
@@ -254,7 +257,7 @@ namespace Data.Rest
                 IEnumerable<KgSeguimiento> listadoKgSeguimientos = new List<KgSeguimiento>();
 
                 using HttpResponseMessage httpResponse = await httpClient.GetAsync(
-                    $"{Endpoints.ENDPOINTS[8]}/{datos!.NValoresListadoKgSeguimiento}?guid={datos!.Identificador}");
+                    $"{Endpoints.MateriaPrimaRutas.SolicitarKgMonitoring}/{datos!.NValoresListadoKgSeguimiento}?guid={datos!.Identificador}");
 
                 if (httpResponse.StatusCode != HttpStatusCode.OK)
                     return Result.Failure<IEnumerable<KgSeguimiento>>(

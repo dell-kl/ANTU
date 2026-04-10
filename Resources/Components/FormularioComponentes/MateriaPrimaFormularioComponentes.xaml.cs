@@ -1,3 +1,6 @@
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Runtime.Versioning;
 using Modelos;
 using Modelos.Dto;
 using ANTU.ViewModel;
@@ -6,15 +9,28 @@ using Syncfusion.Maui.DataForm;
 
 namespace ANTU.Resources.Components.FormularioComponentes;
 
-public partial class MateriaPrimaFormularioComponentes : ContentView
+[SupportedOSPlatform("Android")]
+public partial class MateriaPrimaFormularioComponentes: ContentView, INotifyPropertyChanged
 {
-	private MateriaPrimaFormulario materiaPrimaFormulario = new MateriaPrimaFormulario();
+    private MateriaPrimaFormulario _materiaPrimaFormulario;
+    public event PropertyChangedEventHandler? PropertyChanged;
 
+    public MateriaPrimaFormulario MateriaPrimaFormulario
+    {
+        get => _materiaPrimaFormulario;
+        set
+        {
+            _materiaPrimaFormulario = value;
+            NotifyPropertyChanged();
+        }
+    }
+    
     public MateriaPrimaFormularioComponentes()
 	{
 		InitializeComponent();
 
-		FormularioMateriaPrima.DataObject = this.materiaPrimaFormulario;
+        this.MateriaPrimaFormulario = new MateriaPrimaFormulario();
+		FormularioMateriaPrima.DataObject = this.MateriaPrimaFormulario;
         FormularioMateriaPrima.Items.Add(new DataFormTextItem() { FieldName = "MateriaPrima", GroupName = "Datos Producto" });
         FormularioMateriaPrima.Items.Add(new DataFormNumericItem() { FieldName = "KgStandard", GroupName = "Datos Compra" });
         FormularioMateriaPrima.Items.Add(new DataFormNumericItem() { FieldName = "Cantidad", GroupName = "Datos Compra" });
@@ -32,8 +48,7 @@ public partial class MateriaPrimaFormularioComponentes : ContentView
                 FontSize = 15,
                 FontAttributes = FontAttributes.Bold,
             };
-
-
+            
             switch (e.DataFormGroupItem.Name)
             {
                 case "Datos Producto":
@@ -111,10 +126,10 @@ public partial class MateriaPrimaFormularioComponentes : ContentView
 
     private void dataForm_ValidateForm(object sender, DataFormValidateFormEventArgs e)
     {
-        this.materiaPrimaFormulario.MateriaPrima = (e.NewValues["MateriaPrima"] is null) ? "" : e.NewValues["MateriaPrima"].ToString();
-        this.materiaPrimaFormulario.KgStandard = (e.NewValues["KgStandard"] is null) ? 0 : (double)e.NewValues["KgStandard"];
-        this.materiaPrimaFormulario.Precio = (e.NewValues["Precio"] is null) ? 0 : (double)e.NewValues["Precio"];
-        this.materiaPrimaFormulario.Cantidad = (e.NewValues["Cantidad"] is null) ? 0 : int.Parse(e.NewValues["Cantidad"].ToString()!);
+        this.MateriaPrimaFormulario.MateriaPrima = (e.NewValues["MateriaPrima"] is null) ? "" : e.NewValues["MateriaPrima"].ToString();
+        this.MateriaPrimaFormulario.KgStandard = (e.NewValues["KgStandard"] is null) ? 0 : (double)e.NewValues["KgStandard"];
+        this.MateriaPrimaFormulario.Precio = (e.NewValues["Precio"] is null) ? 0 : (double)e.NewValues["Precio"];
+        this.MateriaPrimaFormulario.Cantidad = (e.NewValues["Cantidad"] is null) ? 0 : int.Parse(e.NewValues["Cantidad"].ToString()!);
     }
 
     private async void RegistrarMateriaPrima_Clicked(object sender, EventArgs e)
@@ -127,8 +142,7 @@ public partial class MateriaPrimaFormularioComponentes : ContentView
                 camposValidacion = new List<string>() { "KgStandard", "Precio", "Cantidad" };
             else if (ventanaPopupServiceViewModel.Accion is "editar_materiaPrima")
                 camposValidacion = new List<string>() {  "MateriaPrima" };
-
-
+            
             if (FormularioMateriaPrima.Validate(camposValidacion)) {
                 MateriaPrimaProducto materiaPrimaProducto = (ventanaPopupServiceViewModel.DatosAdicionales as MateriaPrimaProducto)!;
 
@@ -138,14 +152,29 @@ public partial class MateriaPrimaFormularioComponentes : ContentView
                     //CatalogoProductoDetalleViewModel se encargue de realizar la peticion de mandar a guardar.
                     await ventanaPopupServiceViewModel.CerrarPopupCommand.ExecuteAsync(new List<object>()
                     {
-                        this.materiaPrimaFormulario,
+                        this.MateriaPrimaFormulario,
                         materiaPrimaProducto.guid
                     });
                 }
             }
         }
-
-        if (FormularioMateriaPrima.Validate() && BindingContext is FormularioMateriaPrimaViewModel formularioMateriaPrimaViewModel && formularioMateriaPrimaViewModel.RegistrarMateriaPrimaCommand.CanExecute(this.materiaPrimaFormulario))
-            await formularioMateriaPrimaViewModel.RegistrarMateriaPrimaCommand.ExecuteAsync(this.materiaPrimaFormulario);
+        else if (FormularioMateriaPrima.Validate() &&
+            BindingContext is FormularioMateriaPrimaViewModel formularioMateriaPrimaViewModel &&
+            formularioMateriaPrimaViewModel.RegistrarMateriaPrimaCommand.CanExecute(this.MateriaPrimaFormulario))
+            await formularioMateriaPrimaViewModel.RegistrarMateriaPrimaCommand.ExecuteAsync(this.MateriaPrimaFormulario);
     }
+
+    public void ResetearValoresFormulario()
+    {
+        this.MateriaPrimaFormulario.MateriaPrima = "";
+        this.MateriaPrimaFormulario.Cantidad = 0;
+        this.MateriaPrimaFormulario.KgStandard = 0;
+        this.MateriaPrimaFormulario.Precio = 0;
+    }
+    
+    private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
 }

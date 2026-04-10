@@ -21,7 +21,7 @@ public class ProduccionListaRest : IProduccionLista
         this.httpClient = httpClient;
     }
     
-    public async Task<RequestResultDto<string>> Add(FabricadoRequestDto data)
+    public async Task<RequestResultDto<object>> Add(FabricadoRequestDto data)
     {
         try
         {

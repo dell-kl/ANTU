@@ -9,7 +9,7 @@ public static class Result_Map
     {
         try
         {
-            return r.Bind<Tm,Um>(x => mapper(x));
+            return r.Bind<Tm, Um>(x => mapper(x));
         }
         catch (Exception e)
         {

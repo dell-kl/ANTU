@@ -17,7 +17,7 @@ public class FabricadoRest : IFabricado
         this.httpClient = httpClient;
     }
     
-    public Task<RequestResultDto<string>> Add(FabricadoRequestDto data)
+    public Task<RequestResultDto<object>> Add(FabricadoRequestDto data)
     {
         throw new NotImplementedException();
     }

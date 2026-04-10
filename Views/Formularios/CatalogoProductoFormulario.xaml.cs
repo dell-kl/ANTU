@@ -1,8 +1,10 @@
+using System.Runtime.Versioning;
 using ANTU.Resources.Components.FormularioComponentes;
 using ANTU.ViewModel;
 
 namespace ANTU.Views.Formularios;
 
+[SupportedOSPlatform("Android")]
 public partial class CatalogoProductoFormulario : ContentPage
 {
     private CatalogoProductoFormularioViewModel catalogoProductoViewModel;

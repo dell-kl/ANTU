@@ -10,15 +10,17 @@
         <Image
             HeightRequest="270"
             Source="{Binding Path=Icono}"/>
-        <!-- <Button -->
-        <!--     HorizontalOptions="Center" -->
-        <!--     BackgroundColor="#8C3623" -->
-        <!--     TextColor="#FFF" -->
-        <!--     Command="{Binding ReintentarPeticionCommand}" -->
-        <!--     Text="&#xe7a2; Reintentar" -->
-        <!--     x:Name="ReintentarPeticionButton" -->
-        <!--     Clicked="ReintentarPeticionButton_OnClicked" -->
-        <!--     FontFamily="MaterialAssets"/> -->
+
+        <Button
+            Margin="0,10,0,0"
+            x:Name="BotonReintentar"
+            Text="Reintentar"
+            FontFamily="SegoeUILight"
+            FontAttributes="Bold"
+            WidthRequest="120"
+            TextColor="#FFF"
+            BackgroundColor="DarkOrange"
+            Command="{Binding Path=Command}"/>
         
         <Label VerticalOptions="Center"
                WidthRequest="250"

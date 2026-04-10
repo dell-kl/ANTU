@@ -17,13 +17,7 @@ namespace Modelos.Dto
         private DatosVentas datosVentas = new DatosVentas(0.0,0.0,0);
 
         public DatosVentas DatosVentas { set => SetProperty(ref datosVentas, value); get => datosVentas; } 
-
-
-        public void limpiarDatos()  
-        {
-            NombreProducto = string.Empty;
-            DatosVentas = new DatosVentas(0.0, 0.0, 0);
-        }
+        
     }
 
     public class DatosVentas : ObservableObject
@@ -50,11 +44,16 @@ namespace Modelos.Dto
         [Required(ErrorMessage = "Es obligatorio ingresar un peso mayor a 0")]
         [Range(20, double.MaxValue, ErrorMessage = "El peso debe ser mayor 0 o igual a 20KG (Recomendado poner un valor mayor)")]
         public double Kg { set => SetProperty(ref kg, value); get => kg; }
-
-        [DataFormDisplayOptions()]
+        
         [Range(0, int.MaxValue, ErrorMessage = "Este campo no puede quedar vacio, si no sabes cuanto tienes en stock no hay problema solo deja en 0 esta campo, caso contrario si lo sabes ingresa tu cantida aqui.")]
         [Required(ErrorMessage = "Este campo no puede quedar vacio, si no sabes cuanto tienes en stock no hay problema solo deja en 0 esta campo, caso contrario si lo sabes ingresa tu cantida aqui.\"")]
         [Display(Name = "Cantidad Total Actualmente", GroupName = "Datos Venta", Prompt = "Si tienes costales en base a la categoria de KG que estas creando de este producto, puedes ingresar el numero aqui, sino dejalo en 0.")]
         public int Cantidad { set => SetProperty(ref cantidad, value); get => cantidad; }
+        
+        
+        public void limpiarDatos()  
+        {
+            this.Precio = this.Kg = this.Cantidad = 0; 
+        }
     }
 }

@@ -22,34 +22,36 @@ namespace ANTU.ViewModel.PopupServicesViewModel
 
         //La propiedad de a continuacion son datos adicionales que se pueden enviar al ViewModel de la ContentView inyectada.
         [ObservableProperty]
-        private object datosAdicionales;
+        private object _datosAdicionales;
 
         [ObservableProperty]
         private bool _botonCancelar = true;
 
         [ObservableProperty]
-        private CatalogoProductoFormularioComponentes formularioCatalogoProducto = new CatalogoProductoFormularioComponentes();
+        private CatalogoProductoFormularioComponentes _formularioCatalogoProducto;
 
         [ObservableProperty]
-        private MateriaPrimaFormularioComponentes materiaPrimaFormulario = new MateriaPrimaFormularioComponentes();
+        private MateriaPrimaFormularioComponentes _materiaPrimaFormulario;
 
         public VentanaPopupServiceViewModel(IPopupService popupService, IRestManagement restManagement, IManagementService managementService, Mensaje mensaje) : base(restManagement, popupService, managementService, mensaje)
         {
+            this.FormularioCatalogoProducto = new CatalogoProductoFormularioComponentes();
+            this.MateriaPrimaFormulario = new MateriaPrimaFormularioComponentes();
         }
 
         public override void ApplyQueryAttributes(IDictionary<string, object> query)
         {
             base.ApplyQueryAttributes(query);
 
-            List<object> datos = (base.DataQuery as List<object>)!;
+            List<object> datos = (DataQuery as List<object>)!;
             this.TipoFormulario = (datos[0] as string)!;
             this.Accion = (datos[1] as string)!;
-            this.datosAdicionales = datos[2];
+            this.DatosAdicionales = datos[2];
 
-            setearBindingContext();
+            SetearBindingContext();
         }
 
-        public void setearBindingContext()
+        public void SetearBindingContext()
         {
             switch (this.TipoFormulario)
             {
@@ -67,7 +69,7 @@ namespace ANTU.ViewModel.PopupServicesViewModel
         [RelayCommand(AllowConcurrentExecutions = false)]
         public async Task CerrarPopup(object datos)
         {
-            await PopupService.ClosePopupAsync<object>(Shell.Current, datos);
+            await PopupService.ClosePopupAsync(Shell.Current, datos);
         }
 
     }

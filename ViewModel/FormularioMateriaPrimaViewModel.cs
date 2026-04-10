@@ -7,6 +7,7 @@ using Data.Rest.RestInterfaces;
 using CommunityToolkit.Maui;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Modelos;
 using Modelos.ResultDto;
 
 namespace ANTU.ViewModel
@@ -35,28 +36,33 @@ namespace ANTU.ViewModel
         public async Task RegistrarMateriaPrima(MateriaPrimaFormulario materiaPrimaFormulario)
         {
             await base.MostrarSpinner();
-
-            RequestResultDto<string> resultado = await ManagementService.materiaPrimaService.RegistrarMateriaPrima(materiaPrimaFormulario, FileManyResults);
-
-            await base.DesmontarSpinner();
+            var resultado =
+                await ManagementService.materiaPrimaService.RegistrarMateriaPrima(materiaPrimaFormulario,
+                    FileManyResults);
             
             string mensajeErrorCompleto = "", mensajeSuccesful = "";
-            
             foreach (var resultadoError in resultado.Errors)
                 mensajeErrorCompleto += $" - {resultadoError.Message}\n";
-            
             foreach (var resultadoSuccessful in resultado.Successful)
+            {
                 mensajeSuccesful += $"- {resultadoSuccessful}\n";
+            }
             
-            if (!resultado.Success && resultado.Successful.Count == 0)
+            if (!resultado.Success && resultado.Successful.Count == 0) // No se registro nada                                                                                       
                 await Mensaje.MensajeError($"Error Registrar", mensajeErrorCompleto);
-            else if (!resultado.Success && resultado.Successful.Count != 0)
-                await Mensaje.MensajeAdvertencia($"Materia Prima Registrada", mensajeErrorCompleto);
-            else if(resultado.Success)
-                await Mensaje.MensajeCorrecto("Solicitud Aceptada", mensajeSuccesful);
+            else
+            {
+                this.MateriaPrimaFormularioComponentes.ResetearValoresFormulario();
+                FileManyResults.Clear();
+                
+                if (!resultado.Success && resultado.Successful.Count != 0) // Se registro la materia prima y no las imagenes
+                    await Mensaje.MensajeAdvertencia($"Materia Prima Registrada", $"{mensajeSuccesful}\n{mensajeErrorCompleto}");
+                else if(resultado.Success) // Se ejecutaron exitosamente todos los procesos.
+                    await Mensaje.MensajeCorrecto("Solicitud Aceptada", mensajeSuccesful);
+            }
             
-
-            FileManyResults.Clear();
+            await EliminarSpinnerDirectamente();
+            
         }
     }
 }

@@ -71,7 +71,7 @@
             <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.CargarDatosCatalogoProductoCommand"/>.</summary>
         </member>
         <member name="P:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.CargarDatosCatalogoProductoCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.CargarDatosCatalogoProducto"/>.</summary>
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.CargarDatosCatalogoProducto(System.Object)"/>.</summary>
         </member>
         <member name="F:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.navegarPaginaDetalleCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.CatalogoProductoCollectionViewComponentsViewModel.NavegarPaginaDetalleCommand"/>.</summary>
@@ -130,7 +130,7 @@
             <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.CargarDatosMateriaPrimaProductoCommand"/>.</summary>
         </member>
         <member name="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.CargarDatosMateriaPrimaProductoCommand">
-            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.CargarDatosMateriaPrimaProducto"/>.</summary>
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.CargarDatosMateriaPrimaProducto(System.Object)"/>.</summary>
         </member>
         <member name="F:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.navegarPaginaDetalleCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.ComponentsViewModel.MateriaPrimaCollectionViewComponentsVIewModel.NavegarPaginaDetalleCommand"/>.</summary>
@@ -221,8 +221,20 @@
             <inheritdoc/>
             <inheritdoc/>
             <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
         </member>
-        <member name="M:ANTU.ViewModel.MateriaPrimaDetalleViewModel.ObtenerDatosMateriaPrimaDetalle">
+        <member name="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel._kgSeguimientoSeleccionado">
+             <summary> 
+            Esta propiedad de aqui esta relacionado con la parte de SfDataGrid, es para poder obtener el item seleccionado
+            y realiazar alguna accion especifica.
+             Revisar: EditarCompraRegistradaStock (Command) y EliminarCompraRegistradaStock (Command)
+             XAML relacionado: Views/Detalles/MateriaPrimaDetalle.xaml:503-519 (acciones swipe que disparan los comandos)
+             
+             </summary>
+        </member>
+        <member name="M:ANTU.ViewModel.MateriaPrimaDetalleViewModel.ObtenerDatosMateriaPrimaDetalle(System.Object)">
              <summary>
               Este es el primer metodo que se ejecutara cuando entremos a los
              detalles de la materia prima que seleccionamos.
@@ -258,6 +270,15 @@
         <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.KgSeguimientoList">
             <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel._kgSeguimientoList"/>
         </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.KgSeguimientoSeleccionado">
+            <inheritdoc cref="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel._kgSeguimientoSeleccionado"/>
+        </member>
+        <member name="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel.obtenerDatosMateriaPrimaDetalleCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.ObtenerDatosMateriaPrimaDetalleCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.ObtenerDatosMateriaPrimaDetalleCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.MateriaPrimaDetalleViewModel.ObtenerDatosMateriaPrimaDetalle(System.Object)"/>.</summary>
+        </member>
         <member name="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel.mostrarDetallesImagenesCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.MostrarDetallesImagenesCommand"/>.</summary>
         </member>
@@ -275,6 +296,18 @@
         </member>
         <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.VentanaFormularioMateriaPrimaDetalleStockCommand">
             <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.MateriaPrimaDetalleViewModel.VentanaFormularioMateriaPrimaDetalleStock(System.Object)"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel.editarCompraRegistradaStockCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.EditarCompraRegistradaStockCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.EditarCompraRegistradaStockCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.MateriaPrimaDetalleViewModel.EditarCompraRegistradaStock(System.Object)"/>.</summary>
+        </member>
+        <member name="F:ANTU.ViewModel.MateriaPrimaDetalleViewModel.eliminarCompraRegistradaStockCommand">
+            <summary>The backing field for <see cref="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.EliminarCompraRegistradaStockCommand"/>.</summary>
+        </member>
+        <member name="P:ANTU.ViewModel.MateriaPrimaDetalleViewModel.EliminarCompraRegistradaStockCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ANTU.ViewModel.MateriaPrimaDetalleViewModel.EliminarCompraRegistradaStock(System.String)"/>.</summary>
         </member>
         <member name="T:ANTU.ViewModel.MateriaPrimaViewModel">
             <inheritdoc/>
@@ -386,16 +419,16 @@
             <inheritdoc cref="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel._accion"/>
         </member>
         <member name="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.DatosAdicionales">
-            <inheritdoc cref="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.datosAdicionales"/>
+            <inheritdoc cref="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel._datosAdicionales"/>
         </member>
         <member name="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.BotonCancelar">
             <inheritdoc cref="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel._botonCancelar"/>
         </member>
         <member name="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.FormularioCatalogoProducto">
-            <inheritdoc cref="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.formularioCatalogoProducto"/>
+            <inheritdoc cref="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel._formularioCatalogoProducto"/>
         </member>
         <member name="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.MateriaPrimaFormulario">
-            <inheritdoc cref="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.materiaPrimaFormulario"/>
+            <inheritdoc cref="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel._materiaPrimaFormulario"/>
         </member>
         <member name="F:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.cerrarPopupCommand">
             <summary>The backing field for <see cref="P:ANTU.ViewModel.PopupServicesViewModel.VentanaPopupServiceViewModel.CerrarPopupCommand"/>.</summary>
@@ -868,6 +901,9 @@
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.KgSeguimientoList">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "KgSeguimientoList" generated properties.</summary>
         </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.KgSeguimientoSeleccionado">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "KgSeguimientoSeleccionado" generated properties.</summary>
+        </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.ButtonUpdateMateriaPrima">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "ButtonUpdateMateriaPrima" generated properties.</summary>
         </member>
@@ -1119,6 +1155,9 @@
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.KgSeguimientoList">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "KgSeguimientoList" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.KgSeguimientoSeleccionado">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "KgSeguimientoSeleccionado" generated properties.</summary>
         </member>
         <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.ButtonUpdateMateriaPrima">
             <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "ButtonUpdateMateriaPrima" generated properties.</summary>
